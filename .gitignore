@@ -25,3 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+bundle.js
+node_modules/
+bundle.js.map
