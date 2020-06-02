@@ -1,10 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import configureStore from './store/store.js'
+import configureStore from './store/store';
+import Root from './components/root';
+
+import * as APIUtil from './util/session_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root')
     const store = configureStore();
+
+    // window.login = login;
+    // window.signup = signup;
+    // window.logout = logout;
+    // debugger;
 
     ReactDOM.render(<Root store={store}/>, root);
 });
