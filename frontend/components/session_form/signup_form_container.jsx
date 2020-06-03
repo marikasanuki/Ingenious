@@ -7,8 +7,11 @@ import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return ({  
-        formType: 'Create Account',
-        navLink: <Link to="/login">Go log innnnn</Link>,
+        formButton: 'Create Account',
+        formHeader: 'Sign Up',
+        formSubhead: 'and show off your genius',
+        navLink: `Already have an account?${<Link to="/login"> Sign in here.</Link>}`,
+        termsOfService: `By clicking “Create Account”, you are indicating that you have read and agree to the ${<Link to={`https://genius.com/static/terms`}> Terms of Service</Link>}.`,
 })
 };
 
