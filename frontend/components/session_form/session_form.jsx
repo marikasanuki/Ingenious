@@ -39,21 +39,20 @@ class SessionForm extends React.Component {
 
     render() {
         return (
-            <div className='login-form-container'>
-                <form onSubmit={this.handleSubmit} className='login-form' >
-                    {this.props.formHeader}
-                    <br />
-                    {this.props.formSubhead}
+            <div className='signup-form-container'>
+                <form onSubmit={this.handleSubmit} className='signup-form-box' >
+                    <h1 className='signup-form-header' >{this.props.formHeader}</h1>
+                    <p className='signup-form-subhead' > {this.props.formSubhead} </p>
                     <br />
                     {this.renderErrors()}
                     <label>Ingenious Nickname
                         <br />
-                        <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='login-input' />
+                        <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                     </label>
                     <br /><br />
                     <label>Password (I forgot my password)
                         <br />
-                        <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='login-input' />
+                        <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
                     </label>
                         <p className='terms-of-service'>{this.props.termsOfService}</p>
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />

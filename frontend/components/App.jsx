@@ -17,10 +17,11 @@ const App = () => (
                 <h1>INGENIOUS</h1>
             </Link>
         </header>
-        <LoginFormContainer />
-
-        <br />
         <SignupFormContainer />
+        <br />
+        <br />
+        <br />
+        <LoginFormContainer />
         {/* <Route path="/signup" component={LoginFormContainer} />
         <Route path="/signup" component={SignupFormContainer} /> */}
 

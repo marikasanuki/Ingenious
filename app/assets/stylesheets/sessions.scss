@@ -3,8 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-div {
+.signup-form-container {
     background-color: black;
     color: white;
     font-family: Geneva, sans-serif;
+    text-align: center;
+}
+
+.signup-form-box {
+
+}
+
+.signup-form-header {
+    color: rgb(255, 255, 100);
+    font-family: DinCondensed, sans-serif;
+    // font-size: 40px;
+    // line-height: 80px;
+}
+
+.signup-form-subhead {
+    color: rgb(255, 255, 100);
+    font-family: DinCondensed, sans-serif;
+    // font-weight: 400;
+}
+
+.signup-input {
+
+}
+
+.terms-of-service {
+
+}
+
+.session-submit-button {
+
 }
