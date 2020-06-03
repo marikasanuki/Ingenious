@@ -16,7 +16,7 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
-    update(field) {
+    handleInput(field) {
         return (e) => {
             this.setState({
                 [field]: e.currentTarget.value
@@ -48,12 +48,12 @@ class SessionForm extends React.Component {
                     {this.renderErrors()}
                     <label>Ingenious Nickname
                         <br />
-                        <input type='text' value={this.state.username} onChange={this.update('username')} className='login-input' />
+                        <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='login-input' />
                     </label>
                     <br /><br />
                     <label>Password (I forgot my password)
                         <br />
-                        <input type='password' value={this.state.password} onChange={this.update('password')} className='login-input' />
+                        <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='login-input' />
                     </label>
                         <p className='terms-of-service'>{this.props.termsOfService}</p>
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />

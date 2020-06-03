@@ -21,7 +21,7 @@ const App = () => (
 
         <br />
         <SignupFormContainer />
-        {/* <Route path="/login" component={LoginFormContainer} />
+        {/* <Route path="/signup" component={LoginFormContainer} />
         <Route path="/signup" component={SignupFormContainer} /> */}
 
     </div>
