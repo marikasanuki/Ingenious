@@ -24,6 +24,19 @@ class SessionForm extends React.Component {
         };
     }
 
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render() {
         return (
             <div className='login-form-container'>
@@ -32,6 +45,7 @@ class SessionForm extends React.Component {
                     <br />
                     {this.props.formSubhead}
                     <br />
+                    {this.renderErrors()}
                     <label>Ingenious Nickname
                         <br />
                         <input type='text' value={this.state.username} onChange={this.update('username')} className='login-input' />
@@ -45,7 +59,7 @@ class SessionForm extends React.Component {
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />
                     <br />
                     <br />
-                    {this.props.navLink}
+                    {this.props.navMessage}
                 </form>
             </div>
         );

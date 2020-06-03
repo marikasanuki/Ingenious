@@ -5,12 +5,13 @@ import SessionForm from './session_form';
 
 import { Link } from 'react-router-dom';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ errors }) => {
     return ({  
+        errors: errors.session,
         formButton: 'Create Account',
         formHeader: 'Sign Up',
         formSubhead: 'and show off your genius',
-        navLink: `Already have an account? Sign in here.`,
+        navMessage: `Already have an account? Sign in here.`,
         termsOfService: `By clicking “Create Account”, you are indicating that you have read and agree to the Terms of Service.`,
 })
 };
