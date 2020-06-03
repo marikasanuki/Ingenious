@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
         formButton: 'Create Account',
         formHeader: 'Sign Up',
         formSubhead: 'and show off your genius',
-        navLink: `Already have an account?${<Link to="/login"> Sign in here.</Link>}`,
-        termsOfService: `By clicking “Create Account”, you are indicating that you have read and agree to the ${<Link to={`https://genius.com/static/terms`}> Terms of Service</Link>}.`,
+        navLink: `Already have an account? Sign in here.`,
+        termsOfService: `By clicking “Create Account”, you are indicating that you have read and agree to the Terms of Service.`,
 })
 };
 

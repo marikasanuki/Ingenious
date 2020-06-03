@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
     return {
         formButton: 'Login',
         formHeader: 'Sign In',
-        navLink: `Don't have an account? ${<Link to="/login">Sign up here.</Link>}`,
+        navLink: `Don't have an account? Sign up here.`,
     };  
 };
 
