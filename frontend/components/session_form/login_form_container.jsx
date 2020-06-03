@@ -4,11 +4,11 @@ import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
 
-const mapStateToProps = (state, ownProps) => {
-    return ({
+const mapStateToProps = (state) => {
+    return {
         formType: 'Login',
-
-    })
+        navLink: <Link to="/login">Go sign in!!!</Link>,
+    };  
 };
 
 const mapDispatchToProps = (dispatch) => {
