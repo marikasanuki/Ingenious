@@ -1,3 +1,6 @@
+
+import LoginFormContainer from './session_form/login_form_container';
+import SignupFormContainer from './session_form/signup_form_container';
 import React from "react";
 import {
     Route,
@@ -6,17 +9,13 @@ import {
     Link,
     HashRouter
 } from 'react-router-dom';
-import LoginFormContainer from './session_form/login_form_container';
-import SignupFormContainer from './session_form/signup_form_container';
-
 
 const App = () => (
-    <div>
+    <div className='ingenious-app' >
         <header>
-            <Link to={`/`} className='header-link'>
-                <h1>INGENIOUS</h1>
-            </Link>
+            <Link to={`/`} className='ingenious-header'><h2>INGENIOUS</h2></Link>
         </header>
+            <Link to={`/`} className='ingenious-navbar' ><h4 >NavBar placeholder</h4></Link>
         <SignupFormContainer />
         <br />
         <br />

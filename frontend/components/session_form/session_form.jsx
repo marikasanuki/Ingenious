@@ -45,12 +45,12 @@ class SessionForm extends React.Component {
                     <p className='signup-form-subhead' > {this.props.formSubhead} </p>
                     <br />
                     {this.renderErrors()}
-                    <label>Ingenious Nickname
+                    <label className='signup-label' >Ingenious Nickname
                         <br />
                         <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                     </label>
                     <br /><br />
-                    <label>Password (I forgot my password)
+                    <label className='signup-label'>Password (I forgot my password)
                         <br />
                         <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
                     </label>

@@ -7,34 +7,52 @@
     background-color: black;
     color: white;
     font-family: Geneva, sans-serif;
-    text-align: center;
+    
+    
 }
 
 .signup-form-box {
+    background-color: rgb(14, 14, 14);
+    width: 373px;
+    height: 360px;
 
 }
 
 .signup-form-header {
-    color: rgb(255, 255, 100);
+    color: rgb(251, 253, 111);
     font-family: DinCondensed, sans-serif;
+    text-align: center;
     // font-size: 40px;
     // line-height: 80px;
 }
 
 .signup-form-subhead {
-    color: rgb(255, 255, 100);
+    color: rgb(251, 253, 111);
     font-family: DinCondensed, sans-serif;
+    text-align: center;
     // font-weight: 400;
 }
 
-.signup-input {
+.signup-label {
+    font-size: 13px;
+}
 
+.signup-input {
+    background-color: rgb(54, 54, 54);
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 2px;
+    width: 350px;
+    height: 30px;
 }
 
 .terms-of-service {
-
+    color: rgb(112, 167, 193);
 }
 
 .session-submit-button {
-
+    color: rgb(230, 230, 230);
+    background-color: rgb(38, 38, 38);
+    border: 1px solid rgb(68, 68, 68);
+    padding: 5px 10px 5px 10px;
+    border-radius: 2px;
 }

@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .ingenious-app {
+    background-color: black;
+ }
+
+ .ingenious-header {
+    text-align: center;
+ }
+
+.ingenious-navbar {
+    text-align: center;
+}
