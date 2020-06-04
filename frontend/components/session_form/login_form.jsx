@@ -42,15 +42,15 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className='signup-form-container'>
-                    <h1 className='signup-form-header' >{this.props.formHeader}</h1>
+                    <div className='signup-form-header' >{this.props.formHeader}</div>
                 <form onSubmit={this.handleSubmit} className='signup-form-box' >
-                    {this.renderErrors()}
+                    <div className='error-messages'>{this.renderErrors()}</div>
                     <label className='signup-label' >Ingenious Nickname
                         <br />
                         <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                     </label>
                     <br /><br />
-                    <label className='signup-label'>Password <span className='hyperlink-color' >(I forgot my password)</span>
+                    <label className='signup-label'>Password <a className='hyperlink-color' href='https://genius.com/password_resets/new' target="blank" >(I forgot my password)</a>
                         <br />
                         <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
                     </label>
