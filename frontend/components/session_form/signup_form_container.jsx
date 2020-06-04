@@ -11,13 +11,12 @@ const mapStateToProps = ({ errors }) => {
         formHeader: 'SIGN UP',
         formSubhead: 'and show off your ingenious',
         formButton: 'Create Account',
-})
+    })
 };
 
 const mapDispatchToProps = (dispatch) => {
     return ({
         signup: (user) => {
-            debugger;
             return dispatch(signup(user))},
         login: (user) => dispatch(login(user)),
     })
