@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -74,9 +75,9 @@ class SignupForm extends React.Component {
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />
                     <br />
                     <br />
-                    <label className='signup-label'>Already have an account? <span className='hyperlink-color' >Sign in here.</span></label>
-                    {/* <label className='signup-label'>Already have an account? <a href="/login" className='hyperlink-color' >Sign in here.</a></label>
-                    <label className='signup-label'>Already have an account? <Link className='hyperlink-color' to={`/login`}>Sign in here.</Link></label> */}
+                    <label className='signup-label'>Already have an account? <Link className='hyperlink-color' to={`/login`}>Sign in here.</Link></label>
+
+
                 </form>
             </div>
         );
