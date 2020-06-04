@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SessionForm extends React.Component {
+class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.signup(user);
     }
 
     handleInput(field) {
@@ -24,6 +24,10 @@ class SessionForm extends React.Component {
         };
     }
 
+    demoUser(e) {
+        e.preventDefault();
+        this.props.login({ 'username': 'demousername', 'password': 'demopassword'});
+    }
 
     renderErrors() {
         return (
@@ -40,29 +44,39 @@ class SessionForm extends React.Component {
     render() {
         return (
             <div className='signup-form-container'>
-                <form onSubmit={this.handleSubmit} className='signup-form-box' >
-                    <h1 className='signup-form-header' >{this.props.formHeader}</h1>
-                    <p className='signup-form-subhead' > {this.props.formSubhead} </p>
+
+            <div className='signup-headings'>
+                    <span className='signup-form-header' >{this.props.formHeader}</span>
+                    <br/>
+                    <span className='signup-form-subhead' > {this.props.formSubhead} </span>
+            </div>
                     <br />
+                    <button className='session-demo-user-button' onClick={e => this.demoUser(e)}>Log in as demo user</button>
+                    <br/>
+                    <button className='signup-username-button' onClick={e => this.demoUser(e)}>Sign up with username</button>
+                    <br />
+                <form onSubmit={this.handleSubmit} className='signup-form-box' >
                     {this.renderErrors()}
                     <label className='signup-label' >Ingenious Nickname
                         <br />
                         <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                     </label>
                     <br /><br />
-                    <label className='signup-label'>Password (I forgot my password)
+                    <label className='signup-label'>Password
                         <br />
                         <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
                     </label>
-                        <p className='terms-of-service'>{this.props.termsOfService}</p>
+                    <p className='signup-label' >By clicking “Create Account”, you are indicating that you have read and agree to the <a className='hyperlink-color' href="https://genius.com/static/terms" target="blank" >Terms of Service</a>.</p>
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />
                     <br />
                     <br />
-                    {this.props.navMessage}
+                    <label className='signup-label'>Already have an account? <span className='hyperlink-color' >Sign in here.</span></label>
+
+                    
                 </form>
             </div>
         );
     }
 };
 
-export default SessionForm;
+export default SignupForm;

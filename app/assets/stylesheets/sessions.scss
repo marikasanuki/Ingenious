@@ -9,17 +9,27 @@
     font-family: Geneva, sans-serif;
 }
 
+.signup-headings {
+    text-align: center;
+}
+
 .signup-form-box {
     background-color: rgb(14, 14, 14);
-    width: 373px;
-    height: 360px;
-
+    width: 380px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    border-top: 1px solid rgb(39, 39, 39);
+    border-radius: 2px;
 }
 
 .signup-form-header {
     color: rgb(251, 253, 111);
     font-family: Geneva, sans-serif;
     text-align: center;
+    font-size: 50px;
     // font-stretch: ultra-condensed;
     // font-size: 40px;
     // line-height: 80px;
@@ -29,23 +39,31 @@
     color: rgb(251, 253, 111);
     font-family: Geneva, sans-serif;
     text-align: center;
+    font-size: 20px;
     // font-weight: 400;
 }
 
 .signup-label {
+    color: rgb(236, 232, 233);
     font-size: 13px;
+    font-weight: bold;
 }
 
 .signup-input {
+    color: rgb(204, 204, 204);
     background-color: rgb(54, 54, 54);
     border: 1px solid rgb(85, 85, 85);
     border-radius: 2px;
-    width: 350px;
+    width: 360px;
     height: 30px;
 }
 
-.terms-of-service {
+.hyperlink-color {
     color: rgb(112, 167, 193);
+}
+
+.hyperlink-color:hover {
+    color: rgb(175, 207, 221);
 }
 
 .session-submit-button {
@@ -53,5 +71,29 @@
     background-color: rgb(38, 38, 38);
     border: 1px solid rgb(68, 68, 68);
     padding: 5px 10px 5px 10px;
+    border-radius: 2px;
+}
+
+.session-demo-user-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: rgb(0, 0, 0);
+    background-color: rgb(251, 253, 111);
+    border: 1px solid rgb(251, 253, 111);
+    width: 400px;
+    height: 35px;;
+    border-radius: 2px;
+}
+
+.signup-username-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: rgb(230, 230, 230);
+    background-color: rgb(54, 54, 54);
+    border: 1px solid rgb(54, 54, 54);
+    width: 400px;
+    height: 35px;;
     border-radius: 2px;
 }
