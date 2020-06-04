@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NavBar from './nav_bar';
+import HeaderBar from './header_bar';
 import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     })
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderBar);

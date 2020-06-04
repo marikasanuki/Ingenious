@@ -14,6 +14,11 @@
  *= require_self
  */
 
+.home-page {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
 
  .ingenious-app {
     background-color: black;
@@ -26,3 +31,8 @@
 .ingenious-navbar {
     text-align: center;
 }
+/* 
+.body {
+    background-color: black;
+} */
+

@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoUser = this.demoUser.bind(this);
     }
 
     handleSubmit(e) {
@@ -27,8 +28,9 @@ class SignupForm extends React.Component {
 
     demoUser(e) {
         e.preventDefault();
-        debugger;
-        this.props.login({ username: 'demousername', password: 'demopassword'});
+ 
+        this.props.login({ username: 'demousername3', password: 'demopassword3'})
+            .then(() => this.props.history.push('/'));
     }
 
     renderErrors() {
@@ -55,7 +57,7 @@ class SignupForm extends React.Component {
                     <br />
                     <button className='session-demo-user-button' onClick={e => this.demoUser(e)}>Log in as demo user</button>
                     <br/>
-                    <button className='signup-username-button' onClick={e => this.demoUser(e)}>Sign up with new username</button>
+                <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up with new username</button>
                     <br />
                 <form onSubmit={this.handleSubmit} className='signup-form-box' >
                     {this.renderErrors()}
