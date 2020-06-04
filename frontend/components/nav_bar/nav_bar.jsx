@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Home extends React.Component {
+class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-bar'>
@@ -20,4 +20,4 @@ class Home extends React.Component {
     }
 };
 
-export default Home;
+export default NavBar;
