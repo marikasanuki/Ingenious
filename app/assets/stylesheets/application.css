@@ -14,23 +14,26 @@
  *= require_self
  */
 
-.home-page {
+
+.ingenious-header {
+    background-color: rgb(251, 253, 111);
+    color: black;
+    text-align: center;
+}
+
+
+.nav-bar {
     background-color: black;
     color: white;
     text-align: center;
+    height: 40px;
 }
 
  .ingenious-app {
-    background-color: black;
+
  }
 
- .ingenious-header {
-    text-align: center;
- }
 
-.ingenious-navbar {
-    text-align: center;
-}
 /* 
 .body {
     background-color: black;

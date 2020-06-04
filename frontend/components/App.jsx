@@ -15,19 +15,18 @@ import HeaderBarContainer from './header_bar/header_bar_container';
 
 const App = () => (
     <div className='ingenious-app' >
-        <Route exact path="/" component={HeaderBarContainer} className='ingenious-navbar' />
+        <Route exact path="/" component={HeaderBarContainer}/>
         <Route exact path="/" component={NavBar} />
-        <br />
         <Route exact path="/signup" component={SignupFormContainer} />
         <Route exact path="/login" component={LoginFormContainer} />
+    </div>
+);
+
+export default App;
+
 
 {/* 
         <Switch>
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
         </Switch> */}
-
-    </div>
-);
-
-export default App;

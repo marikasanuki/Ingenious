@@ -57,7 +57,7 @@ class SignupForm extends React.Component {
                     <br />
                     <button className='session-demo-user-button' onClick={e => this.demoUser(e)}>Log in as demo user</button>
                     <br/>
-                <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up with new username</button>
+                <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up for new account</button>
                     <br />
                 <form onSubmit={this.handleSubmit} className='signup-form-box' >
                     {this.renderErrors()}
