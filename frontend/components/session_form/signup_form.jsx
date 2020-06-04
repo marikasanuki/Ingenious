@@ -13,7 +13,8 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.signup(user);
+        this.props.signup(user)
+            .then(() => this.props.history.push('/'));
     }
 
     handleInput(field) {
@@ -26,7 +27,8 @@ class SignupForm extends React.Component {
 
     demoUser(e) {
         e.preventDefault();
-        this.props.login({ 'username': 'demousername', 'password': 'demopassword'});
+        debugger;
+        this.props.login({ username: 'demousername', password: 'demopassword'});
     }
 
     renderErrors() {

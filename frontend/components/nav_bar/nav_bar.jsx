@@ -8,7 +8,7 @@ const NavBar = ({ currentUser, logout }) => {
 
         <nav className="login-signup-nav">
             <Link className="nav-btn" to="/signup">SIGN UP</Link>
-                &nbsp;&nbsp;
+                &nbsp;
             <Link className="nav-btn" to="/login">SIGN IN</Link>
         </nav>
 
