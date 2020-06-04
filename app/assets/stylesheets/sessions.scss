@@ -97,3 +97,16 @@
     height: 35px;;
     border-radius: 2px;
 }
+
+
+.login-signup-nav {
+    background-color: rgb(251, 253, 111);
+    color: rgb(0, 0, 0);
+    font-family: Geneva, sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .nav-btn {
+        text-decoration: none;
+    }
+}
