@@ -4,7 +4,17 @@ class Home extends React.Component {
     render() {
         return (
             <div className='nav-bar'>
-                <p>This is the NavBar component.</p>
+                <ul className='nav-bar-list'>
+                    <li className='nav-bar-item' > FEATURED</li>
+                    <li className='nav-bar-item' > | </li>
+                    <li className='nav-bar-item' > CHARTS </li>
+                    <li className='nav-bar-item' > | </li>                    
+                    <li className='nav-bar-item' > LINKEDIN</li>                    
+                    <li className='nav-bar-item' > | </li>
+                    <li className='nav-bar-item' > SHOP</li>
+                    <li className='nav-bar-item' > | </li>
+                    <li className='nav-bar-item' > ICON LINKS</li>
+                </ul>                 
             </div>
         )
     }

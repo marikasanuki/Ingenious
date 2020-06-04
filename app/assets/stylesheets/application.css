@@ -15,27 +15,13 @@
  */
 
 
-.ingenious-header {
-    background-color: rgb(251, 253, 111);
-    color: black;
-    text-align: center;
+
+a {
+    text-decoration: none;
 }
 
 
-.nav-bar {
-    background-color: black;
-    color: white;
-    text-align: center;
-    height: 40px;
-}
-
- .ingenious-app {
-
- }
-
-
-/* 
 .body {
-    background-color: black;
-} */
+
+}
 
