@@ -6,11 +6,45 @@ class SignupForm extends React.Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            dropdownVisible: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
+        this.openDropdown = this.openDropdown.bind(this);
+        this.closeDropdown = this.closeDropdown.bind(this);
     }
+
+    openDropdown() {
+        return(
+            <form onSubmit={this.handleSubmit} className='signup-form-box' >
+
+                <div className='error-messages'>{this.renderErrors()}</div>
+
+                <label className='signup-label' >Ingenious Nickname
+                        <br />
+                    <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
+                </label>
+                <br /><br />
+                <label className='signup-label'>Password
+                        <br />
+                    <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
+                </label>
+                <p className='signup-label' >By clicking “Create Account”, you are indicating that you have read and agree to the <a className='hyperlink-color' href="https://genius.com/static/terms" target="blank" >Terms of Service</a>.</p>
+                <input className="session-submit-button" type='submit' value={this.props.formButton} />
+                <br />
+                <br />
+                <label className='signup-label'>Already have an account? <Link className='hyperlink-color' to={`/login`}>Sign in here.</Link></label>
+            </form>
+        )
+    }
+
+    closeDropdown() {
+        return (
+            <div></div>
+        )
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -58,29 +92,10 @@ class SignupForm extends React.Component {
                     <br />
                     <button className='session-demo-user-button' onClick={e => this.demoUser(e)}>Log in as demo user</button>
                     <br/>
-                <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up for new account</button>
+                {/* <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up for new account</button> */}
+                <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}>Sign up for new account</button>
                     <br />
-                <form onSubmit={this.handleSubmit} className='signup-form-box' >
-
-                        <div className='error-messages'>{this.renderErrors()}</div>
-
-                    <label className='signup-label' >Ingenious Nickname
-                        <br />
-                        <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
-                    </label>
-                    <br /><br />
-                    <label className='signup-label'>Password
-                        <br />
-                        <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
-                    </label>
-                    <p className='signup-label' >By clicking “Create Account”, you are indicating that you have read and agree to the <a className='hyperlink-color' href="https://genius.com/static/terms" target="blank" >Terms of Service</a>.</p>
-                    <input className="session-submit-button" type='submit' value={this.props.formButton} />
-                    <br />
-                    <br />
-                    <label className='signup-label'>Already have an account? <Link className='hyperlink-color' to={`/login`}>Sign in here.</Link></label>
-
-
-                </form>
+                {this.state.dropdownVisible ? this.openDropdown() : this.closeDropdown() }
             </div>
         );
     }
