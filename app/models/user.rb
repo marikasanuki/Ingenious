@@ -11,7 +11,7 @@
 #
 class User < ApplicationRecord
 
-    attr_reader :password_digest
+    attr_reader :password
     after_initialize :ensure_session_token
     
     validates :username, :password_digest, :session_token, presence: true
@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
     def ensure_session_token
         self.session_token ||= self.class.generate_session_token
-    end 
+    end
 
     def reset_session_token!
         self.update!(session_token: self.class.generate_session_token)
