@@ -6,15 +6,15 @@ class NavBar extends React.Component {
         return (
             <div className='nav-bar'>
                 <ul className='nav-bar-list'>
-                    <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" > FEATURED</a></li>   
-                    <li className='nav-bar-item' > | </li>
+                    <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >FEATURED</a></li>   
+                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
                     <li><Link className='nav-bar-item' to={`/tracks`}> CHARTS </Link></li>
-                    <li className='nav-bar-item' > | </li>                    
-                    <li><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" > LINKEDIN</a></li>                    
-                    <li className='nav-bar-item' > | </li>
-                    <li><a className='nav-bar-item' href="https://teespring.com/stores/genius-merch" target="blank" > SHOP</a></li>
-                    <li className='nav-bar-item' > | </li>
-                    <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" > ICON LINKS</a></li>
+                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>                    
+                    <li><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >LINKEDIN</a></li>                    
+                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
+                    <li><a className='nav-bar-item' href="https://teespring.com/stores/genius-merch" target="blank" >SHOP</a></li>
+                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
+                    <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >ICON&nbsp;LINKS</a></li>
                 </ul>                 
             </div>
         )

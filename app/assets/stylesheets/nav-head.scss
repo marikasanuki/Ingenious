@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 10px;
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 
@@ -35,15 +35,15 @@
     text-decoration: none;
     padding-left: 175px;
     color: rgb(253, 255, 111);
-    text-shadow: -1px 2px 2px black;
-    font-size: 19px;
-
+    text-shadow: -2px 2px 0px black, -1.5px 1.5px 0px black, -1px 1px 0px black;
+    font-size: 20px;
+    letter-spacing: -3px;
 }
 
 .session-btns {
     position: relative;
     top: 7px;
-    width: 7%;
+    width: 10%;
 }
 
 .session-btn {
