@@ -23,9 +23,9 @@ const HeaderBar = ({ currentUser, logout }) => {
         );
 
         return (
-                <div >
+            <div className="main-header-container">
                     {display}
-                </div>
+            </div>
         )
 };
 
