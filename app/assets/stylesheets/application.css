@@ -14,15 +14,7 @@
  *= require_self
  */
 
-
-
-a {
-    text-decoration: none;
+body {
+    margin: 0;
+    
 }
-
-
-
-.body {
-    border: 0;
-}
-

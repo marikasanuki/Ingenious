@@ -61,8 +61,12 @@ export const logout = () => {
     return dispatch => {
         return APIUtil.logout()
             .then(
-                (user) => {
+                () => {
                     return dispatch(logoutCurrentUser());
+                },
+                (errors) => {
+                    dispatch(receiveErrors(errors.responseJSON)
+                    )
                 }
             )
     }
