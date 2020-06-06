@@ -743,8 +743,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.login({
-        username: 'localhost1',
-        password: 'localhost1'
+        username: 'demousername',
+        password: 'demopassword'
       }).then(function () {
         return _this4.props.history.push('/');
       });

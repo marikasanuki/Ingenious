@@ -11,4 +11,10 @@
 #  updated_at :datetime         not null
 #
 class Track < ApplicationRecord
+
+    validates :title, :artist, :album, :lyrics, presence: true
+
+    
+
+
 end
