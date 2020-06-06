@@ -1,6 +1,6 @@
 import React from "react";
 
-class trackIndex extends React.Component {
+class tracksIndex extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -9,10 +9,11 @@ class trackIndex extends React.Component {
         const {tracks} = this.props;
         return (
             <div>
+                test
                 {tracks}
             </div>
         )
     }
 };
 
-export default trackIndex;
+export default tracksIndex;

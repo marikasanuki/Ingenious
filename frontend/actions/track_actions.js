@@ -6,6 +6,7 @@ export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 
 
 const receiveAllTracks = (tracks) => {
+    // debugger;
     return ({
         type: RECEIVE_ALL_TRACKS, 
         tracks,
@@ -14,6 +15,7 @@ const receiveAllTracks = (tracks) => {
 
 
 const receiveTrack = (track) => {
+    // debugger;
     return ({
         type: RECEIVE_TRACK, 
         track,
@@ -21,6 +23,7 @@ const receiveTrack = (track) => {
 };
 
 export const fetchTracks = () => {
+    // debugger;
     return dispatch => {
         return TrackAPIUtil.fetchTracks()
             .then(
@@ -30,6 +33,7 @@ export const fetchTracks = () => {
 };
 
 export const fetchTrack = (track) => {
+    // debugger;
     return dispatch => {
         return TrackAPIUtil.fetchTrack(track)
             .then(

@@ -8,7 +8,7 @@ const HeaderBar = ({ currentUser, logout }) => {
                 <div className='ingenious-header-container'>
                     <Link to="/" className='ingenious-header' >I&nbsp;N&nbsp;G&nbsp;E&nbsp;N&nbsp;I&nbsp;O&nbsp;U&nbsp;S</Link>
                 </div>
-                    <Link to="/" className="logout-header-btn" onClick={logout}>Sign Out</Link>
+                    <Link to="/" className="logout-header-btn" onClick={logout}>SIGN&nbsp;OUT</Link>
             </div>
         ) : (
                 <div className="main-header">

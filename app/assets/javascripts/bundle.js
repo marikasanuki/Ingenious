@@ -127,18 +127,18 @@ var receiveErrors = function receiveErrors(errors) {
   };
 };
 
-var signup = function signup(user) {
+var signup = function signup(formUser) {
   return function (dispatch) {
-    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](formUser).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (errors) {
-      dispatch(receiveErrors(errors.responseJSON)); // console.log(errors); - errors is entire errors object (want to only send the array of the responseJSON
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
-var login = function login(user) {
+var login = function login(formUser) {
   return function (dispatch) {
-    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](formUser).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (errors) {
       dispatch(receiveErrors(errors.responseJSON));
@@ -176,6 +176,7 @@ var RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 var RECEIVE_TRACK = 'RECEIVE_TRACK';
 
 var receiveAllTracks = function receiveAllTracks(tracks) {
+  // debugger;
   return {
     type: RECEIVE_ALL_TRACKS,
     tracks: tracks
@@ -183,6 +184,7 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
 };
 
 var receiveTrack = function receiveTrack(track) {
+  // debugger;
   return {
     type: RECEIVE_TRACK,
     track: track
@@ -190,6 +192,7 @@ var receiveTrack = function receiveTrack(track) {
 };
 
 var fetchTracks = function fetchTracks() {
+  // debugger;
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTracks"]().then(function (tracks) {
       return dispatch(receiveAllTracks(tracks));
@@ -197,6 +200,7 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
+  // debugger;
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
@@ -296,7 +300,7 @@ var HeaderBar = function HeaderBar(_ref) {
     to: "/",
     className: "logout-header-btn",
     onClick: logout
-  }, "Sign Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "SIGN\xA0OUT")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ingenious-header-container"
@@ -791,9 +795,10 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
+      debugger;
       this.props.login({
-        username: 'demousername',
-        password: 'demopassword'
+        username: 'marikasanuki',
+        password: 'marikasanuki'
       }).then(function () {
         return _this4.props.history.push('/');
       });
@@ -801,6 +806,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
+      console.log(errors);
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
@@ -924,30 +931,30 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var trackIndex = /*#__PURE__*/function (_React$Component) {
-  _inherits(trackIndex, _React$Component);
+var tracksIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(tracksIndex, _React$Component);
 
-  var _super = _createSuper(trackIndex);
+  var _super = _createSuper(tracksIndex);
 
-  function trackIndex(props) {
-    _classCallCheck(this, trackIndex);
+  function tracksIndex(props) {
+    _classCallCheck(this, tracksIndex);
 
     return _super.call(this, props);
   }
 
-  _createClass(trackIndex, [{
+  _createClass(tracksIndex, [{
     key: "render",
     value: function render() {
       var tracks = this.props.tracks;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tracks);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test", tracks);
     }
   }]);
 
-  return trackIndex;
+  return tracksIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (trackIndex);
+/* harmony default export */ __webpack_exports__["default"] = (tracksIndex);
 
 /***/ }),
 
@@ -968,6 +975,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  // debugger;
   return {
     tracks: state.tracks // Object.keys(state.tracks).map((key => state.tracks[key])),
 
@@ -1039,6 +1047,7 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.store = store;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -1235,6 +1244,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var _nullUser = Object.freeze({
+  currentUser: null
+});
+
 var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -1243,6 +1256,8 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, _defineProperty({}, action.currentUser.id, action.currentUser));
+    // case LOGOUT_CURRENT_USER:
+    //     return _nullUser;
 
     default:
       return oldState;

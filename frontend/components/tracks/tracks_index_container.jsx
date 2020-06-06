@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-import trackIndex from './tracks_index';
+import tracksIndex from './tracks_index';
 import { fetchTracks } from '../../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    // debugger;
     return ({
         tracks: state.tracks,
         // Object.keys(state.tracks).map((key => state.tracks[key])),
@@ -15,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
     })
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(trackIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(tracksIndex)

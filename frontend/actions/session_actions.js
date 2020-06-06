@@ -8,7 +8,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 const receiveCurrentUser = (currentUser) => {
     return ({
         type: RECEIVE_CURRENT_USER,
-        currentUser: currentUser,
+        currentUser,
     });
 };
 
@@ -25,9 +25,9 @@ const receiveErrors = (errors) => {
     });
 };
 
-export const signup = (user) => {
+export const signup = (formUser) => {
     return dispatch => {
-        return APIUtil.signup(user)
+        return APIUtil.signup(formUser)
             .then(
                 (user) => {
                     return dispatch(receiveCurrentUser(user));
@@ -35,16 +35,15 @@ export const signup = (user) => {
                 (errors) => { 
                     dispatch(receiveErrors(errors.responseJSON)
                     )
-                    // console.log(errors); - errors is entire errors object (want to only send the array of the responseJSON
                 } 
 
             )
     }
 };
 
-export const login = (user) => {
+export const login = (formUser) => {
     return dispatch => {
-        return APIUtil.login(user)
+        return APIUtil.login(formUser)
             .then(
                 (user) => {
                     return dispatch(receiveCurrentUser(user));

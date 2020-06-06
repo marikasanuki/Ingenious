@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import tracksShow from './tracks_show';
 
 const mapStateToProps = (state, ownProps) => {
-        debugger;
+        // debugger;
     return ({
         track: state.track,
     })
