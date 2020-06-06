@@ -1,6 +1,7 @@
 
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
+import TracksIndexContainer from './tracks/tracks_index_container';
 import React from "react";
 import {
     Route,
@@ -17,6 +18,7 @@ const App = () => (
     <div className='ingenious-app' >
         <Route path="/" component={HeaderBarContainer}/>
         <Route path="/" component={NavBar} />
+        <Route path="/" component={TracksIndexContainer} />
         <Route exact path="/signup" component={SignupFormContainer} />
         <Route exact path="/login" component={LoginFormContainer} />
     </div>

@@ -72,127 +72,63 @@ track0 = Track.create!(title: 'Programs',
                     Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
 )
 
-track1 = Track.create!(title: 'Programs',
-                artist: 'Mac Miller', 
-                album: 'Programs',
+track1 = Track.create!(title: 'Turning Tables',
+                artist: 'Adele', 
+                album: '21',
                 lyrics: 
-                    "[Intro]
-                    Yep, yep, yep, yuh, yep, yep
+                    "[Verse 1]
+                    Close enough to start a war
+                    All that I have is on the floor
+                    God only knows what we're fighting for
+                    All that I say, you always say more
 
-                    [Verse 1]
-                    I don't got a reason to lie, they gave me the key to the sky
-                    But I'd rather open my eyes, 'cause that's what'll keep me alive
-                    Somethin' that's easin' my mind (Mind), please do not fuck up my day (No)
-                    Everybody wanna headline, I don't got nothin' to say
-                    'Cept I'm comin' back with the freshness
-                    You know I love makin' a entrance
-                    Now now, don't get defensive, time is a matter of seconds
-                    One, two, yeah
-                    Off to see the wizard, lead the picture
-                    Me and liquor, evil mixture, demons glitter
-                    Clean the whiskers, he be Mr. Fisherman
-                    Back on my shit again, doin' my own dance
-                    Feel the rhythm that's no hands, I tell ya vision like programs
-                    Busy livin' on triple digits, young old man
-                    Y'all dead wrong, I'm upper with the echelon
-                    So butter when the bread long
-                    I'm goin' strong 'til my head gone, 'til my head gone
-                    Yeah, floatin' back up on the scene, I'm sayin' hello (Hello!)
-                    Do my thing, I'm pullin' strings like Tom Morello
-                    I keep it movin', you be doin' way too much
-                    I ain't tellin' time, just tell you when it's up (Yep)
+                    [Pre-Chorus]
+                    I can't keep up with your turning tables
+                    Under your thumb, I can't breathe
 
                     [Chorus]
-                    Yeah, I'm only keepin' good company
-                    I am not talkin' to you if you don't have love for me
-                    Yeah, one for you and one for me (Yeah, yeah)
-                    I am not talkin' to you if you don't have love for me (Love for me)
+                    So, I won't let you close enough to hurt me
+                    No, I won't rescue you to just desert me
+                    I can't give you the heart you think you gave me
+                    It's time to say goodbye to turning tables
+                    To turning tables
 
                     [Verse 2]
-                    Yeah, I mean wow, do not touch that dial, I've waited a while
-                    Been around, just like word of mouth, you gon' hear me out, and I-
-                    And I, and I, and I put that on my house
-                    I'm always goin' overboard, I better swim before I drown (Drown)
-                    I'm like rubber with the bounce, hundred be the count
-                    Drummin' loud as thunder with the sounds, yeah
-                    (Bang, bang, bang, bang)
-                    I was younger, fuck around, every summer wild
-                    Always had it jumpin' at the house
-                    Yeah, clappin' for y'all (Y'all), I'm into havin' it all (All)
-                    Feelin' like Shaq with the call (Call)
-                    Stature is tall (Tall), rollin' around with the homies
-                    A battery pack on my dawgs (Yeah)
-                    Fuck with my thoughts (Yeah), havin' enough ain't a lot (Lot)
-                    Puttin' a check in the box, straight to the top (Top), it don't matter
-                    Never mind the pattern when you takin' your shot, woo!
-                    Yeah, enough with the bullshit, enough with the bullshit
-                    Enough with the extras, fuck all my money
-                    I swear I been through it (Swear I been through it)
-                    Fuck all the losin' (Yeah), that's just an illusion
-                    Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
-)
+                    Under haunted skies, I see you
+                    Ooh, where love is lost, your ghost is found
+                    I braved a hundred storms to leave you
+                    As hard as you try, no, I will never be knocked down
 
-track2 = Track.create!(title: 'Programs',
-                artist: 'Mac Miller', 
-                album: 'Programs',
-                lyrics: 
-                    "[Intro]
-                    Yep, yep, yep, yuh, yep, yep
+                    [Pre-Chorus]
+                    I can't keep up with your turning tables
+                    Under your thumb, I can't breathe
+                    [Chorus]
+                    So, I won't let you close enough to hurt me
+                    No, I won't rescue you to just desert me
+                    I can't give you the heart you think you gave me
+                    It's time to say goodbye to turning tables
+                    Turning tables
 
-                    [Verse 1]
-                    I don't got a reason to lie, they gave me the key to the sky
-                    But I'd rather open my eyes, 'cause that's what'll keep me alive
-                    Somethin' that's easin' my mind (Mind), please do not fuck up my day (No)
-                    Everybody wanna headline, I don't got nothin' to say
-                    'Cept I'm comin' back with the freshness
-                    You know I love makin' a entrance
-                    Now now, don't get defensive, time is a matter of seconds
-                    One, two, yeah
-                    Off to see the wizard, lead the picture
-                    Me and liquor, evil mixture, demons glitter
-                    Clean the whiskers, he be Mr. Fisherman
-                    Back on my shit again, doin' my own dance
-                    Feel the rhythm that's no hands, I tell ya vision like programs
-                    Busy livin' on triple digits, young old man
-                    Y'all dead wrong, I'm upper with the echelon
-                    So butter when the bread long
-                    I'm goin' strong 'til my head gone, 'til my head gone
-                    Yeah, floatin' back up on the scene, I'm sayin' hello (Hello!)
-                    Do my thing, I'm pullin' strings like Tom Morello
-                    I keep it movin', you be doin' way too much
-                    I ain't tellin' time, just tell you when it's up (Yep)
+                    [Bridge]
+                    Next time, I'll be braver
+                    I'll be my own savior when the thunder calls for me
+                    Next time, I'll be braver
+                    I'll be my own savior, standing on my own two feet
 
                     [Chorus]
-                    Yeah, I'm only keepin' good company
-                    I am not talkin' to you if you don't have love for me
-                    Yeah, one for you and one for me (Yeah, yeah)
-                    I am not talkin' to you if you don't have love for me (Love for me)
+                    I won't let you close enough to hurt me
+                    No, I won't rescue you to just desert me
+                    I can't give you the heart you think you gave me
+                    It's time to say goodbye to turning tables
+                    To turning tables
 
-                    [Verse 2]
-                    Yeah, I mean wow, do not touch that dial, I've waited a while
-                    Been around, just like word of mouth, you gon' hear me out, and I-
-                    And I, and I, and I put that on my house
-                    I'm always goin' overboard, I better swim before I drown (Drown)
-                    I'm like rubber with the bounce, hundred be the count
-                    Drummin' loud as thunder with the sounds, yeah
-                    (Bang, bang, bang, bang)
-                    I was younger, fuck around, every summer wild
-                    Always had it jumpin' at the house
-                    Yeah, clappin' for y'all (Y'all), I'm into havin' it all (All)
-                    Feelin' like Shaq with the call (Call)
-                    Stature is tall (Tall), rollin' around with the homies
-                    A battery pack on my dawgs (Yeah)
-                    Fuck with my thoughts (Yeah), havin' enough ain't a lot (Lot)
-                    Puttin' a check in the box, straight to the top (Top), it don't matter
-                    Never mind the pattern when you takin' your shot, woo!
-                    Yeah, enough with the bullshit, enough with the bullshit
-                    Enough with the extras, fuck all my money
-                    I swear I been through it (Swear I been through it)
-                    Fuck all the losin' (Yeah), that's just an illusion
-                    Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
+                    [Outro]
+                    Turning tables, yeah
+                    Turn, no, no, no-oh"
 )
 
-track3 = Track.create!(title: 'Algorhythm',
+
+track2 = Track.create!(title: 'Algorhythm',
                 artist: 'Childish Gambino', 
                 album: '3.15.20',
                 lyrics: 
@@ -255,64 +191,8 @@ track3 = Track.create!(title: 'Algorhythm',
                     Algorhythm (Yeah, yeah)"
 )
 
-track4 = Track.create!(title: 'Turning Tables',
-                artist: 'Adele', 
-                album: '21',
-                lyrics: 
-                    "[Verse 1]
-                    Close enough to start a war
-                    All that I have is on the floor
-                    God only knows what we're fighting for
-                    All that I say, you always say more
 
-                    [Pre-Chorus]
-                    I can't keep up with your turning tables
-                    Under your thumb, I can't breathe
-
-                    [Chorus]
-                    So, I won't let you close enough to hurt me
-                    No, I won't rescue you to just desert me
-                    I can't give you the heart you think you gave me
-                    It's time to say goodbye to turning tables
-                    To turning tables
-
-                    [Verse 2]
-                    Under haunted skies, I see you
-                    Ooh, where love is lost, your ghost is found
-                    I braved a hundred storms to leave you
-                    As hard as you try, no, I will never be knocked down
-
-                    [Pre-Chorus]
-                    I can't keep up with your turning tables
-                    Under your thumb, I can't breathe
-                    [Chorus]
-                    So, I won't let you close enough to hurt me
-                    No, I won't rescue you to just desert me
-                    I can't give you the heart you think you gave me
-                    It's time to say goodbye to turning tables
-                    Turning tables
-
-                    [Bridge]
-                    Next time, I'll be braver
-                    I'll be my own savior when the thunder calls for me
-                    Next time, I'll be braver
-                    I'll be my own savior, standing on my own two feet
-
-                    [Chorus]
-                    I won't let you close enough to hurt me
-                    No, I won't rescue you to just desert me
-                    I can't give you the heart you think you gave me
-                    It's time to say goodbye to turning tables
-                    To turning tables
-
-                    [Outro]
-                    Turning tables, yeah
-                    Turn, no, no, no-oh"
-)
-
-
-
-track5 = Track.create!(title: 'Bug A Boo',
+track3 = Track.create!(title: 'Bug A Boo',
                 artist: 'Destiny’s Child', 
                 album: 'The Writing’s on the Wall',
                 lyrics: 
@@ -423,7 +303,125 @@ track5 = Track.create!(title: 'Bug A Boo',
                     [Commandment #5: Beyoncé]
                     Thou shall not get into temptation"
 )
+# track4 = Track.create!(title: 'Programs',
+#                 artist: 'Mac Miller', 
+#                 album: 'Programs',
+#                 lyrics: 
+#                     "[Intro]
+#                     Yep, yep, yep, yuh, yep, yep
 
+#                     [Verse 1]
+#                     I don't got a reason to lie, they gave me the key to the sky
+#                     But I'd rather open my eyes, 'cause that's what'll keep me alive
+#                     Somethin' that's easin' my mind (Mind), please do not fuck up my day (No)
+#                     Everybody wanna headline, I don't got nothin' to say
+#                     'Cept I'm comin' back with the freshness
+#                     You know I love makin' a entrance
+#                     Now now, don't get defensive, time is a matter of seconds
+#                     One, two, yeah
+#                     Off to see the wizard, lead the picture
+#                     Me and liquor, evil mixture, demons glitter
+#                     Clean the whiskers, he be Mr. Fisherman
+#                     Back on my shit again, doin' my own dance
+#                     Feel the rhythm that's no hands, I tell ya vision like programs
+#                     Busy livin' on triple digits, young old man
+#                     Y'all dead wrong, I'm upper with the echelon
+#                     So butter when the bread long
+#                     I'm goin' strong 'til my head gone, 'til my head gone
+#                     Yeah, floatin' back up on the scene, I'm sayin' hello (Hello!)
+#                     Do my thing, I'm pullin' strings like Tom Morello
+#                     I keep it movin', you be doin' way too much
+#                     I ain't tellin' time, just tell you when it's up (Yep)
+
+#                     [Chorus]
+#                     Yeah, I'm only keepin' good company
+#                     I am not talkin' to you if you don't have love for me
+#                     Yeah, one for you and one for me (Yeah, yeah)
+#                     I am not talkin' to you if you don't have love for me (Love for me)
+
+#                     [Verse 2]
+#                     Yeah, I mean wow, do not touch that dial, I've waited a while
+#                     Been around, just like word of mouth, you gon' hear me out, and I-
+#                     And I, and I, and I put that on my house
+#                     I'm always goin' overboard, I better swim before I drown (Drown)
+#                     I'm like rubber with the bounce, hundred be the count
+#                     Drummin' loud as thunder with the sounds, yeah
+#                     (Bang, bang, bang, bang)
+#                     I was younger, fuck around, every summer wild
+#                     Always had it jumpin' at the house
+#                     Yeah, clappin' for y'all (Y'all), I'm into havin' it all (All)
+#                     Feelin' like Shaq with the call (Call)
+#                     Stature is tall (Tall), rollin' around with the homies
+#                     A battery pack on my dawgs (Yeah)
+#                     Fuck with my thoughts (Yeah), havin' enough ain't a lot (Lot)
+#                     Puttin' a check in the box, straight to the top (Top), it don't matter
+#                     Never mind the pattern when you takin' your shot, woo!
+#                     Yeah, enough with the bullshit, enough with the bullshit
+#                     Enough with the extras, fuck all my money
+#                     I swear I been through it (Swear I been through it)
+#                     Fuck all the losin' (Yeah), that's just an illusion
+#                     Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
+# )
+
+# track5 = Track.create!(title: 'Programs',
+#                 artist: 'Mac Miller', 
+#                 album: 'Programs',
+#                 lyrics: 
+#                     "[Intro]
+#                     Yep, yep, yep, yuh, yep, yep
+
+#                     [Verse 1]
+#                     I don't got a reason to lie, they gave me the key to the sky
+#                     But I'd rather open my eyes, 'cause that's what'll keep me alive
+#                     Somethin' that's easin' my mind (Mind), please do not fuck up my day (No)
+#                     Everybody wanna headline, I don't got nothin' to say
+#                     'Cept I'm comin' back with the freshness
+#                     You know I love makin' a entrance
+#                     Now now, don't get defensive, time is a matter of seconds
+#                     One, two, yeah
+#                     Off to see the wizard, lead the picture
+#                     Me and liquor, evil mixture, demons glitter
+#                     Clean the whiskers, he be Mr. Fisherman
+#                     Back on my shit again, doin' my own dance
+#                     Feel the rhythm that's no hands, I tell ya vision like programs
+#                     Busy livin' on triple digits, young old man
+#                     Y'all dead wrong, I'm upper with the echelon
+#                     So butter when the bread long
+#                     I'm goin' strong 'til my head gone, 'til my head gone
+#                     Yeah, floatin' back up on the scene, I'm sayin' hello (Hello!)
+#                     Do my thing, I'm pullin' strings like Tom Morello
+#                     I keep it movin', you be doin' way too much
+#                     I ain't tellin' time, just tell you when it's up (Yep)
+
+#                     [Chorus]
+#                     Yeah, I'm only keepin' good company
+#                     I am not talkin' to you if you don't have love for me
+#                     Yeah, one for you and one for me (Yeah, yeah)
+#                     I am not talkin' to you if you don't have love for me (Love for me)
+
+#                     [Verse 2]
+#                     Yeah, I mean wow, do not touch that dial, I've waited a while
+#                     Been around, just like word of mouth, you gon' hear me out, and I-
+#                     And I, and I, and I put that on my house
+#                     I'm always goin' overboard, I better swim before I drown (Drown)
+#                     I'm like rubber with the bounce, hundred be the count
+#                     Drummin' loud as thunder with the sounds, yeah
+#                     (Bang, bang, bang, bang)
+#                     I was younger, fuck around, every summer wild
+#                     Always had it jumpin' at the house
+#                     Yeah, clappin' for y'all (Y'all), I'm into havin' it all (All)
+#                     Feelin' like Shaq with the call (Call)
+#                     Stature is tall (Tall), rollin' around with the homies
+#                     A battery pack on my dawgs (Yeah)
+#                     Fuck with my thoughts (Yeah), havin' enough ain't a lot (Lot)
+#                     Puttin' a check in the box, straight to the top (Top), it don't matter
+#                     Never mind the pattern when you takin' your shot, woo!
+#                     Yeah, enough with the bullshit, enough with the bullshit
+#                     Enough with the extras, fuck all my money
+#                     I swear I been through it (Swear I been through it)
+#                     Fuck all the losin' (Yeah), that's just an illusion
+#                     Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
+# )
 # track6 = Track.create!(title: 'Programs',
 #                 artist: 'Mac Miller', 
 #                 album: 'Programs',
