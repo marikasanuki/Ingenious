@@ -176,12 +176,18 @@ var RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 var RECEIVE_TRACK = 'RECEIVE_TRACK';
 
 var receiveAllTracks = function receiveAllTracks(tracks) {
-  // debugger;
   return {
     type: RECEIVE_ALL_TRACKS,
     tracks: tracks
   };
-};
+}; // const receiveAllTracks = (tracks) => {
+//     debugger;
+//     return ({
+//         type: RECEIVE_ALL_TRACKS, 
+//         tracks,
+//     });
+// };
+
 
 var receiveTrack = function receiveTrack(track) {
   // debugger;
@@ -192,13 +198,21 @@ var receiveTrack = function receiveTrack(track) {
 };
 
 var fetchTracks = function fetchTracks() {
-  // debugger;
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTracks"]().then(function (tracks) {
       return dispatch(receiveAllTracks(tracks));
     });
   };
-};
+}; // export const fetchTracks = () => {
+//     debugger;
+//     return dispatch => {
+//         return TrackAPIUtil.fetchTracks()
+//             .then(
+//                 (tracks) => dispatch(receiveAllTracks(tracks))
+//             )
+//     }
+// };
+
 var fetchTrack = function fetchTrack(track) {
   // debugger;
   return function (dispatch) {
@@ -210,9 +224,9 @@ var fetchTrack = function fetchTrack(track) {
 
 /***/ }),
 
-/***/ "./frontend/components/App.jsx":
+/***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
-  !*** ./frontend/components/App.jsx ***!
+  !*** ./frontend/components/app.jsx ***!
   \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -469,7 +483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./frontend/components/App.jsx");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
 
 
 
@@ -479,7 +493,7 @@ var Root = function Root(_ref) {
   var store = _ref.store;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
     store: store
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
@@ -794,8 +808,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
     value: function demoUser(e) {
       var _this4 = this;
 
-      e.preventDefault();
-      debugger;
+      e.preventDefault(); // debugger;
+
       this.props.login({
         username: 'marikasanuki',
         password: 'marikasanuki'
@@ -806,8 +820,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      console.log(errors);
-      debugger;
+      // console.log(errors);
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
@@ -896,6 +910,25 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/tracks/track_item.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/tracks/track_item.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var track = _ref.track;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, track.title));
+});
+
+/***/ }),
+
 /***/ "./frontend/components/tracks/tracks_index.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/tracks/tracks_index.jsx ***!
@@ -907,6 +940,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _track_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./track_item */ "./frontend/components/tracks/track_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -931,30 +965,37 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var tracksIndex = /*#__PURE__*/function (_React$Component) {
-  _inherits(tracksIndex, _React$Component);
 
-  var _super = _createSuper(tracksIndex);
+var TracksIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(TracksIndex, _React$Component);
 
-  function tracksIndex(props) {
-    _classCallCheck(this, tracksIndex);
+  var _super = _createSuper(TracksIndex);
+
+  function TracksIndex(props) {
+    _classCallCheck(this, TracksIndex);
 
     return _super.call(this, props);
   }
 
-  _createClass(tracksIndex, [{
+  _createClass(TracksIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchTracks();
+    }
+  }, {
     key: "render",
     value: function render() {
-      var tracks = this.props.tracks;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test", tracks);
+      // debugger;
+      var tracks = this.props.tracks.tracks;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, tracks));
     }
   }]);
 
-  return tracksIndex;
+  return TracksIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (tracksIndex);
+/* harmony default export */ __webpack_exports__["default"] = (TracksIndex);
 
 /***/ }),
 
@@ -974,12 +1015,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
+  // console.log(state);
+  // console.log(state.entities.tracks);
+  // console.log(Object.keys(state.entities.tracks));
   // debugger;
   return {
-    tracks: state.tracks // Object.keys(state.tracks).map((key => state.tracks[key])),
-
-  };
+    tracks: Object.values(state.entities.tracks)
+  }; // return ({
+  //     tracks: Object.keys(state.entities.tracks).map(key => state.entities.tracks[key])
+  // })
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -1207,6 +1252,8 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/track_actions */ "./frontend/actions/track_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var tracksReducer = function tracksReducer() {
@@ -1216,10 +1263,18 @@ var tracksReducer = function tracksReducer() {
 
   switch (action.type) {
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TRACKS"]:
-      return Object.assign({}, oldState, action.tracks);
+      return action.tracks;
+    // console.log(action.tracks);
+    // debugger;
+    // const tracks = {};
+    // action.tracks.forEach(track=>{
+    //     tracks[track.id] = track;
+    // });
+    // return tracks;
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-      return Object.assign({}, oldState, action.track);
+      return Object.assign({}, oldState, _defineProperty({}, action.track.id, action.track));
+    // return Object.assign({}, oldState, action.track);
 
     default:
       return oldState;

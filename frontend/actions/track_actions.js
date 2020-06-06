@@ -5,13 +5,18 @@ export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 
 
-const receiveAllTracks = (tracks) => {
-    // debugger;
-    return ({
-        type: RECEIVE_ALL_TRACKS, 
-        tracks,
-    });
-};
+const receiveAllTracks = tracks => ({
+    type: RECEIVE_ALL_TRACKS,
+    tracks
+});
+
+// const receiveAllTracks = (tracks) => {
+//     debugger;
+//     return ({
+//         type: RECEIVE_ALL_TRACKS, 
+//         tracks,
+//     });
+// };
 
 
 const receiveTrack = (track) => {
@@ -22,15 +27,23 @@ const receiveTrack = (track) => {
     });
 };
 
-export const fetchTracks = () => {
-    // debugger;
-    return dispatch => {
-        return TrackAPIUtil.fetchTracks()
-            .then(
-                (tracks) => dispatch(receiveAllTracks(tracks))
-            )
-    }
-};
+
+export const fetchTracks = () => dispatch => {
+    return TrackAPIUtil.fetchTracks()
+        .then(tracks => dispatch(receiveAllTracks(tracks)));
+}
+
+
+
+// export const fetchTracks = () => {
+//     debugger;
+//     return dispatch => {
+//         return TrackAPIUtil.fetchTracks()
+//             .then(
+//                 (tracks) => dispatch(receiveAllTracks(tracks))
+//             )
+//     }
+// };
 
 export const fetchTrack = (track) => {
     // debugger;

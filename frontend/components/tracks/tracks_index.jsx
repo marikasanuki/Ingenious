@@ -1,19 +1,25 @@
 import React from "react";
+import TrackItem from './track_item';
 
-class tracksIndex extends React.Component {
+class TracksIndex extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount(){
+        this.props.fetchTracks();
+    }
 
     render() {
-        const {tracks} = this.props;
+            // debugger;
+        const { tracks } = this.props.tracks;
         return (
             <div>
                 test
-                {tracks}
+                <p>{tracks}</p>
+
             </div>
         )
     }
 };
 
-export default tracksIndex;
+export default TracksIndex;
