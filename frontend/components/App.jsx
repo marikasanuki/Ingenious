@@ -24,7 +24,7 @@ const App = () => (
         <Route exact path="/login" component={LoginFormContainer} />
         <Route exact path="/" component={TracksIndexContainer} />
         <Route exact path="/" component={Footer} />
-    </div>
+    </div> 
 );
 
 export default App;
