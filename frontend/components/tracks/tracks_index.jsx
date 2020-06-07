@@ -1,9 +1,5 @@
 import React from "react";
 import TracksIndexItem from './tracks_index_item';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFireAlt, faEye } from '@fortawesome/free-solid-svg-icons'
-
-
 
 class TracksIndex extends React.Component {
     constructor(props) {
@@ -25,7 +21,7 @@ class TracksIndex extends React.Component {
             <div className='tracks-index-container'>
                 <div className='tracks-index-header'>CHARTS</div>
                 <div className='tracks-index-subhead'>TRENDING ON INGENIOUS</div>
-                <ul className='tracks-index-ul'>
+                <ol className='tracks-index-ol'>
                     { 
                     tracks.map((ele => 
                         
@@ -38,14 +34,9 @@ class TracksIndex extends React.Component {
                         
                         ))
 
-                        }
-                </ul>
-                <div className='fire-icon' >
-                    <FontAwesomeIcon icon={faFireAlt} />&nbsp;82
-                </div>
-                <div className='views-icon' >
-                    <FontAwesomeIcon icon={faEye} />&nbsp;47.1K
-                </div>
+                    }
+                </ol>
+
             </div>
         )
     }
