@@ -1,18 +1,18 @@
-import React from "react";
+// import React from "react";
 
-class tracksShow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+// class tracksShow extends React.Component {
+//     constructor(props) {
+//         super(props);
+//     }
 
-    render() {
-        return (
-            <div>
-                {this.props}
-                test from tracks show
-            </div>
-        )
-    }
-};
+//     render() {
+//         return (
+//             <div>
+//                 {this.props}
+//                 test from tracks show
+//             </div>
+//         )
+//     }
+// };
 
-export default tracksShow;
+// export default tracksShow;

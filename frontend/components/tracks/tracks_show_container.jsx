@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
-import tracksShow from './tracks_show';
+// import { connect } from 'react-redux';
+// import tracksShow from './tracks_show';
 
-const mapStateToProps = (state, ownProps) => {
-        // debugger;
-    return ({
-        track: state.track,
-    })
-};
+// const mapStateToProps = (state) => {
+//         // debugger;
+//     return ({
+//         track: state.track,
+//     })
+// };
 
-const mapDispatchToProps = (dispatch) => {
-    return ({
-        fetchTrack: (track) => dispatch(fetchTrack(track))
-    })
-};
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
+//         fetchTrack: (track) => dispatch(fetchTrack(track))
+//     })
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(tracksShow)
+// export default connect(mapStateToProps, mapDispatchToProps)(tracksShow)

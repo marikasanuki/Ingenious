@@ -2,6 +2,7 @@
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import TracksIndexContainer from './tracks/tracks_index_container';
+
 import React from "react";
 import {
     Route,
@@ -13,6 +14,7 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavBar from './nav_bar/nav_bar';
 import HeaderBarContainer from './header_bar/header_bar_container';
+import Footer from './footer/footer';
 
 const App = () => (
     <div className='ingenious-app' >
@@ -21,6 +23,7 @@ const App = () => (
         <Route exact path="/signup" component={SignupFormContainer} />
         <Route exact path="/login" component={LoginFormContainer} />
         <Route exact path="/" component={TracksIndexContainer} />
+        <Route path="/" component={Footer} />
     </div>
 );
 

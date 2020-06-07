@@ -8,7 +8,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-bar'>
-                <ul className='nav-bar-list'>
+                <ul className='nav-bar-list-ul'>
                     <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >GITHUB</a></li>   
                     <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
                     <li><Link className='nav-bar-item' to={`/tracks`}>CHARTS</Link></li>

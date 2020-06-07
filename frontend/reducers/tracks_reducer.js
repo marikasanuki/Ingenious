@@ -6,10 +6,10 @@ const tracksReducer = (oldState = {}, action) => {
   
     switch (action.type) {
         case RECEIVE_ALL_TRACKS:
-            // return action.tracks;
-
-            return Object.assign({}, oldState, action.entities.tracks);
-
+            console.log('hit tracks reducer')
+            // debugger;   
+            return Object.assign({}, action.tracks);
+            
             // console.log(action.tracks);
             // debugger;
             // const tracks = {};

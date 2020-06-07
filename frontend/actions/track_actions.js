@@ -28,22 +28,23 @@ const receiveTrack = (track) => {
 };
 
 
-export const fetchTracks = () => dispatch => {
-    return TrackAPIUtil.fetchTracks()
-        .then(tracks => dispatch(receiveAllTracks(tracks)));
-}
+// export const fetchTracks = () => dispatch => {
+//     return TrackAPIUtil.fetchTracks()
+//         .then(tracks => dispatch(receiveAllTracks(tracks)));
+// }
 
 
 
-// export const fetchTracks = () => {
-//     debugger;
-//     return dispatch => {
-//         return TrackAPIUtil.fetchTracks()
-//             .then(
-//                 (tracks) => dispatch(receiveAllTracks(tracks))
-//             )
-//     }
-// };
+export const fetchTracks = () => {
+    console.log('hit fetchTracks action')
+    // debugger;
+    return dispatch => {
+        return TrackAPIUtil.fetchTracks()
+            .then((tracks) => {
+                return dispatch(receiveAllTracks(tracks))
+            })
+    }
+};
 
 export const fetchTrack = (track) => {
     // debugger;
