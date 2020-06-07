@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFireAlt, faEye } from '@fortawesome/free-solid-svg-icons'
 
 const TracksIndexItem = (props) => {
-    console.log('hit tracks index item')
+    // console.log('hit tracks index item')
     // debugger;
     return (
         <li className='tracks-index-li'>

@@ -36,7 +36,7 @@ const receiveTrack = (track) => {
 
 
 export const fetchTracks = () => {
-    console.log('hit fetchTracks action')
+    // console.log('hit fetchTracks action')
     // debugger;
     return dispatch => {
         return TrackAPIUtil.fetchTracks()

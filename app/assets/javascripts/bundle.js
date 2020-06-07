@@ -202,8 +202,8 @@ var receiveTrack = function receiveTrack(track) {
 
 
 var fetchTracks = function fetchTracks() {
-  console.log('hit fetchTracks action'); // debugger;
-
+  // console.log('hit fetchTracks action')
+  // debugger;
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTracks"]().then(function (tracks) {
       return dispatch(receiveAllTracks(tracks));
@@ -1087,15 +1087,15 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(TracksIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('Component mounted'); // debugger;
-
+      // console.log('Component mounted');
+      // debugger;
       this.props.fetchTracks();
     }
   }, {
     key: "render",
     value: function render() {
-      var tracks = this.props.tracks;
-      console.log('hit render function'); // debugger;
+      var tracks = this.props.tracks; // console.log('hit render function');
+      // debugger;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-index-container"
@@ -1142,8 +1142,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log('hit mstp in tracks index container'); // debugger;
-
+  // console.log('hit mstp in tracks index container');
+  // debugger;
   return {
     tracks: Object.values(state.entities.tracks)
   };
@@ -1179,8 +1179,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var TracksIndexItem = function TracksIndexItem(props) {
-  console.log('hit tracks index item'); // debugger;
-
+  // console.log('hit tracks index item')
+  // debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "tracks-index-li"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "LYRICS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "track img"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.artist), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1422,8 +1422,8 @@ var tracksReducer = function tracksReducer() {
 
   switch (action.type) {
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TRACKS"]:
-      console.log('hit tracks reducer'); // debugger;   
-
+      // console.log('hit tracks reducer')
+      // debugger;   
       return Object.assign({}, action.tracks);
     // console.log(action.tracks);
     // debugger;
