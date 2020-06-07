@@ -49,16 +49,14 @@
 .session-btn {
     position: relative;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     padding-right: 15px;
     width: 20px;
     height: 100%;
     color: black;
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
 }
-
-// .session-btn:hover {
-//     border-bottom: 10px solid rgb(254, 0, 98);
-// }
 
 .nav-bar {
     background-color: black;
@@ -80,7 +78,7 @@
 }
 
 .nav-bar-item {
-    font-family: Geneva, sans-serif;
+    font-family: 'Muli', sans-serif;
     font-size: small;
     color: white;
 }
@@ -98,7 +96,9 @@
 .logout-header-btn {
     text-decoration: none;
     color: black;
-    font-size: 12px;
+    font-size: 11px;
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
     width: 100px;
     position: relative;
     top: 10px;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons'
+
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +28,7 @@ class SignupForm extends React.Component {
                         <br />
                     <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                 </label>
-                <br /><br />
+                <br />
                 <label className='signup-label'>Password
                         <br />
                     <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
@@ -93,10 +96,10 @@ class SignupForm extends React.Component {
                     <span className='signup-form-subhead' > {this.props.formSubhead} </span>
             </div>
                     <br />
-                    <button className='session-demo-user-button' onClick={e => this.demoUser(e)}>Log in as demo user</button>
+                <button className='session-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
                     <br/>
                 {/* <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up for new account</button> */}
-                <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}>Sign up for new account</button>
+                <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}><FontAwesomeIcon icon={faEnvelope} /> &nbsp;Sign up for new account</button>
                     <br />
                 {this.state.dropdownVisible ? this.openDropdown() : this.closeDropdown() }
             </div>

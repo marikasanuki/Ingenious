@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
                         <br />
                         <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
                     </label>
-                    <br /><br />
+                    <br />
                     <label className='signup-label'>Password <a className='hyperlink-color' href='https://genius.com/password_resets/new' target="blank" >(I forgot my password)</a>
                         <br />
                         <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />

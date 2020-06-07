@@ -11,7 +11,7 @@
 .signup-form-container {
     background-color: black;
     color: white;
-    font-family: Geneva, sans-serif;
+    font-family: 'Muli', sans-serif;
     min-height:100vh;
     padding-top: 30px;
 }
@@ -34,9 +34,10 @@
 
 .signup-form-header {
     color: rgb(253, 255, 111);
-    font-family: Geneva, sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;    
     text-align: center;
-    font-size: 50px;
+    font-size: 65px;
+    font-weight: 800;
     // font-stretch: ultra-condensed;
     // font-size: 40px;
     // line-height: 80px;
@@ -44,16 +45,19 @@
 
 .signup-form-subhead {
     color: rgb(253, 255, 111);
-    font-family: Geneva, sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
     text-align: center;
-    font-size: 20px;
-    // font-weight: 400;
+    font-size: 25px;
+    font-weight: 300;
 }
 
 .signup-label {
     color: rgb(236, 232, 233);
     font-size: 13px;
     font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    line-height: 18px;
+    height: auto;
 }
 
 .signup-input {
@@ -91,6 +95,9 @@
     width: 380px;
     height: 35px;;
     border-radius: 2px;
+    font-family: 'Muli', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .session-demo-user-button:hover {
@@ -107,6 +114,9 @@
     width: 380px;
     height: 35px;;
     border-radius: 2px;
+    font-family: 'Muli', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .signup-username-button:hover {
