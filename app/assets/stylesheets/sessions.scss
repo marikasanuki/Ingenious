@@ -69,6 +69,10 @@
     height: 30px;
 }
 
+.signup-input:focus {
+    outline-width: 0;
+}
+
 .hyperlink-color {
     color: rgb(112, 167, 193);
 }
@@ -85,6 +89,8 @@
     border-radius: 2px;
 }
 
+
+
 .session-demo-user-button {
     margin-left: auto;
     margin-right: auto;
@@ -98,6 +104,10 @@
     font-family: 'Muli', sans-serif;
     font-size: 16px;
     font-weight: 600;
+}
+
+.session-demo-user-button:focus {
+    outline-width: 0;
 }
 
 .session-demo-user-button:hover {
@@ -117,6 +127,10 @@
     font-family: 'Muli', sans-serif;
     font-size: 16px;
     font-weight: 600;
+}
+
+.signup-username-button:focus {
+    outline-width: 0;
 }
 
 .signup-username-button:hover {
