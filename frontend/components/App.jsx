@@ -18,9 +18,9 @@ const App = () => (
     <div className='ingenious-app' >
         <Route path="/" component={HeaderBarContainer}/>
         <Route path="/" component={NavBar} />
-        <Route path="/" component={TracksIndexContainer} />
         <Route exact path="/signup" component={SignupFormContainer} />
         <Route exact path="/login" component={LoginFormContainer} />
+        <Route exact path="/" component={TracksIndexContainer} />
     </div>
 );
 

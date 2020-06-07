@@ -1,3 +1,45 @@
 // Place all the styles related to the Tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tracks-index-container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.tracks-index-header {
+    width: 100%;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 80px;
+    font-family: Geneva, sans-serif;
+    font-weight: 900;
+}
+
+.tracks-index-subhead {
+    width: 100%;
+    height: 100%;
+    color: rgb(235, 46, 102);
+    text-align: center;
+    font-size: 14px;
+    font-family: Geneva, sans-serif;
+    font-weight: 900;
+}
+
+.fire-icon {
+    color: rgb(235, 46, 102);
+    font-size: 14px;
+    font-family: Geneva, sans-serif;
+    text-align: center;
+}
+
+.views-icon {
+    color: black;
+    font-size: 14px;
+    font-family: Geneva, sans-serif;
+    text-align: center;
+}
