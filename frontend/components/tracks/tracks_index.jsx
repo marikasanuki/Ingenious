@@ -16,7 +16,7 @@ class TracksIndex extends React.Component {
 
         const { tracks } = this.props;
         console.log('hit render function');
-        debugger;
+        // debugger;
         return (
             <div className='tracks-index-container'>
                 <div className='tracks-index-header'>CHARTS</div>

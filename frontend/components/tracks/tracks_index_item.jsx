@@ -4,13 +4,14 @@ import { faFireAlt, faEye } from '@fortawesome/free-solid-svg-icons'
 
 const TracksIndexItem = (props) => {
     console.log('hit tracks index item')
-    debugger;
+    // debugger;
     return (
-        <li>
-            {/* <h3>{props.key}</h3> */}
+        <li className='tracks-index-li'>
+            <div>1</div>
+            {/* <div>{props.key}</div> */}
             <div>{props.title}</div>
-            <span>LYRICS</span>
-            <div>Track Image Goes Here</div>
+            <div>LYRICS</div>
+            <div>track img</div>
             <div>{props.artist}</div>
             <div className='fire-icon' >
                 <FontAwesomeIcon icon={faFireAlt} />&nbsp;82
