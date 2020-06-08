@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div {
+    white-space: pre-wrap;
+}
 
 .tracks-index-container {
     background-color: white;
@@ -116,3 +119,4 @@
     // padding-right: 40px;
     width: 70px;
 }
+
