@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedinIn, faTwitter, faSpotify } from '@fortawesome/free-brands-svg-icons'
 
 class NavBar extends React.Component {
     render() {
@@ -24,6 +24,10 @@ class NavBar extends React.Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >
                             <FontAwesomeIcon className='fa-icon' icon={faLinkedinIn} />
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a className='nav-bar-item' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >
+                            <FontAwesomeIcon className='fa-icon' icon={faSpotify} />
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a className='nav-bar-item' href="https://twitter.com/marikasanuki?lang=en" target="blank" >

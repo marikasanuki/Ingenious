@@ -698,47 +698,60 @@ track8 = Track.create!(title: 'Merge',
                     And leave it all behind, it's true"
 )
 
-track9 = Track.create!(title: 'Bang Bang (My Baby Shot Me Down)',
-                artist: 'Nancy Sinatra', 
-                album: 'How Does That Grab You?',
+track9 = Track.create!(title: 'Maps',
+                artist: 'Yeah Yeah Yeahs', 
+                album: 'Fever to Tell',
                 lyrics: 
                     "[Verse 1]
-                    I was five, and he was six
-                    We rode on horses made of sticks
-                    He wore black and I wore white
-                    He would always win the fight
+                    Pack up
+                    I'm straight
+                    Enough
 
-                    [Hook]
-                    Bang bang, he shot me down
-                    Bang bang, I hit the ground
-                    Bang bang, that awful sound
-                    Bang bang, my baby shot me down
+                    [Pre-Chorus]
+                    I'll say, say, say
+                    I'll say, say, say
+                    I'll say, say, say
+                    I'll say, say, say
+                    I'll say, say, say
+
+                    [Chorus]
+                    Wait, they don't love you like I love you
+                    Wait, they don't love you like I love you
+                    Maps
+                    Wait, they don't love you like I love you
 
                     [Verse 2]
-                    Seasons came and changed the time
-                    When I grew up I called him mine
-                    He would always laugh and say
-                    'Remember when we used to play?'
+                    Made off
+                    Don't stray
+                    My kind's your kind
+                    I'll stay the same
+                    Pack up
+                    Don't stray
 
-                    [Hook]
-                    'Bang bang, I shot you down
-                    Bang bang, you hit the ground
-                    Bang bang, that awful sound
-                    Bang bang, I used to shoot you down'
+                    [Pre-Chorus]
+                    I'll say, say, say
+                    I'll say, say, say
 
-                    [Verse 3]
-                    Music played, and people sang
-                    Just for me the church bells rang
-                    Now he's gone, I don't know why
-                    And ‘til this day sometimes I cry
-                    He didn't even say 'Goodbye'
-                    He didn't take the time to lie
+                    [Chorus]
+                    Wait, they don't love you like I love you
+                    Wait, they don't love you like I love you
+                    Maps
+                    Wait, they don't love you like I love you
+                    Wait, they don't love you like I love you
+                    Maps
+                    Wait, they don't love you like I love you
 
-                    [Hook]
-                    Bang bang, he shot me down
-                    Bang bang, I hit the ground
-                    Bang bang, that awful sound
-                    Bang bang, my baby shot me down"
+                    [Instrumental Bridge]
+
+                    [Chorus]
+                    Wait, they don't love you like I love you
+                    Wait, they don't love you like I love you
+                    Maps
+                    Wait, they don't love you like I love you
+                    Wait, they don't love you like I love you
+                    Maps
+                    Wait, they don't love you like I love you"
+    
 )
 
 
@@ -839,89 +852,49 @@ track10 = Track.create!(title: 'Technologic',
                     Technologic"
 )
 
-
-track11 = Track.create!(title: 'Run-Time',
-                artist: 'Imogen Heap', 
-                album: 'Sparks',
+track11 = Track.create!(title: 'Bang Bang (My Baby Shot Me Down)',
+                artist: 'Nancy Sinatra', 
+                album: 'How Does That Grab You?',
                 lyrics: 
-                    "[[Verse 1]
-                    Sparks might fly, in no time
-                    It's a delayed reaction of the third kind
-                    Woah, I'm so ready for this
-                    Shrink-wrapped songs
-                    I couldn't face the music
-                    Cause dark matters bonded us way beyond our 'best by' date
+                    "[Verse 1]
+                    I was five, and he was six
+                    We rode on horses made of sticks
+                    He wore black and I wore white
+                    He would always win the fight
 
-                    [Chorus 1]
-                    You know we've had it good, we've had it bad
-                    So no hard feelings
-                    We've done all we could and all we can
-                    I'm done pretending
-                    Let's quit while we're still friends
+                    [Hook]
+                    Bang bang, he shot me down
+                    Bang bang, I hit the ground
+                    Bang bang, that awful sound
+                    Bang bang, my baby shot me down
 
                     [Verse 2]
-                    Making up stories, they grew to be too tall
-                    My fortress to forget couldn't take any more
-                    You nearly watched me ruin everything, everything
-                    What's the number one rule of don't-do's?
-                    Well, you knew it all too well
-                    You were supposed to be looking out for me
-                    Have you any idea how difficult it's been?
+                    Seasons came and changed the time
+                    When I grew up I called him mine
+                    He would always laugh and say
+                    'Remember when we used to play?'
 
-                    [Chorus 2]
-                    You know we've had it good, we've had it bad
-                    So no hard feelings
-                    We've done all we could and all we can
-                    Let's save ourselves a sorry ending
+                    [Hook]
+                    'Bang bang, I shot you down
+                    Bang bang, you hit the ground
+                    Bang bang, that awful sound
+                    Bang bang, I used to shoot you down'
 
-                    [Chorus 3]
-                    You know we've had it good, we've had it bad
-                    But this is as far as we can stretch
-                    Let's stop pretending Stop pretending!
-                    And quit while we're still friends
+                    [Verse 3]
+                    Music played, and people sang
+                    Just for me the church bells rang
+                    Now he's gone, I don't know why
+                    And ‘til this day sometimes I cry
+                    He didn't even say 'Goodbye'
+                    He didn't take the time to lie
 
-                    [Bridge]
-                    Well, I was so young, misguided, maybe
-                    But still this hangs over my every pen to paper
-                    And this all started with a song
-                    Started with a song, started with a song
-                    Woah, let this be our last one
-
-                    [Interlude]
-                    Drop... Drop
-                    Good, good
-                    Bad, bad
-                    Good good good good
-                    And bad bad bad bad
-
-                    [Chorus 4]
-                    We've had it good, we've had it bad
-                    This is as far as we can stretch
-                    Stop pretending!
-                    And quit while we're still friends
-
-                    [Build-Up]
-                    I wish you well
-                    I wish you well
-                    I wish you well, wish you well, wish you well
-
-                    [Refrain]
-                    I wish you well, I wish you well
-                    I won't tell if you won't tell
-                    I won't hold it against you if you bow out gracefully
-                    Can we just not drag this out, please?
-
-                    [Refrain]
-                    I wish you well, I wish you well
-                    I won't tell if you won't tell
-                    I won't hold it against you if you bow out gracefully
-                    Can we just not drag this out?
-
-                    [Outro]
-                    Aah, ooh
-                    Aah, ooh
-                    Aah"
+                    [Hook]
+                    Bang bang, he shot me down
+                    Bang bang, I hit the ground
+                    Bang bang, that awful sound
+                    Bang bang, my baby shot me down"
 )
+
 
 track12 = Track.create!(title: 'Syntax Error',
                 artist: '311', 
@@ -2183,3 +2156,157 @@ track29 = Track.create!(title: 'Go Flex',
                     Haha, that shit hard"
 )
 
+track30 = Track.create!(title: 'In the End',
+                artist: 'Linkin Park', 
+                album: 'Hybrid Theory',
+                lyrics: 
+                    "[Verse 1: Mike Shinoda & Chester Bennington]
+                    It starts with one
+                    One thing, I don't know why
+                    It doesn't even matter how hard you try
+                    Keep that in mind
+                    I designed this rhyme to explain in due time
+                    All I know
+                    Time is a valuable thing
+                    Watch it fly by as the pendulum swings
+                    Watch it count down to the end of the day
+                    The clock ticks life away
+                    It's so unreal
+                    You didn't look out below
+                    Watch the time go right out the window
+                    Tryin' to hold on, didn't even know
+                    I wasted it all just to watch you go
+                    I kept everything inside
+                    And even though I tried, it all fell apart
+                    What it meant to me will eventually be a memory
+                    Of a time when I tried so hard
+
+                    [Chorus: Chester Bennington]
+                    I tried so hard and got so far
+                    But in the end, it doesn't even matter
+                    I had to fall to lose it all
+                    But in the end, it doesn't even matter
+
+                    [Verse 2: Mike Shinoda & Chester Bennington]
+                    One thing, I don't know why
+                    It doesn't even matter how hard you try
+                    Keep that in mind, I designed this rhyme
+                    To remind myself how I tried so hard
+                    In spite of the way you were mockin' me
+                    Actin' like I was part of your property
+                    Remembering all the times you fought with me
+                    I'm surprised it got so far
+                    Things aren't the way they were before
+                    You wouldn't even recognize me anymore
+                    Not that you knew me back then
+                    But it all comes back to me in the end
+                    You kept everything inside
+                    And even though I tried, it all fell apart
+                    What it meant to me will eventually
+                    Be a memory of a time when I tried so hard
+
+                    [Chorus: Chester Bennington]
+                    I tried so hard and got so far
+                    But in the end, it doesn't even matter
+                    I had to fall to lose it all
+                    But in the end, it doesn't even matter
+
+                    [Bridge: Chester Bennington]
+                    I've put my trust in you
+                    Pushed as far as I can go
+                    For all this
+                    There's only one thing you should know
+                    I've put my trust in you
+                    Pushed as far as I can go
+                    For all this
+                    There's only one thing you should know
+
+                    [Chorus: Chester Bennington]
+                    I tried so hard and got so far
+                    But in the end, it doesn't even matter
+                    I had to fall to lose it all
+                    But in the end, it doesn't even matter"   
+)
+
+track31 = Track.create!(title: 'Run-Time',
+                artist: 'Imogen Heap', 
+                album: 'Sparks',
+                lyrics: 
+                    "[[Verse 1]
+                    Sparks might fly, in no time
+                    It's a delayed reaction of the third kind
+                    Woah, I'm so ready for this
+                    Shrink-wrapped songs
+                    I couldn't face the music
+                    Cause dark matters bonded us way beyond our 'best by' date
+
+                    [Chorus 1]
+                    You know we've had it good, we've had it bad
+                    So no hard feelings
+                    We've done all we could and all we can
+                    I'm done pretending
+                    Let's quit while we're still friends
+
+                    [Verse 2]
+                    Making up stories, they grew to be too tall
+                    My fortress to forget couldn't take any more
+                    You nearly watched me ruin everything, everything
+                    What's the number one rule of don't-do's?
+                    Well, you knew it all too well
+                    You were supposed to be looking out for me
+                    Have you any idea how difficult it's been?
+
+                    [Chorus 2]
+                    You know we've had it good, we've had it bad
+                    So no hard feelings
+                    We've done all we could and all we can
+                    Let's save ourselves a sorry ending
+
+                    [Chorus 3]
+                    You know we've had it good, we've had it bad
+                    But this is as far as we can stretch
+                    Let's stop pretending Stop pretending!
+                    And quit while we're still friends
+
+                    [Bridge]
+                    Well, I was so young, misguided, maybe
+                    But still this hangs over my every pen to paper
+                    And this all started with a song
+                    Started with a song, started with a song
+                    Woah, let this be our last one
+
+                    [Interlude]
+                    Drop... Drop
+                    Good, good
+                    Bad, bad
+                    Good good good good
+                    And bad bad bad bad
+
+                    [Chorus 4]
+                    We've had it good, we've had it bad
+                    This is as far as we can stretch
+                    Stop pretending!
+                    And quit while we're still friends
+
+                    [Build-Up]
+                    I wish you well
+                    I wish you well
+                    I wish you well, wish you well, wish you well
+
+                    [Refrain]
+                    I wish you well, I wish you well
+                    I won't tell if you won't tell
+                    I won't hold it against you if you bow out gracefully
+                    Can we just not drag this out, please?
+
+                    [Refrain]
+                    I wish you well, I wish you well
+                    I won't tell if you won't tell
+                    I won't hold it against you if you bow out gracefully
+                    Can we just not drag this out?
+
+                    [Outro]
+                    Aah, ooh
+                    Aah, ooh
+                    Aah"
+)

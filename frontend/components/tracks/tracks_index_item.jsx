@@ -7,12 +7,12 @@ const TracksIndexItem = (props) => {
     // debugger;
     return (
         <li className='tracks-index-li'>
-            <div>1</div>
+            <div className='chart-num'>1</div>
             {/* <div>{props.key}</div> */}
-            <div>{props.title}</div>
-            <div>LYRICS</div>
-            <div>track img</div>
-            <div>{props.artist}</div>
+            <div className='chart-img'>track img</div>
+            <div className='chart-title'>{props.title}</div>
+            <div className='chart-lyr'>LYRICS</div>
+            <div className='chart-artist'>{props.artist}</div>
             <div className='fire-icon' >
                 <FontAwesomeIcon icon={faFireAlt} />&nbsp;82
             </div>
