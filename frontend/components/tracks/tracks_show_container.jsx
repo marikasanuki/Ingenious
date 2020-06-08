@@ -6,7 +6,9 @@ const mapStateToProps = (state, ownProps) => {
         console.log('hit mstp in tracks show container')
         debugger;
     return ({
-        track: state.entities.tracks[ownProps.match.params.id],
+        // track: state.entities.tracks[ownProps.match.params.id], 
+        track: state.entities.tracks, 
+        // trackId: state.entities.tracks[ownProps.match.params.id].id,
     })
 };
 

@@ -12,15 +12,15 @@ class TracksShow extends React.Component {
     }
 
     render() {
-        const {track} = this.props;
+        // const {track} = this.props;
         console.log('hit render function inside tracks show')
         debugger;
         return (
             <div>
-                {/* <div>{track.title}</div>
-                <div>{track.artist}</div>
-                <div>{track.album}</div>
-                <div>{track.lyrics}</div> */}
+                <div>{this.props.track.title}</div>
+                <div>{this.props.track.artist}</div>
+                <div>{this.props.track.album}</div>
+                <div>{this.props.track.lyrics}</div>
                 <Link to={`/`}>Return to homepage</Link>
             </div>
         )

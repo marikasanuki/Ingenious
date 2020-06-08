@@ -10,9 +10,8 @@ const TracksIndexItem = (props) => {
     return (
         <li className='tracks-index-li'>
             <div className='chart-num'>{props.trackNum}</div>
-            <div className='chart-img'>track img</div>
-            <Link to={`/api/tracks/${props.url}`}> <div className='chart-title'>{props.title}</div></Link>
-            <div className='chart-lyr'>LYRICS</div>
+            <div className='chart-img'>img</div>
+            <Link to={`/api/tracks/${props.url}`}> <div className='chart-title'>{props.title} <span className='chart-lyr'>LYRICS</span></div></Link>
             <div className='chart-artist'>{props.artist}</div>
             <div className='fire-icon' >
                 <FontAwesomeIcon icon={faFireAlt} />&nbsp;82

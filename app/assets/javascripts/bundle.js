@@ -1148,9 +1148,9 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var tracks = this.props.tracks; // console.log('hit render function');
-      // debugger;
-
+      var tracks = this.props.tracks;
+      console.log('hit render function in tracks index comp');
+      debugger;
       var trackNum = 1;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-index-container"
@@ -1161,9 +1161,10 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
       }, "TRENDING ON INGENIOUS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "tracks-index-ol"
       }, tracks.map(function (ele, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: ele.title + '-' + ele.artist,
-          url: ele.title + ele.artist,
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"] // key={ele.id}
+        , {
+          url: ele.id // url={ele.title + ele.artist}
+          ,
           trackNum: trackNum + i,
           title: ele.title,
           artist: ele.artist,
@@ -1246,13 +1247,13 @@ var TracksIndexItem = function TracksIndexItem(props) {
     className: "chart-num"
   }, props.trackNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-img"
-  }, "track img"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+  }, "img"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/api/tracks/".concat(props.url)
   }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-title"
-  }, props.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, props.title, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "chart-lyr"
-  }, "LYRICS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "LYRICS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-artist"
   }, props.artist), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "fire-icon"
@@ -1327,10 +1328,10 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var track = this.props.track;
+      // const {track} = this.props;
       console.log('hit render function inside tracks show');
       debugger;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.track.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.track.artist), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.track.album), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.track.lyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, "Return to homepage"));
     }
@@ -1364,7 +1365,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   console.log('hit mstp in tracks show container');
   debugger;
   return {
-    track: state.entities.tracks[ownProps.match.params.id]
+    // track: state.entities.tracks[ownProps.match.params.id], 
+    track: state.entities.tracks // trackId: state.entities.tracks[ownProps.match.params.id].id,
+
   };
 };
 
@@ -1596,8 +1599,6 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/track_actions */ "./frontend/actions/track_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var tracksReducer = function tracksReducer() {
@@ -1610,8 +1611,6 @@ var tracksReducer = function tracksReducer() {
       // console.log('hit tracks reducer')
       // debugger;   
       return Object.assign({}, action.tracks);
-    // console.log(action.tracks);
-    // debugger;
     // const tracks = {};
     // action.tracks.forEach(track=>{
     //     tracks[track.id] = track;
@@ -1619,8 +1618,10 @@ var tracksReducer = function tracksReducer() {
     // return tracks;
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-      return Object.assign({}, oldState, _defineProperty({}, action.track.id, action.track));
-    // return Object.assign({}, oldState, action.track);
+      console.log('hit tracks reducer (RECEIVE_TRACK)');
+      debugger;
+      return Object.assign({}, action.track);
+    // return Object.assign({}, oldState, {[action.track.id]: action.track} );
 
     default:
       return oldState;

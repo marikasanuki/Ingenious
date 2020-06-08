@@ -22,8 +22,8 @@ class TracksIndex extends React.Component {
     render() {
 
         const { tracks } = this.props;
-        // console.log('hit render function');
-        // debugger;
+        console.log('hit render function in tracks index comp');
+        debugger;
         const trackNum = 1;
         return (
             <div className='tracks-index-container'>
@@ -34,8 +34,9 @@ class TracksIndex extends React.Component {
                     tracks.map(((ele, i) => 
                         
                         (<TracksIndexItem
-                            key={ele.title + '-' + ele.artist}
-                            url={ele.title + ele.artist}
+                            // key={ele.id}
+                            url={ele.id}
+                            // url={ele.title + ele.artist}
                             trackNum={trackNum + i}
                             title={ele.title}
                             artist={ele.artist}
