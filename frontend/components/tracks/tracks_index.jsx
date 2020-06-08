@@ -4,7 +4,7 @@ import TracksIndexItem from './tracks_index_item';
 class TracksIndex extends React.Component {
     constructor(props) {
         super(props);
-        // this.urlFormatter = this.urlFormatter.bind(this);
+
 
     }
     componentDidMount(){
@@ -14,12 +14,10 @@ class TracksIndex extends React.Component {
     }
 
     // urlFormatter() {
-        
-
-
-
+            // this.urlFormatter = this.urlFormatter.bind(this);
+            // urlFormatter('Programs' + 'Mac20Miller')
     // }
-    // urlFormatter('Programs' + 'Mac20Miller')
+
 
     render() {
 
@@ -36,7 +34,7 @@ class TracksIndex extends React.Component {
                     tracks.map(((ele, i) => 
                         
                         (<TracksIndexItem
-                            key={ele.title + ele.artist}
+                            key={ele.title + '-' + ele.artist}
                             url={ele.title + ele.artist}
                             trackNum={trackNum + i}
                             title={ele.title}

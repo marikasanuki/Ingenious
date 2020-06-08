@@ -8,19 +8,19 @@ class TracksShow extends React.Component {
     componentDidMount(){
         console.log('tracks show component mounted');
         debugger;
-        this.props.fetchTrack(this.props.match.params.track.id);
+        this.props.fetchTrack(this.props.match.params.id);
     }
 
     render() {
         const {track} = this.props;
-        console.log('render function inside tracks show')
+        console.log('hit render function inside tracks show')
         debugger;
         return (
             <div>
-                <div>{track.title}</div>
+                {/* <div>{track.title}</div>
                 <div>{track.artist}</div>
                 <div>{track.album}</div>
-                <div>{track.lyrics}</div>
+                <div>{track.lyrics}</div> */}
                 <Link to={`/`}>Return to homepage</Link>
             </div>
         )

@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, CLEAR_SESSION_ERRORS, removeErrors, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,6 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeErrors", function() { return removeErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
@@ -106,6 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -127,6 +130,17 @@ var receiveErrors = function receiveErrors(errors) {
   };
 };
 
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_SESSION_ERRORS
+  };
+};
+
+var removeErrors = function removeErrors() {
+  return function (dispatch) {
+    return dispatch(clearErrors());
+  };
+};
 var signup = function signup(formUser) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](formUser).then(function (user) {
@@ -181,7 +195,6 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
     tracks: tracks
   };
 }; // const receiveAllTracks = (tracks) => {
-//     debugger;
 //     return ({
 //         type: RECEIVE_ALL_TRACKS, 
 //         tracks,
@@ -190,16 +203,13 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
 
 
 var receiveTrack = function receiveTrack(track) {
-  // debugger;
+  console.log('hit receiveTrack reg action creator');
+  debugger;
   return {
     type: RECEIVE_TRACK,
     track: track
   };
-}; // export const fetchTracks = () => dispatch => {
-//     return TrackAPIUtil.fetchTracks()
-//         .then(tracks => dispatch(receiveAllTracks(tracks)));
-// }
-
+};
 
 var fetchTracks = function fetchTracks() {
   // console.log('hit fetchTracks action')
@@ -211,8 +221,11 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
-  // debugger;
+  console.log('hit fetchTrack thunk action creator');
+  debugger;
   return function (dispatch) {
+    console.log('hit dispatch inside fetchTrack thunk action creator');
+    debugger;
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -696,6 +709,11 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(LoginForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeErrors();
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
@@ -793,6 +811,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var errors = _ref.errors;
   return {
@@ -806,6 +825,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     login: function login(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
+    },
+    removeErrors: function removeErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["removeErrors"])());
     }
   };
 };
@@ -881,6 +903,11 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SignupForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeErrors();
+    }
+  }, {
     key: "openDropdown",
     value: function openDropdown() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1030,6 +1057,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var errors = _ref.errors;
   return {
@@ -1047,6 +1075,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     login: function login(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
+    },
+    removeErrors: function removeErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["removeErrors"])());
     }
   };
 };
@@ -1100,7 +1131,7 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   function TracksIndex(props) {
     _classCallCheck(this, TracksIndex);
 
-    return _super.call(this, props); // this.urlFormatter = this.urlFormatter.bind(this);
+    return _super.call(this, props);
   }
 
   _createClass(TracksIndex, [{
@@ -1110,8 +1141,9 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
       // debugger;
       this.props.fetchTracks();
     } // urlFormatter() {
-    // }
+    // this.urlFormatter = this.urlFormatter.bind(this);
     // urlFormatter('Programs' + 'Mac20Miller')
+    // }
 
   }, {
     key: "render",
@@ -1130,7 +1162,7 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
         className: "tracks-index-ol"
       }, tracks.map(function (ele, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: ele.title + ele.artist,
+          key: ele.title + '-' + ele.artist,
           url: ele.title + ele.artist,
           trackNum: trackNum + i,
           title: ele.title,
@@ -1290,15 +1322,15 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       console.log('tracks show component mounted');
       debugger;
-      this.props.fetchTrack(this.props.match.params.track.id);
+      this.props.fetchTrack(this.props.match.params.id);
     }
   }, {
     key: "render",
     value: function render() {
       var track = this.props.track;
-      console.log('render function inside tracks show');
+      console.log('hit render function inside tracks show');
       debugger;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.artist), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.album), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.lyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, "Return to homepage"));
     }
@@ -1332,14 +1364,14 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   console.log('hit mstp in tracks show container');
   debugger;
   return {
-    track: state.tracks[ownProps.match.params.track.id]
+    track: state.entities.tracks[ownProps.match.params.id]
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchTrack: function fetchTrack(track) {
-      return dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTrack"])(track.id));
+    fetchTrack: function fetchTrack(key) {
+      return dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTrack"])(key));
     }
   };
 };
@@ -1501,6 +1533,9 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SESSION_ERRORS"]:
       return [];
 
     default:
@@ -1781,9 +1816,12 @@ var fetchTracks = function fetchTracks() {
   });
 };
 var fetchTrack = function fetchTrack(track) {
+  console.log('hit fetchTrack api util');
+  debugger;
   return $.ajax({
     method: 'GET',
-    url: "/api/tracks/".concat(track.id)
+    url: "/api/tracks/".concat(track) // url: `/api/tracks/${track.id}`,
+
   });
 };
 

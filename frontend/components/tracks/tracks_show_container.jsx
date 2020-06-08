@@ -6,13 +6,13 @@ const mapStateToProps = (state, ownProps) => {
         console.log('hit mstp in tracks show container')
         debugger;
     return ({
-        track: state.tracks[ownProps.match.params.track.id],
+        track: state.entities.tracks[ownProps.match.params.id],
     })
 };
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        fetchTrack: (track) => dispatch(fetchTrack(track.id))
+        fetchTrack: (key) => dispatch(fetchTrack(key))
     })
 };
 

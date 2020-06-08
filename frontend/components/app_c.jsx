@@ -18,6 +18,8 @@ import HeaderBarContainer from './header_bar/header_bar_container';
 import Footer from './footer/footer';
 
 const App = () => (
+
+   
     <div className='ingenious-app' >
         <Route path="/" component={HeaderBarContainer}/>
         <Route path="/" component={NavBar} />
