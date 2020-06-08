@@ -1,18 +1,30 @@
-// import React from "react";
+import React from "react";
+import { Link } from 'react-router-dom';
 
-// class tracksShow extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
+class TracksShow extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        console.log('tracks show component mounted');
+        debugger;
+        this.props.fetchTrack(this.props.match.params.track.id);
+    }
 
-//     render() {
-//         return (
-//             <div>
-//                 {this.props}
-//                 test from tracks show
-//             </div>
-//         )
-//     }
-// };
+    render() {
+        const {track} = this.props;
+        console.log('render function inside tracks show')
+        debugger;
+        return (
+            <div>
+                <div>{track.title}</div>
+                <div>{track.artist}</div>
+                <div>{track.album}</div>
+                <div>{track.lyrics}</div>
+                <Link to={`/`}>Return to homepage</Link>
+            </div>
+        )
+    }
+};
 
-// export default tracksShow;
+export default TracksShow;
