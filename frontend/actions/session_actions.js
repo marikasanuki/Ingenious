@@ -25,6 +25,8 @@ const receiveErrors = (errors) => {
     });
 };
 
+
+
 export const signup = (formUser) => {
     return dispatch => {
         return APIUtil.signup(formUser)

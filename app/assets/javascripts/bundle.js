@@ -1100,7 +1100,7 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   function TracksIndex(props) {
     _classCallCheck(this, TracksIndex);
 
-    return _super.call(this, props);
+    return _super.call(this, props); // this.urlFormatter = this.urlFormatter.bind(this);
   }
 
   _createClass(TracksIndex, [{
@@ -1109,13 +1109,17 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
       // console.log('Component mounted');
       // debugger;
       this.props.fetchTracks();
-    }
+    } // urlFormatter() {
+    // }
+    // urlFormatter('Programs' + 'Mac20Miller')
+
   }, {
     key: "render",
     value: function render() {
       var tracks = this.props.tracks; // console.log('hit render function');
       // debugger;
 
+      var trackNum = 1;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1124,9 +1128,11 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
         className: "tracks-index-subhead"
       }, "TRENDING ON INGENIOUS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "tracks-index-ol"
-      }, tracks.map(function (ele) {
+      }, tracks.map(function (ele, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: ele.id,
+          key: ele.title + ele.artist,
+          url: ele.title + ele.artist,
+          trackNum: trackNum + i,
           title: ele.title,
           artist: ele.artist,
           album: ele.album,
@@ -1206,10 +1212,10 @@ var TracksIndexItem = function TracksIndexItem(props) {
     className: "tracks-index-li"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-num"
-  }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, props.trackNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-img"
   }, "track img"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/api/tracks/".concat(props.key)
+    to: "/api/tracks/".concat(props.url)
   }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "chart-title"
   }, props.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
