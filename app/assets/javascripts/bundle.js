@@ -203,8 +203,8 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
 
 
 var receiveTrack = function receiveTrack(track) {
-  console.log('hit receiveTrack reg action creator');
-  debugger;
+  // console.log('hit receiveTrack reg action creator')
+  // debugger;
   return {
     type: RECEIVE_TRACK,
     track: track
@@ -221,11 +221,11 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
-  console.log('hit fetchTrack thunk action creator');
-  debugger;
+  // console.log('hit fetchTrack thunk action creator')
+  // debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside fetchTrack thunk action creator');
-    debugger;
+    // console.log('hit dispatch inside fetchTrack thunk action creator')
+    // debugger; 
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -1148,9 +1148,9 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var tracks = this.props.tracks;
-      console.log('hit render function in tracks index comp');
-      debugger;
+      var tracks = this.props.tracks; // console.log('hit render function in tracks index comp');
+      // debugger;
+
       var trackNum = 1;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-index-container"
@@ -1369,8 +1369,8 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   _createClass(TracksShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('tracks show component mounted');
-      debugger;
+      // console.log('tracks show component mounted');
+      // debugger;
       this.props.fetchTrack(this.props.match.params.id);
     }
   }, {
@@ -1436,8 +1436,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('hit mstp in tracks show container');
-  debugger;
+  // console.log('hit mstp in tracks show container')
+  // debugger;
   return {
     // track: state.entities.tracks[ownProps.match.params.id], 
     track: state.entities.tracks // trackId: state.entities.tracks[ownProps.match.params.id].id,
@@ -1685,15 +1685,10 @@ var tracksReducer = function tracksReducer() {
       // console.log('hit tracks reducer')
       // debugger;   
       return Object.assign({}, action.tracks);
-    // const tracks = {};
-    // action.tracks.forEach(track=>{
-    //     tracks[track.id] = track;
-    // });
-    // return tracks;
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-      console.log('hit tracks reducer (RECEIVE_TRACK)');
-      debugger;
+      // console.log('hit tracks reducer (RECEIVE_TRACK)')
+      // debugger;   
       return Object.assign({}, action.track);
     // return Object.assign({}, oldState, {[action.track.id]: action.track} );
 
@@ -1891,8 +1886,8 @@ var fetchTracks = function fetchTracks() {
   });
 };
 var fetchTrack = function fetchTrack(track) {
-  console.log('hit fetchTrack api util');
-  debugger;
+  // console.log('hit fetchTrack api util');
+  // debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/tracks/".concat(track) // url: `/api/tracks/${track.id}`,

@@ -6,8 +6,8 @@ class TracksShow extends React.Component {
         super(props);
     }
     componentDidMount(){
-        console.log('tracks show component mounted');
-        debugger;
+        // console.log('tracks show component mounted');
+        // debugger;
         this.props.fetchTrack(this.props.match.params.id);
     }
 
