@@ -27,7 +27,6 @@ class TracksShow extends React.Component {
                     <div className='tracks-show-mini-title' >{this.props.track.title} lyrics</div>
                     <div className='tracks-show-lyrics' >{this.props.track.lyrics}</div>   
                 </div>
-                <Link to={`/`}>Return to homepage</Link>
             </div>
         )
     }

@@ -9,16 +9,28 @@ const TracksIndexItem = (props) => {
 
     return (
         <li className='tracks-index-li'>
-            <div className='chart-num'>{props.trackNum}</div>
-            <div className='chart-img'>img</div>
-            <Link to={`/api/tracks/${props.url}`}> <div className='chart-title'>{props.title} <span className='chart-lyr'>LYRICS</span></div></Link>
-            <div className='chart-artist'>{props.artist}</div>
-            <div className='fire-icon' >
-                <FontAwesomeIcon icon={faFireAlt} />&nbsp;82
-            </div>
-            <div className='views-icon' >
-                <FontAwesomeIcon icon={faEye} />&nbsp;47.1K
-            </div>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='chart-num'>{props.trackNum}</div>
+            </Link>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='chart-img'>img</div>
+            </Link>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='chart-title'>{props.title} <span className='chart-lyr'>LYRICS</span></div>
+            </Link>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='chart-artist'>{props.artist}</div>
+            </Link>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='fire-icon' >
+                    <FontAwesomeIcon icon={faFireAlt} />&nbsp;82
+                </div>
+            </Link>
+            <Link to={`/api/tracks/${props.url}`}> 
+                <div className='views-icon' >
+                    <FontAwesomeIcon icon={faEye} />&nbsp;47.1K
+                </div>
+            </Link>
         </li>
     );
 }
