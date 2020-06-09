@@ -1386,11 +1386,12 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-hed-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tracks-show-img"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2F9b7c87888ea4091996f947a8ba0d8f2a.1000x1000x1.png",
+        className: "tracks-show-hed-img-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "tracks-show-img",
+        src: "https://media.wnyc.org/i/800/0/l/85/1/blackbox.jpeg",
         alt: "test img"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-hed-words-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-title"
@@ -1400,7 +1401,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         className: "tracks-show-album"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "tracks-show-alb-txt"
-      }, "Album"), " ", this.props.track.album)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Album"), " ", this.props.track.album))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-lyrics-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-mini-title"

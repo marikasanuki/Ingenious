@@ -21,7 +21,13 @@
     width: 50%;
     height: 100%;
     display: inline-block; 
+    text-align: center;
+}
 
+.tracks-show-hed-img-container {
+    width: 90%;
+    display: inline-block; 
+    padding-top: 25px;
 }
 
 .tracks-show-img {
@@ -33,7 +39,9 @@
 .tracks-show-hed-words-container {
     width: 50%;
     height: 100%;
-    float:right;
+    float: left;
+    padding-left: 10px;
+    padding-top: 20px;
 }
 
 .tracks-show-title {
