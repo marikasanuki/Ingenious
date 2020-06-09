@@ -1,0 +1,121 @@
+// Place all the styles related to the Tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tracks-index-container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    text-align: center;
+  
+}
+
+.tracks-index-header {
+    width: 100%;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Muli', sans-serif;
+    font-weight: 800;
+}
+
+.tracks-index-subhead {
+    width: 100%;
+    height: 100%;
+    color: rgb(235, 46, 102);
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    
+}
+
+.tracks-index-ol {
+    // list-style-type: none;    
+    // padding-left:0;
+    width: 60%;
+    display: inline-grid;
+    padding-left: 0;
+    justify-items: start;
+    // align-content: center;
+}
+
+.tracks-index-li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    border-bottom: 2px solid rgb(233, 233, 233);
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    // align-content: center;
+    line-height: 77px;
+}
+
+.tracks-index-li:hover {
+    background-color: rgb(233, 233, 233); 
+    height: 100%;
+    width: 100%;
+}
+
+.chart-num {
+    padding-left: 10px;
+    font-size: 24px;    
+    // padding-right: 40px;
+    width: 40px;
+    color: black;
+}
+
+.chart-img {
+    // padding-right: 40px;
+    width: 60px;
+    color: black;
+}
+
+.chart-title {
+    font-size: 24px;
+    font-weight: 700;  
+    width: 310px;
+    color: black;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chart-lyr {
+    color: rgb(154, 154, 154); 
+    font-size: 12px;  
+    font-weight: 600;
+    // padding-right: 40px;
+}
+
+
+.chart-artist {
+    font-size: 24px;  
+    // padding-right: 40px;
+    width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: black;
+}
+
+
+.fire-icon {
+    color: rgb(235, 46, 102);
+    font-size: 14px;
+    font-family: 'Muli', sans-serif;
+    // padding-right: 40px;
+    width: 50px;
+}
+
+.views-icon {
+    color: black;
+    font-size: 14px;
+    font-family: 'Muli', sans-serif;
+    // padding-right: 40px;
+    width: 70px;
+}
+

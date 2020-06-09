@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedinIn, faTwitter, faSpotify } from '@fortawesome/free-brands-svg-icons'
 
 
 class Footer extends React.Component {
@@ -19,13 +19,17 @@ class Footer extends React.Component {
                             <FontAwesomeIcon className='footer-icon' icon={faGithub} />
                         </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="https://www.linkedin.com/in/marikasanuki/" target="blank" >
+                        <a href="https://www.linkedin.com/in/marikasanuki/" target="blank" >
                             <FontAwesomeIcon className='footer-icon' icon={faLinkedinIn} />
                         </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a  href="https://twitter.com/marikasanuki?lang=en" target="blank" >
+                        <a href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >
+                            <FontAwesomeIcon className='footer-icon' icon={faSpotify} />
+                        </a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a  href="https://twitter.com/marikasanuki?lang=en" target="blank" >
                             <FontAwesomeIcon className='footer-icon' icon={faTwitter} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </a>
+                        </a>
                     </li>
                 </ul>    
             </div>

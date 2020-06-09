@@ -7,7 +7,9 @@ class Api::TracksController < ApplicationController
 
     def show
         @track = Track.find(params[:id])
+        # @track = Track.where(artist: '?', title: '?')
         render :show
+
     end
 
 end

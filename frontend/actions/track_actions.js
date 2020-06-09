@@ -11,7 +11,6 @@ const receiveAllTracks = tracks => ({
 });
 
 // const receiveAllTracks = (tracks) => {
-//     debugger;
 //     return ({
 //         type: RECEIVE_ALL_TRACKS, 
 //         tracks,
@@ -20,6 +19,7 @@ const receiveAllTracks = tracks => ({
 
 
 const receiveTrack = (track) => {
+    // console.log('hit receiveTrack reg action creator')
     // debugger;
     return ({
         type: RECEIVE_TRACK, 
@@ -28,10 +28,6 @@ const receiveTrack = (track) => {
 };
 
 
-// export const fetchTracks = () => dispatch => {
-//     return TrackAPIUtil.fetchTracks()
-//         .then(tracks => dispatch(receiveAllTracks(tracks)));
-// }
 
 
 
@@ -47,8 +43,11 @@ export const fetchTracks = () => {
 };
 
 export const fetchTrack = (track) => {
+    // console.log('hit fetchTrack thunk action creator')
     // debugger;
     return dispatch => {
+        // console.log('hit dispatch inside fetchTrack thunk action creator')
+        // debugger; 
         return TrackAPIUtil.fetchTrack(track)
             .then(
                 (track) => dispatch(receiveTrack(track))

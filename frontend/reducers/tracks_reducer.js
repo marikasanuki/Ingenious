@@ -10,16 +10,12 @@ const tracksReducer = (oldState = {}, action) => {
             // debugger;   
             return Object.assign({}, action.tracks);
             
-            // console.log(action.tracks);
-            // debugger;
-            // const tracks = {};
-            // action.tracks.forEach(track=>{
-            //     tracks[track.id] = track;
-            // });
-            // return tracks;
+
         case RECEIVE_TRACK:
-            return Object.assign({}, oldState, {[action.track.id]: action.track} );
-            // return Object.assign({}, oldState, action.track);
+            // console.log('hit tracks reducer (RECEIVE_TRACK)')
+            // debugger;   
+            return Object.assign({}, action.track);
+            // return Object.assign({}, oldState, {[action.track.id]: action.track} );
         default:
             return oldState;
     }

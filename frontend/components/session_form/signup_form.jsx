@@ -18,6 +18,10 @@ class SignupForm extends React.Component {
         this.closeDropdown = this.closeDropdown.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.removeErrors();
+    }
+
     openDropdown() {
         return(
             <form onSubmit={this.handleSubmit} className='signup-form-box' >
