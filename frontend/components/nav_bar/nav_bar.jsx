@@ -11,7 +11,7 @@ class NavBar extends React.Component {
                 <ul className='nav-bar-list-ul'>
                     <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >GITHUB</a></li>   
                     <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
-                    <li><Link className='nav-bar-item' to={`/tracks`}>CHARTS</Link></li>
+                    <li><Link className='nav-bar-item' to={`/`}>CHARTS</Link></li>
                     <li className='nav-bar-item' >&nbsp;|&nbsp;</li>                    
                     <li><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >LINKEDIN</a></li>                    
                     <li className='nav-bar-item' >&nbsp;|&nbsp;</li>

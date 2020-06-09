@@ -10,16 +10,30 @@
     padding-bottom: 50px;
 }
 
-.tracks-show-hed-container {
-    background-color: black;
-    width: 50%;
+.tracks-show-outer-hed-container {
+    width: 100%;
     height: 280px;
+    background-color: rgb(192, 93, 167);
+}
+
+.tracks-show-hed-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 50%;
+    height: 100%;
     display: inline-block; 
-    padding-bottom: 30px;
+
 }
 
 .tracks-show-img {
+    width: 225px;
+    height: 225px;
+    float:left;
+}
 
+.tracks-show-hed-words-container {
+    width: 50%;
+    height: 100%;
+    float:right;
 }
 
 .tracks-show-title {
@@ -28,6 +42,7 @@
     font-weight: 700;
     width: auto;
     height: auto;
+    text-align: left;
 }
 
 .tracks-show-artist {
@@ -36,6 +51,7 @@
     font-weight: 700;
     width: auto;
     height: auto;
+    text-align: left;
 }
 
 .tracks-show-alb-txt {
@@ -43,6 +59,7 @@
     font-weight: 600;
     width: auto;
     height: auto;
+    text-align: left;
 }
 
 .tracks-show-album {
@@ -50,6 +67,7 @@
     font-weight: 600;
     width: auto;
     height: auto;
+    text-align: left;
 }
 
 .tracks-show-lyrics-container {
