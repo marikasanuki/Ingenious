@@ -102,7 +102,6 @@ class SignupForm extends React.Component {
                     <br />
                 <button className='session-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
                     <br/>
-                {/* <button className='signup-username-button' onClick={e => this.handleSubmit(e)}>Sign up for new account</button> */}
                 <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}><FontAwesomeIcon icon={faEnvelope} /> &nbsp;Sign up for new account</button>
                     <br />
                 {this.state.dropdownVisible ? this.openDropdown() : this.closeDropdown() }

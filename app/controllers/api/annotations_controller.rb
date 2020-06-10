@@ -8,7 +8,14 @@ end
 
 
 def create
-    render 'api/annotations/show'
+    @annotation = Annotation.new(annotation_params)
+    # need user connection? @annotation.author_id = user.id?
+
+    if @annotation.save
+        render 'api/annotations/show'
+    else
+        render json: @annotation.errors.full_messages, status: 422
+    end
 end
 
 def update
@@ -16,7 +23,7 @@ def update
 end
 
 def destroy
-    render 'api/annotations/show'
+
 end
 
 private
