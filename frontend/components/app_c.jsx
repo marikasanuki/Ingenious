@@ -3,6 +3,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import TracksIndexContainer from './tracks/tracks_index_container';
 import TracksShowContainer from './tracks/tracks_show_container';
+import AnnotationsShowContainer from './annotations/annotations_show_container';
 
 import React from "react";
 import {
@@ -27,6 +28,7 @@ const App = () => (
         <Route exact path="/login" component={LoginFormContainer} />
         <Route exact path="/" component={TracksIndexContainer} />
         <Route exact path="/api/tracks/:id" component={TracksShowContainer} />
+        <Route exact path="/api/tracks/:id" component={AnnotationsShowContainer} />
         <Route path="/" component={Footer} />
     </div> 
 );

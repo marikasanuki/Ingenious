@@ -13,8 +13,8 @@ class TracksShow extends React.Component {
 
     render() {
         // const {track} = this.props;
-        console.log('hit render function inside tracks show')
-        debugger;
+        // console.log('hit render function inside tracks show')
+        // debugger;
         return (
             <div className='tracks-show-container' >
                 <div className='tracks-show-outer-hed-container'>
