@@ -17,12 +17,13 @@
             <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
         </script>
     <% end %>
- 
-    <%= javascript_include_tag 'application' %>
-               <script type="text/javascript">
-                    window.macMillerPrograms = '<%= image_url('mac-miller-programs.jpg') %>'
-                    window.backgroundHeader = '<%= image_url('armand-khoury-4cBVro7SHLs-unsplash') %>'
-               </script>
+
+    <script type="text/javascript">
+        window.macMillerPrograms = '<%= image_url('mac-miller-programs.jpg') %>'
+        window.backgroundHeader = '<%= image_url('armand-khoury-4cBVro7SHLs-unsplash.jpg') %>'
+    </script>
+
+
   </head>
 
   <body>
