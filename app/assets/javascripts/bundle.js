@@ -1143,7 +1143,7 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
     } // urlFormatter() {
     // this.urlFormatter = this.urlFormatter.bind(this);
     // urlFormatter('Programs' + 'Mac20Miller')
-    // }
+    // }    
 
   }, {
     key: "render",
@@ -1282,9 +1282,10 @@ var TracksIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "chart-num"
       }, this.props.trackNum)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/api/tracks/".concat(this.props.url)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chart-img"
-      }, "img")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "chart-img",
+        src: window.macMillerPrograms
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/api/tracks/".concat(this.props.url)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chart-title"
@@ -1389,8 +1390,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         className: "tracks-show-hed-img-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "tracks-show-img",
-        src: "https://media.wnyc.org/i/800/0/l/85/1/blackbox.jpeg",
-        alt: "test img"
+        src: window.macMillerPrograms
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-hed-words-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1477,17 +1477,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- // import * as APIUtil from './util/session_api_util';
-// document.addEventListener('DOMContentLoaded', () => {
-//     const root = document.getElementById('root')
-//     const store = configureStore();
-//     // window.getState = store.getState;
-//     // window.dispatch = store.dispatch;
-//     // window.login = login;
-//     // window.signup = signup;
-//     // window.logout = logout;
-//     ReactDOM.render(<Root store={store}/>, root);
-// });
 
 document.addEventListener('DOMContentLoaded', function () {
   var store;
@@ -1511,6 +1500,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.store = store;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store

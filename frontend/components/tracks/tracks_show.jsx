@@ -21,7 +21,11 @@ class TracksShow extends React.Component {
                     
                     <div className='tracks-show-hed-container' >
                         <div className='tracks-show-hed-img-container' >
-                            <img className='tracks-show-img' src="https://media.wnyc.org/i/800/0/l/85/1/blackbox.jpeg" alt="test img"></img>
+                            {/* <img className='tracks-show-hed-img-container' src={window.backgroundHeader} /> */}
+                            {/* <img className='tracks-show-img' src="https://media.wnyc.org/i/800/0/l/85/1/blackbox.jpeg" alt="test img"></img> */}
+
+                            <img className='tracks-show-img' src={window.macMillerPrograms} />
+
                             <div className='tracks-show-hed-words-container' >
                                 <div className='tracks-show-title' >{this.props.track.title}</div>
                                 <div className='tracks-show-artist' >{this.props.track.artist}</div>

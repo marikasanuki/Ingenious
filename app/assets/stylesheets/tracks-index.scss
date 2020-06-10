@@ -32,14 +32,17 @@
     
 }
 
+
+
 .tracks-index-ol {
     // list-style-type: none;    
-    // padding-left:0;
     width: 60%;
     display: inline-grid;
     padding-left: 0;
     justify-items: start;
+    // align-items: stretch;
     // align-content: center;
+    // align-content: space-evenly;
 }
 
 .tracks-index-li {
@@ -50,8 +53,7 @@
     text-align: left;
     width: 100%;
     height: 100%;
-    // align-content: center;
-    line-height: 77px;
+    line-height: 40px;
 }
 
 .tracks-index-li:hover {
@@ -61,6 +63,7 @@
 }
 
 .chart-num {
+    padding-top: 29px;
     padding-left: 10px;
     font-size: 24px;    
     // padding-right: 40px;
@@ -69,12 +72,14 @@
 }
 
 .chart-img {
-    // padding-right: 40px;
+    padding-top: 20px;
+    // padding-right: 30px;
     width: 60px;
     color: black;
 }
 
 .chart-title {
+    padding-top: 29px;
     font-size: 24px;
     font-weight: 700;  
     width: 310px;
@@ -93,6 +98,7 @@
 
 
 .chart-artist {
+    padding-top: 29px;
     font-size: 24px;  
     // padding-right: 40px;
     width: 250px;
@@ -104,6 +110,7 @@
 
 
 .fire-icon {
+    padding-top: 30px;
     color: rgb(235, 46, 102);
     font-size: 14px;
     font-family: 'Muli', sans-serif;
@@ -112,10 +119,10 @@
 }
 
 .views-icon {
+    padding-top: 30px;
     color: black;
     font-size: 14px;
     font-family: 'Muli', sans-serif;
     // padding-right: 40px;
     width: 70px;
 }
-

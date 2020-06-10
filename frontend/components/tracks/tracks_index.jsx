@@ -16,7 +16,7 @@ class TracksIndex extends React.Component {
     // urlFormatter() {
             // this.urlFormatter = this.urlFormatter.bind(this);
             // urlFormatter('Programs' + 'Mac20Miller')
-    // }
+    // }    
 
 
     render() {

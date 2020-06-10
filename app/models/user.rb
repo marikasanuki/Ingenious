@@ -18,7 +18,9 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :password, length: { minimum: 4 }, allow_nil: true
 
-    # associations go here
+    has_many :annotations, 
+        foreign_key: :author_id, 
+        class_name: :Annotation
 
 
     def self.find_by_credentials(username, password)
