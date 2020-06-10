@@ -336,59 +336,48 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, AnnotationsShow);
 
     _this = _super.call(this, props);
-    _this.openDropdown = _this.openDropdown.bind(_assertThisInitialized(_this));
-    _this.closeDropdown = _this.closeDropdown.bind(_assertThisInitialized(_this));
+    _this.state = {
+      annotationVisible: false
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.openAnnotation = _this.openAnnotation.bind(_assertThisInitialized(_this));
+    _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
-    key: "openDropdown",
-    value: function openDropdown() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "signup-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "error-messages"
-      }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "signup-label"
-      }, "Ingenious Nickname", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.username,
-        onChange: this.handleInput('username'),
-        className: "signup-input"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "signup-label"
-      }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        value: this.state.password,
-        onChange: this.handleInput('password'),
-        className: "signup-input"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "signup-label"
-      }, "By clicking \u201CCreate Account\u201D, you are indicating that you have read and agree to the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "hyperlink-color",
-        href: "https://genius.com/static/terms",
-        target: "blank"
-      }, "Terms of Service"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "session-submit-button",
-        type: "submit",
-        value: this.props.formButton
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "signup-label"
-      }, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "hyperlink-color",
-        to: "/login"
-      }, "Sign in here.")));
+    key: "handleClick",
+    value: function handleClick() {
+      openAnnotation();
     }
   }, {
-    key: "closeDropdown",
-    value: function closeDropdown() {
+    key: "openAnnotation",
+    value: function openAnnotation() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-box"
+      }, "annotation goes here");
+    }
+  }, {
+    key: "hideAnnotation",
+    value: function hideAnnotation() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "TEST FROM ANNOTATIONS SHOW COMPONENT");
+      var _this2 = this;
+
+      debugger;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "anno-button",
+        onClick: function onClick() {
+          return _this2.state.annotationVisible ? _this2.setState({
+            annotationVisible: false
+          }) : _this2.setState({
+            annotationVisible: true
+          });
+        }
+      }, "Open Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation());
     }
   }]);
 

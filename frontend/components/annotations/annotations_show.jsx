@@ -5,50 +5,43 @@ class AnnotationsShow extends React.Component {
     constructor(props) {
         super(props);
 
-        this.openDropdown = this.openDropdown.bind(this);
-        this.closeDropdown = this.closeDropdown.bind(this);
+        this.state = {
+            annotationVisible: false,
+        }
+        this.handleClick = this.handleClick.bind(this);
+        this.openAnnotation = this.openAnnotation.bind(this);
+        this.hideAnnotation = this.hideAnnotation.bind(this);
     }
 
-    openDropdown() {
+    handleClick() {
+        openAnnotation()
+    }
+
+    openAnnotation() {
         return (
-            <form onSubmit={this.handleSubmit} className='signup-form-box' >
-
-                <div className='error-messages'>{this.renderErrors()}</div>
-
-                <label className='signup-label' >Ingenious Nickname
-                        <br />
-                    <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
-                </label>
-                <br />
-                <label className='signup-label'>Password
-                        <br />
-                    <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
-                </label>
-                <p className='signup-label' >By clicking “Create Account”, you are indicating that you have read and agree to the <a className='hyperlink-color' href="https://genius.com/static/terms" target="blank" >Terms of Service</a>.</p>
-                <input className="session-submit-button" type='submit' value={this.props.formButton} />
-                <br />
-                <br />
-                <label className='signup-label'>Already have an account? <Link className='hyperlink-color' to={`/login`}>Sign in here.</Link></label>
-            </form>
+            <div className='annotation-box' >annotation goes here</div>
         )
     }
 
 
-    closeDropdown() {
+    hideAnnotation() {
         return (
             <div></div>
         )
     }
 
     render() {
+        debugger;
         return (
             <div>
-                TEST FROM ANNOTATIONS SHOW COMPONENT
-
-
-                {/* <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}><FontAwesomeIcon icon={faEnvelope} /> &nbsp;Sign up for new account</button>
+                <button className='anno-button' 
+                    onClick={() => this.state.annotationVisible ? 
+                        this.setState({ annotationVisible: false }) : 
+                        this.setState({ annotationVisible: true })}>
+                        Open Annotation
+                </button>
                 <br />
-                {this.state.dropdownVisible ? this.openDropdown() : this.closeDropdown()} */}
+                {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }
             </div>
         )
     }

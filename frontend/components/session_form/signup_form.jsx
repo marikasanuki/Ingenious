@@ -94,16 +94,16 @@ class SignupForm extends React.Component {
         return (
             <div className='signup-form-container'>
 
-            <div className='signup-headings'>
-                    <span className='signup-form-header' >{this.props.formHeader}</span>
-                    <br/>
-                    <span className='signup-form-subhead' > {this.props.formSubhead} </span>
-            </div>
-                    <br />
+                <div className='signup-headings'>
+                        <span className='signup-form-header' >{this.props.formHeader}</span>
+                        <br/>
+                        <span className='signup-form-subhead' > {this.props.formSubhead} </span>
+                </div>
+                <br />
                 <button className='session-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
-                    <br/>
+                <br/>
                 <button className='signup-username-button' onClick={() => this.state.dropdownVisible ? this.setState({ dropdownVisible: false }) : this.setState({ dropdownVisible: true })}><FontAwesomeIcon icon={faEnvelope} /> &nbsp;Sign up for new account</button>
-                    <br />
+                <br />
                 {this.state.dropdownVisible ? this.openDropdown() : this.closeDropdown() }
             </div>
         );

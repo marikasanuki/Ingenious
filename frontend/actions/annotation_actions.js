@@ -2,8 +2,6 @@ import * as AnnotationAPIUtil from '../util/annotation_api_util'
 
 export const RECEIVE_ANNOTATION = 'RECEIVE_ANNOTATION';
 
-
-
 const receiveAnnotation = (annotation) => {
     // console.log('hit receiveAnnotation reg action creator')
     // debugger;

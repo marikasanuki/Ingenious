@@ -8,9 +8,18 @@
 
 User.destroy_all
 Track.destroy_all
+Annotation.destroy_all
 
 user0 = User.create!(username: 'demousername', password: 'demopassword')
 user1 = User.create!(username: 'marikasanuki', password: 'marikasanuki')
+user2 = User.create!(username: 'demouser2', password: 'demopassword2')
+user3 = User.create!(username: 'demouser3', password: 'demopassword3')
+user4 = User.create!(username: 'demouser4', password: 'demopassword4')
+user5 = User.create!(username: 'demouser5', password: 'demopassword5')
+
+ann0 = Annotation.create!(annotation: "In a 2006 interview, Mac Miller said one of his hobbies outside of music was programming.", author_id: 1, track_id: 1)
+ann1 = Annotation.create!(annotation: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2)
+
 
 track0 = Track.create!(title: 'Programs',
                 artist: 'Mac Miller', 
