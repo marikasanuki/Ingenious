@@ -27,7 +27,7 @@ const App = () => (
         <Route exact path="/login" component={LoginFormContainer} />
         <Route exact path="/" component={TracksIndexContainer} />
         <Route exact path="/api/tracks/:id" component={TracksShowContainer} />
-        <Route exact path="/" component={Footer} />
+        <Route path="/" component={Footer} />
     </div> 
 );
 

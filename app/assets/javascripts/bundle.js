@@ -291,7 +291,6 @@ var App = function App() {
     path: "/api/tracks/:id",
     component: _tracks_tracks_show_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
-    exact: true,
     path: "/",
     component: _footer_footer__WEBPACK_IMPORTED_MODULE_9__["default"]
   }));
@@ -396,6 +395,12 @@ var Footer = /*#__PURE__*/function (_React$Component) {
         className: "footer-icon",
         icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTwitter"]
       }), "\xA0\xA0\xA0\xA0\xA0\xA0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-gen"
+      }, "Ingenious is a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "footer-gen",
+        href: "https://genius.com/",
+        target: "blank"
+      }, "Genius.com"), " clone project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-byline"
       }, "Developed by ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "footer-byline",

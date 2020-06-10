@@ -9,16 +9,16 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# class Annotation < ApplicationRecord
+class Annotation < ApplicationRecord
 
-#     validates :annotation, :author_id, :track_id, presence: true
+    validates :annotation, :author_id, :track_id, presence: true
 
-#     belongs_to :user, 
-#         foreign_key: :author_id, 
-#         class_name: :User
+    belongs_to :user, 
+        foreign_key: :author_id, 
+        class_name: :User
 
-#     belongs_to :track, 
-#         foreign_key: :track_id,
-#         class_name: :Track
+    belongs_to :track, 
+        foreign_key: :track_id,
+        class_name: :Track
 
-# end
+end
