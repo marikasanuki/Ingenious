@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import AnnotationsShow from '../annotations/annotations_show';
 
 class TracksShow extends React.Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class TracksShow extends React.Component {
                 <div className='tracks-show-lyrics-container'>
                     <div className='tracks-show-mini-title' >{this.props.track.title} lyrics</div>
                     <div className='tracks-show-lyrics' >{this.props.track.lyrics}</div>   
+                    <div className='tracks-show-anno-comp' >{<AnnotationsShow />}</div>
                 </div>
             </div>
         )
