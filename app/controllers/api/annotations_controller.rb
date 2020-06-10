@@ -3,9 +3,10 @@ class Api::AnnotationsController < ApplicationController
     before_action :ensure_logged_in, only [:create, :update, :destroy]
 
     def create
-        
         @annotation = Annotation.new(annotation_params)
-        # need user connection? @annotation.author_id = user.id?
+        @annotation.author_id = current_user.id
+        # debugger (check params if @annotation has track_id already)
+        @annotation.track_id = Track.find(params[:track_id])
 
         if @annotation.save!
             render 'api/annotations/show'
@@ -33,7 +34,7 @@ class Api::AnnotationsController < ApplicationController
 
     def destroy
         @annotation = Annotation.find(params[:id])
-        if @annotation.author_id == user.id
+        if @annotation.author_id == current_user.id
             @annotation.destroy
             render 'api/annotations/show'
         else
