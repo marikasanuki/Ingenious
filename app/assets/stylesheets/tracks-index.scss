@@ -32,14 +32,17 @@
     
 }
 
+
+
 .tracks-index-ol {
     // list-style-type: none;    
-    // padding-left:0;
     width: 60%;
     display: inline-grid;
     padding-left: 0;
     justify-items: start;
+    // align-items: stretch;
     // align-content: center;
+    // align-content: space-evenly;
 }
 
 .tracks-index-li {
@@ -50,7 +53,6 @@
     text-align: left;
     width: 100%;
     height: 100%;
-    // align-content: center;
     line-height: 77px;
 }
 
@@ -69,7 +71,7 @@
 }
 
 .chart-img {
-    // padding-right: 40px;
+    padding-right: 40px;
     width: 60px;
     color: black;
 }
@@ -118,4 +120,3 @@
     // padding-right: 40px;
     width: 70px;
 }
-

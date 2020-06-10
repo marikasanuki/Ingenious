@@ -17,7 +17,7 @@ class TracksIndexItem extends React.Component {
                     <div className='chart-num'>{this.props.trackNum}</div>
                 </Link>
                 <Link to={`/api/tracks/${this.props.url}`}>
-                    <div className='chart-img'>img</div>
+                    <img className='chart-img' src={window.macMillerPrograms} />                    
                 </Link>
                 <Link to={`/api/tracks/${this.props.url}`}>
                     <div className='chart-title'>{this.props.title} <span className='chart-lyr'>LYRICS</span></div>

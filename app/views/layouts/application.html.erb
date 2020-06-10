@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&family=Muli:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
  
@@ -17,6 +18,11 @@
         </script>
     <% end %>
  
+    <%= javascript_include_tag 'application' %>
+               <script type="text/javascript">
+                    window.macMillerPrograms = '<%= image_url('mac-miller-programs.jpg') %>'
+                    window.backgroundHeader = '<%= image_url('armand-khoury-4cBVro7SHLs-unsplash') %>'
+               </script>
   </head>
 
   <body>
