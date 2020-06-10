@@ -1,4 +1,4 @@
-class Api::AnnotationsController < ApplicationController
+# class Api::AnnotationsController < ApplicationController
 
 
 
@@ -34,4 +34,4 @@ class Api::AnnotationsController < ApplicationController
 
 # end
 
-end
+# end

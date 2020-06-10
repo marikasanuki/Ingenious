@@ -9,7 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Annotation < ApplicationRecord
+# class Annotation < ApplicationRecord
 
 #     validates :annotation, :author_id, :track_id, presence: true
 
@@ -21,4 +21,4 @@ class Annotation < ApplicationRecord
 #         foreign_key: :track_id,
 #         class_name: :Track
 
-end
+# end

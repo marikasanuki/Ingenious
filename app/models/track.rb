@@ -16,8 +16,8 @@ class Track < ApplicationRecord
 
     has_one_attached :photo
 
-    has_many :annotations, 
-        foreign_key: :track_id,
-        class_name: :Annotation
+    # has_many :annotations, 
+    #     foreign_key: :track_id,
+    #     class_name: :Annotation
 
 end
