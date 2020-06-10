@@ -31,7 +31,10 @@ class Footer extends React.Component {
                             <FontAwesomeIcon className='footer-icon' icon={faTwitter} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </li>
-                </ul>    
+                </ul>
+                
+                <div className='footer-byline' >Developed by <a className='footer-byline' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >Mari Kasanuki</a></div>
+                <div className='footer-disclaimer' >Not for commercial use. I do not own the rights to any featured music or lyrics.</div>
             </div>
         )
     }
