@@ -1,5 +1,18 @@
 json.extract! @track, :id, :title, :artist, :album, :lyrics
 
+@track.annotations.includes(:user).each do |annotation|
+    json.annotations do 
+        json.set! annotation.id do 
+            json.extract! annotation, :id, :annotation, :artist_id, :track_id
+        end
+    end
+    json.authors do 
+        json.set! annotation.user.id do 
+            json.extract! annotation.user, :id, :username
+        end
+    end
+end
+
 # same as above code
 # json.id @track.id
 # json.title @track.title

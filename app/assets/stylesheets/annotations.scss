@@ -14,13 +14,31 @@
     height: 35px;;
     border-radius: 2px;
     font-family: 'Muli', sans-serif;
-    font-size: 16px;
+
+    outline-width: 0;
+}
+
+
+.annotation-box-container {
+
+}
+
+.annotation-hed {
     font-weight: 600;
+    font-size: 14px;
 }
 
 .annotation-box {
     background-color: pink;
-    height: 200px;
+    height: auto;
     width: 300px;
     color: black;
+    border-left: 4px solid rgb(134, 146, 230);
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
 }

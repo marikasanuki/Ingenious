@@ -113,26 +113,34 @@ var receiveAnnotation = function receiveAnnotation(annotation) {
 };
 
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  // console.log('hit fetchAnnotation thunk action creator')
-  // debugger;
+  console.log('hit fetchAnnotation thunk action creator');
+  debugger;
   return function (dispatch) {
-    // console.log('hit dispatch inside fetchAnnotation thunk action creator')
-    // debugger; 
+    console.log('hit dispatch inside fetchAnnotation thunk action creator');
+    debugger;
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var createAnnotation = function createAnnotation(annotation) {
+  console.log('hit createAnnotation thunk action creator');
+  debugger;
   return function (dispatch) {
+    console.log('hit dispatch inside createAnnotation thunk action creator');
+    debugger;
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["createAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var updateAnnotation = function updateAnnotation(annotation) {
+  console.log('hit dispatch inside updateAnnotation thunk action creator');
+  debugger;
   return function (dispatch) {
-    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotation).then(function (annotation) {
+    console.log('hit dispatch inside updateAnnotation thunk action creator');
+    debugger;
+    return AnnotationAPIUtil.updateAnnotation(annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
@@ -337,7 +345,14 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      annotationVisible: false
+      track: {
+        title: '',
+        artist: '',
+        album: '',
+        annotations: ["lalala", "kakaka"]
+      },
+      annotationVisible: false,
+      savedAnnotations: []
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.openAnnotation = _this.openAnnotation.bind(_assertThisInitialized(_this));
@@ -346,6 +361,15 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(AnnotationsShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('annotationsShow component did mount');
+      debugger; // this.props.fetchAnnotation();
+      // this.props.fetchAnnotation(this.props.track.annotation).then(data => {
+      //     this.setState({savedAnnotations: data})
+      // })
+    }
+  }, {
     key: "handleClick",
     value: function handleClick() {
       openAnnotation();
@@ -354,8 +378,18 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     key: "openAnnotation",
     value: function openAnnotation() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-box-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box"
-      }, "annotation goes here");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-hed"
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Auctor elit sed vulputate mi. Volutpat maecenas volutpat blandit aliquam etiam erat. Molestie nunc non blandit massa enim. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim. Id leo in vitae turpis massa sed elementum tempus egestas. Urna id volutpat lacus laoreet non curabitur. Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Pellentesque massa placerat duis ultricies lacus sed. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "annotation-box"
+      }, this.state.track.annotations.map(function (ele, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i
+        }, ele);
+      })));
     }
   }, {
     key: "hideAnnotation",
@@ -367,7 +401,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      debugger;
+      console.log('hit render function inside annotations show');
+      debugger; // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "anno-button",
         onClick: function onClick() {
@@ -393,35 +429,27 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 /*!************************************************************************!*\
   !*** ./frontend/components/annotations/annotations_show_container.jsx ***!
   \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _annotations_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_show */ "./frontend/components/annotations/annotations_show.jsx");
-/* harmony import */ var _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/annotation_actions */ "./frontend/actions/annotation_actions.js");
-
-
-
-
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('hit mstp in annotations show container');
-  debugger;
-  return {
-    annotation: state.entities.annotation
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    fetchAnnotation: function fetchAnnotation(key) {
-      return dispatch(Object(_actions_annotation_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAnnotation"])(key));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_annotations_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
+// import { connect } from 'react-redux';
+// import AnnotationsShow from './annotations_show';
+// import { fetchAnnotation, createAnnotation, updateAnnotation } from '../../actions/annotation_actions';
+// const mapStateToProps = (state, ownProps) => {
+//         console.log('hit mstp in annotations show container')
+//         debugger;
+//     return ({
+//         annotation: state.entities.annotation,
+//     })
+// };
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
+//         fetchAnnotation: (annotation) => dispatch(fetchAnnotation(annotation)),
+//         createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
+//         updateAnnotation: (annotation) => dispatch(updateAnnotation(annotation)),
+//     })
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(AnnotationsShow);
 
 /***/ }),
 
@@ -439,6 +467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tracks_tracks_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tracks/tracks_index_container */ "./frontend/components/tracks/tracks_index_container.jsx");
 /* harmony import */ var _tracks_tracks_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tracks/tracks_show_container */ "./frontend/components/tracks/tracks_show_container.jsx");
 /* harmony import */ var _annotations_annotations_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./annotations/annotations_show_container */ "./frontend/components/annotations/annotations_show_container.jsx");
+/* harmony import */ var _annotations_annotations_show_container__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_annotations_annotations_show_container__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -1572,22 +1601,34 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   function TracksShow(props) {
     _classCallCheck(this, TracksShow);
 
-    return _super.call(this, props);
-  }
+    return _super.call(this, props); // this.handleMouseDown = this.handleMouseDown.bind(this);
+    // this.handleMouseUp = this.handleMouseUp.bind(this);
+    // this.state = {};
+  } // handleMouseUp(e){
+  //     this.setState({
+  //         highlightUp: e.target
+  //     })
+  // }
+  // handleMouseDown(e){
+  //     this.setState({
+  //         highlightDown: e.target
+  //     })
+  // }
+
 
   _createClass(TracksShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // console.log('tracks show component mounted');
-      // debugger;
+      console.log('tracks show component mounted');
+      debugger;
       this.props.fetchTrack(this.props.match.params.id);
     }
   }, {
     key: "render",
     value: function render() {
       // const {track} = this.props;
-      // console.log('hit render function inside tracks show')
-      // debugger;
+      console.log('hit render function inside tracks show'); // debugger;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1617,7 +1658,12 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         className: "tracks-show-lyrics"
       }, this.props.track.lyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-anno-comp"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_annotations_show__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_annotations_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        lyrics: this.props.track.lyrics // handleMouseDown={this.handleMouseDown}
+        // handleMouseUp={this.handleMouseUp}
+        ,
+        annotations: this.props.annotations
+      }))));
     }
   }]);
 
@@ -1646,12 +1692,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // console.log('hit mstp in tracks show container')
-  // debugger;
+  console.log('hit mstp in tracks show container');
+  debugger;
   return {
     // track: state.entities.tracks[ownProps.match.params.id], 
-    track: state.entities.tracks // trackId: state.entities.tracks[ownProps.match.params.id].id,
-
+    track: state.entities.tracks,
+    // trackId: state.entities.tracks[ownProps.match.params.id].id,
+    annotations: state.entities.annotations
   };
 };
 
@@ -1730,6 +1777,8 @@ document.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/annotation_actions */ "./frontend/actions/annotation_actions.js");
+/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/track_actions */ "./frontend/actions/track_actions.js");
+
 
 
 var annotationsReducer = function annotationsReducer() {
@@ -1739,9 +1788,12 @@ var annotationsReducer = function annotationsReducer() {
 
   switch (action.type) {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
-      // console.log('hit annotations reducer (RECEIVE_ANNOTATION)')
-      // debugger;   
+      console.log('hit annotations reducer (RECEIVE_ANNOTATION)');
+      debugger;
       return Object.assign({}, action.annotation);
+
+    case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
+      return Object.assign({}, action.track.annotations);
 
     default:
       return oldState;
@@ -1927,6 +1979,8 @@ var tracksReducer = function tracksReducer() {
       // debugger;   
       return Object.assign({}, action.track);
     // return Object.assign({}, oldState, {[action.track.id]: action.track} );
+    // case RECEIVE_ANNOTATION:
+    //     return Object.assign({}, action.annotation);
 
     default:
       return oldState;
@@ -2017,41 +2071,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAnnotation", function() { return updateAnnotation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyAnnotation", function() { return destroyAnnotation; });
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  // console.log('hit fetchAnnotation api util');
-  // debugger;
+  console.log('hit fetchAnnotation api util');
+  debugger;
   return $.ajax({
     method: 'GET',
-    url: "/api/tracks/:track_id/annotations/".concat(annotation.id)
+    url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id)
   });
 };
 var createAnnotation = function createAnnotation(annotation) {
-  // console.log('hit createAnnotation api util');
-  // debugger;
+  console.log('hit createAnnotation api util');
+  debugger;
   return $.ajax({
     method: 'POST',
-    url: "/api/tracks/:track_id/annotations",
+    url: "/api/tracks/".concat(annotation.track_id, "/annotations"),
     data: {
       annotation: annotation
     }
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  // console.log('hit updateAnnotation api util');
-  // debugger;
+  console.log('hit updateAnnotation api util');
+  debugger;
   return $.ajax({
     method: 'PATCH',
-    url: "/api/tracks/:track_id/annotations/".concat(annotation.id),
+    url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id),
     data: {
       annotation: annotation
     }
   });
 };
 var destroyAnnotation = function destroyAnnotation(annotation) {
-  // console.log('hit destroyAnnotation api util');
-  // debugger;
+  console.log('hit destroyAnnotation api util');
+  debugger;
   return $.ajax({
     method: 'DELETE',
-    url: "/api/tracks/:track_id/annotations/".concat(annotation.id)
+    url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id)
   });
 };
 

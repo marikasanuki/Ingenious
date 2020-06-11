@@ -16,6 +16,8 @@ const tracksReducer = (oldState = {}, action) => {
             // debugger;   
             return Object.assign({}, action.track);
             // return Object.assign({}, oldState, {[action.track.id]: action.track} );
+        // case RECEIVE_ANNOTATION:
+        //     return Object.assign({}, action.annotation);
         default:
             return oldState;
     }
