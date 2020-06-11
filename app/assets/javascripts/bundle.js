@@ -402,9 +402,10 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       console.log('hit render function inside annotations show');
+      console.log(this.props);
       debugger; // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-button",
         onClick: function onClick() {
           return _this2.state.annotationVisible ? _this2.setState({
@@ -1627,8 +1628,9 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       // const {track} = this.props;
-      console.log('hit render function inside tracks show'); // debugger;
-
+      console.log('hit render function inside tracks show');
+      console.log(this.props);
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

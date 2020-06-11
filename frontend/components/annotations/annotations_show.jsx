@@ -45,6 +45,8 @@ class AnnotationsShow extends React.Component {
                 <div className='annotation-box' >
                     <div className='annotation-hed' >Ingenious Annotation</div>
                     <br/>
+
+
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Auctor elit sed vulputate mi. Volutpat maecenas volutpat blandit aliquam etiam erat. Molestie nunc non blandit massa enim. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim. Id leo in vitae turpis massa sed elementum tempus egestas. Urna id volutpat lacus laoreet non curabitur. Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Pellentesque massa placerat duis ultricies lacus sed. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus.
                 </div>
                 <ul className='annotation-box' >{
@@ -67,16 +69,18 @@ class AnnotationsShow extends React.Component {
 
     render() {
         console.log('hit render function inside annotations show')
+        console.log(this.props);
         debugger;
         // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
         return (
             <div>
-                <button className='anno-button' 
+                {/* <div className='tracks-show-lyrics' >{this.props.lyrics}</div>    */}
+                <div className='anno-button' 
                     onClick={() => this.state.annotationVisible ? 
                         this.setState({ annotationVisible: false }) : 
                         this.setState({ annotationVisible: true })}>
                         Open Annotation
-                </button>
+                </div>
                 <br />
                 {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }
             </div>
