@@ -265,8 +265,8 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
 
 
 var receiveTrack = function receiveTrack(track) {
-  // console.log('hit receiveTrack reg action creator')
-  // debugger;
+  console.log('hit receiveTrack reg action creator');
+  debugger;
   return {
     type: RECEIVE_TRACK,
     track: track
@@ -283,11 +283,11 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
-  // console.log('hit fetchTrack thunk action creator')
-  // debugger;
+  console.log('hit fetchTrack thunk action creator');
+  debugger;
   return function (dispatch) {
-    // console.log('hit dispatch inside fetchTrack thunk action creator')
-    // debugger; 
+    console.log('hit dispatch inside fetchTrack thunk action creator');
+    debugger;
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -2230,8 +2230,8 @@ var fetchTracks = function fetchTracks() {
   });
 };
 var fetchTrack = function fetchTrack(track) {
-  // console.log('hit fetchTrack api util');
-  // debugger;
+  console.log('hit fetchTrack api util');
+  debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/tracks/".concat(track) // url: `/api/tracks/${track.id}`,

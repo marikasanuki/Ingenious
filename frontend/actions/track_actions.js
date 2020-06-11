@@ -19,8 +19,8 @@ const receiveAllTracks = tracks => ({
 
 
 const receiveTrack = (track) => {
-    // console.log('hit receiveTrack reg action creator')
-    // debugger;
+    console.log('hit receiveTrack reg action creator')
+    debugger;
     return ({
         type: RECEIVE_TRACK, 
         track,
@@ -40,11 +40,11 @@ export const fetchTracks = () => {
 };
 
 export const fetchTrack = (track) => {
-    // console.log('hit fetchTrack thunk action creator')
-    // debugger;
+    console.log('hit fetchTrack thunk action creator')
+    debugger;
     return dispatch => {
-        // console.log('hit dispatch inside fetchTrack thunk action creator')
-        // debugger; 
+        console.log('hit dispatch inside fetchTrack thunk action creator')
+        debugger; 
         return TrackAPIUtil.fetchTrack(track)
             .then(
                 (track) => dispatch(receiveTrack(track))
