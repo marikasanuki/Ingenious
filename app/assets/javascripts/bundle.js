@@ -349,7 +349,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         title: '',
         artist: '',
         album: '',
-        annotations: ["lalala", "kakaka"]
+        annotations: ["lalala", "loolooloo"]
       },
       annotationVisible: false,
       savedAnnotations: []
@@ -377,19 +377,14 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "openAnnotation",
     value: function openAnnotation() {
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Auctor elit sed vulputate mi. Volutpat maecenas volutpat blandit aliquam etiam erat. Molestie nunc non blandit massa enim. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim. Id leo in vitae turpis massa sed elementum tempus egestas. Urna id volutpat lacus laoreet non curabitur. Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Pellentesque massa placerat duis ultricies lacus sed. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "annotation-box"
-      }, this.state.track.annotations.map(function (ele, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, ele);
-      })));
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[1].annotation));
     }
   }, {
     key: "hideAnnotation",
@@ -402,10 +397,17 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       console.log('hit render function inside annotations show');
-      console.log(this.props);
       debugger; // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-show-lyrics-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-show-mini-title"
+      }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-show-lyrics"
+      }, this.props.lyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "anno-button-highlight"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "anno-button",
         onClick: function onClick() {
           return _this2.state.annotationVisible ? _this2.setState({
@@ -414,7 +416,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
             annotationVisible: true
           });
         }
-      }, "Open Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation());
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-show-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()));
     }
   }]);
 
@@ -1627,9 +1631,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // const {track} = this.props;
       console.log('hit render function inside tracks show');
-      console.log(this.props);
       debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
@@ -1652,20 +1654,13 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         className: "tracks-show-album"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "tracks-show-alb-txt"
-      }, "Album"), " ", this.props.track.album))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tracks-show-lyrics-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tracks-show-mini-title"
-      }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tracks-show-lyrics"
-      }, this.props.track.lyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tracks-show-anno-comp"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_annotations_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        lyrics: this.props.track.lyrics // handleMouseDown={this.handleMouseDown}
+      }, "Album"), " ", this.props.track.album))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_annotations_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        track: this.props.track,
+        lyrics: this.props.track.lyrics,
+        annotations: this.props.annotations // handleMouseDown={this.handleMouseDown}
         // handleMouseUp={this.handleMouseUp}
-        ,
-        annotations: this.props.annotations
-      }))));
+
+      })));
     }
   }]);
 

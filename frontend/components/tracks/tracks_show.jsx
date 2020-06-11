@@ -30,9 +30,7 @@ class TracksShow extends React.Component {
     }
 
     render() {
-        // const {track} = this.props;
         console.log('hit render function inside tracks show')
-        console.log(this.props);
         debugger;
         return (
             <div className='tracks-show-container' >
@@ -50,22 +48,15 @@ class TracksShow extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='tracks-show-lyrics-container'>
-                    <div className='tracks-show-mini-title' >{this.props.track.title} lyrics</div>
-
-
-                    <div className='tracks-show-lyrics' >{this.props.track.lyrics}</div>   
-                    
-                    
-                    <div className='tracks-show-anno-comp' >
-                            {<AnnotationsShow 
-                                lyrics={this.props.track.lyrics}
-                                // handleMouseDown={this.handleMouseDown}
-                                // handleMouseUp={this.handleMouseUp}
-                                annotations={this.props.annotations}
-                            />}
-                    </div>
-                    
+                
+                <div >
+                    {<AnnotationsShow
+                        track={this.props.track}
+                        lyrics={this.props.track.lyrics}
+                        annotations={this.props.annotations}
+                        // handleMouseDown={this.handleMouseDown}
+                        // handleMouseUp={this.handleMouseUp}
+                    />}
                 </div>
             </div>
         )

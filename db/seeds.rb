@@ -17,9 +17,6 @@ user3 = User.create!(username: 'demouser3', password: 'demopassword3')
 user4 = User.create!(username: 'demouser4', password: 'demopassword4')
 user5 = User.create!(username: 'demouser5', password: 'demopassword5')
 
-ann0 = Annotation.create!(annotation: "In a 2006 interview, Mac Miller said one of his hobbies outside of music was programming.", author_id: 1, track_id: 1)
-ann1 = Annotation.create!(annotation: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2)
-
 
 track0 = Track.create!(title: 'Programs',
                 artist: 'Mac Miller', 
@@ -2349,3 +2346,11 @@ Aah, ooh
 Aah, ooh
 Aah"
 )
+
+
+ann0 = Annotation.create!(annotation: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming.", author_id: 1, track_id: 1)
+ann1 = Annotation.create!(annotation: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2)
+ann2 = Annotation.create!(annotation: "Adventure. Excitement. A Jedi craves not these things.", author_id: 3, track_id: 3)
+ann3 = Annotation.create!(annotation: "When nine hundred years old you reach, look as good you will not.", author_id: 4, track_id: 4)
+ann4 = Annotation.create!(annotation: "Fear is the path to the dark side … fear leads to anger … anger leads to hate…hate leads to suffering.", author_id: 5, track_id: 5)
+ann5 = Annotation.create!(annotation: "Do. Or do not. There is no try.", author_id: 6, track_id: 6)

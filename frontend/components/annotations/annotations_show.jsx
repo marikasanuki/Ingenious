@@ -11,7 +11,7 @@ class AnnotationsShow extends React.Component {
                 title: '', 
                 artist: '', 
                 album: '',
-                annotations: ["lalala", "kakaka"],
+                annotations: ["lalala", "loolooloo"],
             },
             annotationVisible: false,
             savedAnnotations: [],
@@ -21,9 +21,6 @@ class AnnotationsShow extends React.Component {
         this.openAnnotation = this.openAnnotation.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
     }
-
-
-
 
     componentDidMount() {
         console.log('annotationsShow component did mount')
@@ -39,23 +36,31 @@ class AnnotationsShow extends React.Component {
     }
 
     openAnnotation() {
+        debugger;
         return (
             <div className='annotation-box-container' >
                 
                 <div className='annotation-box' >
                     <div className='annotation-hed' >Ingenious Annotation</div>
                     <br/>
-
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Auctor elit sed vulputate mi. Volutpat maecenas volutpat blandit aliquam etiam erat. Molestie nunc non blandit massa enim. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim. Id leo in vitae turpis massa sed elementum tempus egestas. Urna id volutpat lacus laoreet non curabitur. Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Pellentesque massa placerat duis ultricies lacus sed. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus.
+                    {this.props.annotations[1].annotation}
                 </div>
-                <ul className='annotation-box' >{
+
+                {/* <ul className='annotation-box' >{
+                        this.props.annotations.map((anno, i) =>
+
+                        <li key={i} >
+                            {anno.annotation}
+                        </li>
+                )}</ul> */}
+
+                {/* <ul className='annotation-box' >{
                     this.state.track.annotations.map((ele, i) => 
                     
                     <li key={i} >
                         {ele}
                     </li>
-                )}</ul>
+                )}</ul> */}
             </div>
         )
     }
@@ -69,21 +74,31 @@ class AnnotationsShow extends React.Component {
 
     render() {
         console.log('hit render function inside annotations show')
-        console.log(this.props);
         debugger;
         // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
         return (
-            <div>
-                {/* <div className='tracks-show-lyrics' >{this.props.lyrics}</div>    */}
-                <div className='anno-button' 
-                    onClick={() => this.state.annotationVisible ? 
-                        this.setState({ annotationVisible: false }) : 
-                        this.setState({ annotationVisible: true })}>
-                        Open Annotation
+                <div className='anno-show-lyrics-container'>
+                    <div className='anno-show-mini-title' >{this.props.track.title} lyrics</div>
+
+                    <div className='anno-show-lyrics' >{this.props.lyrics}</div>
+                    <span className='anno-button-highlight'></span>   
+                    <span className='anno-button'
+                        onClick={() => this.state.annotationVisible ?
+                            this.setState({ annotationVisible: false }) :
+                            this.setState({ annotationVisible: true })}>
+                        {/* Annotations */}
+                    </span>
+                
+                                 
+
+                     <div className='anno-show-cont' >
+                        {/* <div className='tracks-show-lyrics' >{this.props.lyrics}</div>    */}
+                        
+                        <br />
+                        {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }
+                    </div>
+            
                 </div>
-                <br />
-                {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }
-            </div>
         )
     }
 };
