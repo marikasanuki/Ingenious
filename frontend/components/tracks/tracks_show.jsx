@@ -24,14 +24,14 @@ class TracksShow extends React.Component {
     // }
 
     componentDidMount(){
-        console.log('tracks show component mounted');
-        debugger;
+        // console.log('tracks show component mounted');
+        // debugger;
         this.props.fetchTrack(this.props.match.params.id);
     }
 
     render() {
-        console.log('hit render function inside tracks show')
-        debugger;
+        // console.log('hit render function inside tracks show')
+        // debugger;
         return (
             <div className='tracks-show-container' >
                 <div className='tracks-show-outer-hed-container'>

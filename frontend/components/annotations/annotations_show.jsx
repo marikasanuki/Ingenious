@@ -23,8 +23,8 @@ class AnnotationsShow extends React.Component {
     }
 
     componentDidMount() {
-        console.log('annotationsShow component did mount')
-        debugger;
+        // console.log('annotationsShow component did mount')
+        // debugger;
         // this.props.fetchAnnotation();
         // this.props.fetchAnnotation(this.props.track.annotation).then(data => {
         //     this.setState({savedAnnotations: data})
@@ -36,7 +36,7 @@ class AnnotationsShow extends React.Component {
     }
 
     openAnnotation() {
-        debugger;
+        // debugger;
         return (
             <div className='annotation-box-container' >
                 
@@ -73,8 +73,8 @@ class AnnotationsShow extends React.Component {
     }
 
     render() {
-        console.log('hit render function inside annotations show')
-        debugger;
+        // console.log('hit render function inside annotations show')
+        // debugger;
         // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
         return (
                 <div className='anno-show-lyrics-container'>

@@ -113,33 +113,33 @@ var receiveAnnotation = function receiveAnnotation(annotation) {
 };
 
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  console.log('hit fetchAnnotation thunk action creator');
-  debugger;
+  // console.log('hit fetchAnnotation thunk action creator')
+  // debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside fetchAnnotation thunk action creator');
-    debugger;
+    // console.log('hit dispatch inside fetchAnnotation thunk action creator')
+    // debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var createAnnotation = function createAnnotation(annotation) {
-  console.log('hit createAnnotation thunk action creator');
-  debugger;
+  // console.log('hit createAnnotation thunk action creator')
+  // debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside createAnnotation thunk action creator');
-    debugger;
+    // console.log('hit dispatch inside createAnnotation thunk action creator')
+    // debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["createAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit dispatch inside updateAnnotation thunk action creator');
-  debugger;
+  // console.log('hit dispatch inside updateAnnotation thunk action creator')
+  // debugger; 
   return function (dispatch) {
-    console.log('hit dispatch inside updateAnnotation thunk action creator');
-    debugger;
+    // console.log('hit dispatch inside updateAnnotation thunk action creator')
+    // debugger; 
     return AnnotationAPIUtil.updateAnnotation(annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
@@ -283,11 +283,11 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
-  console.log('hit fetchTrack thunk action creator');
-  debugger;
+  // console.log('hit fetchTrack thunk action creator')
+  // debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside fetchTrack thunk action creator');
-    debugger;
+    // console.log('hit dispatch inside fetchTrack thunk action creator')
+    // debugger; 
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -362,9 +362,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
   _createClass(AnnotationsShow, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('annotationsShow component did mount');
-      debugger; // this.props.fetchAnnotation();
+    value: function componentDidMount() {// console.log('annotationsShow component did mount')
+      // debugger;
+      // this.props.fetchAnnotation();
       // this.props.fetchAnnotation(this.props.track.annotation).then(data => {
       //     this.setState({savedAnnotations: data})
       // })
@@ -377,7 +377,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "openAnnotation",
     value: function openAnnotation() {
-      debugger;
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -396,9 +396,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log('hit render function inside annotations show');
-      debugger; // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
-
+      // console.log('hit render function inside annotations show')
+      // debugger;
+      // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-show-lyrics-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1624,15 +1624,15 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   _createClass(TracksShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('tracks show component mounted');
-      debugger;
+      // console.log('tracks show component mounted');
+      // debugger;
       this.props.fetchTrack(this.props.match.params.id);
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('hit render function inside tracks show');
-      debugger;
+      // console.log('hit render function inside tracks show')
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1689,8 +1689,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('hit mstp in tracks show container');
-  debugger;
+  // console.log('hit mstp in tracks show container')
+  // debugger;
   return {
     // track: state.entities.tracks[ownProps.match.params.id], 
     track: state.entities.tracks,
@@ -1785,8 +1785,8 @@ var annotationsReducer = function annotationsReducer() {
 
   switch (action.type) {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
-      console.log('hit annotations reducer (RECEIVE_ANNOTATION)');
-      debugger;
+      // console.log('hit annotations reducer (RECEIVE_ANNOTATION)')
+      // debugger;   
       return Object.assign({}, action.annotation);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
@@ -2068,16 +2068,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAnnotation", function() { return updateAnnotation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyAnnotation", function() { return destroyAnnotation; });
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  console.log('hit fetchAnnotation api util');
-  debugger;
+  // console.log('hit fetchAnnotation api util');
+  // debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id)
   });
 };
 var createAnnotation = function createAnnotation(annotation) {
-  console.log('hit createAnnotation api util');
-  debugger;
+  // console.log('hit createAnnotation api util');
+  // debugger;
   return $.ajax({
     method: 'POST',
     url: "/api/tracks/".concat(annotation.track_id, "/annotations"),
@@ -2087,8 +2087,8 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit updateAnnotation api util');
-  debugger;
+  // console.log('hit updateAnnotation api util');
+  // debugger;
   return $.ajax({
     method: 'PATCH',
     url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id),
@@ -2098,8 +2098,8 @@ var updateAnnotation = function updateAnnotation(annotation) {
   });
 };
 var destroyAnnotation = function destroyAnnotation(annotation) {
-  console.log('hit destroyAnnotation api util');
-  debugger;
+  // console.log('hit destroyAnnotation api util');
+  // debugger;
   return $.ajax({
     method: 'DELETE',
     url: "/api/tracks/".concat(annotation.track_id, "/annotations/").concat(annotation.id)
@@ -2227,8 +2227,8 @@ var fetchTracks = function fetchTracks() {
   });
 };
 var fetchTrack = function fetchTrack(track) {
-  console.log('hit fetchTrack api util');
-  debugger;
+  // console.log('hit fetchTrack api util');
+  // debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/tracks/".concat(track) // url: `/api/tracks/${track.id}`,

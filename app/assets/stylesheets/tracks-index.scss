@@ -29,7 +29,8 @@
     font-size: 14px;
     font-family: 'Muli', sans-serif;
     font-weight: 700;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 40px;
 }
 
 
@@ -52,8 +53,8 @@
     border-bottom: 2px solid rgb(233, 233, 233);
     text-align: left;
     width: 100%;
-    height: 100%;
-    line-height: 40px;
+    height: auto;
+    // line-height: 20px;
 }
 
 .tracks-index-li:hover {
@@ -63,23 +64,24 @@
 }
 
 .chart-num {
-    padding-top: 29px;
-    padding-left: 10px;
-    font-size: 24px;    
+    padding-top: 28px;
+    padding-left: 20px;
+    font-size: 24px;   
+
     // padding-right: 40px;
     width: 40px;
     color: black;
 }
 
 .chart-img {
-    padding-top: 20px;
+    padding-top: 14px;
     // padding-right: 30px;
     width: 60px;
     color: black;
 }
 
 .chart-title {
-    padding-top: 29px;
+    padding-top: 28px;
     font-size: 24px;
     font-weight: 700;  
     width: 310px;
@@ -99,7 +101,7 @@
 
 
 .chart-artist {
-    padding-top: 29px;
+    padding-top: 28px;
     font-size: 24px;  
     // padding-right: 40px;
     width: 250px;
@@ -111,7 +113,7 @@
 
 
 .fire-icon {
-    padding-top: 30px;
+    padding-top: 36px;
     color: rgb(235, 46, 102);
     font-size: 14px;
     font-family: 'Muli', sans-serif;
@@ -120,10 +122,10 @@
 }
 
 .views-icon {
-    padding-top: 30px;
+    padding-top: 36px;
     color: black;
     font-size: 14px;
     font-family: 'Muli', sans-serif;
-    // padding-right: 40px;
+    padding-right: 20px;
     width: 70px;
 }
