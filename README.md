@@ -26,7 +26,7 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 * User authentication and demo user option
 
-![alt text](https://ingenious-prod.s3.amazonaws.com/log.gif "Ingenious sign in")
+![alt text](https://ingenious-prod.s3.amazonaws.com/login-new.gif "Ingenious sign in")
 
 
 * Ability to view database of curated songs
@@ -37,7 +37,7 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 * Ability to view curated annotations
 
-![alt text](https://ingenious-prod.s3.amazonaws.com/annotation-reveal.gif "Ingenious annotations")
+![alt text](https://ingenious-prod.s3.amazonaws.com/anno-new.gif "Ingenious annotations")
 
 * Annotations are revealed and hidden on click.
 
