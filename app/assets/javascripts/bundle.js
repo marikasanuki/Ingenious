@@ -384,7 +384,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[1].annotation));
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.props.track.id].annotation));
     }
   }, {
     key: "hideAnnotation",

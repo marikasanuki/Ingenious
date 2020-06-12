@@ -43,7 +43,7 @@ class AnnotationsShow extends React.Component {
                 <div className='annotation-box' >
                     <div className='annotation-hed' >Ingenious Annotation</div>
                     <br/>
-                    {this.props.annotations[1].annotation}
+                    {this.props.annotations[this.props.track.id].annotation}
                 </div>
 
                 {/* <ul className='annotation-box' >{
