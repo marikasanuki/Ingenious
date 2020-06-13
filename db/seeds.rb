@@ -49,6 +49,7 @@ user32 = User.create!(username: 'demouser32', password: 'demopassword32')
 track0 = Track.create!(title: 'Programs',
                 artist: 'Mac Miller', 
                 album: 'Programs',
+                image_url: 'mac-miller-programs.jpg',
                 lyrics:
 "
 [Intro]
@@ -110,6 +111,7 @@ Gotta keep them comin' back for more to keep it movin' (Yeah, yeah)"
 track1 = Track.create!(title: 'Turning Tables',
                 artist: 'Adele', 
                 album: '21',
+                image_url: 'adele-turning-tables.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -167,6 +169,7 @@ Turn, no, no, no-oh"
 track2 = Track.create!(title: 'Algorhythm',
                 artist: 'Childish Gambino', 
                 album: '3.15.20',
+                image_url: 'childish-gambino-algorhythm.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -232,6 +235,7 @@ Algorhythm (Yeah, yeah)"
 track3 = Track.create!(title: 'Bug A Boo',
                 artist: 'Destiny’s Child', 
                 album: 'The Writing’s on the Wall',
+                image_url: 'destinys-child-bug-a-boo.jpg',
                 lyrics: 
 "
 [Hook]
@@ -344,6 +348,7 @@ Thou shall not get into temptation"
 track4 = Track.create!(title: 'The Code',
                 artist: 'The Game featuring 21 Savage', 
                 album: 'Born 2 Rap',
+                image_url: 'the-game-the-code.jpg',
                 lyrics: 
 "
 [Chorus: 21 Savage & The Game]
@@ -504,6 +509,7 @@ Kill all the opps (Opps), ride on the cops (Cops)"
 track5 = Track.create!(title: 'React',
                 artist: 'The Pussycat Dolls', 
                 album: 'TPD3*',
+                image_url: 'pussycat-dolls-react.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -578,6 +584,7 @@ You're turning me cruel 'cause I'm just wanting you to react"
 track6 = Track.create!(title: 'Call on Me',
                 artist: 'Eric Prydz', 
                 album: 'Eric Prydz',
+                image_url: 'eric-prydz-call-on-me.jpg',
                 lyrics: 
 "
 [Intro/Chorus]
@@ -634,6 +641,7 @@ I'm the same boy I used to be"
 track7 = Track.create!(title: 'Controlla',
                 artist: 'Drake', 
                 album: 'Views',
+                image_url: 'drake-controlla.jpg',
                 lyrics: 
 "
 [Verse 1: Drake]
@@ -723,6 +731,7 @@ Dah one yah a murda—Zagga!"
 track8 = Track.create!(title: 'Merge',
                 artist: 'Grizzly Bear', 
                 album: 'Horn of Plenty',
+                image_url: 'grizzly-bear-merge.jpg',
                 lyrics: 
 "
 [Verse]
@@ -744,6 +753,7 @@ And leave it all behind, it's true"
 track9 = Track.create!(title: 'Maps',
                 artist: 'Yeah Yeah Yeahs', 
                 album: 'Fever to Tell',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -802,6 +812,7 @@ Wait, they don't love you like I love you"
 track10 = Track.create!(title: 'Technologic',
                 artist: 'Daft Punk', 
                 album: 'Human After All',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [[Verse 1]
@@ -900,6 +911,7 @@ Technologic"
 track11 = Track.create!(title: 'Bang Bang (My Baby Shot Me Down)',
                 artist: 'Nancy Sinatra', 
                 album: 'How Does That Grab You?',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -945,6 +957,7 @@ Bang bang, my baby shot me down"
 track12 = Track.create!(title: 'Syntax Error',
                 artist: '311', 
                 album: 'Mosaic',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 I know I should have stopped it
@@ -990,6 +1003,7 @@ Thought lines in decay"
 track13 = Track.create!(title: 'Ruby Tuesday',
                 artist: 'The Rolling Stones', 
                 album: 'Between the Buttons',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1043,6 +1057,7 @@ Still I'm going to miss you"
 track14 = Track.create!(title: 'Jenny from the Block',
                 artist: 'Jennifer Lopez', 
                 album: 'This is Me... Then',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Intro: Sample]
@@ -1143,6 +1158,7 @@ No matter where I go I know where I came from (South side Bronx, from the Bronx)
 track15 = Track.create!(title: 'Ayo Technology',
                 artist: '50 Cent featuring Justin Timberlake & Timbaland', 
                 album: 'Curtis',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Intro: 50 Cent]
@@ -1250,6 +1266,7 @@ Let me tell you girl"
 track16 = Track.create!(title: 'Upgrade U',
                 artist: 'Beyoncé featuring JAY-Z', 
                 album: 'B’Day',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Intro: JAY-Z & (Beyoncé)]
@@ -1374,6 +1391,7 @@ Partna, partna, partna, let me upgrade ya (Huh!)"
 track17 = Track.create!(title: 'Hot Rails to Hell',
                 artist: 'Blue Öyster Cult', 
                 album: 'Tyranny and Mutation',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1: Joe Bouchard]
@@ -1441,6 +1459,7 @@ Out! Out! Out! Out!"
 track18 = Track.create!(title: 'Let’s Sort the Whole Thing Out',
                 artist: 'Carly Rae Jepsen', 
                 album: 'Dedicated Side B',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1520,6 +1539,7 @@ I love you"
 track19 = Track.create!(title: 'Buggin’ Out',
                 artist: 'A Tribe Called Quest', 
                 album: 'The Low End Theory',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1: Phife Dawg]
@@ -1625,6 +1645,7 @@ Buggin' out, buggin' out, buggin' out, you're buggin' out"
 track20 = Track.create!(title: 'Disarray',
                 artist: 'Lifehouse', 
                 album: 'Who We Are',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1666,6 +1687,7 @@ I just don't know
 track21 = Track.create!(title: 'Hello Operator',
                 artist: 'The White Stripes', 
                 album: 'De Stijl',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1692,6 +1714,7 @@ Nobody to answer the phone"
 track22 = Track.create!(title: 'Rocket Man',
                 artist: 'Elton John', 
                 album: 'Honky Château',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1754,6 +1777,7 @@ And I think it's gonna be a long, long time"
 track23 = Track.create!(title: 'Hash Pipe',
                 artist: 'Weezer', 
                 album: 'Weezer (Green Album)',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1803,6 +1827,7 @@ I got my hash pipe"
 track24 = Track.create!(title: 'Loop De Loop',
                 artist: 'Johnny Thunder', 
                 album: 'Loop De Loop',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 Here we go loop de loop
@@ -1831,6 +1856,7 @@ On a saturday night"
 track25 = Track.create!(title: 'Infinite',
                 artist: 'Eminem', 
                 album: 'Infinite',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Intro]
@@ -1943,6 +1969,7 @@ And on and on and on (and on and on)"
 track26 = Track.create!(title: 'On the Bound',
                 artist: 'Fiona Apple', 
                 album: 'When the Pawn...',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -1979,6 +2006,7 @@ You're all I need and maybe some faith would do me good"
 track27 = Track.create!(title: 'Switch',
                 artist: 'Will Smith', 
                 album: 'Lost and Found',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Intro]
@@ -2106,6 +2134,7 @@ Switch"
 track28 = Track.create!(title: 'Basket Case',
                 artist: 'Green Day', 
                 album: 'Dookie',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -2145,6 +2174,7 @@ Am I just paranoid? Am I just stoned?"
 track29 = Track.create!(title: 'Go Flex',
                 artist: 'Post Malone', 
                 album: 'Stoney',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1]
@@ -2221,6 +2251,7 @@ Haha, that shit hard"
 track30 = Track.create!(title: 'In the End',
                 artist: 'Linkin Park', 
                 album: 'Hybrid Theory',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [Verse 1: Mike Shinoda & Chester Bennington]
@@ -2294,6 +2325,7 @@ But in the end, it doesn't even matter"
 track31 = Track.create!(title: 'Run-Time',
                 artist: 'Imogen Heap', 
                 album: 'Sparks',
+                image_url: 'yeah-yeah-yeahs-fever-to-tell.jpg',
                 lyrics: 
 "
 [[Verse 1]
@@ -2411,4 +2443,3 @@ ann30 = Annotation.create!(annotation: "Do. Or do not. There is no try.", author
 ann31 = Annotation.create!(annotation: "Do. Or do not. There is no try.", author_id: 31, track_id: 31)
 ann32 = Annotation.create!(annotation: "Do. Or do not. There is no try.", author_id: 32, track_id: 32)
     
-

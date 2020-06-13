@@ -8,10 +8,17 @@
 @tracks.each do |track|
     json.set! track.id do 
         json.extract! track, :id, :title, :artist, :album, :lyrics
-        # json.photoUrl url_for(track.photo)
+
+        begin
+            json.image_url asset_path("track_images/#{track.image_url}")
+        rescue
+            json.image_url track.image_url
+        end
+
     end
 end
 
+# json.photoUrl url_for(track.photo)
 # same as above code
 # @tracks.each do |track|
 #     json.set! track.id do 

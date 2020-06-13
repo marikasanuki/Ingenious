@@ -41,7 +41,8 @@ class TracksIndex extends React.Component {
                             title={ele.title}
                             artist={ele.artist}
                             album={ele.album}
-                            lyrics={ele.lyrics} />)
+                            lyrics={ele.lyrics}
+                            image_url={ele.image_url} />)
                         
                         ))
 
