@@ -1428,7 +1428,7 @@ Partna, partna, partna, let me upgrade ya (Huh!)"
 track17 = Track.create!(title: 'Hot Rails to Hell',
                 artist: 'Blue Öyster Cult', 
                 album: 'Tyranny and Mutation',
-                image_url: 'hot-rails-to-hell-blue-öyster-cult.jpg',
+                image_url: 'hot-rails-to-hell-blue-oyster-cult.jpg',
                 conc_views: rand_conc,
                 total_views: rand_total,
                 lyrics: 
