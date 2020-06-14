@@ -1410,7 +1410,9 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
           artist: ele.artist,
           album: ele.album,
           lyrics: ele.lyrics,
-          image_url: ele.image_url
+          image_url: ele.image_url,
+          conc_views: ele.conc_views,
+          total_views: ele.total_views
         });
       })));
     }
@@ -1507,14 +1509,31 @@ var TracksIndexItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(TracksIndexItem);
 
   function TracksIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, TracksIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.concRand = _this.concRand.bind(_assertThisInitialized(_this));
+    _this.totalRand = _this.totalRand.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(TracksIndexItem, [{
+    key: "concRand",
+    value: function concRand() {
+      return Math.floor(Math.random() * 800 + 1);
+    }
+  }, {
+    key: "totalRand",
+    value: function totalRand() {
+      var numer = 10;
+      return Math.floor(Math.random() * (1000 * numer - 1 * numer) + 1 * numer) / (1 * numer);
+    }
+  }, {
     key: "render",
     value: function render() {
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "tracks-index-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -1542,13 +1561,13 @@ var TracksIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "fire-icon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faFireAlt"]
-      }), "\xA082")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      }), "\xA0", this.concRand())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/api/tracks/".concat(this.props.url)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "views-icon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faEye"]
-      }), "\xA047.1K")));
+      }), "\xA0", this.totalRand(), "K")));
     }
   }]);
 

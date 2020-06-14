@@ -7,7 +7,7 @@
 
 @tracks.each do |track|
     json.set! track.id do 
-        json.extract! track, :id, :title, :artist, :album, :lyrics
+        json.extract! track, :id, :title, :artist, :album, :lyrics, :conc_views, :total_views
 
         begin
             json.image_url asset_path("track_images/#{track.image_url}")
