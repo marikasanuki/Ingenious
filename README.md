@@ -4,8 +4,7 @@
 
 [Ingenious](https://ingenious-app.herokuapp.com/#/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
-Users can browse a curated selection of songs, their lyrics, and annotated notes and intepretations of the tracks' lyrics. 
-
+Users can browse a curated selection of songs, their lyrics, and annotated notes and interpretations of the tracks' lyrics. 
 
 ## Technologies Used
 
@@ -21,17 +20,15 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 * Amazon Web Services
 * Heroku
 
-
 ## Features
 
 * User authentication and demo user option
 
 ![alt text](https://ingenious-prod.s3.amazonaws.com/login-new.gif "Ingenious sign in")
 https://ingenious-prod.s3.amazonaws.com/login-new.gif
-
 * Ability to view database of curated songs
 
-* Ability to view indiviual songs and their respective artist, album, and lyrics
+* Ability to view individual songs and their respective artist, album, and lyrics
 
 * Annotations are saved to individual tracks and dynamically fetched from the database.
 
@@ -65,5 +62,9 @@ https://ingenious-prod.s3.amazonaws.com/anno-new.gif
 * Signed in users can contribute their own annotations as well as update and delete them.
 
 
-
 Not for commercial use. I do not own the rights to any featured music or lyrics.
+
+<<<<<<< HEAD
+Not for commercial use. I do not own the rights to any featured music or lyrics.
+=======
+>>>>>>> annotations

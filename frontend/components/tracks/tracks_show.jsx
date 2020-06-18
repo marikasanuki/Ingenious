@@ -30,15 +30,16 @@ class TracksShow extends React.Component {
     }
 
     render() {
-        // console.log('hit render function inside tracks show')
-        // debugger;
+        console.log('hit render function inside tracks show')
+        console.log(this.props.track)
+        debugger;
         return (
             <div className='tracks-show-container' >
                 <div className='tracks-show-outer-hed-container'>
                     
                     <div className='tracks-show-hed-container' >
                         <div className='tracks-show-hed-img-container' >
-                            <img className='tracks-show-img' src={window.macMillerPrograms} />
+                            <img className='tracks-show-img' src={this.props.track.image_url} />
 
                             <div className='tracks-show-hed-words-container' >
                                 <div className='tracks-show-title' >{this.props.track.title}</div>
