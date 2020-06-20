@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-
+import AnnotationsForm from './annotations_form';
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -38,8 +38,12 @@ class AnnotationsShow extends React.Component {
     openAnnotation() {
         // debugger;
         return (
-            <div className='annotation-box-container' >
-                
+
+
+        <div className='annotation-box-container' >
+                <div>
+                    {<AnnotationsForm />}
+                </div>  
                 <div className='annotation-box' >
                     <div className='annotation-hed' >Ingenious Annotation</div>
                     <br/>
