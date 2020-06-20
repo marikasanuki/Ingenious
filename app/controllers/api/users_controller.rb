@@ -6,7 +6,20 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render 'api/users/show'
         else    
-            render json: @user.errors.full_messages, status: 422
+            error_message = []
+            # debugger
+                @user.errors.full_messages.each do |error|
+                    if error == "Username can't be blank"
+                        error_message << "Username can't be blank"
+                    elsif error == "Password is too short (minimum is 4 characters)" 
+                        error_message << 'Enter a password'
+                    elsif error == "Username has already been taken"
+                        error_message << 'That username is taken!'
+                    else
+                        error_message << error
+                    end
+                end
+            render json: error_message, status: 401
         end
     end
 

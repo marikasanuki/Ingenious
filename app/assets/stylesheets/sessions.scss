@@ -89,7 +89,9 @@
     border-radius: 2px;
 }
 
-
+.session-submit-button:focus {
+    outline-width: 0;
+}
 
 .session-demo-user-button {
     margin-left: auto;

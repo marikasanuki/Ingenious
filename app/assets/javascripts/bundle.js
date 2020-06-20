@@ -646,6 +646,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-brands-svg-icons */ "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -667,6 +668,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -714,11 +716,12 @@ var Footer = /*#__PURE__*/function (_React$Component) {
         className: "footer-icon",
         icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faSpotify"]
       })), "\xA0\xA0\xA0\xA0\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://twitter.com/marikasanuki?lang=en",
+        className: "nav-bar-item",
+        href: "https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com",
         target: "blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         className: "footer-icon",
-        icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTwitter"]
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEnvelope"]
       }), "\xA0\xA0\xA0\xA0\xA0\xA0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-gen"
       }, "Ingenious is a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -850,6 +853,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-brands-svg-icons */ "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -871,6 +875,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -914,9 +919,9 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "nav-bar-item"
       }, "\xA0|\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-bar-item",
-        href: "https://teespring.com/stores/genius-merch",
+        href: "https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow",
         target: "blank"
-      }, "SHOP")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "SPOTIFY")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-bar-item"
       }, "\xA0|\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-bar-item",
@@ -941,11 +946,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faSpotify"]
       })), "\xA0\xA0\xA0\xA0\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-bar-item",
-        href: "https://twitter.com/marikasanuki?lang=en",
+        href: "https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com",
         target: "blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         className: "fa-icon",
-        icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTwitter"]
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEnvelope"]
       }), "\xA0\xA0\xA0\xA0\xA0\xA0"))));
     }
   }]);
@@ -1467,9 +1472,17 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(TracksIndex);
 
   function TracksIndex(props) {
+    var _this;
+
     _classCallCheck(this, TracksIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      limit: 10
+    };
+    _this.onLoadMore = _this.onLoadMore.bind(_assertThisInitialized(_this));
+    _this.revealMoreTracks = _this.revealMoreTracks.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(TracksIndex, [{
@@ -1478,14 +1491,19 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
       // console.log('Component mounted');
       // debugger;
       this.props.fetchTracks();
-    } // urlFormatter() {
-    // this.urlFormatter = this.urlFormatter.bind(this);
-    // urlFormatter('Programs' + 'Mac20Miller')
-    // }    
-
+    }
   }, {
-    key: "render",
-    value: function render() {
+    key: "onLoadMore",
+    value: function onLoadMore() {
+      console.log(this.state);
+      debugger;
+      this.setState({
+        limit: this.state.limit + 10
+      });
+    }
+  }, {
+    key: "revealMoreTracks",
+    value: function revealMoreTracks() {
       var tracks = this.props.tracks; // console.log('hit render function in tracks index comp');
       // debugger;
 
@@ -1498,11 +1516,9 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
         className: "tracks-index-subhead"
       }, "TRENDING ON INGENIOUS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
         className: "tracks-index-ol"
-      }, tracks.map(function (ele, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"] // key={ele.id}
-        , {
-          url: ele.id // url={ele.title + ele.artist}
-          ,
+      }, tracks.slice(0, this.state.limit).map(function (ele, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tracks_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          url: ele.id,
           trackNum: trackNum + i,
           title: ele.title,
           artist: ele.artist,
@@ -1513,6 +1529,17 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
           total_views: ele.total_views
         });
       })));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var tracks = this.props.tracks;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.revealMoreTracks(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "load-more-button-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.onLoadMore,
+        className: "load-more-button"
+      }, "LOAD MORE")));
     }
   }]);
 
@@ -1631,7 +1658,7 @@ var TracksIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "tracks-index-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {

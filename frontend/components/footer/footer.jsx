@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faTwitter, faSpotify } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 
 class Footer extends React.Component {
@@ -27,8 +28,8 @@ class Footer extends React.Component {
                             <FontAwesomeIcon className='footer-icon' icon={faSpotify} />
                         </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a  href="https://twitter.com/marikasanuki?lang=en" target="blank" >
-                            <FontAwesomeIcon className='footer-icon' icon={faTwitter} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a className='nav-bar-item' href="https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com" target="blank" >
+                            <FontAwesomeIcon className='footer-icon' icon={faEnvelope} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </li>
                 </ul>
