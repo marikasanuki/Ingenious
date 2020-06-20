@@ -33,13 +33,17 @@ class LoginForm extends React.Component {
 
     renderErrors() {
         return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
+            <div>
+                <div className='error-whoops-hed' >Whoops</div>
+                <div className='error-whoops-subhed' >There must be some mistake</div>
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
 
@@ -48,7 +52,7 @@ class LoginForm extends React.Component {
             <div className='signup-form-container'>
                     <div className='signup-form-header' >{this.props.formHeader}</div>
                 <form onSubmit={this.handleSubmit} className='signup-form-box' >
-                    <div className='error-messages'>{this.renderErrors()}</div>
+                    {this.props.errors.length ? <div className='error-messages'>{this.renderErrors()}</div> : null}
                     <label className='signup-label' >Ingenious Nickname
                         <br />
                         <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />

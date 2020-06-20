@@ -26,7 +26,8 @@ class SignupForm extends React.Component {
         return(
             <form onSubmit={this.handleSubmit} className='signup-form-box' >
 
-                <div className='error-messages'>{this.renderErrors()}</div>
+                {this.props.errors.length ? <div className='error-messages'>{this.renderErrors()}</div> : null }
+                
 
                 <label className='signup-label' >Ingenious Nickname
                         <br />
@@ -79,14 +80,17 @@ class SignupForm extends React.Component {
         // console.log(errors);
         // debugger;
         return (
-            <ul>
-                
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
+            <div>
+                <div className='error-whoops-hed' >Whoops</div>
+                <div className='error-whoops-subhed'>There must be some mistake</div>
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
 
