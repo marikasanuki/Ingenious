@@ -2,6 +2,8 @@
 
 ![alt text](https://ingenious-prod.s3.amazonaws.com/ingenious-logo.png "Ingenious")
 
+### [Ingenious Live Link](https://ingenious-app.herokuapp.com/#/)
+
 [Ingenious](https://ingenious-app.herokuapp.com/#/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
 Users can browse a curated selection of songs, their lyrics, and annotated notes and interpretations of the tracks' lyrics. 
@@ -17,7 +19,6 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 * Redux
 
 ### Cloud
-* Amazon Web Services
 * Heroku
 
 ## Features
@@ -61,10 +62,4 @@ https://ingenious-prod.s3.amazonaws.com/anno-new.gif
 ## Future Features
 * Signed in users can contribute their own annotations as well as update and delete them.
 
-
 Not for commercial use. I do not own the rights to any featured music or lyrics.
-
-<<<<<<< HEAD
-Not for commercial use. I do not own the rights to any featured music or lyrics.
-=======
->>>>>>> annotations

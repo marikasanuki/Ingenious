@@ -7,7 +7,7 @@ const annotationsReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_ANNOTATION:
             // console.log('hit annotations reducer (RECEIVE_ANNOTATION)')
-            // debugger;   
+            // // debugger;   
             return Object.assign({}, action.annotation);
         case RECEIVE_TRACK: 
             return Object.assign({}, action.track.annotations);

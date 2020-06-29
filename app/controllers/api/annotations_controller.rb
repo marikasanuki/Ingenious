@@ -5,12 +5,15 @@ class Api::AnnotationsController < ApplicationController
     def create
         @annotation = Annotation.new(annotation_params)
         @annotation.author_id = current_user.id
+        # debugger
         # debugger (check params if @annotation has track_id already)
         @annotation.track_id = Track.find(params[:track_id])
 
         if @annotation.save!
             render 'api/annotations/show'
         else
+            # p @annotation.errors.full_messages
+            # debugger
             render json: @annotation.errors.full_messages, status: 422
         end
     end

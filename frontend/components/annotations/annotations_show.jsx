@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import AnnotationsForm from './annotations_form';
+import SelectionHighlighter from "react-highlight-selection";
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -20,11 +20,32 @@ class AnnotationsShow extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.openAnnotation = this.openAnnotation.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
+        this.selectionHandler = this.selectionHandler.bind(this);
+
+
+ 
     }
 
     componentDidMount() {
-        // console.log('annotationsShow component did mount')
-        // debugger;
+        console.log('annotationsShow component did mount')
+        debugger;
+        // this.props.createAnnotation(["test"]);
+
+        const { lyrics } = this.props;
+        console.log(lyrics);            
+        const text = lyrics;
+                // debugger;
+        return (
+        <div className="anno-show-lyrics">
+
+            <SelectionHighlighter
+            text={text}
+            selectionHandler={this.selectionHandler}
+            customClass="custom-class"
+            />
+        </div>
+        )
+        
         // this.props.fetchAnnotation();
         // this.props.fetchAnnotation(this.props.track.annotation).then(data => {
         //     this.setState({savedAnnotations: data})
@@ -36,32 +57,38 @@ class AnnotationsShow extends React.Component {
     }
 
     openAnnotation() {
-        // debugger;
+        
+        console.log("annotations show openAnnotation function")
+        debugger;
         return (
 
 
-        <div className='annotation-box-container' >
+        <div className='annotation-box-container'>
                 <div>
-                    {<AnnotationsForm />}
+                    {<AnnotationsForm 
+                        track={this.props.track}
+                        annotations={this.props.annotations}
+                        createAnnotation={this.props.createAnnotation}            
+                    />}
                 </div>  
-                <div className='annotation-box' >
-                    <div className='annotation-hed' >Ingenious Annotation</div>
+                <div className='annotation-box'>
+                    <div className='annotation-hed'>Ingenious Annotation</div>
                     <br/>
                     {this.props.annotations[this.props.track.id].annotation}
                 </div>
 
-                {/* <ul className='annotation-box' >{
+                {/* <ul className='annotation-box'>{
                         this.props.annotations.map((anno, i) =>
 
-                        <li key={i} >
+                        <li key={i}>
                             {anno.annotation}
                         </li>
                 )}</ul> */}
 
-                {/* <ul className='annotation-box' >{
+                {/* <ul className='annotation-box'>{
                     this.state.track.annotations.map((ele, i) => 
                     
-                    <li key={i} >
+                    <li key={i}>
                         {ele}
                     </li>
                 )}</ul> */}
@@ -76,15 +103,41 @@ class AnnotationsShow extends React.Component {
         )
     }
 
+    selectionHandler(selection) {
+        console.log(selection);
+    }
+
     render() {
         // console.log('hit render function inside annotations show')
-        // debugger;
+        // // debugger;
         // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
-        return (
-                <div className='anno-show-lyrics-container'>
-                    <div className='anno-show-mini-title' >{this.props.track.title} lyrics</div>
 
-                    <div className='anno-show-lyrics' >{this.props.lyrics}</div>
+            const { lyrics } = this.props;
+
+            console.log('render inside anno show');            
+            const text = lyrics;
+            // console.log(text);
+            // console.log("test");
+            // debugger;
+
+        return (
+                
+                <div className='anno-show-lyrics-container'>
+                    <div className='anno-show-mini-title'>
+                        {this.props.track.title} lyrics
+                    </div>
+
+                    <div className='anno-show-lyrics'>
+                        {this.props.lyrics}
+                        {/* <SelectionHighlighter
+                            text={text}
+                            selectionHandler={this.selectionHandler}
+                            customClass="custom-class"
+                        /> */}
+                    </div>
+                    
+
+
                     <span className='anno-button-highlight'></span>   
                     <span className='anno-button'
                         onClick={() => this.state.annotationVisible ?
@@ -95,8 +148,8 @@ class AnnotationsShow extends React.Component {
                 
                                  
 
-                     <div className='anno-show-cont' >
-                        {/* <div className='tracks-show-lyrics' >{this.props.lyrics}</div>    */}
+                     <div className='anno-show-cont'>
+                        {/* <div className='tracks-show-lyrics'>{this.props.lyrics}</div>    */}
                         
                         <br />
                         {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }

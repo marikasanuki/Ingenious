@@ -1,5 +1,5 @@
 export const fetchAnnotation = (annotation) => {
-    // console.log('hit fetchAnnotation api util');
+    console.log('hit fetchAnnotation api util');
     // debugger;
     return $.ajax({
         method: 'GET',
@@ -8,7 +8,7 @@ export const fetchAnnotation = (annotation) => {
 };
 
 export const createAnnotation = (annotation) => {
-    // console.log('hit createAnnotation api util');
+    console.log('hit createAnnotation api util');
     // debugger;
     return $.ajax({
         method: 'POST',
@@ -18,7 +18,7 @@ export const createAnnotation = (annotation) => {
 };
 
 export const updateAnnotation = (annotation) => {
-    // console.log('hit updateAnnotation api util');
+    console.log('hit updateAnnotation api util');
     // debugger;
     return $.ajax({
         method: 'PATCH',
@@ -28,7 +28,7 @@ export const updateAnnotation = (annotation) => {
 };
 
 export const destroyAnnotation = (annotation) => {
-    // console.log('hit destroyAnnotation api util');
+    console.log('hit destroyAnnotation api util');
     // debugger;
     return $.ajax({
         method: 'DELETE',

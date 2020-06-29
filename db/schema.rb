@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_200804) do
     t.integer "track_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_annotations_on_author_id", unique: true
-    t.index ["track_id"], name: "index_annotations_on_track_id", unique: true
   end
 
   create_table "tracks", force: :cascade do |t|

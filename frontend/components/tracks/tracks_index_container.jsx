@@ -4,7 +4,7 @@ import { fetchTracks } from '../../actions/track_actions';
 
 const mapStateToProps = (state) => {
     // console.log('hit mstp in tracks index container');
-    // debugger;
+    // // debugger;
 
     return ({
         tracks: Object.values(state.entities.tracks),

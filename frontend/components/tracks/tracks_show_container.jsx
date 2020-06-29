@@ -2,20 +2,27 @@ import { connect } from 'react-redux';
 import TracksShow from './tracks_show';
 import { fetchTrack } from '../../actions/track_actions';
 
+
+import { fetchAnnotation, createAnnotation, updateAnnotation } from '../../actions/annotation_actions';
+
 const mapStateToProps = (state, ownProps) => {
         // console.log('hit mstp in tracks show container')
-        // debugger;
+        // // debugger;
     return ({
-        // track: state.entities.tracks[ownProps.match.params.id], 
         track: state.entities.tracks, 
-        // trackId: state.entities.tracks[ownProps.match.params.id].id,
         annotations: state.entities.annotations,
     })
 };
 
 const mapDispatchToProps = (dispatch) => {
+        console.log('hit mdtp in tracks show container')
+        debugger;
     return ({
-        fetchTrack: (key) => dispatch(fetchTrack(key))
+        fetchTrack: (key) => dispatch(fetchTrack(key)),
+
+        fetchAnnotation: (annotation) => dispatch(fetchAnnotation(annotation)),
+        createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
+        updateAnnotation: (annotation) => dispatch(updateAnnotation(annotation)),
     })
 };
 
