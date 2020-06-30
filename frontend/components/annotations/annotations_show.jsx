@@ -28,7 +28,7 @@ class AnnotationsShow extends React.Component {
 
     componentDidMount() {
         console.log('annotationsShow component did mount')
-        debugger;
+        // debugger;
         // this.props.createAnnotation(["test"]);
 
         const { lyrics } = this.props;
@@ -59,7 +59,7 @@ class AnnotationsShow extends React.Component {
     openAnnotation() {
         
         console.log("annotations show openAnnotation function")
-        debugger;
+        // debugger;
         return (
 
 

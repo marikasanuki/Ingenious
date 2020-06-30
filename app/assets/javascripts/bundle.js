@@ -309,6 +309,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -342,10 +344,13 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, AnnotationsForm);
 
     _this = _super.call(this, props);
-    _this.state = {// id: this.props.annotation.id,
-      // annotation: '',
-      // author_id: this.props.annotation.author_id,
-      // track_id: this.props.annotation.track_id,
+    console.log(_this.props);
+    debugger;
+    _this.state = {
+      id: '',
+      annotation: '',
+      author_id: 1,
+      track_id: 1
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -358,19 +363,26 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       console.log("inside handleSubmit function of anno form");
-      console.log(e.target.value);
-      debugger;
       var anno = Object.assign({}, this.state); // debugger;
 
       this.props.createAnnotation(anno).then(function () {
-        return _this2.props.history.push('/');
+        return _this2.props.history.push("/tracks/".concat(_this2.state.track_id));
       });
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_defineProperty({}, field, e.target.value));
+      };
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props); // debugger
-
+      // console.log(this.props)
+      // debugger
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -380,7 +392,9 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         className: "anno-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "anno-textarea",
-        placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!"
+        placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
+        value: this.state.annotation,
+        onChange: this.update('annotation')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "anno-submit-button",
         type: "submit",
@@ -468,8 +482,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _createClass(AnnotationsShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('annotationsShow component did mount');
-      debugger; // this.props.createAnnotation(["test"]);
+      console.log('annotationsShow component did mount'); // debugger;
+      // this.props.createAnnotation(["test"]);
 
       var lyrics = this.props.lyrics;
       console.log(lyrics);
@@ -494,8 +508,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "openAnnotation",
     value: function openAnnotation() {
-      console.log("annotations show openAnnotation function");
-      debugger;
+      console.log("annotations show openAnnotation function"); // debugger;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1774,8 +1788,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       console.log('tracks show component mounted'); // debugger;
 
-      this.props.fetchTrack(this.props.match.params.id);
-      this.props.createAnnotation(this.props.match.params.id);
+      this.props.fetchTrack(this.props.match.params.id); // this.props.createAnnotation(this.props.match.params.id);
     }
   }, {
     key: "render",
@@ -1851,8 +1864,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  console.log('hit mdtp in tracks show container');
-  debugger;
+  console.log('hit mdtp in tracks show container'); // debugger;
+
   return {
     fetchTrack: function fetchTrack(key) {
       return dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTrack"])(key));

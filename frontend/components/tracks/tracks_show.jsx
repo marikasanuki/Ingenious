@@ -28,7 +28,7 @@ class TracksShow extends React.Component {
         console.log('tracks show component mounted');
         // debugger;
         this.props.fetchTrack(this.props.match.params.id);
-        this.props.createAnnotation(this.props.match.params.id);
+        // this.props.createAnnotation(this.props.match.params.id);
     }
 
 

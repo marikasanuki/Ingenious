@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
         console.log('hit mdtp in tracks show container')
-        debugger;
+        // debugger;
     return ({
         fetchTrack: (key) => dispatch(fetchTrack(key)),
 
