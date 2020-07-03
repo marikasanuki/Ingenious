@@ -1,4 +1,4 @@
-json.extract! @annotation, :id, :annotation, :author_id, :track_id
+json.extract! @annotation, :id, :anno_body, :author_id, :track_id, :start_idx, :end_idx
 
 
 # json.annotations do

@@ -26,8 +26,9 @@ class TracksShow extends React.Component {
 
     componentDidMount(){
         console.log('tracks show component mounted');
-        // debugger;
+
         this.props.fetchTrack(this.props.match.params.id);
+        debugger;
         // this.props.createAnnotation(this.props.match.params.id);
     }
 
@@ -35,8 +36,8 @@ class TracksShow extends React.Component {
 
     render() {
         console.log('hit render function inside tracks show')
-        // console.log(this.props.track)
-        // // debugger;
+        console.log(this.props.track)
+         debugger;
         return (
           <div className="tracks-show-container">
             <div className="tracks-show-outer-hed-container">

@@ -3,15 +3,17 @@
 # Table name: annotations
 #
 #  id         :bigint           not null, primary key
-#  annotation :text             not null
+#  anno_body  :text             not null
 #  author_id  :integer          not null
 #  track_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  start_idx  :integer
+#  end_idx    :integer
 #
 class Annotation < ApplicationRecord
 
-    validates :annotation, :author_id, :track_id, presence: true
+    validates :anno_body, :author_id, :track_id, presence: true
 
     belongs_to :user, 
         foreign_key: :author_id, 

@@ -3,11 +3,13 @@
 # Table name: annotations
 #
 #  id         :bigint           not null, primary key
-#  annotation :text             not null
+#  anno_body  :text             not null
 #  author_id  :integer          not null
 #  track_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  start_idx  :integer
+#  end_idx    :integer
 #
 require 'test_helper'
 

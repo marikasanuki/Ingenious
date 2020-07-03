@@ -48,8 +48,7 @@ class Api::AnnotationsController < ApplicationController
     private
 
     def annotation_params
-        params.require(:annotation).permit(:annotation, :author_id, :track_id)
-
+        params.require(:annotation).permit(:anno_body, :author_id, :track_id, :start_idx, :end_idx)
     end
 
 end

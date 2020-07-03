@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_200804) do
+ActiveRecord::Schema.define(version: 2020_07_03_175425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,13 @@ ActiveRecord::Schema.define(version: 2020_06_13_200804) do
   end
 
   create_table "annotations", force: :cascade do |t|
-    t.text "annotation", null: false
+    t.text "anno_body", null: false
     t.integer "author_id", null: false
     t.integer "track_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "start_idx"
+    t.integer "end_idx"
   end
 
   create_table "tracks", force: :cascade do |t|

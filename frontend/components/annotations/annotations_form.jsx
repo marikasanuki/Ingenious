@@ -21,7 +21,7 @@ class AnnotationsForm extends React.Component {
         e.preventDefault();
         console.log("inside handleSubmit function of anno form");        
         const anno = Object.assign({}, this.state);
-        // debugger;
+         debugger;
         this.props.createAnnotation(anno)
             .then(() => this.props.history.push(`/tracks/${this.state.track_id}`));
     }
@@ -36,7 +36,7 @@ class AnnotationsForm extends React.Component {
 
     render() { 
         // console.log(this.props)
-        // debugger
+         debugger
         return (
             <div className='anno-form-container'>
                 <div className='anno-border-bar'></div>

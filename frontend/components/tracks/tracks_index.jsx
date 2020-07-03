@@ -11,13 +11,13 @@ class TracksIndex extends React.Component {
 
     componentDidMount(){
         // console.log('Component mounted');
-        // // debugger;
+        //  debugger;
         this.props.fetchTracks();
     }
 
     onLoadMore(){
         console.log(this.state);
-        // debugger;
+         debugger;
         this.setState({
             limit: this.state.limit + 10
         });
@@ -26,7 +26,7 @@ class TracksIndex extends React.Component {
     revealMoreTracks(){
         const { tracks } = this.props;
         // console.log('hit render function in tracks index comp');
-        // // debugger;
+        //  debugger;
         const trackNum = 1;
         return (
             <div className='tracks-index-container'>

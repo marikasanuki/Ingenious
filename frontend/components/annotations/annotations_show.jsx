@@ -28,21 +28,21 @@ class AnnotationsShow extends React.Component {
 
     componentDidMount() {
         console.log('annotationsShow component did mount')
-        // debugger;
+         debugger;
         // this.props.createAnnotation(["test"]);
 
         const { lyrics } = this.props;
         console.log(lyrics);            
         const text = lyrics;
-                // debugger;
+                 debugger;
         return (
         <div className="anno-show-lyrics">
-
+{/* 
             <SelectionHighlighter
             text={text}
             selectionHandler={this.selectionHandler}
             customClass="custom-class"
-            />
+            /> */}
         </div>
         )
         
@@ -59,7 +59,7 @@ class AnnotationsShow extends React.Component {
     openAnnotation() {
         
         console.log("annotations show openAnnotation function")
-        // debugger;
+         debugger;
         return (
 
 
@@ -109,7 +109,7 @@ class AnnotationsShow extends React.Component {
 
     render() {
         // console.log('hit render function inside annotations show')
-        // // debugger;
+        //  debugger;
         // const { lyrics, handleMouseDown, handleMouseUp } = this.props;
 
             const { lyrics } = this.props;
@@ -118,7 +118,7 @@ class AnnotationsShow extends React.Component {
             const text = lyrics;
             // console.log(text);
             // console.log("test");
-            // debugger;
+             debugger;
 
         return (
                 

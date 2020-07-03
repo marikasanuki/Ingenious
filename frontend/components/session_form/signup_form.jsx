@@ -71,14 +71,14 @@ class SignupForm extends React.Component {
 
     demoUser(e) {
         e.preventDefault();
-        // // debugger;
+        //  debugger;
         this.props.login({ username: 'marikasanuki', password: 'marikasanuki'})
             .then(() => this.props.history.push('/'));
     }
 
     renderErrors() {
         // console.log(errors);
-        // // debugger;
+        //  debugger;
         return (
             <div>
                 <div className='error-whoops-hed' >Whoops</div>

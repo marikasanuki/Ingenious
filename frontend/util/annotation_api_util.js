@@ -1,37 +1,37 @@
 export const fetchAnnotation = (annotation) => {
     console.log('hit fetchAnnotation api util');
-    // debugger;
+     debugger;
     return $.ajax({
         method: 'GET',
-        url: `/api/tracks/${annotation.track_id}/annotations/${annotation.id}`,
+        url: `/api/annotations/${annotation.id}`,
     });
 };
 
 export const createAnnotation = (annotation) => {
     console.log('hit createAnnotation api util');
-    // debugger;
+     debugger;
     return $.ajax({
         method: 'POST',
-        url: `/api/tracks/${annotation.track_id}/annotations`,
+        url: `/api/annotations`,
         data: { annotation }
     });
 };
 
 export const updateAnnotation = (annotation) => {
     console.log('hit updateAnnotation api util');
-    // debugger;
+     debugger;
     return $.ajax({
         method: 'PATCH',
-        url: `/api/tracks/${annotation.track_id}/annotations/${annotation.id}`,
+        url: `/api/annotations/${annotation.id}`,
         data: { annotation }
     });
 };
 
 export const destroyAnnotation = (annotation) => {
     console.log('hit destroyAnnotation api util');
-    // debugger;
+     debugger;
     return $.ajax({
         method: 'DELETE',
-        url: `/api/tracks/${annotation.track_id}/annotations/${annotation.id}`,
+        url: `/api/annotations/${annotation.id}`,
     });
 };
