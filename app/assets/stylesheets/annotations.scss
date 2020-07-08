@@ -84,6 +84,7 @@
     font-family: 'Muli', sans-serif;
     margin-top: 164px;
     margin-left: 10px;   
+    cursor: pointer;
     // background: transparent;
     // border: none !important;
     // font-size:0;
@@ -170,4 +171,18 @@
 
 .custom-class {
     background-color: #e06f6f;    
+}
+
+.unannotated-lyric {
+
+}
+
+.highlighted-annotated-lyric {
+    background-color: rgb(213, 213, 213);
+    user-select: none;
+    cursor: pointer;
+}
+
+.highlighted-annotated-lyric:hover {
+    background-color: rgb(253, 255, 111);
 }

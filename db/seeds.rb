@@ -2477,8 +2477,8 @@ Aah"
 
 ann0 = Annotation.create!(annotation: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming.
     
-    'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1)
-ann1 = Annotation.create!(annotation: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2)
+    'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1, start_idx: 8, end_idx: 37)
+ann1 = Annotation.create!(annotation: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2, start_idx: 3, end_idx: 15)
 ann2 = Annotation.create!(annotation: "Adventure. Excitement. A Jedi craves not these things.", author_id: 3, track_id: 3)
 ann3 = Annotation.create!(annotation: "When nine hundred years old you reach, look as good you will not.", author_id: 4, track_id: 4)
 ann4 = Annotation.create!(annotation: "Fear is the path to the dark side … fear leads to anger … anger leads to hate … hate leads to suffering.", author_id: 5, track_id: 5)

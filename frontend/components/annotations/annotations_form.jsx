@@ -8,9 +8,11 @@ class AnnotationsForm extends React.Component {
         this.state = {
 
             id: '',
-            annotation: '',
+            anno_body: '',
             author_id: 1,
             track_id: 1,
+            start_idx: 1,
+            end_idx: 10,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
