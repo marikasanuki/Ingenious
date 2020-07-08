@@ -7,11 +7,13 @@ class AnnotationsShow extends React.Component {
         super(props);
         this.state = { 
             annotationVisible: false,
+            currentAnnotationId: null,
         };
         this.handleClick = this.handleClick.bind(this);
         this.openAnnotation = this.openAnnotation.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
         this.createAnnotationForm = this.createAnnotationForm.bind(this);
+
 
         // this.handleMouseDown = this.handleMouseDown.bind(this);
         // this.handleMouseUp = this.handleMouseUp.bind(this);
@@ -53,6 +55,12 @@ class AnnotationsShow extends React.Component {
         </div>
     }
 
+
+
+    setCurrentAnnotationId(annotation_id) {
+        this.setState({ currentAnnotationId: annotation_id })
+    }
+
     openAnnotation() {
         console.log("annotationsShow openAnnotation function")
 
@@ -61,7 +69,7 @@ class AnnotationsShow extends React.Component {
                 <div className='annotation-box'>
                     <div className='annotation-hed'>Ingenious Annotation</div>
                     <br/>
-                    {this.props.annotations[1].anno_body}
+                    {this.props.annotations[this.state.currentAnnotationId].anno_body}
                 </div>
         </div>
         )
@@ -85,8 +93,6 @@ class AnnotationsShow extends React.Component {
         let prev_idx = 0;
         let uniqueKey = 0;
 
-        // console.log(annotationsArr);
-
         // const { handleMouseDown, handleMouseUp } = this.props;
         for (let i = 0; i < Object.keys(annotationsArr).length; i++) {
             const annotation = annotationsArr[i];
@@ -107,18 +113,26 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
+            // console.log(annotation.id);
+            // debugger;
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     className='highlighted-annotated-lyric'
-                    onClick={() => currentAnnotation(annotation.id) }
+                    onClick={() => 
+                        {this.setCurrentAnnotationId(annotation.id)
+                            this.state.annotationVisible ?
+                            this.setState({ annotationVisible: false }) :
+                            this.setState({ annotationVisible: true })
+                        
+                        }}
                 >
                     {slicedLyric}
                 </span>
             );
 
-                console.log('THIS IS allFormattedLyrics RN:');
-                console.log(allFormattedLyrics);
-                debugger;
+                // console.log('THIS IS allFormattedLyrics RN:');
+                // console.log(allFormattedLyrics);
+                // debugger;
 
             prev_idx = annotation.end_idx;
 
@@ -153,24 +167,10 @@ class AnnotationsShow extends React.Component {
 
                     <div className='anno-show-lyrics'>{allFormattedLyrics}</div>
 
-
-                    {/* <div className='anno-show-lyrics'>
-                        {this.props.lyrics}
-                    </div> */}
-
-
-
-                    {/* <span className='anno-button'
-                        onClick={() => this.state.annotationVisible ?
-                            this.setState({ annotationVisible: false }) :
-                            this.setState({ annotationVisible: true })}>
-                    </span>
-
                     <div className='anno-show-cont'>
                         <br />
                         {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()}
-                    </div> */}
-
+                    </div>
                 </div>
             )
         } else {

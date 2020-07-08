@@ -482,7 +482,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      annotationVisible: false
+      annotationVisible: false,
+      currentAnnotationId: null
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.openAnnotation = _this.openAnnotation.bind(_assertThisInitialized(_this));
@@ -527,6 +528,13 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       })));
     }
   }, {
+    key: "setCurrentAnnotationId",
+    value: function setCurrentAnnotationId(annotation_id) {
+      this.setState({
+        currentAnnotationId: annotation_id
+      });
+    }
+  }, {
     key: "openAnnotation",
     value: function openAnnotation() {
       console.log("annotationsShow openAnnotation function");
@@ -536,7 +544,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[1].anno_body));
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body));
     }
   }, {
     key: "hideAnnotation",
@@ -546,6 +554,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       console.log('annotationsShow inside render function'); // debugger;
 
       var _this$props = this.props,
@@ -554,8 +564,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
       var prev_idx = 0;
-      var uniqueKey = 0; // console.log(annotationsArr);
-      // const { handleMouseDown, handleMouseUp } = this.props;
+      var uniqueKey = 0; // const { handleMouseDown, handleMouseUp } = this.props;
 
       var _loop = function _loop(i) {
         var annotation = annotationsArr[i];
@@ -569,17 +578,25 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           className: "unannotated-lyric"
-        }, unannotatedSlicedLyric));
+        }, unannotatedSlicedLyric)); // console.log(annotation.id);
+        // debugger;
+
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
-            return currentAnnotation(annotation.id);
+            _this2.setCurrentAnnotationId(annotation.id);
+
+            _this2.state.annotationVisible ? _this2.setState({
+              annotationVisible: false
+            }) : _this2.setState({
+              annotationVisible: true
+            });
           }
-        }, slicedLyric));
-        console.log('THIS IS allFormattedLyrics RN:');
-        console.log(allFormattedLyrics);
-        debugger;
+        }, slicedLyric)); // console.log('THIS IS allFormattedLyrics RN:');
+        // console.log(allFormattedLyrics);
+        // debugger;
+
         prev_idx = annotation.end_idx; // console.log('THIS IS lyrics RN:');
         // console.log(lyrics);               
 
@@ -604,7 +621,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics"
-        }, allFormattedLyrics));
+        }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "anno-show-cont"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics-container"
