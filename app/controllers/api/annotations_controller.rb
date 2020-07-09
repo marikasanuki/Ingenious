@@ -6,8 +6,8 @@ class Api::AnnotationsController < ApplicationController
         @annotation = Annotation.new(annotation_params)
         @annotation.author_id = current_user.id
         # debugger
-        # debugger (check params if @annotation has track_id already)
-        @annotation.track_id = Track.find(params[:track_id])
+         #(check params if @annotation has track_id already)
+        #@annotation.track_id = Track.find(params[:track_id])
 
         if @annotation.save!
             render 'api/annotations/show'

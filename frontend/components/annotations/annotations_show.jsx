@@ -1,6 +1,6 @@
 import React from "react";
 import AnnotationsForm from './annotations_form';
-import SelectionHighlighter from "react-highlight-selection";
+// import SelectionHighlighter from "react-highlight-selection";
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -8,6 +8,11 @@ class AnnotationsShow extends React.Component {
         this.state = { 
             annotationVisible: false,
             currentAnnotationId: null,
+            start_idx: null,
+            end_idx: null,
+            highlightStart: null,
+            highlightEnd: null,
+            annotationFormVisible: false,
         };
         this.handleClick = this.handleClick.bind(this);
         this.openAnnotation = this.openAnnotation.bind(this);
@@ -15,23 +20,50 @@ class AnnotationsShow extends React.Component {
         this.createAnnotationForm = this.createAnnotationForm.bind(this);
 
 
-        // this.handleMouseDown = this.handleMouseDown.bind(this);
-        // this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
 
         console.log('annotationsShow constructor')
     }
+  
+    handleMouseDown(e){
+        this.setState({
+            highlightStart: e.target
+            //where mouse button was first pressed down (start of mousedown event)
+        })
+    }
 
-        // handleMouseUp(e){
-    //     this.setState({
-    //         highlightUp: e.target
-    //     })
-    // }
+    handleMouseUp(e){
+        console.log('this is window.focusOffset():')
+        console.log(window.focusOffset());
+        console.log('this is window.anchorOffset():')
+        console.log(window.anchorOffset());
+        debugger;
 
-    // handleMouseDown(e){
-    //     this.setState({
-    //         highlightDown: e.target
-    //     })
-    // }
+        if (window.focusOffset() > window.anchorOffset()) {
+            startPos = window.anchorOffset();
+            endPos = window.focusOffset();
+        } else {
+            startPos = window.focusOffset();
+            endPos = window.anchorOffset();
+        }
+
+
+
+        this.setState({
+            highlightEnd: e.target,
+            annotationFormVisible: true,
+            start_idx: startPos,
+            end_idx: endPos,
+            //where mouse button was released (end of mousedown event)
+
+        })
+
+
+
+
+    }
+
     
     componentDidMount() {
         console.log('annotations show component mounted');
@@ -43,19 +75,21 @@ class AnnotationsShow extends React.Component {
 
     createAnnotationForm() {
 
-        <div className='annotation-box-container'>
-            {/* THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION  */ }
-            <div>
-                        {<AnnotationsForm 
-                            track={this.props.track}
-                            annotations={this.props.annotations}
-                            createAnnotation={this.props.createAnnotation}            
-                        />}
-                    </div>  
-        </div>
+        return (
+            <div className='annotation-box-container'>
+                {/* THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION  */}
+                <div>
+                    {<AnnotationsForm
+                        track={this.props.track}
+                        annotations={this.props.annotations}
+                        createAnnotation={this.props.createAnnotation}
+                        start_idx={this.state.start_idx}
+                        end_idx={this.state.end_idx}
+                    />}
+                </div>
+            </div>
+        )
     }
-
-
 
     setCurrentAnnotationId(annotation_id) {
         this.setState({ currentAnnotationId: annotation_id })
@@ -75,14 +109,11 @@ class AnnotationsShow extends React.Component {
         )
     }
 
-
     hideAnnotation() {
         return (
             <div></div>
         )
     }
-
-
 
     render() {
         console.log('annotationsShow inside render function');        
@@ -93,9 +124,13 @@ class AnnotationsShow extends React.Component {
         let prev_idx = 0;
         let uniqueKey = 0;
 
-        // const { handleMouseDown, handleMouseUp } = this.props;
+        // debugger;
+
+        
+
         for (let i = 0; i < Object.keys(annotationsArr).length; i++) {
             const annotation = annotationsArr[i];
+            // debugger;
             const slicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             let unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
             
@@ -113,8 +148,6 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-            // console.log(annotation.id);
-            // debugger;
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     className='highlighted-annotated-lyric'
@@ -123,7 +156,6 @@ class AnnotationsShow extends React.Component {
                             this.state.annotationVisible ?
                             this.setState({ annotationVisible: false }) :
                             this.setState({ annotationVisible: true })
-                        
                         }}
                 >
                     {slicedLyric}
@@ -134,14 +166,9 @@ class AnnotationsShow extends React.Component {
                 // console.log(allFormattedLyrics);
                 // debugger;
 
-            prev_idx = annotation.end_idx;
-
-                // console.log('THIS IS lyrics RN:');
-                // console.log(lyrics);               
-
+            prev_idx = annotation.end_idx;            
 
             if (i === Object.keys(annotationsArr).length - 1) {
-
              
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
@@ -158,19 +185,28 @@ class AnnotationsShow extends React.Component {
 
         if (allFormattedLyrics.length) {
             return (
+                <div>
+                    <div className='anno-show-lyrics-container'>
 
-                <div className='anno-show-lyrics-container'>
+                        <div className='anno-show-mini-title'>
+                            {this.props.track.title} lyrics
 
-                    <div className='anno-show-mini-title'>
-                        {this.props.track.title} lyrics
+                        </div>
+
+
+                        <div className='anno-show-lyrics'>{allFormattedLyrics}</div>
+                        <div className='anno-show-cont'>
+                            <br />
+                            {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()}
+                        </div>
+
+                        <div >
+                            {this.createAnnotationForm()}
+                        </div>
+
                     </div>
 
-                    <div className='anno-show-lyrics'>{allFormattedLyrics}</div>
 
-                    <div className='anno-show-cont'>
-                        <br />
-                        {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()}
-                    </div>
                 </div>
             )
         } else {
@@ -181,14 +217,14 @@ class AnnotationsShow extends React.Component {
                         {this.props.track.title} lyrics
                     </div>
 
-                    <div className='anno-show-lyrics'>
+                    <div                                    className='anno-show-lyrics'
+                        on
+                    >
                         {this.props.lyrics}
                     </div>
                 </div>
             )
         }
-
-
     }
 };
 

@@ -6,13 +6,12 @@ class AnnotationsForm extends React.Component {
         console.log(this.props);
         debugger;
         this.state = {
-
-            id: '',
+            // id: '',
             anno_body: '',
-            author_id: 1,
-            track_id: 1,
-            start_idx: 1,
-            end_idx: 10,
+            author_id: null,
+            track_id: this.props.track.id,
+            start_idx: this.props.start_idx,
+            end_idx: this.props.end_idx,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +22,10 @@ class AnnotationsForm extends React.Component {
         e.preventDefault();
         console.log("inside handleSubmit function of anno form");        
         const anno = Object.assign({}, this.state);
-         debugger;
+
+
+        console.log(this.state);  
+        debugger;
         this.props.createAnnotation(anno)
             .then(() => this.props.history.push(`/tracks/${this.state.track_id}`));
     }
@@ -37,19 +39,31 @@ class AnnotationsForm extends React.Component {
     }
 
     render() { 
-        // console.log(this.props)
-         debugger
+        console.log(this.props);
+        console.log(this.state);
+
+        debugger;
         return (
             <div className='anno-form-container'>
                 <div className='anno-border-bar'></div>
                 <form onSubmit={this.handleSubmit} className='anno-form'>
-                    <textarea className='anno-textarea' placeholder="Don't just put the lyric in your own words—drop some knowledge!"
-                    value={this.state.annotation}
-                    onChange={this.update('annotation')}
-
-                    
-                    
+                    <textarea 
+                        className='anno-textarea'
+                        placeholder="Don't just put the lyric in your own words—drop some knowledge!"
+                        value={this.state.anno_body}
+                        onChange={this.update('anno_body')}
                     />
+                    <input 
+                        type='integer' 
+                        value={this.state.start_idx}
+                        onChange={this.update('start_idx')} 
+                        />
+                    <input
+                        type='integer'
+                        value={this.state.end_idx}
+                        onChange={this.update('end_idx')}
+                    />
+                    
                     <br/>
                     <input className="anno-submit-button" type='submit' value={'SAVE'}/>
                 </form>
