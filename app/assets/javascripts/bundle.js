@@ -361,48 +361,60 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, AnnotationsForm);
 
     _this = _super.call(this, props);
-    console.log(_this.props);
-    debugger;
     _this.state = {
       // id: '',
-      anno_body: '',
-      author_id: null,
-      track_id: _this.props.track.id,
-      start_idx: _this.props.start_idx,
-      end_idx: _this.props.end_idx
+      anno_body: '' // author_id: null,
+      // track_id: this.props.track.id,
+      // start_idx: null,
+      // end_idx: null,
+
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      console.log("inside handleSubmit function of anno form");
-      var anno = Object.assign({}, this.state);
-      console.log(this.state);
-      debugger;
-      this.props.createAnnotation(anno).then(function () {
-        return _this2.props.history.push("/tracks/".concat(_this2.state.track_id));
-      });
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log("anno form, inside componentDidMount function");
     }
   }, {
-    key: "update",
-    value: function update(field) {
-      var _this3 = this;
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      // e.preventDefault();
+      console.log("anno form, inside handleSubmit function"); // console.log(this.props)
 
+      var newAnnoInfo = {
+        track_id: this.props.track.id,
+        start_idx: this.props.start_idx,
+        end_idx: this.props.end_idx,
+        anno_body: this.state.anno_body
+      };
+      var anno = Object.assign({}, newAnnoInfo);
+      console.log(this.props);
+      console.log(anno);
+      debugger;
+      this.props.createAnnotation(anno); // .then(() => this.props.history.push('/'));
+      // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(field) {
+      var _this2 = this;
+
+      console.log("anno form, inside handleInput function");
       return function (e) {
-        _this3.setState(_defineProperty({}, field, e.target.value));
+        _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
-      console.log(this.state);
+      console.log("anno form, inside render function"); // console.log("THIS.PROPS:");    
+      // console.log(this.props);
+      // console.log("THIS.STATE:");
+      // console.log(this.state);
+
       debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-form-container"
@@ -415,15 +427,19 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         className: "anno-textarea",
         placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
         value: this.state.anno_body,
-        onChange: this.update('anno_body')
+        onChange: this.handleInput('anno_body')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
-        value: this.state.start_idx,
-        onChange: this.update('start_idx')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.track.id,
+        onChange: this.handleInput('track_id')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
-        value: this.state.end_idx,
-        onChange: this.update('end_idx')
+        value: this.props.start_idx,
+        onChange: this.handleInput('start_idx')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "integer",
+        value: this.props.end_idx,
+        onChange: this.handleInput('end_idx')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "anno-submit-button",
         type: "submit",
@@ -452,6 +468,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _annotations_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form */ "./frontend/components/annotations/annotations_form.jsx");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -477,6 +495,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
  // import SelectionHighlighter from "react-highlight-selection";
 
+
+
 var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _inherits(AnnotationsShow, _React$Component);
 
@@ -489,12 +509,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      annotationVisible: false,
       currentAnnotationId: null,
       start_idx: null,
       end_idx: null,
       highlightStart: null,
       highlightEnd: null,
+      annotationVisible: false,
       annotationFormVisible: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
@@ -510,27 +530,35 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _createClass(AnnotationsShow, [{
     key: "handleMouseDown",
     value: function handleMouseDown(e) {
+      console.log('inside handleMouseDown ');
       this.setState({
-        highlightStart: e.target //where mouse button was first pressed down (start of mousedown event)
+        highlightStart: e.target,
+        annotationFormVisible: false //where mouse button was first pressed down (start of mousedown event)
 
       });
     }
   }, {
     key: "handleMouseUp",
     value: function handleMouseUp(e) {
-      console.log('this is window.focusOffset():');
-      console.log(window.focusOffset());
-      console.log('this is window.anchorOffset():');
-      console.log(window.anchorOffset());
-      debugger;
+      // debugger;
+      // console.log('this is window.getSelection().focusOffset):')
+      // console.log(window.getSelection().focusOffset);
+      // console.log('this is window.getSelection().anchorOffset:')
+      // console.log(window.getSelection().anchorOffset);
+      // debugger;
+      var startPos = 0;
+      var endPos = 0;
 
-      if (window.focusOffset() > window.anchorOffset()) {
-        startPos = window.anchorOffset();
-        endPos = window.focusOffset();
+      if (window.getSelection().focusOffset > window.getSelection().anchorOffset) {
+        startPos = window.getSelection().anchorOffset;
+        endPos = window.getSelection().focusOffset;
       } else {
-        startPos = window.focusOffset();
-        endPos = window.anchorOffset();
-      }
+        startPos = window.getSelection().focusOffset;
+        endPos = window.getSelection().anchorOffset;
+      } // console.log(startPos);
+      // console.log(endPos);
+      // debugger;
+
 
       this.setState({
         highlightEnd: e.target,
@@ -543,7 +571,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('annotations show component mounted');
+      console.log('annotations show component mounted'); // document.addEventListener('click', this.handleClickOutside, true);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {// document.removeEventListener('click', this.handleClickOutside, true);
     }
   }, {
     key: "handleClick",
@@ -553,15 +585,19 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "createAnnotationForm",
     value: function createAnnotationForm() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-box-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        track: this.props.track,
-        annotations: this.props.annotations,
-        createAnnotation: this.props.createAnnotation,
-        start_idx: this.state.start_idx,
-        end_idx: this.state.end_idx
-      })));
+      // THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION 
+      return (
+        /*#__PURE__*/
+        // <div className='annotation-box-container'>
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          track: this.props.track,
+          annotations: this.props.annotations,
+          createAnnotation: this.props.createAnnotation,
+          start_idx: this.state.start_idx,
+          end_idx: this.state.end_idx
+        })) // </div>
+
+      );
     }
   }, {
     key: "setCurrentAnnotationId",
@@ -600,7 +636,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
       var prev_idx = 0;
-      var uniqueKey = 0; // debugger;
+      var uniqueKey = 0;
 
       var _loop = function _loop(i) {
         var annotation = annotationsArr[i]; // debugger;
@@ -620,11 +656,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           key: uniqueKey++,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
-            _this2.setCurrentAnnotationId(annotation.id);
+            _this2.setCurrentAnnotationId(annotation.id); // this.state.annotationVisible ?
+            // this.setState({ annotationVisible: false }) :
 
-            _this2.state.annotationVisible ? _this2.setState({
-              annotationVisible: false
-            }) : _this2.setState({
+
+            _this2.setState({
               annotationVisible: true
             });
           }
@@ -654,10 +690,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "anno-show-lyrics"
+          className: "anno-show-lyrics",
+          onMouseDown: this.handleMouseDown,
+          onMouseUp: this.handleMouseUp
         }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.createAnnotationForm())));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation(), this.state.annotationFormVisible ? this.createAnnotationForm() : this.hideAnnotation())));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics-container"
@@ -665,7 +703,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics",
-          on: true
+          onMouseDown: this.handleMouseDown,
+          onMouseUp: this.handleMouseUp
         }, this.props.lyrics));
       }
     }
@@ -675,9 +714,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); // handleMouseDown={this.handleMouseDown}
-// handleMouseUp={this.handleMouseUp}
-// this.props.createAnnotation(this.props.match.params.id);
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow);
 
 /***/ }),
 
