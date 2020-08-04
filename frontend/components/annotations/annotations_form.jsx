@@ -18,16 +18,13 @@ class AnnotationsForm extends React.Component {
 
     componentDidMount() {
 
-        console.log("anno form, inside componentDidMount function");
+        // console.log("anno form, inside componentDidMount function");
 
     }
 
     handleSubmit(e){
-        // e.preventDefault();
-
-
+        e.preventDefault();
         console.log("anno form, inside handleSubmit function");        
-        // console.log(this.props)
 
         let newAnnoInfo = {
             track_id: this.props.track.id,
@@ -40,13 +37,21 @@ class AnnotationsForm extends React.Component {
         console.log(this.props);
         console.log(anno);
         debugger;
-        this.props.createAnnotation(anno);
+        this.props.createAnnotation(anno)
+            .then (
+                
+                (res) => {
+                    // debugger;
+                    return this.props.setCurrentAnnotationId(res.annotation.id)
+            
+                }
+                )
             // .then(() => this.props.history.push('/'));
             // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
     }
 
     handleInput(field) {
-        console.log("anno form, inside handleInput function");   
+        // console.log("anno form, inside handleInput function");   
         return (e) => {
             this.setState({
                 [field]: e.target.value
@@ -61,7 +66,7 @@ class AnnotationsForm extends React.Component {
         // console.log("THIS.STATE:");
         // console.log(this.state);
 
-        debugger;
+        // debugger;
         return (
             <div className='anno-form-container'>
                 <div className='anno-border-bar'></div>

@@ -19,7 +19,7 @@ const receiveAllTracks = tracks => ({
 
 
 const receiveTrack = (track) => {
-    console.log('hit receiveTrack reg action creator')
+    // console.log('hit receiveTrack reg action creator')
     //  debugger;
     return ({
         type: RECEIVE_TRACK, 

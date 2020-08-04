@@ -8,13 +8,16 @@ class TracksShow extends React.Component {
     }
 
     componentDidMount(){
-        console.log('tracks show component mounted');
+        // console.log('tracks show component mounted');
 
         this.props.fetchTrack(this.props.match.params.id);
     }
 
     render() {
-        console.log('tracksShow inside render function')
+        // console.log('tracksShow inside render function')
+        // if (!this.props.track) {
+        //     return <div>No track on first render</div> ;
+        // }
         return (
           <div className="tracks-show-container">
             <div className="tracks-show-outer-hed-container">
