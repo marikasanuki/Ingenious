@@ -9,8 +9,6 @@ class AnnotationsShow extends React.Component {
             currentAnnotationId: null,
             start_idx: null,
             end_idx: null,
-            // highlightStart: null,
-            // highlightEnd: null,
             annotationVisible: false,
             annotationFormVisible: false,
         };
@@ -18,77 +16,26 @@ class AnnotationsShow extends React.Component {
         this.openAnnotation = this.openAnnotation.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
         this.createAnnotationForm = this.createAnnotationForm.bind(this);
-        this.handleMouseDown = this.handleMouseDown.bind(this);
-        this.handleMouseUp = this.handleMouseUp.bind(this);
+        // this.handleMouseDown = this.handleMouseDown.bind(this);
+        // this.handleMouseUp = this.handleMouseUp.bind(this);
 
         this.selectionOffsets = this.selectionOffsets.bind(this);
         this.reportSelection = this.reportSelection.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
     }
-  
-    handleMouseDown(e){
-        console.log('inside handleMouseDown ');
 
-        this.setState({
-            // highlightStart: e.target,
-            currentAnnotationId: null,
-            annotationVisible: false,
-            annotationFormVisible: false,
-            //where mouse button was first pressed down (start of mousedown event)
-        })
-    }
-
-    handleMouseUp(e){
-        console.log('inside handleMouseUp ');
-
-        // console.log(document.getElementsByClassName("caret-test"));
-        // debugger;
-        // let selOffsets = this.selectionOffsets(
-        //     document.getElementsByClassName("caret-test")
-        // );
-
-        // document.getElementsByClassName("selectionLog").innerHTML = "Selection offsets: " + selOffsets.start + ", " + selOffsets.end;
-        // debugger;
-
-
-        let startPos = 0;
-        let endPos = 0;
-
-        if (window.getSelection().focusOffset > window.getSelection().anchorOffset) {
-            startPos = window.getSelection().anchorOffset;
-            endPos = window.getSelection().focusOffset;
-        } else {
-            startPos = window.getSelection().focusOffset;
-
-            endPos = window.getSelection().anchorOffset;
-        }
-
-        debugger;
-
-        this.setState({
-            highlightEnd: e.target,
-            annotationFormVisible: true,
-            start_idx: startPos,
-            end_idx: endPos,
-            //where mouse button was released (end of mousedown event)
-
-        })
-
-    }
 
     reportSelection() {
-        console.log("inside reportSelection function")
+        // console.log("inside reportSelection function")
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
 
         let selOffsets = this.selectionOffsets(lyricsElement);
-
 
         this.setState({
 
             annotationFormVisible: true,
             start_idx: selOffsets.start,
             end_idx: selOffsets.end,
-            //where mouse button was released (end of mousedown event)
 
         })
 
@@ -97,43 +44,48 @@ class AnnotationsShow extends React.Component {
         // debugger;
     }
 
-    selectionOffsets(element) {
+    selectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
         let start = 0;
         let end = 0;
         let doc = element.ownerDocument || element.document;
         let win = doc.defaultView || doc.parentWindow;
         let sel;
-        if (typeof win.getSelection != "undefined") {
+        if (typeof win.getSelection != "undefined") { //IF a selection/highlight has been made ...
             sel = win.getSelection();
-            if (sel.rangeCount > 0) {
-                let range = win.getSelection().getRangeAt(0);
-                let preCaretRange = range.cloneRange();
-                preCaretRange.selectNodeContents(element);
-                preCaretRange.setEnd(range.startContainer, range.startOffset);
-                start = preCaretRange.toString().length;
-                preCaretRange.setEnd(range.endContainer, range.endOffset);
-                end = preCaretRange.toString().length;
+            if (sel.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
+                let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
+                let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
+                cloneRange.selectNodeContents(element); 
+                cloneRange.setEnd(range.startContainer, range.startOffset);
+
+                start = cloneRange.toString().length;
+                
+                cloneRange.setEnd(range.endContainer, range.endOffset);
+
+                end = cloneRange.toString().length;
             }
         } else if ((sel = doc.selection) && sel.type != "Control") {
             let textRange = sel.createRange();
             let preCaretTextRange = doc.body.createTextRange();
             preCaretTextRange.moveToElementText(element);
             preCaretTextRange.setEndPoint("EndToStart", textRange);
+
             start = preCaretTextRange.text.length;
+
             preCaretTextRange.setEndPoint("EndToEnd", textRange);
+
             end = preCaretTextRange.text.length;
         }
         return { start: start, end: end };
     }
 
-
-
     handleClick() {
         openAnnotation()
     }
 
-
-
+    setCurrentAnnotationId(annotation_id) {
+        this.setState({ currentAnnotationId: annotation_id })
+    }
 
     createAnnotationForm() {
         // THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION 
@@ -154,21 +106,16 @@ class AnnotationsShow extends React.Component {
         )
     }
 
-    setCurrentAnnotationId(annotation_id) {
-        this.setState({ currentAnnotationId: annotation_id })
-    }
 
     openAnnotation() {
-        // console.log("annotationsShow openAnnotation function")
-        debugger;
         return (
-        <div className='annotation-box-container'>
-                <div className='annotation-box'>
-                    <div className='annotation-hed'>Ingenious Annotation</div>
-                    <br/>
-                    {this.props.annotations[this.state.currentAnnotationId].anno_body}
-                </div>
-        </div>
+            <div className='annotation-box-container'>
+                    <div className='annotation-box'>
+                        <div className='annotation-hed'>Ingenious Annotation</div>
+                        <br/>
+                        {this.props.annotations[this.state.currentAnnotationId].anno_body}
+                    </div>
+            </div>
         )
     }
 
@@ -189,8 +136,8 @@ class AnnotationsShow extends React.Component {
         // console.log("annotations is: ");
         // console.log(annotations);
         // console.log("annotationsArr (individual track's annotations' values) is: ");
-        console.log('this is this.props: ')
-        console.log(this.props);
+        // console.log('this is this.props: ')
+        // console.log(this.props);
         // console.log (annotationsArr);
         // debugger;
 
@@ -200,9 +147,9 @@ class AnnotationsShow extends React.Component {
             let unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
             const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             
-                // console.log("this is start_idx: " + annotation.start_idx);
-                // console.log("this is end_idx: " + annotation.end_idx);
-                // console.log("this is prev_idx: " + prev_idx);
+            // console.log("this is start_idx: " + annotation.start_idx);
+            // console.log("this is end_idx: " + annotation.end_idx);
+            // console.log("this is prev_idx: " + prev_idx);
 
             // console.log("unannotatedSlicedLyric: ");
             // console.log(unannotatedSlicedLyric);
@@ -256,7 +203,10 @@ class AnnotationsShow extends React.Component {
 
 
 
-        if (allFormattedLyrics.length) {
+
+        //at this stage, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
+
+        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
             return (
                 <div>
                     <div className='anno-show-lyrics-container'>
@@ -287,7 +237,7 @@ class AnnotationsShow extends React.Component {
 
                 </div>
             )
-        } else {
+        } else { //if allFormattedLyrics array is empty, there are no annotations on this track to render, so just return the full lyrics string via this.props.lyrics
             return (
                 <div className='anno-show-lyrics-container'>
 
@@ -302,13 +252,9 @@ class AnnotationsShow extends React.Component {
                         onMouseDown={this.reportSelection}
                         // onMouseUp={this.handleMouseUp}
                         onMouseUp={this.reportSelection}
-
-
-                        // className="caret-test"
                     >
                         {this.props.lyrics}
                     </div>
-                    {/* <div className="selectionLog"></div> */}
                 </div>
             )
         }
@@ -318,30 +264,44 @@ class AnnotationsShow extends React.Component {
 export default AnnotationsShow;
 
 
-
-        // let posDifference = this.state.highlightStart;
-
-        // console.log('This is posDifference: ');     
-        // console.log(posDifference);
-
-
-            //TEMP COMMENTED THIS OUT
-        // console.log('pos-difference get attribute ... start: ')  
-        // console.log(parseInt(this.state.highlightStart.getAttribute("pos-difference")))
-        // console.log('pos-difference get attribute ... end: ')
-        // console.log( parseInt(e.target.getAttribute("pos-difference")) )
-
-        // debugger;
-
-        // startPos = startPos + parseInt(this.state.highlightStart.getAttribute("pos-difference"));
-        // endPos = endPos + parseInt(e.target.getAttribute("pos-difference"));
-
-
-
 // componentDidMount() {
 //     // console.log('annotations show component mounted');
 //     // document.addEventListener('click', this.handleClickOutside, true);
 // }
 // componentWillUnmount() {
 //     // document.removeEventListener('click', this.handleClickOutside, true);
+// }
+
+
+
+// handleMouseDown(e){
+//     this.setState({
+//         // highlightStart: e.target,
+//         currentAnnotationId: null,
+//         annotationVisible: false,
+//         annotationFormVisible: false,
+//         //where mouse button was first pressed down (start of mousedown event)
+//     })
+// }
+
+// handleMouseUp(e){
+//     let startPos = 0;
+//     let endPos = 0;
+
+//     if (window.getSelection().focusOffset > window.getSelection().anchorOffset) {
+//         startPos = window.getSelection().anchorOffset;
+//         endPos = window.getSelection().focusOffset;
+//     } else {
+//         startPos = window.getSelection().focusOffset;
+
+//         endPos = window.getSelection().anchorOffset;
+//     }
+
+//     this.setState({
+//         // highlightEnd: e.target,
+//         annotationFormVisible: true,
+//         start_idx: startPos,
+//         end_idx: endPos,
+//         //where mouse button was released (end of mousedown event)
+//     })
 // }

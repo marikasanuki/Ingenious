@@ -1,5 +1,6 @@
 import { RECEIVE_ANNOTATION, REMOVE_ANNOTATION } from '../actions/annotation_actions'; 
 import { RECEIVE_TRACK } from '../actions/track_actions';
+import merge from 'lodash/merge';
 
 const annotationsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -9,10 +10,14 @@ const annotationsReducer = (oldState = {}, action) => {
             // console.log('hit annotations reducer (RECEIVE_ANNOTATION)')
             //  debugger;   
 
-            //create new object, use action.annotation.id as key; acction.annotation as value. 
+            //create new object, use action.annotation.id as key; action.annotation as value. 
             //then merge newly created object with oldState
-            
-            return Object.assign({}, oldState, action.annotation);
+
+            const ann = {
+                [action.annotation.id]: action.annotation,
+            }
+            return merge({}, oldState, ann);
+            // return Object.assign({}, oldState, action.annotation);
         case RECEIVE_TRACK: 
             return Object.assign({}, action.track.annotations);
         case REMOVE_ANNOTATION:
