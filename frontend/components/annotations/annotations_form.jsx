@@ -11,8 +11,7 @@ class AnnotationsForm extends React.Component {
     }
 
     handleSubmit(e){
-        e.preventDefault();
-        // console.log("anno form, inside handleSubmit function");        
+        e.preventDefault();   
 
         let newAnnoInfo = {
             track_id: this.props.track.id,
@@ -23,19 +22,12 @@ class AnnotationsForm extends React.Component {
 
         const anno = Object.assign({}, newAnnoInfo);
 
-        // console.log(this.props);
-        // console.log(anno);
-        // debugger;
-
         this.props.createAnnotation(anno)
             .then (
-                
-                (res) => {
-                    // debugger;
-                    return this.props.setCurrentAnnotationId(res.annotation.id)
-            
-                }
-                )
+                    (res) => {
+                        return this.props.setCurrentAnnotationId(res.annotation.id)
+                    }
+            )
             // .then(() => this.props.history.push('/'));
             // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
     }
@@ -63,11 +55,11 @@ class AnnotationsForm extends React.Component {
                         onChange={this.handleInput('anno_body')}
                     />
                     
-                    <input
+                    {/* <input
                         type='integer'
                         value={this.props.track.id}
                         onChange={this.handleInput('track_id')}
-                    />
+                    /> */}
                     <br />
                     <input 
                         type='integer' 

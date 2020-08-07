@@ -16,8 +16,8 @@ class TracksIndex extends React.Component {
     }
 
     onLoadMore(){
-        console.log(this.state);
-         debugger;
+        // console.log(this.state);
+        //  debugger;
         this.setState({
             limit: this.state.limit + 10
         });

@@ -840,7 +840,7 @@ track10 = Track.create!(title: 'Technologic',
                 total_views: rand_total,
                 lyrics: 
 "
-[[Verse 1]
+[Verse 1]
 Buy it, use it, break it, fix it
 Trash it, change it, mail – upgrade it
 Charge it, point it, zoom it, press it
@@ -2395,7 +2395,7 @@ track31 = Track.create!(title: 'Run-Time',
                 total_views: rand_total,
                 lyrics: 
 "
-[[Verse 1]
+[Verse 1]
 Sparks might fly, in no time
 It's a delayed reaction of the third kind
 Woah, I'm so ready for this

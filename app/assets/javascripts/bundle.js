@@ -373,20 +373,15 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault(); // console.log("anno form, inside handleSubmit function");        
-
+      e.preventDefault();
       var newAnnoInfo = {
         track_id: this.props.track.id,
         start_idx: this.props.start_idx,
         end_idx: this.props.end_idx,
         anno_body: this.state.anno_body
       };
-      var anno = Object.assign({}, newAnnoInfo); // console.log(this.props);
-      // console.log(anno);
-      // debugger;
-
+      var anno = Object.assign({}, newAnnoInfo);
       this.props.createAnnotation(anno).then(function (res) {
-        // debugger;
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }); // .then(() => this.props.history.push('/'));
       // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
@@ -417,10 +412,6 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
         value: this.state.anno_body,
         onChange: this.handleInput('anno_body')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        value: this.props.track.id,
-        onChange: this.handleInput('track_id')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
         value: this.props.start_idx,
@@ -457,8 +448,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _annotations_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form */ "./frontend/components/annotations/annotations_form.jsx");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -484,7 +473,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _inherits(AnnotationsShow, _React$Component);
 
@@ -506,57 +494,45 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.openAnnotation = _this.openAnnotation.bind(_assertThisInitialized(_this));
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
-    _this.createAnnotationForm = _this.createAnnotationForm.bind(_assertThisInitialized(_this)); // this.handleMouseDown = this.handleMouseDown.bind(this);
-    // this.handleMouseUp = this.handleMouseUp.bind(this);
-
-    _this.selectionOffsets = _this.selectionOffsets.bind(_assertThisInitialized(_this));
-    _this.reportSelection = _this.reportSelection.bind(_assertThisInitialized(_this));
+    _this.createAnnotationForm = _this.createAnnotationForm.bind(_assertThisInitialized(_this));
+    _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
+    _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
-    key: "reportSelection",
-    value: function reportSelection() {
-      // console.log("inside reportSelection function")
-      var lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
-      var selOffsets = this.selectionOffsets(lyricsElement);
-      this.setState({
-        annotationFormVisible: true,
-        start_idx: selOffsets.start,
-        end_idx: selOffsets.end
-      }); // console.log(selOffsets); 
-      // console.log(selOffsets.start, selOffsets.end);
-      // debugger;
-    }
-  }, {
-    key: "selectionOffsets",
-    value: function selectionOffsets(element) {
+    key: "findSelectionOffsets",
+    value: function findSelectionOffsets(element) {
       //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
-      var start = 0;
-      var end = 0;
       var doc = element.ownerDocument || element.document;
       var win = doc.defaultView || doc.parentWindow;
-      var sel;
+      var selected;
+      var start = 0;
+      var end = 0;
 
       if (typeof win.getSelection != "undefined") {
         //IF a selection/highlight has been made ...
-        sel = win.getSelection();
+        selected = win.getSelection();
 
-        if (sel.rangeCount > 0) {
+        if (selected.rangeCount > 0) {
           //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
           var range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
 
           var cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
 
-          cloneRange.selectNodeContents(element);
-          cloneRange.setEnd(range.startContainer, range.startOffset);
-          start = cloneRange.toString().length;
-          cloneRange.setEnd(range.endContainer, range.endOffset);
+          cloneRange.selectNodeContents(element); //sets the cloneRange to contain the contents of element. makes cloneRange's startOffset 0 and cloneRange's endOffset to the number of child Nodes in element (element is the reference node)
+
+          cloneRange.setEnd(range.startContainer, range.startOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+
+          start = cloneRange.toString().length; //cloneRange.toString() returns the text of the cloneRage as a string (so .length will return the character count)
+
+          cloneRange.setEnd(range.endContainer, range.endOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+
           end = cloneRange.toString().length;
         }
-      } else if ((sel = doc.selection) && sel.type != "Control") {
-        var textRange = sel.createRange();
+      } else if ((selected = doc.selection) && selected.type != "Control") {
+        var textRange = selected.createRange();
         var preCaretTextRange = doc.body.createTextRange();
         preCaretTextRange.moveToElementText(element);
         preCaretTextRange.setEndPoint("EndToStart", textRange);
@@ -569,6 +545,18 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         start: start,
         end: end
       };
+    }
+  }, {
+    key: "saveOffsetsToState",
+    value: function saveOffsetsToState() {
+      // console.log("inside saveOffsetsToState function")
+      var lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
+      var selOffsets = this.findSelectionOffsets(lyricsElement);
+      this.setState({
+        annotationFormVisible: true,
+        start_idx: selOffsets.start,
+        end_idx: selOffsets.end
+      });
     }
   }, {
     key: "handleClick",
@@ -585,7 +573,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "createAnnotationForm",
     value: function createAnnotationForm() {
-      // THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION 
+      // FORM TO CREATE A NEW ANNOTATION 
       return (
         /*#__PURE__*/
         // <div className='annotation-box-container'>
@@ -638,16 +626,24 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
       var _loop = function _loop(i) {
         var annotation = annotationsArr[i];
+
+        if (lyrics === undefined) {
+          //preventing console error from attempting to slice undefined because lyrics haven't loaded
+          return {
+            v: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)
+          };
+        }
+
         var unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
         var annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx); // console.log("this is start_idx: " + annotation.start_idx);
         // console.log("this is end_idx: " + annotation.end_idx);
-        // console.log("this is prev_idx: " + prev_idx);
-        // console.log("unannotatedSlicedLyric: ");
-        // console.log(unannotatedSlicedLyric);
-        // console.log("annotatedSlicedLyric: ");
-        // console.log(annotatedSlicedLyric);
-        // debugger;
 
+        console.log("this is prev_idx: " + prev_idx);
+        console.log("unannotatedSlicedLyric: ");
+        console.log(unannotatedSlicedLyric);
+        console.log("annotatedSlicedLyric: ");
+        console.log(annotatedSlicedLyric);
+        debugger;
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           "pos-difference": prev_idx,
@@ -665,11 +661,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
               annotationVisible: true
             });
           }
-        }, annotatedSlicedLyric)); // console.log('allFormattedLyrics: ');
-        // console.log(allFormattedLyrics);
-        // debugger;
-
-        prev_idx = annotation.end_idx;
+        }, annotatedSlicedLyric));
+        console.log('allFormattedLyrics: ');
+        console.log(allFormattedLyrics);
+        debugger;
+        prev_idx = annotation.end_idx; //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
           allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -681,10 +677,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       };
 
       for (var i = 0; i < annotationsArr.length; i++) {
-        _loop(i);
+        var _ret = _loop(i);
+
+        if (_typeof(_ret) === "object") return _ret.v;
       }
 
-      ; //at this stage, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
+      ; //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
       if (allFormattedLyrics.length) {
         //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
@@ -694,9 +692,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics",
-          onMouseDown: this.reportSelection // onMouseDown={this.handleMouseDown}
+          onMouseDown: this.saveOffsetsToState // onMouseDown={this.handleMouseDown}
           ,
-          onMouseUp: this.reportSelection // onMouseUp={this.handleMouseUp}
+          onMouseUp: this.saveOffsetsToState // onMouseUp={this.handleMouseUp}
 
         }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
@@ -708,12 +706,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "pos-difference": 0,
+          // pos-difference={0}
           className: "anno-show-lyrics" // onMouseDown={this.handleMouseDown}
           ,
-          onMouseDown: this.reportSelection // onMouseUp={this.handleMouseUp}
+          onMouseDown: this.saveOffsetsToState // onMouseUp={this.handleMouseUp}
           ,
-          onMouseUp: this.reportSelection
+          onMouseUp: this.saveOffsetsToState
         }, this.props.lyrics));
       }
     }
@@ -730,6 +728,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 // componentWillUnmount() {
 //     // document.removeEventListener('click', this.handleClickOutside, true);
 // }
+// this.handleMouseDown = this.handleMouseDown.bind(this);
+// this.handleMouseUp = this.handleMouseUp.bind(this);
 // handleMouseDown(e){
 //     this.setState({
 //         // highlightStart: e.target,
@@ -1697,8 +1697,8 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onLoadMore",
     value: function onLoadMore() {
-      console.log(this.state);
-      debugger;
+      // console.log(this.state);
+      //  debugger;
       this.setState({
         limit: this.state.limit + 10
       });

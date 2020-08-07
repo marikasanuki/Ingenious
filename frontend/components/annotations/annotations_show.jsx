@@ -1,6 +1,5 @@
 import React from "react";
 import AnnotationsForm from './annotations_form';
-import ReactDOM from 'react-dom';
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -16,56 +15,46 @@ class AnnotationsShow extends React.Component {
         this.openAnnotation = this.openAnnotation.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
         this.createAnnotationForm = this.createAnnotationForm.bind(this);
-        // this.handleMouseDown = this.handleMouseDown.bind(this);
-        // this.handleMouseUp = this.handleMouseUp.bind(this);
 
-        this.selectionOffsets = this.selectionOffsets.bind(this);
-        this.reportSelection = this.reportSelection.bind(this);
+        this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
+        this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
     }
 
+    findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
 
-    reportSelection() {
-        // console.log("inside reportSelection function")
-        const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
 
-        let selOffsets = this.selectionOffsets(lyricsElement);
 
-        this.setState({
-
-            annotationFormVisible: true,
-            start_idx: selOffsets.start,
-            end_idx: selOffsets.end,
-
-        })
-
-        // console.log(selOffsets); 
-        // console.log(selOffsets.start, selOffsets.end);
-        // debugger;
-    }
-
-    selectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
-        let start = 0;
-        let end = 0;
         let doc = element.ownerDocument || element.document;
         let win = doc.defaultView || doc.parentWindow;
-        let sel;
+
+        let selected;
+        let start = 0;
+        let end = 0;
+
         if (typeof win.getSelection != "undefined") { //IF a selection/highlight has been made ...
-            sel = win.getSelection();
-            if (sel.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
+            selected = win.getSelection();
+            if (selected.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
                 let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
                 let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
-                cloneRange.selectNodeContents(element); 
-                cloneRange.setEnd(range.startContainer, range.startOffset);
-
-                start = cloneRange.toString().length;
+                cloneRange.selectNodeContents(element); //sets the cloneRange to contain the contents of element. makes cloneRange's startOffset 0 and cloneRange's endOffset to the number of child Nodes in element (element is the reference node)
                 
-                cloneRange.setEnd(range.endContainer, range.endOffset);
+                cloneRange.setEnd(range.startContainer, range.startOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+ 
+                
+                start = cloneRange.toString().length; //cloneRange.toString() returns the text of the cloneRage as a string (so .length will return the character count)
+                
 
+                
+                cloneRange.setEnd(range.endContainer, range.endOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+                
                 end = cloneRange.toString().length;
+                
+
+
             }
-        } else if ((sel = doc.selection) && sel.type != "Control") {
-            let textRange = sel.createRange();
+        } else if ((selected = doc.selection) && selected.type != "Control") {
+            let textRange = selected.createRange();
             let preCaretTextRange = doc.body.createTextRange();
             preCaretTextRange.moveToElementText(element);
             preCaretTextRange.setEndPoint("EndToStart", textRange);
@@ -76,7 +65,23 @@ class AnnotationsShow extends React.Component {
 
             end = preCaretTextRange.text.length;
         }
+
+
         return { start: start, end: end };
+    }
+
+    saveOffsetsToState() {
+        // console.log("inside saveOffsetsToState function")
+        const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
+
+        let selOffsets = this.findSelectionOffsets(lyricsElement);
+
+        this.setState({
+            annotationFormVisible: true,
+            start_idx: selOffsets.start,
+            end_idx: selOffsets.end,
+        })
+
     }
 
     handleClick() {
@@ -88,7 +93,7 @@ class AnnotationsShow extends React.Component {
     }
 
     createAnnotationForm() {
-        // THIS CODE WILL OPEN UP THE FORM TO CREATE A NEW ANNOTATION 
+        // FORM TO CREATE A NEW ANNOTATION 
         return (
             // <div className='annotation-box-container'>
 
@@ -105,7 +110,6 @@ class AnnotationsShow extends React.Component {
             // </div>
         )
     }
-
 
     openAnnotation() {
         return (
@@ -144,19 +148,25 @@ class AnnotationsShow extends React.Component {
         for (let i = 0; i < annotationsArr.length; i++) {
 
             const annotation = annotationsArr[i];
+
+            if (lyrics === undefined) { //preventing console error from attempting to slice undefined because lyrics haven't loaded
+                return <div></div>
+            }
+
             let unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
-            const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             
-            // console.log("this is start_idx: " + annotation.start_idx);
-            // console.log("this is end_idx: " + annotation.end_idx);
-            // console.log("this is prev_idx: " + prev_idx);
+            const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
+                
+                        // console.log("this is start_idx: " + annotation.start_idx);
+                        // console.log("this is end_idx: " + annotation.end_idx);
+                        console.log("this is prev_idx: " + prev_idx);
 
-            // console.log("unannotatedSlicedLyric: ");
-            // console.log(unannotatedSlicedLyric);
+                        console.log("unannotatedSlicedLyric: ");
+                        console.log(unannotatedSlicedLyric);
 
-            // console.log("annotatedSlicedLyric: ");
-            // console.log(annotatedSlicedLyric);
-            // debugger;
+                        console.log("annotatedSlicedLyric: ");
+                        console.log(annotatedSlicedLyric);
+                        debugger;
 
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
@@ -181,13 +191,14 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-                // console.log('allFormattedLyrics: ');
-                // console.log(allFormattedLyrics);
-                // debugger;
+                console.log('allFormattedLyrics: ');
+                console.log(allFormattedLyrics);
+                debugger;
 
             prev_idx = annotation.end_idx;            
 
-            if (i === Object.keys(annotationsArr).length - 1) {
+            //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
+            if (i === Object.keys(annotationsArr).length - 1) { 
              
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
@@ -204,7 +215,7 @@ class AnnotationsShow extends React.Component {
 
 
 
-        //at this stage, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
+        //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
             return (
@@ -219,9 +230,9 @@ class AnnotationsShow extends React.Component {
 
                         <div 
                             className='anno-show-lyrics'
-                            onMouseDown={this.reportSelection}
+                            onMouseDown={this.saveOffsetsToState}
                             // onMouseDown={this.handleMouseDown}
-                            onMouseUp={this.reportSelection}
+                            onMouseUp={this.saveOffsetsToState}
                             // onMouseUp={this.handleMouseUp}
                         >
                             {allFormattedLyrics}
@@ -246,12 +257,12 @@ class AnnotationsShow extends React.Component {
                     </div>
 
                     <div                                                      
-                        pos-difference={0}
+                        // pos-difference={0}
                         className='anno-show-lyrics'
                         // onMouseDown={this.handleMouseDown}
-                        onMouseDown={this.reportSelection}
+                        onMouseDown={this.saveOffsetsToState}
                         // onMouseUp={this.handleMouseUp}
-                        onMouseUp={this.reportSelection}
+                        onMouseUp={this.saveOffsetsToState}
                     >
                         {this.props.lyrics}
                     </div>
@@ -273,6 +284,9 @@ export default AnnotationsShow;
 // }
 
 
+
+        // this.handleMouseDown = this.handleMouseDown.bind(this);
+        // this.handleMouseUp = this.handleMouseUp.bind(this);
 
 // handleMouseDown(e){
 //     this.setState({
