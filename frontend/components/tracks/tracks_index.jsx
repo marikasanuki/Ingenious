@@ -44,7 +44,9 @@ class TracksIndex extends React.Component {
                             lyrics={ele.lyrics}
                             image_url={ele.image_url}
                             conc_views={ele.conc_views}
-                            total_views={ele.total_views} />)
+                            total_views={ele.total_views} 
+                            // uniqueKey={i}
+                            />)
 
                     ))
                     }
