@@ -3,13 +3,13 @@ class Api::CommentsController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :destroy]
 
     def index
-        @comments = Track.find(params[:track_id]).comments
+        if params[:track_id]
+            @comments = Track.find(params[:track_id]).comments
+        else
+            @comments = Comment.all
+        end
         render :index
-    end
-
-    def show
-        @comment = Comment.find(params[:id])
-        render 'api/comments/show'
+        #render json: @comments
     end
 
     def create
