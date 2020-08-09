@@ -13,6 +13,11 @@ class CommentsForm extends React.Component {
         e.preventDefault();   
     }
 
+    render () {
+        return (
+            <div></div>
+        );
+    }
 }
 
 export default CommentsForm;

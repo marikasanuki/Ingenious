@@ -6,9 +6,17 @@ class CommentsItem extends React.Component {
     }
 
     render() {
+        const {comment} = this.props;
         return (
-            <div>
-            </div>
+            <li>
+                <div>
+                    {comment.comment_body}
+                </div>
+                <div>
+                    comment's author id: 
+                    {comment.author_id}
+                </div>
+            </li>
         )
     }
 };
