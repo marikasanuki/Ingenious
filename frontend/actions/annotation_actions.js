@@ -1,4 +1,4 @@
-import * as AnnotationApiUtil from '../util/annotation_api_util'
+import * as AnnotationApiUtil from '../util/annotation_api_util';
 
 export const RECEIVE_ANNOTATION = 'RECEIVE_ANNOTATION';
 export const REMOVE_ANNOTATION = 'REMOVE_ANNOTATION';

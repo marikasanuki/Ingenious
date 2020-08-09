@@ -1,6 +1,7 @@
 import React from "react";
 import AnnotationsShow from '../annotations/annotations_show';
-
+import CommentsList from '../comments/comments_list';
+import CommentsForm from '../comments/comments_form';
 
 class TracksShow extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class TracksShow extends React.Component {
         // console.log('tracks show component mounted');
 
         this.props.fetchTrack(this.props.match.params.id);
+        this.props.fetchTrackComments(this.props.match.params.id);
     }
 
     render() {
@@ -43,9 +45,7 @@ class TracksShow extends React.Component {
                 </div>
               </div>
             </div>
-
             <div>
-
               {
                 <AnnotationsShow
                   track={this.props.track}
@@ -55,6 +55,15 @@ class TracksShow extends React.Component {
                 />
               }
             </div>
+            
+            <div>
+                CommentsForm component goes here
+            </div>
+            
+            <div>
+                CommentsList component goes here
+            </div>
+
           </div>
         );
     }
