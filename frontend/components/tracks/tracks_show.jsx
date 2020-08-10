@@ -65,7 +65,7 @@ class TracksShow extends React.Component {
                 {
                     <CommentsForm
                         createComment={this.props.createComment}
-
+                        track={this.props.track}
                     
                     />
                 }

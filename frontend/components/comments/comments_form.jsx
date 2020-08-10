@@ -20,8 +20,8 @@ class CommentsForm extends React.Component {
         e.preventDefault();   
 
         const comment = Object.assign({}, this.state, {
-            
             comment_body: this.state.comment_body,
+            track_id: this.props.track.id,
         });
 
         this.props
@@ -31,23 +31,21 @@ class CommentsForm extends React.Component {
     }
 
     render () {
-
-        const { createComment } = this.props;
-
         return (
             <form onSubmit={this.handleSubmit} className='comment-form'>
 
                 <textarea 
+                    className='comment-textarea'
+                    maxLength="900"
                     value={this.state.comment_body}
                     onChange={this.update("comment_body")}
                     placeholder="Add a comment"
-                    className='comment-textarea'
                 />
                 <br/>
                 <input 
+                    className='comment-submit-button'
                     type='submit' 
                     value={"SUBMIT"} 
-                    className='comment-submit-button'
                 />
             </form>
         );

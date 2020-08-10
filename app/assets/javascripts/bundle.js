@@ -963,7 +963,8 @@ var CommentsForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       var comment = Object.assign({}, this.state, {
-        comment_body: this.state.comment_body
+        comment_body: this.state.comment_body,
+        track_id: this.props.track.id
       });
       this.props.createComment(comment).then(function () {
         return _this3.setState({
@@ -974,19 +975,19 @@ var CommentsForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var createComment = this.props.createComment;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "comment-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "comment-textarea",
+        maxLength: "900",
         value: this.state.comment_body,
         onChange: this.update("comment_body"),
-        placeholder: "Add a comment",
-        className: "comment-textarea"
+        placeholder: "Add a comment"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "comment-submit-button",
         type: "submit",
-        value: "SUBMIT",
-        className: "comment-submit-button"
+        value: "SUBMIT"
       }));
     }
   }]);
@@ -2346,7 +2347,8 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-form-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        createComment: this.props.createComment
+        createComment: this.props.createComment,
+        track: this.props.track
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-list-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
