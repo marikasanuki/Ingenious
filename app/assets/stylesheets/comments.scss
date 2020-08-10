@@ -2,18 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// COMMENTS FORM
+.comments-form-cont {
+    display: block;
+    padding-top: 20px;
+}
 
+.comment-form {
+    width: 100%;
+    height: 100%;
+}
+
+.comment-textarea {
+    width: 30%;
+    font-family: 'Muli', sans-serif;
+    border: 0;
+    border: 2px solid rgb(213, 213, 213);
+    background-color: white;
+    color: rgb(113, 113, 113);
+    height: 20px;
+    font-size: 16px;
+    padding: 10px;
+    // resize: none;
+}
+
+.comment-textarea:focus {
+    outline-width: 0;
+    box-shadow: inset 0 0 6px rgba(134, 146, 230, 1);
+    height: 90px;
+}
+
+.comment-submit-button {
+    border: 3px solid rgb(84, 200, 53);
+    background-color: white;
+    color: rgb(84, 200, 53);
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.comment-submit-button:focus {
+    outline-width: 0;
+}
+
+
+//COMMENTS LIST AND ITEMS
 .comments-list-cont {
-  display: block;
+    text-align: center;
+    width: 100%;
 }
 
 .comments-list {
-  width: 52%;
-  padding-left: 260px;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
 }
 
 .comments-list-ul {
     list-style: none;
+    padding: 0;
 }
 
 .comments-item-li {
@@ -55,48 +107,3 @@
 
 
 
-// COMMENTS FORM
-.comments-form-cont {
-    display: block;
-    padding-top: 20px;
-}
-
-.comment-form {
-    width: 100%;
-    height: 100%;
-}
-
-.comment-textarea {
-    font-family: 'Muli', sans-serif;
-    border: 0;
-    border: 2px solid rgb(213, 213, 213);
-    background-color: white;
-    color: rgb(113, 113, 113);
-    resize: none;
-    width: 507px;
-    height: 50px;
-    font-size: 16px;
-    padding: 10px;
-}
-
-.comment-textarea:focus {
-    outline-width: 0;
-    box-shadow: inset 0 0 6px rgba(134, 146, 230, 1);
-}
-
-.comment-submit-button {
-    border: 3px solid rgb(84, 200, 53);
-    background-color: white;
-    color: rgb(84, 200, 53);
-    font-family: 'Muli', sans-serif;
-    font-weight: 700;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    cursor: pointer;
-}
-
-.comment-submit-button:focus {
-     outline-width: 0;
-}

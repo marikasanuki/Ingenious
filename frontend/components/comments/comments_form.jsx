@@ -26,8 +26,7 @@ class CommentsForm extends React.Component {
 
         this.props
             .createComment(comment)
-            .then(() => this.setState({ comment_body: "" }))
-            .then(console.log("Comment successfully saved to DB!"));
+            .then(() => this.setState({ comment_body: "" }));
     }
 
     render () {

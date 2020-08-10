@@ -970,7 +970,7 @@ var CommentsForm = /*#__PURE__*/function (_React$Component) {
         return _this3.setState({
           comment_body: ""
         });
-      }).then(console.log("Comment successfully saved to DB!"));
+      });
     }
   }, {
     key: "render",
