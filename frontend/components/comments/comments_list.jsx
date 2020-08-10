@@ -7,19 +7,23 @@ class CommentsList extends React.Component {
     }
 
     render() {
-        const { comments } = this.props;
+        const { comments, comment_authors, destroyComment } = this.props;
         const allComments = Object.values(comments);
         return (
-            <div>
-                {allComments ? allComments.map((comment) => (
-                    <CommentsItem
-                        comment={comment}
-                        key={comment.id}
-                    />
-                )
+            <div className='comments-list'>
+                <ul className='comments-list-ul'>
+                    {allComments ? allComments.map((comment) => (
+                        <CommentsItem
+                            comment={comment}
+                            key={comment.id}
+                            comment_authors={comment_authors}
+                            destroyComment={destroyComment}
+                        />
+                    )
 
-                )
-                : null }
+                    )
+                        : null}
+                </ul>
             </div>
         )
     }

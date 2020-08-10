@@ -60,18 +60,23 @@ class TracksShow extends React.Component {
               }
             </div>
             
-            <div>
-                CommentsForm component goes here
+            <div className='comments-form-cont'>
+
                 {
-                    <CommentsForm/>
+                    <CommentsForm
+                        createComment={this.props.createComment}
+
+                    
+                    />
                 }
             </div>
             
-            <div>
-                CommentsList component goes here
+            <div className='comments-list-cont'>
                 {
                     <CommentsList
                         comments={this.props.comments}
+                        comment_authors={this.props.comments.comment_authors}
+                        destroyComment={this.props.destroyComment}
                     />
                 }
             </div>

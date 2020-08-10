@@ -20,6 +20,8 @@ json.extract! @track, :id, :title, :artist, :album, :lyrics, :conc_views, :total
     end
 end
 
+
+
 # same as above code
 # json.id @track.id
 # json.title @track.title
