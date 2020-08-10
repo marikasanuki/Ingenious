@@ -5,7 +5,6 @@
 
 .comments-list-cont {
   display: block;
-  
 }
 
 .comments-list {
@@ -15,7 +14,6 @@
 
 .comments-list-ul {
     list-style: none;
-    
 }
 
 .comments-item-li {
@@ -38,16 +36,33 @@
 }
 
 
+.comment-del-button-cont {
+  padding-top: 15px;
+}
+
+.comments-del-button {
+    border: none;
+    background-color: transparent;
+    color: rgb(113, 113, 113);
+    cursor: pointer;
+}
+
+.comments-del-button:focus {
+     outline-width: 0;
+}
 
 
 
+
+
+// COMMENTS FORM
 .comments-form-cont {
-      display: block;
-      padding-top: 20px;
+    display: block;
+    padding-top: 20px;
 }
 
 .comment-form {
-        width: 100%;
+    width: 100%;
     height: 100%;
 }
 
@@ -67,9 +82,7 @@
 .comment-textarea:focus {
     outline-width: 0;
     box-shadow: inset 0 0 6px rgba(134, 146, 230, 1);
-
 }
-
 
 .comment-submit-button {
     border: 3px solid rgb(84, 200, 53);
@@ -81,4 +94,10 @@
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    cursor: pointer;
 }
+
+
+
+
+

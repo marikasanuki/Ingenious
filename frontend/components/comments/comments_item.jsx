@@ -12,34 +12,26 @@ class CommentsItem extends React.Component {
     render() {
         const { comment, comment_authors, destroyComment, currentUser } = this.props;
 
-        console.log('test again: ')
-        console.log(this.props);
-        debugger;
-
         return (
             <li className='comments-item-li'>
                 <div className='comments-author'>
-                    comment's author id: 
-                    {comment.author_id}
-                    
-                    {/* {(comment_authors)? (comment_authors[comment.author_id].username) : null } */}
+                    {(comment_authors) ? (comment_authors[comment.author_id].username) : null }
                 </div>
                 <div className='comments-body'>
                     {comment.comment_body}
                 </div>
-                
 
                 <div className="comment-del-button-cont">
-                    {/* { (currentUser && comment.author_id === currentUser.id) ? ( */}
-                            <button
+                    { (currentUser && comment.author_id === currentUser.id) ? (
+                            <div
                                 className="comments-del-button"
                                 onClick={() => {
                                     destroyComment(comment.id);
                                 }}
                             >
                                 <FontAwesomeIcon icon={faTrashAlt} />
-                            </button>
-                        {/* ) : null} */}
+                            </div>
+                         ) : null } 
 
 
                 </div>

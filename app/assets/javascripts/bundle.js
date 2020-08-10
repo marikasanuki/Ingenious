@@ -1056,25 +1056,22 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
           comment_authors = _this$props.comment_authors,
           destroyComment = _this$props.destroyComment,
           currentUser = _this$props.currentUser;
-      console.log('test again: ');
-      console.log(this.props);
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "comments-item-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-author"
-      }, "comment's author id:", comment.author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, comment_authors ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
       }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, currentUser && comment.author_id === currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-del-button",
         onClick: function onClick() {
           destroyComment(comment.id);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTrashAlt"]
-      }))));
+      })) : null));
     }
   }]);
 
@@ -1142,9 +1139,8 @@ var CommentsList = /*#__PURE__*/function (_React$Component) {
           comment_authors = _this$props.comment_authors,
           destroyComment = _this$props.destroyComment,
           currentUser = _this$props.currentUser;
-      var allComments = Object.values(comments);
-      console.log(comments);
-      console.log(allComments);
+      var allComments = Object.values(comments).slice(0, Object.values(comments).length - 1); //slicing off the comments_authors element at the end of the comments object to create allComments array with just all of the comments
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {

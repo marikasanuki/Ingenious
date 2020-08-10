@@ -8,9 +8,8 @@ class CommentsList extends React.Component {
 
     render() {
         const { comments, comment_authors, destroyComment, currentUser } = this.props;
-        const allComments = Object.values(comments);
-        console.log(comments);
-        console.log(allComments);
+        const allComments = Object.values(comments).slice(0, Object.values(comments).length - 1); //slicing off the comments_authors element at the end of the comments object to create allComments array with just all of the comments
+
         return (
             <div className='comments-list'>
                 <ul className='comments-list-ul'>
