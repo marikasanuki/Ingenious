@@ -18,8 +18,8 @@ class TracksShow extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        debugger;
+        // console.log(this.props);
+        // debugger;
         // console.log('tracksShow inside render function')
         // if (!this.props.track) {
         //     return <div>No track on first render</div> ;
@@ -77,6 +77,7 @@ class TracksShow extends React.Component {
                         comments={this.props.comments}
                         comment_authors={this.props.comments.comment_authors}
                         destroyComment={this.props.destroyComment}
+                        currentUser={this.props.currentUser}
                     />
                 }
             </div>

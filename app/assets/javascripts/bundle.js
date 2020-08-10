@@ -1009,6 +1009,8 @@ var CommentsForm = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1033,6 +1035,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var CommentsItem = /*#__PURE__*/function (_React$Component) {
   _inherits(CommentsItem, _React$Component);
 
@@ -1050,17 +1054,27 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           comment = _this$props.comment,
           comment_authors = _this$props.comment_authors,
-          destroyComment = _this$props.destroyComment; // console.log('test again: ')
-      // console.log(this.props);
-      // debugger;
-
+          destroyComment = _this$props.destroyComment,
+          currentUser = _this$props.currentUser;
+      console.log('test again: ');
+      console.log(this.props);
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "comments-item-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-author"
       }, "comment's author id:", comment.author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
-      }, comment.comment_body));
+      }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-del-button-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "comments-del-button",
+        onClick: function onClick() {
+          destroyComment(comment.id);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTrashAlt"]
+      }))));
     }
   }]);
 
@@ -1126,8 +1140,11 @@ var CommentsList = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           comments = _this$props.comments,
           comment_authors = _this$props.comment_authors,
-          destroyComment = _this$props.destroyComment;
+          destroyComment = _this$props.destroyComment,
+          currentUser = _this$props.currentUser;
       var allComments = Object.values(comments);
+      console.log(comments);
+      console.log(allComments);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1137,7 +1154,8 @@ var CommentsList = /*#__PURE__*/function (_React$Component) {
           comment: comment,
           key: comment.id,
           comment_authors: comment_authors,
-          destroyComment: destroyComment
+          destroyComment: destroyComment,
+          currentUser: currentUser
         });
       }) : null));
     }
@@ -1292,7 +1310,9 @@ var HeaderBar = function HeaderBar(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
     className: "ingenious-header"
-  }, "I\xA0N\xA0G\xA0E\xA0N\xA0I\xA0O\xA0U\xA0S")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "I\xA0N\xA0G\xA0E\xA0N\xA0I\xA0O\xA0U\xA0S")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "username-header"
+  }, currentUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
     className: "logout-header-btn",
     onClick: logout
@@ -2295,12 +2315,12 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
-      debugger; // console.log('tracksShow inside render function')
+      // console.log(this.props);
+      // debugger;
+      // console.log('tracksShow inside render function')
       // if (!this.props.track) {
       //     return <div>No track on first render</div> ;
       // }
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2336,7 +2356,8 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         comments: this.props.comments,
         comment_authors: this.props.comments.comment_authors,
-        destroyComment: this.props.destroyComment
+        destroyComment: this.props.destroyComment,
+        currentUser: this.props.currentUser
       })));
     }
   }]);
@@ -2376,7 +2397,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     track: state.entities.tracks,
     annotations: state.entities.annotations,
     comments: state.entities.comments,
-    comment_authors: state.entities.comment_authors
+    comment_authors: state.entities.comment_authors,
+    currentUser: state.session.currentUser
   };
 };
 

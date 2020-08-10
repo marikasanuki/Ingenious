@@ -42,6 +42,7 @@ export const createComment = (comment) => {
 };
 
 export const destroyComment = (commentId) => {
+
     return dispatch => {
         return CommentApiUtil.destroyComment(commentId)
             .then(

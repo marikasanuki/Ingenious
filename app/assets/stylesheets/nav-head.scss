@@ -100,6 +100,16 @@
 //     align-items: center;
 // }
 
+.username-header {
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+    font-family: 'Muli', sans-serif;
+    width: auto;
+    position: relative;
+    top: 8px;
+}
+
 .logout-header-btn {
     text-decoration: none;
     color: black;
@@ -109,7 +119,7 @@
     width: auto;
     position: relative;
     top: 8px;
-    padding-left: 90px;
+    padding-left: 15px;
 }
 
 .logout-header-btn::before {
@@ -124,7 +134,7 @@
 }
 
 .logout-header-btn:hover::before {
-    width: 40%;
+    width: 84%;
 }
 
 .fa-icon {

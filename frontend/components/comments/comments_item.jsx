@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class CommentsItem extends React.Component {
     constructor(props) {
@@ -8,11 +10,11 @@ class CommentsItem extends React.Component {
     }
 
     render() {
-        const { comment, comment_authors, destroyComment } = this.props;
+        const { comment, comment_authors, destroyComment, currentUser } = this.props;
 
-        // console.log('test again: ')
-        // console.log(this.props);
-        // debugger;
+        console.log('test again: ')
+        console.log(this.props);
+        debugger;
 
         return (
             <li className='comments-item-li'>
@@ -25,6 +27,23 @@ class CommentsItem extends React.Component {
                 <div className='comments-body'>
                     {comment.comment_body}
                 </div>
+                
+
+                <div className="comment-del-button-cont">
+                    {/* { (currentUser && comment.author_id === currentUser.id) ? ( */}
+                            <button
+                                className="comments-del-button"
+                                onClick={() => {
+                                    destroyComment(comment.id);
+                                }}
+                            >
+                                <FontAwesomeIcon icon={faTrashAlt} />
+                            </button>
+                        {/* ) : null} */}
+
+
+                </div>
+                
             </li>
         )
     }
