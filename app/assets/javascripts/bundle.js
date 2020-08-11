@@ -2468,8 +2468,9 @@ document.addEventListener('DOMContentLoaded', function () {
         users: _defineProperty({}, id, currentUser)
       },
       session: {
-        id: id
-      }
+        currentUser: currentUser
+      } //changed to currentUser object instead of id
+
     };
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(preloadedState);
     delete window.currentUser;

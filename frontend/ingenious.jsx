@@ -15,19 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     [id]: currentUser
                 }
             },
-            session: { id }
+            session: { currentUser } //changed to currentUser object instead of id
         };
         store = configureStore(preloadedState);
-
         delete window.currentUser;
-
     } else {
         store = configureStore();
     }
-
-
-
-
 
     window.store = store;
     window.getState = store.getState;
