@@ -53,6 +53,7 @@ class AnnotationsForm extends React.Component {
                         placeholder="Don't just put the lyric in your own words—drop some knowledge!"
                         value={this.state.anno_body}
                         onChange={this.handleInput('anno_body')}
+                        maxLength="1000" 
                     />
                     
                     {/* <input

@@ -55,12 +55,24 @@ class LoginForm extends React.Component {
                     {this.props.errors.length ? <div className='error-messages'>{this.renderErrors()}</div> : null}
                     <label className='signup-label' >Ingenious Nickname
                         <br />
-                        <input type='text' value={this.state.username} onChange={this.handleInput('username')} className='signup-input' />
+                        <input 
+                            type='text' 
+                            value={this.state.username} 
+                            onChange={this.handleInput('username')} 
+                            className='signup-input'
+                            maxLength="30" 
+                        />
                     </label>
                     <br />
                     <label className='signup-label'>Password <a className='hyperlink-color' href='https://genius.com/password_resets/new' target="blank" >(I forgot my password)</a>
                         <br />
-                        <input type='password' value={this.state.password} onChange={this.handleInput('password')} className='signup-input' />
+                        <input 
+                            type='password' 
+                            value={this.state.password} 
+                            onChange={this.handleInput('password')} 
+                            className='signup-input' 
+                            maxLength="70"
+                        />
                     </label>
                         <p className='terms-of-service'>{this.props.termsOfService}</p>
                     <input className="session-submit-button" type='submit' value={this.props.formButton} />

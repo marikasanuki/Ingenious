@@ -477,7 +477,8 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         className: "anno-textarea",
         placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
         value: this.state.anno_body,
-        onChange: this.handleInput('anno_body')
+        onChange: this.handleInput('anno_body'),
+        maxLength: "1000"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
         value: this.props.start_idx,
@@ -1643,7 +1644,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.handleInput('username'),
-        className: "signup-input"
+        className: "signup-input",
+        maxLength: "30"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-label"
       }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -1654,7 +1656,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         type: "password",
         value: this.state.password,
         onChange: this.handleInput('password'),
-        className: "signup-input"
+        className: "signup-input",
+        maxLength: "70"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "terms-of-service"
       }, this.props.termsOfService), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1804,14 +1807,16 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.handleInput('username'),
-        className: "signup-input"
+        className: "signup-input",
+        maxLength: "30"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-label"
       }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.handleInput('password'),
-        className: "signup-input"
+        className: "signup-input",
+        maxLength: "70"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "signup-label"
       }, "By clicking \u201CCreate Account\u201D, you are indicating that you have read and agree to the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {

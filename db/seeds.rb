@@ -9,22 +9,23 @@
 User.destroy_all
 Track.destroy_all
 Annotation.destroy_all
+Comment.destroy_all
 
 rand_conc = rand(1..999)
 rand_total = rand(1..500) + rand.round(1)
 
 user0 = User.create!(username: 'IngeniousFan', password: 'IngeniousFanpw')
 user1 = User.create!(username: 'SwagAdele1', password: 'demopassword1')
-user2 = User.create!(username: 'Childiocity', password: 'demopassword2')
-user3 = User.create!(username: 'Draketastic', password: 'demopassword3')
-user4 = User.create!(username: 'Millerprism', password: 'demopassword4')
-user5 = User.create!(username: 'ElixirGrizzly', password: 'demopassword5')
-user6 = User.create!(username: 'Yeahverse', password: 'demopassword6')
-user7 = User.create!(username: 'TribequestAuthority', password: 'demopassword7')
-user8 = User.create!(username: 'vinylApple', password: 'demopassword8')
-user9 = User.create!(username: 'PremaLone', password: 'demopassword9')
-user10 = User.create!(username: 'Pinkmusselster', password: 'demopassword10')
-user11 = User.create!(username: 'eminemology', password: 'demopassword11')
+user2 = User.create!(username: 'Childiocity2', password: 'demopassword2')
+user3 = User.create!(username: 'Drak3tastic', password: 'demopassword3')
+user4 = User.create!(username: 'Millerprism4', password: 'demopassword4')
+user5 = User.create!(username: 'ElixirGri55ly', password: 'demopassword5')
+user6 = User.create!(username: 'Yeahverse6', password: 'demopassword6')
+user7 = User.create!(username: 'TribequestAutho7ity', password: 'demopassword7')
+user8 = User.create!(username: 'vinyl8Apple', password: 'demopassword8')
+user9 = User.create!(username: 'preMaLone9', password: 'demopassword9')
+user10 = User.create!(username: 'Pinkmusselster10', password: 'demopassword10')
+user11 = User.create!(username: 'eminemo11ogy', password: 'demopassword11')
 user12 = User.create!(username: 'demouser12', password: 'demopassword12')
 user13 = User.create!(username: 'demouser13', password: 'demopassword13')
 user14 = User.create!(username: 'demouser14', password: 'demopassword14')
@@ -2510,3 +2511,10 @@ ann32 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_
 ann33 = Annotation.create!(anno_body: "'Key to the sky' is a reference to the Led Zeppelin song 'Stairway to Heaven.'", author_id: 1, track_id: 1, start_idx: 48, end_idx: 110)    
 ann34 = Annotation.create!(anno_body: "Do. Or do not. There is no tryy.", author_id: 1, track_id: 1, start_idx: 450, end_idx: 679)
 ann35 = Annotation.create!(anno_body: "Adele believes: Do. Or do not. There is no try.", author_id: 1, track_id: 2, start_idx: 450, end_idx: 679)
+
+
+comm00 = Comment.create!(comment_body: "I can relate", author_id: 2, track_id: 1)
+comm01 = Comment.create!(comment_body: "Wow this is such a cool song", author_id: 1, track_id: 1)
+comm02 = Comment.create!(comment_body: "MAC", author_id: 2, track_id: 1)
+comm03 = Comment.create!(comment_body: "MILLER", author_id: 2, track_id: 1)
+comm04 = Comment.create!(comment_body: "Voice of an angel", author_id: 2, track_id: 2)
