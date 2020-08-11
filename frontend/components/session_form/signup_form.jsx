@@ -72,7 +72,7 @@ class SignupForm extends React.Component {
     demoUser(e) {
         e.preventDefault();
         //  debugger;
-        this.props.login({ username: 'marikasanuki', password: 'marikasanuki'})
+        this.props.login({ username: 'IngeniousFan', password: 'IngeniousFanpw'})
             .then(() => this.props.history.push('/'));
     }
 

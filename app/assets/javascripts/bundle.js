@@ -1862,8 +1862,8 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault(); //  debugger;
 
       this.props.login({
-        username: 'marikasanuki',
-        password: 'marikasanuki'
+        username: 'IngeniousFan',
+        password: 'IngeniousFanpw'
       }).then(function () {
         return _this4.props.history.push('/');
       });
