@@ -4,7 +4,7 @@ export const RECEIVE_ANNOTATION = 'RECEIVE_ANNOTATION';
 export const REMOVE_ANNOTATION = 'REMOVE_ANNOTATION';
 
 const receiveAnnotation = (annotation) => {
-    console.log('hit receiveAnnotation reg action creator')
+    // console.log('hit receiveAnnotation reg action creator')
     //  debugger;
     return ({
         type: RECEIVE_ANNOTATION,
@@ -20,7 +20,7 @@ const removeAnnotation = (annotation) => {
 }
 
 export const fetchAnnotation = (annotation_id) => {
-    console.log('hit fetchAnnotation thunk action creator')
+    // console.log('hit fetchAnnotation thunk action creator')
     //  debugger;
     return dispatch => {
         console.log('hit dispatch inside fetchAnnotation thunk action creator')
@@ -33,10 +33,10 @@ export const fetchAnnotation = (annotation_id) => {
 };
 
 export const createAnnotation = (annotation) => {
-    console.log('hit createAnnotation thunk action creator')
+    // console.log('hit createAnnotation thunk action creator')
     // debugger;
     return dispatch => {
-        console.log('hit dispatch inside createAnnotation thunk action creator')
+        // console.log('hit dispatch inside createAnnotation thunk action creator')
         //  debugger; 
         return AnnotationApiUtil.createAnnotation(annotation)
             .then(

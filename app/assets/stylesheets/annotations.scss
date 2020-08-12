@@ -4,7 +4,7 @@
 
 
 .anno-show-lyrics-container {
-    width: 50%;
+    width: 60%;
     height: 100%;
     background-color: white;
     // text-align: center;
@@ -115,6 +115,7 @@
     height: 100%;
     display: flex;
     justify-content: flex-end;
+    
 }
 
 .anno-border-bar {
@@ -126,6 +127,7 @@
 .anno-form {
     width: 100%;
     height: 100%;
+    
 }
 
 .anno-textarea {
@@ -135,11 +137,10 @@
     background-color: rgb(245, 245, 245);
     color: rgb(113, 113, 113);
     resize: none;
-    width: 390px;
+    width: 100%;
     height: 200px;
     font-size: 16px;
     padding: 10px;
-
 }
 
 

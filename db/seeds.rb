@@ -207,7 +207,6 @@ Algorhythm
 (Moving how they say so)
 Algorhythm
 
-
 [Verse 2]
 Step, step, slide, slide
 Move your body from side to side
@@ -2509,12 +2508,12 @@ ann30 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_
 ann31 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 31, track_id: 31, start_idx: 105, end_idx: 290)
 ann32 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 32, track_id: 32, start_idx: 105, end_idx: 290)
 ann33 = Annotation.create!(anno_body: "'Key to the sky' is a reference to the Led Zeppelin song 'Stairway to Heaven.'", author_id: 1, track_id: 1, start_idx: 48, end_idx: 110)    
-ann34 = Annotation.create!(anno_body: "Do. Or do not. There is no tryy.", author_id: 1, track_id: 1, start_idx: 450, end_idx: 679)
+ann34 = Annotation.create!(anno_body: "Do. Or do not. There is no tryy.", author_id: 1, track_id: 1, start_idx: 175, end_idx: 244)
 ann35 = Annotation.create!(anno_body: "Adele believes: Do. Or do not. There is no try.", author_id: 1, track_id: 2, start_idx: 450, end_idx: 679)
 
 
-comm00 = Comment.create!(comment_body: "I can relate", author_id: 2, track_id: 1)
-comm01 = Comment.create!(comment_body: "Wow this is such a cool song", author_id: 1, track_id: 1)
+comm00 = Comment.create!(comment_body: "Wow this is such a cool song", author_id: 1, track_id: 1)
+comm01 = Comment.create!(comment_body: "I can relate", author_id: 2, track_id: 1)
 comm02 = Comment.create!(comment_body: "MAC", author_id: 2, track_id: 1)
 comm03 = Comment.create!(comment_body: "MILLER", author_id: 2, track_id: 1)
 comm04 = Comment.create!(comment_body: "Voice of an angel", author_id: 2, track_id: 2)

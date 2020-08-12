@@ -107,8 +107,8 @@ var RECEIVE_ANNOTATION = 'RECEIVE_ANNOTATION';
 var REMOVE_ANNOTATION = 'REMOVE_ANNOTATION';
 
 var receiveAnnotation = function receiveAnnotation(annotation) {
-  console.log('hit receiveAnnotation reg action creator'); //  debugger;
-
+  // console.log('hit receiveAnnotation reg action creator')
+  //  debugger;
   return {
     type: RECEIVE_ANNOTATION,
     annotation: annotation
@@ -123,8 +123,8 @@ var removeAnnotation = function removeAnnotation(annotation) {
 };
 
 var fetchAnnotation = function fetchAnnotation(annotation_id) {
-  console.log('hit fetchAnnotation thunk action creator'); //  debugger;
-
+  // console.log('hit fetchAnnotation thunk action creator')
+  //  debugger;
   return function (dispatch) {
     console.log('hit dispatch inside fetchAnnotation thunk action creator'); //  debugger; 
 
@@ -134,11 +134,11 @@ var fetchAnnotation = function fetchAnnotation(annotation_id) {
   };
 };
 var createAnnotation = function createAnnotation(annotation) {
-  console.log('hit createAnnotation thunk action creator'); // debugger;
-
+  // console.log('hit createAnnotation thunk action creator')
+  // debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside createAnnotation thunk action creator'); //  debugger; 
-
+    // console.log('hit dispatch inside createAnnotation thunk action creator')
+    //  debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["createAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
@@ -559,9 +559,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       annotationFormVisible: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    _this.openAnnotation = _this.openAnnotation.bind(_assertThisInitialized(_this));
+    _this.openAnnotationItem = _this.openAnnotationItem.bind(_assertThisInitialized(_this));
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
-    _this.createAnnotationForm = _this.createAnnotationForm.bind(_assertThisInitialized(_this));
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
@@ -628,7 +627,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
-      openAnnotation();
+      openAnnotationItem();
     }
   }, {
     key: "setCurrentAnnotationId",
@@ -638,26 +637,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "createAnnotationForm",
-    value: function createAnnotationForm() {
-      // FORM TO CREATE A NEW ANNOTATION 
-      return (
-        /*#__PURE__*/
-        // <div className='annotation-box-container'>
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          track: this.props.track,
-          annotations: this.props.annotations,
-          createAnnotation: this.props.createAnnotation,
-          start_idx: this.state.start_idx,
-          end_idx: this.state.end_idx,
-          setCurrentAnnotationId: this.setCurrentAnnotationId
-        })) // </div>
-
-      );
-    }
-  }, {
-    key: "openAnnotation",
-    value: function openAnnotation() {
+    key: "openAnnotationItem",
+    value: function openAnnotationItem() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -679,7 +660,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       // console.log('annotationsShow inside render function');        
       var _this$props = this.props,
           lyrics = _this$props.lyrics,
-          annotations = _this$props.annotations;
+          annotations = _this$props.annotations,
+          currentUser = _this$props.currentUser,
+          loggedIn = _this$props.loggedIn;
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
       var prev_idx = 0;
@@ -704,13 +687,13 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         var unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
         var annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx); // console.log("this is start_idx: " + annotation.start_idx);
         // console.log("this is end_idx: " + annotation.end_idx);
+        // console.log("this is prev_idx: " + prev_idx);
+        // console.log("unannotatedSlicedLyric: ");
+        // console.log(unannotatedSlicedLyric);
+        // console.log("annotatedSlicedLyric: ");
+        // console.log(annotatedSlicedLyric);
+        // debugger;
 
-        console.log("this is prev_idx: " + prev_idx);
-        console.log("unannotatedSlicedLyric: ");
-        console.log(unannotatedSlicedLyric);
-        console.log("annotatedSlicedLyric: ");
-        console.log(annotatedSlicedLyric);
-        debugger;
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           "pos-difference": prev_idx,
@@ -728,11 +711,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
               annotationVisible: true
             });
           }
-        }, annotatedSlicedLyric));
-        console.log('allFormattedLyrics: ');
-        console.log(allFormattedLyrics);
-        debugger;
-        prev_idx = annotation.end_idx; //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
+        }, annotatedSlicedLyric)); // console.log('allFormattedLyrics: ');
+        // console.log(allFormattedLyrics);
+        // debugger;
+
+        prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
+        //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
           allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -759,13 +743,18 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics",
-          onMouseDown: this.saveOffsetsToState // onMouseDown={this.handleMouseDown}
-          ,
-          onMouseUp: this.saveOffsetsToState // onMouseUp={this.handleMouseUp}
-
+          onMouseDown: this.saveOffsetsToState,
+          onMouseUp: this.saveOffsetsToState
         }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation(), this.state.annotationFormVisible ? this.createAnnotationForm() : this.hideAnnotation())));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotationItem() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          track: this.props.track,
+          annotations: this.props.annotations,
+          createAnnotation: this.props.createAnnotation,
+          start_idx: this.state.start_idx,
+          end_idx: this.state.end_idx,
+          setCurrentAnnotationId: this.setCurrentAnnotationId
+        })) : this.hideAnnotation())));
       } else {
         //if allFormattedLyrics array is empty, there are no annotations on this track to render, so just return the full lyrics string via this.props.lyrics
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -774,10 +763,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           // pos-difference={0}
-          className: "anno-show-lyrics" // onMouseDown={this.handleMouseDown}
-          ,
-          onMouseDown: this.saveOffsetsToState // onMouseUp={this.handleMouseUp}
-          ,
+          className: "anno-show-lyrics",
+          onMouseDown: this.saveOffsetsToState,
           onMouseUp: this.saveOffsetsToState
         }, this.props.lyrics));
       }
@@ -794,35 +781,6 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 // }
 // componentWillUnmount() {
 //     // document.removeEventListener('click', this.handleClickOutside, true);
-// }
-// this.handleMouseDown = this.handleMouseDown.bind(this);
-// this.handleMouseUp = this.handleMouseUp.bind(this);
-// handleMouseDown(e){
-//     this.setState({
-//         // highlightStart: e.target,
-//         currentAnnotationId: null,
-//         annotationVisible: false,
-//         annotationFormVisible: false,
-//         //where mouse button was first pressed down (start of mousedown event)
-//     })
-// }
-// handleMouseUp(e){
-//     let startPos = 0;
-//     let endPos = 0;
-//     if (window.getSelection().focusOffset > window.getSelection().anchorOffset) {
-//         startPos = window.getSelection().anchorOffset;
-//         endPos = window.getSelection().focusOffset;
-//     } else {
-//         startPos = window.getSelection().focusOffset;
-//         endPos = window.getSelection().anchorOffset;
-//     }
-//     this.setState({
-//         // highlightEnd: e.target,
-//         annotationFormVisible: true,
-//         start_idx: startPos,
-//         end_idx: endPos,
-//         //where mouse button was released (end of mousedown event)
-//     })
 // }
 
 /***/ }),
@@ -2348,8 +2306,12 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         track: this.props.track,
         lyrics: this.props.track.lyrics,
         annotations: this.props.annotations,
-        createAnnotation: this.props.createAnnotation
+        createAnnotation: this.props.createAnnotation,
+        loggedIn: this.props.loggedIn,
+        currentUser: this.props.currentUser
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comments-outer-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-form-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         createComment: this.props.createComment,
@@ -2361,7 +2323,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         comment_authors: this.props.comments.comment_authors,
         destroyComment: this.props.destroyComment,
         currentUser: this.props.currentUser
-      })));
+      }))));
     }
   }]);
 
@@ -2401,7 +2363,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     annotations: state.entities.annotations,
     comments: state.entities.comments,
     comment_authors: state.entities.comment_authors,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    loggedIn: Boolean(state.session.currentUser)
   };
 };
 
@@ -2860,16 +2823,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAnnotation", function() { return updateAnnotation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyAnnotation", function() { return destroyAnnotation; });
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  console.log('hit fetchAnnotation api util');
-  debugger;
+  // console.log('hit fetchAnnotation api util');
+  //  debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/annotations/".concat(annotation.id)
   });
 };
 var createAnnotation = function createAnnotation(annotation) {
-  console.log('hit createAnnotation api util');
-  debugger;
+  // console.log('hit createAnnotation api util');
+  //  debugger;
   return $.ajax({
     method: 'POST',
     url: "/api/annotations",
@@ -2879,8 +2842,8 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit updateAnnotation api util');
-  debugger;
+  // console.log('hit updateAnnotation api util');
+  //  debugger;
   return $.ajax({
     method: 'PATCH',
     url: "/api/annotations/".concat(annotation.id),
@@ -2890,8 +2853,8 @@ var updateAnnotation = function updateAnnotation(annotation) {
   });
 };
 var destroyAnnotation = function destroyAnnotation(annotation) {
-  console.log('hit destroyAnnotation api util');
-  debugger;
+  // console.log('hit destroyAnnotation api util');
+  //  debugger;
   return $.ajax({
     method: 'DELETE',
     url: "/api/annotations/".concat(annotation.id)

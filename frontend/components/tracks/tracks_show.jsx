@@ -56,32 +56,34 @@ class TracksShow extends React.Component {
                   lyrics={this.props.track.lyrics}
                   annotations={this.props.annotations}
                   createAnnotation={this.props.createAnnotation}  
+                  loggedIn={this.props.loggedIn}
+                  currentUser={this.props.currentUser}
                 />
               }
             </div>
             
-            <div className='comments-form-cont'>
-
-                {
-                    <CommentsForm
-                        createComment={this.props.createComment}
-                        track={this.props.track}
-                    
-                    />
-                }
+            <div className='comments-outer-cont'>
+                <div className='comments-form-cont'>
+                    {
+                        <CommentsForm
+                            createComment={this.props.createComment}
+                            track={this.props.track}
+                        
+                        />
+                    }
+                </div>
+                
+                <div className='comments-list-cont'>
+                    {
+                        <CommentsList
+                            comments={this.props.comments}
+                            comment_authors={this.props.comments.comment_authors}
+                            destroyComment={this.props.destroyComment}
+                            currentUser={this.props.currentUser}
+                        />
+                    }
+                </div>
             </div>
-            
-            <div className='comments-list-cont'>
-                {
-                    <CommentsList
-                        comments={this.props.comments}
-                        comment_authors={this.props.comments.comment_authors}
-                        destroyComment={this.props.destroyComment}
-                        currentUser={this.props.currentUser}
-                    />
-                }
-            </div>
-
           </div>
         );
     }
