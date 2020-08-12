@@ -8,11 +8,11 @@ class AnnotationsShow extends React.Component {
             currentAnnotationId: null,
             start_idx: null,
             end_idx: null,
-            annotationVisible: false,
+            annotationCardVisible: false,
             annotationFormVisible: false,
         };
         this.handleClick = this.handleClick.bind(this);
-        this.openAnnotationItem = this.openAnnotationItem.bind(this);
+        this.openAnnotationCard = this.openAnnotationCard.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
 
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
@@ -79,14 +79,14 @@ class AnnotationsShow extends React.Component {
     }
 
     handleClick() {
-        openAnnotationItem()
+        openAnnotationCard()
     }
 
     setCurrentAnnotationId(annotation_id) {
         this.setState({ currentAnnotationId: annotation_id })
     }
 
-    openAnnotationItem() {
+    openAnnotationCard() {
         return (
             <div className='annotation-box-container'>
                     <div className='annotation-box'>
@@ -158,9 +158,9 @@ class AnnotationsShow extends React.Component {
                     className='highlighted-annotated-lyric'
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
-                            // this.state.annotationVisible ?
-                            // this.setState({ annotationVisible: false }) :
-                            this.setState({ annotationVisible: true })
+                            // this.state.annotationCardVisible ?
+                            // this.setState({ annotationCardVisible: false }) :
+                            this.setState({ annotationCardVisible: true })
                         }}
                 >
                     {annotatedSlicedLyric}
@@ -190,8 +190,6 @@ class AnnotationsShow extends React.Component {
         };
 
 
-
-
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
@@ -212,7 +210,7 @@ class AnnotationsShow extends React.Component {
                         </div>
                         <div className='anno-show-cont'>
                             <br />
-                            {this.state.annotationVisible ? this.openAnnotationItem() : this.hideAnnotation()}
+                            {this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation()}
                             <br />
                             {this.state.annotationFormVisible ? 
                                 <div>

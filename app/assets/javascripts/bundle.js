@@ -555,11 +555,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       currentAnnotationId: null,
       start_idx: null,
       end_idx: null,
-      annotationVisible: false,
+      annotationCardVisible: false,
       annotationFormVisible: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    _this.openAnnotationItem = _this.openAnnotationItem.bind(_assertThisInitialized(_this));
+    _this.openAnnotationCard = _this.openAnnotationCard.bind(_assertThisInitialized(_this));
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
@@ -627,7 +627,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
-      openAnnotationItem();
+      openAnnotationCard();
     }
   }, {
     key: "setCurrentAnnotationId",
@@ -637,8 +637,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "openAnnotationItem",
-    value: function openAnnotationItem() {
+    key: "openAnnotationCard",
+    value: function openAnnotationCard() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -703,12 +703,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           key: uniqueKey++,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
-            _this2.setCurrentAnnotationId(annotation.id); // this.state.annotationVisible ?
-            // this.setState({ annotationVisible: false }) :
+            _this2.setCurrentAnnotationId(annotation.id); // this.state.annotationCardVisible ?
+            // this.setState({ annotationCardVisible: false }) :
 
 
             _this2.setState({
-              annotationVisible: true
+              annotationCardVisible: true
             });
           }
         }, annotatedSlicedLyric)); // console.log('allFormattedLyrics: ');
@@ -747,7 +747,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           onMouseUp: this.saveOffsetsToState
         }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationVisible ? this.openAnnotationItem() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
           createAnnotation: this.props.createAnnotation,
@@ -2267,20 +2267,12 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
   _createClass(TracksShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // console.log('tracks show component mounted');
       this.props.fetchTrack(this.props.match.params.id);
-      this.props.fetchTrackComments(this.props.match.params.id); // console.log(this.props);
-      // debugger;
+      this.props.fetchTrackComments(this.props.match.params.id);
     }
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props);
-      // debugger;
-      // console.log('tracksShow inside render function')
-      // if (!this.props.track) {
-      //     return <div>No track on first render</div> ;
-      // }
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
