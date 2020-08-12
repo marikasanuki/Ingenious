@@ -11,7 +11,7 @@ class AnnotationsShow extends React.Component {
             annotationCardVisible: false,
             annotationFormVisible: false,
         };
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
         this.openAnnotationCard = this.openAnnotationCard.bind(this);
         this.hideAnnotation = this.hideAnnotation.bind(this); 
 
@@ -78,12 +78,12 @@ class AnnotationsShow extends React.Component {
         })
     }
 
-    handleClick() {
-        openAnnotationCard()
-    }
+    // handleClick() {
+    //     openAnnotationCard()
+    // }
 
     setCurrentAnnotationId(annotation_id) {
-        this.setState({ currentAnnotationId: annotation_id })
+        this.setState({ currentAnnotationId: annotation_id }) //save the currentAnnotationId to local state so that onClick in the  span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
 
     openAnnotationCard() {
@@ -113,13 +113,9 @@ class AnnotationsShow extends React.Component {
         let prev_idx = 0;
         let uniqueKey = 0;
 
-        // console.log("annotations is: ");
-        // console.log(annotations);
-        // console.log("annotationsArr (individual track's annotations' values) is: ");
-        // console.log('this is this.props: ')
-        // console.log(this.props);
-        // console.log (annotationsArr);
-        // debugger;
+// console.log("annotationsArr is: ");
+// console.log (annotationsArr);
+// debugger;
 
         for (let i = 0; i < annotationsArr.length; i++) {
 
@@ -146,7 +142,7 @@ class AnnotationsShow extends React.Component {
 
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
-                    pos-difference={prev_idx}
+                    pos-from-top={annotation.start_idx - unannotatedSlicedLyric.length }
                     className='unannotated-lyric'
                 >
                     {unannotatedSlicedLyric}
@@ -155,6 +151,7 @@ class AnnotationsShow extends React.Component {
 
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
+                    pos-from-top={annotation.start_idx}
                     className='highlighted-annotated-lyric'
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
@@ -167,9 +164,9 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-// console.log('allFormattedLyrics: ');
-// console.log(allFormattedLyrics);
-// debugger;
+console.log('allFormattedLyrics before final iteration: ');
+console.log(allFormattedLyrics);
+debugger;
 
             prev_idx = annotation.end_idx;            
 
@@ -179,7 +176,7 @@ class AnnotationsShow extends React.Component {
              
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
-                        pos-difference={prev_idx}
+                        pos-from-top={prev_idx}
                         className='unannotated-lyric'
                     >
                         {lyrics.slice(prev_idx, lyrics.length)}
@@ -187,12 +184,18 @@ class AnnotationsShow extends React.Component {
                 )
             }   
 
+
+console.log('allFormattedLyrics: ');
+console.log(allFormattedLyrics);
+debugger;
+
+
         };
 
 
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
-        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
+        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
             return (
                 <div>
                     <div className='anno-show-lyrics-container'>
@@ -206,7 +209,7 @@ class AnnotationsShow extends React.Component {
                             onMouseDown={this.saveOffsetsToState}
                             onMouseUp={this.saveOffsetsToState}
                         >
-                            {allFormattedLyrics}
+                            {allFormattedLyrics}    {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
                         </div>
                         <div className='anno-show-cont'>
                             <br />
@@ -241,7 +244,7 @@ class AnnotationsShow extends React.Component {
                     </div>
 
                     <div                                                      
-                        // pos-difference={0}
+                        pos-from-top={0}
                         className='anno-show-lyrics'
                         onMouseDown={this.saveOffsetsToState}
                         onMouseUp={this.saveOffsetsToState}

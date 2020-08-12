@@ -24,16 +24,13 @@ class AnnotationsForm extends React.Component {
 
         this.props.createAnnotation(anno)
             .then (
-                    (res) => {
-                        return this.props.setCurrentAnnotationId(res.annotation.id)
-                    }
+                (res) => {
+                    return this.props.setCurrentAnnotationId(res.annotation.id)
+                }
             )
-            // .then(() => this.props.history.push('/'));
-            // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
     }
 
     handleInput(field) {
-        // console.log("anno form, inside handleInput function");   
         return (e) => {
             this.setState({
                 [field]: e.target.value
@@ -56,11 +53,6 @@ class AnnotationsForm extends React.Component {
                         maxLength="1000" 
                     />
                     
-                    {/* <input
-                        type='integer'
-                        value={this.props.track.id}
-                        onChange={this.handleInput('track_id')}
-                    /> */}
                     <br />
                     <input 
                         type='integer' 
@@ -74,6 +66,8 @@ class AnnotationsForm extends React.Component {
                         onChange={this.handleInput('end_idx')}
                     />
                     <br/>
+
+                    
                     <input className="anno-submit-button" type='submit' value={'SAVE'}/>
                 </form>
             </div>

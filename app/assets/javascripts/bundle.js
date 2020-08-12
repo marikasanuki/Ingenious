@@ -449,15 +449,13 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
       var anno = Object.assign({}, newAnnoInfo);
       this.props.createAnnotation(anno).then(function (res) {
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
-      }); // .then(() => this.props.history.push('/'));
-      // .then(() => this.props.history.push(`/tracks/${this.props.track.id}`));
+      });
     }
   }, {
     key: "handleInput",
     value: function handleInput(field) {
       var _this3 = this;
 
-      // console.log("anno form, inside handleInput function");   
       return function (e) {
         _this3.setState(_defineProperty({}, field, e.target.value));
       };
@@ -557,8 +555,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       end_idx: null,
       annotationCardVisible: false,
       annotationFormVisible: false
-    };
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    }; // this.handleClick = this.handleClick.bind(this);
+
     _this.openAnnotationCard = _this.openAnnotationCard.bind(_assertThisInitialized(_this));
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
@@ -623,18 +621,16 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         start_idx: selOffsets.start,
         end_idx: selOffsets.end
       });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick() {
-      openAnnotationCard();
-    }
+    } // handleClick() {
+    //     openAnnotationCard()
+    // }
+
   }, {
     key: "setCurrentAnnotationId",
     value: function setCurrentAnnotationId(annotation_id) {
       this.setState({
         currentAnnotationId: annotation_id
-      });
+      }); //save the currentAnnotationId to local state so that onClick in the  span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
   }, {
     key: "openAnnotationCard",
@@ -666,11 +662,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
       var prev_idx = 0;
-      var uniqueKey = 0; // console.log("annotations is: ");
-      // console.log(annotations);
-      // console.log("annotationsArr (individual track's annotations' values) is: ");
-      // console.log('this is this.props: ')
-      // console.log(this.props);
+      var uniqueKey = 0; // console.log("annotationsArr is: ");
       // console.log (annotationsArr);
       // debugger;
 
@@ -696,11 +688,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
-          "pos-difference": prev_idx,
+          "pos-from-top": annotation.start_idx - unannotatedSlicedLyric.length,
           className: "unannotated-lyric"
         }, unannotatedSlicedLyric));
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
+          "pos-from-top": annotation.start_idx,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
             _this2.setCurrentAnnotationId(annotation.id); // this.state.annotationCardVisible ?
@@ -711,20 +704,24 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
               annotationCardVisible: true
             });
           }
-        }, annotatedSlicedLyric)); // console.log('allFormattedLyrics: ');
-        // console.log(allFormattedLyrics);
-        // debugger;
-
+        }, annotatedSlicedLyric));
+        console.log('allFormattedLyrics before final iteration: ');
+        console.log(allFormattedLyrics);
+        debugger;
         prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
           allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             key: uniqueKey++,
-            "pos-difference": prev_idx,
+            "pos-from-top": prev_idx,
             className: "unannotated-lyric"
           }, lyrics.slice(prev_idx, lyrics.length)));
         }
+
+        console.log('allFormattedLyrics: ');
+        console.log(allFormattedLyrics);
+        debugger;
       };
 
       for (var i = 0; i < annotationsArr.length; i++) {
@@ -736,7 +733,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       ; //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
       if (allFormattedLyrics.length) {
-        //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track
+        //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -745,7 +742,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-lyrics",
           onMouseDown: this.saveOffsetsToState,
           onMouseUp: this.saveOffsetsToState
-        }, allFormattedLyrics), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, allFormattedLyrics, "    "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
           track: this.props.track,
@@ -762,7 +759,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          // pos-difference={0}
+          "pos-from-top": 0,
           className: "anno-show-lyrics",
           onMouseDown: this.saveOffsetsToState,
           onMouseUp: this.saveOffsetsToState
