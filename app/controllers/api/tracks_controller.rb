@@ -8,7 +8,6 @@ class Api::TracksController < ApplicationController
     def show
         @track = Track.find(params[:id])
         render :show
-        # @track = Track.where(artist: '?', title: '?')
     end
 
 end

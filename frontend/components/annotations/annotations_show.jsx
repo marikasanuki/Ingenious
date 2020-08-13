@@ -101,7 +101,7 @@ class AnnotationsShow extends React.Component {
                         
                         <div>
                         <br />
-                            This is the author id: 
+                            This is the annotation's author id: 
                             {this.props.annotations[this.state.currentAnnotationId].author_id}
 
                         </div>

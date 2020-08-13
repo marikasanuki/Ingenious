@@ -10,7 +10,7 @@ class Api::AnnotationsController < ApplicationController
         #@annotation.track_id = Track.find(params[:track_id])
 
         if @annotation.save!
-            render 'api/annotations/show'
+            render :show
         else
             # p @annotation.errors.full_messages
             # debugger
@@ -20,13 +20,13 @@ class Api::AnnotationsController < ApplicationController
 
     def show
         @annotation = Annotation.find(params[:id])
-        render 'api/annotations/show'
+        render :show
     end
 
     def update
         @annotation = Annotation.find(params[:id])
         if @annotation && @annotation.update_attributes(annotation_params) 
-            render 'api/annotations/show'
+            render :show
         elsif !@annotation
             render json: ['No such annotation exists'], status: 400
         else
@@ -38,7 +38,7 @@ class Api::AnnotationsController < ApplicationController
         @annotation = Annotation.find(params[:id])
         if @annotation.author_id == current_user.id
             @annotation.destroy
-            render 'api/annotations/show'
+            render :show
         else
             render json: ['Cannot delete annotation'], status: 400
         end

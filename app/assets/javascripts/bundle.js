@@ -649,7 +649,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is the author id:", this.props.annotations[this.state.currentAnnotationId].author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is the annotation's author id:", this.props.annotations[this.state.currentAnnotationId].author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"
       }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-del-button",
@@ -2493,8 +2493,6 @@ var annotationsReducer = function annotationsReducer() {
 
   switch (action.type) {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
-      // console.log('hit annotations reducer (RECEIVE_ANNOTATION)')
-      //  debugger;   
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
       var ann = _defineProperty({}, action.annotation.id, action.annotation);
@@ -2506,7 +2504,6 @@ var annotationsReducer = function annotationsReducer() {
       return Object.assign({}, action.track.annotations);
 
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ANNOTATION"]:
-      // debugger;   
       var newState = Object.assign({}, oldState);
       delete newState[action.annotation.id];
       return newState;
@@ -2731,13 +2728,9 @@ var tracksReducer = function tracksReducer() {
 
   switch (action.type) {
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TRACKS"]:
-      // console.log('hit tracks reducer')
-      //  debugger;   
       return Object.assign({}, action.tracks);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-      // console.log('hit tracks reducer (RECEIVE_TRACK)')
-      //  debugger;   
       return Object.assign({}, action.track);
     // return Object.assign({}, oldState, {[action.track.id]: action.track} );
     // case RECEIVE_ANNOTATION:
@@ -2832,16 +2825,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAnnotation", function() { return updateAnnotation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyAnnotation", function() { return destroyAnnotation; });
 var fetchAnnotation = function fetchAnnotation(annotation) {
-  // console.log('hit fetchAnnotation api util');
-  //  debugger;
   return $.ajax({
     method: 'GET',
     url: "/api/annotations/".concat(annotation.id)
   });
 };
 var createAnnotation = function createAnnotation(annotation) {
-  // console.log('hit createAnnotation api util');
-  //  debugger;
   return $.ajax({
     method: 'POST',
     url: "/api/annotations",
@@ -2851,8 +2840,8 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotationId) {
-  // console.log('hit updateAnnotation api util');
-  //  debugger;
+  console.log('hit updateAnnotation api util');
+  debugger;
   return $.ajax({
     method: 'PATCH',
     url: "/api/annotations/".concat(annotationId),
@@ -2862,8 +2851,6 @@ var updateAnnotation = function updateAnnotation(annotationId) {
   });
 };
 var destroyAnnotation = function destroyAnnotation(annotationId) {
-  // console.log('hit destroyAnnotation api util');
-  //  debugger;
   return $.ajax({
     method: 'DELETE',
     url: "/api/annotations/".concat(annotationId)
@@ -3027,12 +3014,9 @@ var fetchTracks = function fetchTracks() {
   });
 };
 var fetchTrack = function fetchTrack(track) {
-  // console.log('hit fetchTrack api util');
-  //  debugger;
   return $.ajax({
     method: 'GET',
-    url: "/api/tracks/".concat(track) // url: `/api/tracks/${track.id}`,
-
+    url: "/api/tracks/".concat(track)
   });
 };
 

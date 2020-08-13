@@ -17,7 +17,7 @@ class Api::CommentsController < ApplicationController
         @comment.author_id = current_user.id
 
         if @comment.save!
-            render 'api/comments/show'
+            render :show
         else
             render json: @comment.errors.full_messages, status: 422
             # if !@comment
@@ -35,7 +35,7 @@ class Api::CommentsController < ApplicationController
 
         if @comment.author_id == current_user.id
             @comment.destroy
-            render 'api/comments/show'
+            render :show
         else
             render json: @comment.errors.full_messages, status: 422
         end
