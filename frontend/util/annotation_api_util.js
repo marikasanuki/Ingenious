@@ -17,21 +17,21 @@ export const createAnnotation = (annotation) => {
     });
 };
 
-export const updateAnnotation = (annotation) => {
+export const updateAnnotation = (annotationId) => {
     // console.log('hit updateAnnotation api util');
     //  debugger;
     return $.ajax({
         method: 'PATCH',
-        url: `/api/annotations/${annotation.id}`,
+        url: `/api/annotations/${annotationId}`,
         data: { annotation },
     });
 };
 
-export const destroyAnnotation = (annotation) => {
+export const destroyAnnotation = (annotationId) => {
     // console.log('hit destroyAnnotation api util');
     //  debugger;
     return $.ajax({
         method: 'DELETE',
-        url: `/api/annotations/${annotation.id}`,
+        url: `/api/annotations/${annotationId}`,
     });
 };

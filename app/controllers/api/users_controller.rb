@@ -7,7 +7,6 @@ class Api::UsersController < ApplicationController
             render 'api/users/show'
         else    
             error_message = []
-            # debugger
                 @user.errors.full_messages.each do |error|
                     if error == "Username can't be blank"
                         error_message << "Username can't be blank"

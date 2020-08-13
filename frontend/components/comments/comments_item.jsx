@@ -32,8 +32,6 @@ class CommentsItem extends React.Component {
                                 <FontAwesomeIcon icon={faTrashAlt} />
                             </div>
                          ) : null } 
-
-
                 </div>
                 
             </li>

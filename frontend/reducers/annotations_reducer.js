@@ -21,9 +21,8 @@ const annotationsReducer = (oldState = {}, action) => {
         case RECEIVE_TRACK: 
             return Object.assign({}, action.track.annotations);
         case REMOVE_ANNOTATION:
+            // debugger;   
             let newState = Object.assign({}, oldState);
-                console.log(action)
-                debugger;   
             delete newState[action.annotation.id]
             return newState;
         default:

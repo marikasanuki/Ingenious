@@ -1,5 +1,7 @@
 import React from "react";
 import AnnotationsForm from './annotations_form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -18,6 +20,7 @@ class AnnotationsShow extends React.Component {
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
+        // this.props.destroyAnnotation = this.props.destroyAnnotation.bind(this);
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -87,13 +90,44 @@ class AnnotationsShow extends React.Component {
     }
 
     openAnnotationCard() {
+        // debugger;
         return (
             <div className='annotation-box-container'>
                     <div className='annotation-box'>
                         <div className='annotation-hed'>Ingenious Annotation</div>
                         <br/>
-                        {this.props.annotations[this.state.currentAnnotationId].anno_body}
+                        {this.props.annotations[this.state.currentAnnotationId].anno_body} {/* //Uncaught TypeError: Cannot read property 'anno_body' of undefined */}
+                        
+                        
+                        <div>
+                        <br />
+                            This is the author id: 
+                            {this.props.annotations[this.state.currentAnnotationId].author_id}
+
+                        </div>
+
+                        <div className="comment-del-button-cont">
+                        {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
+                            <div
+                                className="comments-del-button"
+                                onClick={() => {
+                                    this.props.destroyAnnotation(this.state.currentAnnotationId);
+                                }}
+                            >
+                                <FontAwesomeIcon icon={faTrashAlt} />
+                            </div>
+                        ) : null} 
+
+
+                        </div>
+
                     </div>
+
+
+
+
+
+                    
             </div>
         )
     }
@@ -164,11 +198,20 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-console.log('allFormattedLyrics before final iteration: ');
-console.log(allFormattedLyrics);
-debugger;
+// console.log('allFormattedLyrics before final iteration: ');
+// console.log(allFormattedLyrics);
+// debugger;
 
             prev_idx = annotation.end_idx;            
+
+
+            // console.log('current i: ')
+            // console.log(i)
+            // console.log('annotation.end_idx: ')
+            // console.log(annotation.end_idx)
+            // console.log('current lyrics.length: ')
+            // console.log(lyrics.length)
+            // debugger;
 
             //This is for when we're on the final iteration for the for loop
             //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
@@ -185,9 +228,7 @@ debugger;
             }   
 
 
-console.log('allFormattedLyrics: ');
-console.log(allFormattedLyrics);
-debugger;
+
 
 
         };

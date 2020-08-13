@@ -48,6 +48,7 @@ class TracksShow extends React.Component {
                   createAnnotation={this.props.createAnnotation}  
                   loggedIn={this.props.loggedIn}
                   currentUser={this.props.currentUser}
+                  destroyAnnotation={this.props.destroyAnnotation}
                 />
               }
             </div>

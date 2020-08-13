@@ -20,6 +20,13 @@ class Api::CommentsController < ApplicationController
             render 'api/comments/show'
         else
             render json: @comment.errors.full_messages, status: 422
+            # if !@comment
+            #     render json: ['Comment cannot be blank'], status: 422
+            # elsif !logged_in?
+            #     render json: ['You must sign in to leave a comment'], status: 422
+            # else
+            #     render json: ['Comment is not valid'], status: 422
+            # end
         end
     end
 

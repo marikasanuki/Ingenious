@@ -25,7 +25,6 @@ class Api::AnnotationsController < ApplicationController
 
     def update
         @annotation = Annotation.find(params[:id])
-        
         if @annotation && @annotation.update_attributes(annotation_params) 
             render 'api/annotations/show'
         elsif !@annotation
@@ -41,14 +40,14 @@ class Api::AnnotationsController < ApplicationController
             @annotation.destroy
             render 'api/annotations/show'
         else
-            render json: ['No such annotation exists'], status: 400
+            render json: ['Cannot delete annotation'], status: 400
         end
     end
 
     private
 
     def annotation_params
-        params.require(:annotation).permit(:anno_body, :author_id, :track_id, :start_idx, :end_idx)
+        params.require(:annotation).permit(:anno_body, :author_id, :track_id, :start_idx, :end_idx, :id)
     end
 
 end

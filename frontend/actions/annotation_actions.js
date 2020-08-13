@@ -19,13 +19,13 @@ const removeAnnotation = (annotation) => {
     })
 }
 
-export const fetchAnnotation = (annotation_id) => {
+export const fetchAnnotation = (annotationId) => {
     // console.log('hit fetchAnnotation thunk action creator')
     //  debugger;
     return dispatch => {
         console.log('hit dispatch inside fetchAnnotation thunk action creator')
         //  debugger; 
-        return AnnotationApiUtil.fetchAnnotation(annotation_id)
+        return AnnotationApiUtil.fetchAnnotation(annotationId)
             .then(
                 (annotation) => dispatch(receiveAnnotation(annotation))
             )
@@ -45,22 +45,22 @@ export const createAnnotation = (annotation) => {
     }
 };
 
-export const updateAnnotation = (annotation) => {
+export const updateAnnotation = (annotationId) => {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
     //  debugger; 
     return dispatch => {
         // console.log('hit dispatch inside updateAnnotation thunk action creator')
         //  debugger; 
-        return AnnotationAPIUtil.updateAnnotation(annotation)
+        return AnnotationApiUtil.updateAnnotation(annotationId)
             .then(
                 (annotation) => dispatch(receiveAnnotation(annotation))
             )
     }
 };
 
-export const destroyAnnotation = (annotation_id) => {
+export const destroyAnnotation = (annotationId) => {
     return dispatch => {
-        return AnnotationAPIUtil.destroyAnnotation(annotation_id)
+        return AnnotationApiUtil.destroyAnnotation(annotationId)
             .then(
                 (annotation) => dispatch(removeAnnotation(annotation))            )
     }

@@ -122,13 +122,13 @@ var removeAnnotation = function removeAnnotation(annotation) {
   };
 };
 
-var fetchAnnotation = function fetchAnnotation(annotation_id) {
+var fetchAnnotation = function fetchAnnotation(annotationId) {
   // console.log('hit fetchAnnotation thunk action creator')
   //  debugger;
   return function (dispatch) {
     console.log('hit dispatch inside fetchAnnotation thunk action creator'); //  debugger; 
 
-    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAnnotation"](annotation_id).then(function (annotation) {
+    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAnnotation"](annotationId).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
@@ -144,20 +144,20 @@ var createAnnotation = function createAnnotation(annotation) {
     });
   };
 };
-var updateAnnotation = function updateAnnotation(annotation) {
+var updateAnnotation = function updateAnnotation(annotationId) {
   // console.log('hit dispatch inside updateAnnotation thunk action creator')
   //  debugger; 
   return function (dispatch) {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
     //  debugger; 
-    return AnnotationAPIUtil.updateAnnotation(annotation).then(function (annotation) {
+    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotationId).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
-var destroyAnnotation = function destroyAnnotation(annotation_id) {
+var destroyAnnotation = function destroyAnnotation(annotationId) {
   return function (dispatch) {
-    return AnnotationAPIUtil.destroyAnnotation(annotation_id).then(function (annotation) {
+    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyAnnotation"](annotationId).then(function (annotation) {
       return dispatch(removeAnnotation(annotation));
     });
   };
@@ -513,6 +513,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _annotations_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form */ "./frontend/components/annotations/annotations_form.jsx");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -534,6 +536,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
 
 
 
@@ -561,7 +565,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
-    _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
+    _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this)); // this.props.destroyAnnotation = this.props.destroyAnnotation.bind(this);
+
     return _this;
   }
 
@@ -635,13 +640,25 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "openAnnotationCard",
     value: function openAnnotationCard() {
+      var _this2 = this;
+
+      // debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body));
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is the author id:", this.props.annotations[this.state.currentAnnotationId].author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-del-button-cont"
+      }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comments-del-button",
+        onClick: function onClick() {
+          _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
+      })) : null)));
     }
   }, {
     key: "hideAnnotation",
@@ -651,7 +668,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       // console.log('annotationsShow inside render function');        
       var _this$props = this.props,
@@ -696,19 +713,26 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           "pos-from-top": annotation.start_idx,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
-            _this2.setCurrentAnnotationId(annotation.id); // this.state.annotationCardVisible ?
+            _this3.setCurrentAnnotationId(annotation.id); // this.state.annotationCardVisible ?
             // this.setState({ annotationCardVisible: false }) :
 
 
-            _this2.setState({
+            _this3.setState({
               annotationCardVisible: true
             });
           }
-        }, annotatedSlicedLyric));
-        console.log('allFormattedLyrics before final iteration: ');
-        console.log(allFormattedLyrics);
-        debugger;
-        prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
+        }, annotatedSlicedLyric)); // console.log('allFormattedLyrics before final iteration: ');
+        // console.log(allFormattedLyrics);
+        // debugger;
+
+        prev_idx = annotation.end_idx; // console.log('current i: ')
+        // console.log(i)
+        // console.log('annotation.end_idx: ')
+        // console.log(annotation.end_idx)
+        // console.log('current lyrics.length: ')
+        // console.log(lyrics.length)
+        // debugger;
+        //This is for when we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
@@ -718,10 +742,6 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
             className: "unannotated-lyric"
           }, lyrics.slice(prev_idx, lyrics.length)));
         }
-
-        console.log('allFormattedLyrics: ');
-        console.log(allFormattedLyrics);
-        debugger;
       };
 
       for (var i = 0; i < annotationsArr.length; i++) {
@@ -2297,7 +2317,8 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         annotations: this.props.annotations,
         createAnnotation: this.props.createAnnotation,
         loggedIn: this.props.loggedIn,
-        currentUser: this.props.currentUser
+        currentUser: this.props.currentUser,
+        destroyAnnotation: this.props.destroyAnnotation
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-outer-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2485,9 +2506,8 @@ var annotationsReducer = function annotationsReducer() {
       return Object.assign({}, action.track.annotations);
 
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ANNOTATION"]:
+      // debugger;   
       var newState = Object.assign({}, oldState);
-      console.log(action);
-      debugger;
       delete newState[action.annotation.id];
       return newState;
 
@@ -2830,23 +2850,23 @@ var createAnnotation = function createAnnotation(annotation) {
     }
   });
 };
-var updateAnnotation = function updateAnnotation(annotation) {
+var updateAnnotation = function updateAnnotation(annotationId) {
   // console.log('hit updateAnnotation api util');
   //  debugger;
   return $.ajax({
     method: 'PATCH',
-    url: "/api/annotations/".concat(annotation.id),
+    url: "/api/annotations/".concat(annotationId),
     data: {
       annotation: annotation
     }
   });
 };
-var destroyAnnotation = function destroyAnnotation(annotation) {
+var destroyAnnotation = function destroyAnnotation(annotationId) {
   // console.log('hit destroyAnnotation api util');
   //  debugger;
   return $.ajax({
     method: 'DELETE',
-    url: "/api/annotations/".concat(annotation.id)
+    url: "/api/annotations/".concat(annotationId)
   });
 };
 
