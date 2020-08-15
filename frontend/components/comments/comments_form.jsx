@@ -24,8 +24,7 @@ class CommentsForm extends React.Component {
             track_id: this.props.track.id,
         });
 
-        this.props
-            .createComment(comment)
+        this.props.createComment(comment)
             .then(() => this.setState({ comment_body: "" }));
     }
 

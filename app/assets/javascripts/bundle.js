@@ -660,18 +660,20 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         className: "annotation-hed"
       }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-byline"
-      }, 'Written by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-username"
       }, this.props.track.anno_authors[currentAnnoAuthId].username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comment-del-button-cont"
+        className: "annotation-del-button-cont"
       }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comments-del-button",
+        className: "annotation-del-button",
         onClick: function onClick() {
           _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
-      })) : null)));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "annotation-del-button-text"
+      }, "Delete Annotation")) : null)));
     }
   }, {
     key: "hideAnnotation",
@@ -1030,7 +1032,7 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
         className: "comments-item-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-author"
-      }, comment_authors[comment.author_id].username ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, comment_authors[comment.author_id] ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
       }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"

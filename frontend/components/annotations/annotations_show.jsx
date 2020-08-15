@@ -109,22 +109,25 @@ class AnnotationsShow extends React.Component {
                         <br/>
                             {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } {/* //Uncaught TypeError: Cannot read property 'anno_body' of undefined */}
                         <div className='annotation-byline'>
-                            {'Written by: '}  
+                            {'Annotated by: '}  
                         </div>
                         <div className='annotation-username'>
                             {this.props.track.anno_authors[currentAnnoAuthId].username }
                             {/* {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null } */}
                         </div>
 
-                        <div className="comment-del-button-cont">
+                        <div className="annotation-del-button-cont">
                         {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
                             <div
-                                className="comments-del-button"
+                                className="annotation-del-button"
                                 onClick={() => {
                                     this.props.destroyAnnotation(this.state.currentAnnotationId);
                                 }}
                             >
                                 <FontAwesomeIcon icon={faTrashAlt} />
+                                <span
+                                    className="annotation-del-button-text"
+                                >Delete Annotation</span>
                             </div>
                         ) : null} 
 

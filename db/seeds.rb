@@ -2473,10 +2473,24 @@ Aah"
 )
 
 
-ann0 = Annotation.create!(anno_body: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming.
+ann001 = Annotation.create!(anno_body: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming./n'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1, start_idx: 8, end_idx: 37)
+ann002 = Annotation.create!(anno_body: "'Key to the sky' is a reference to the Led Zeppelin song 'Stairway to Heaven.'", author_id: 1, track_id: 1, start_idx: 48, end_idx: 110)    
+ann003 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 10, track_id: 1, start_idx: 175, end_idx: 244)
+ann004 = Annotation.create!(anno_body: "This line has a lot of meaning", author_id: 12, track_id: 1, start_idx: 302, end_idx: 342)
+ann005 = Annotation.create!(anno_body: "Hmm, whiskers and a fisherman makes me think of a catfish.", author_id: 9, track_id: 1, start_idx: 534, end_idx: 573)
+ann006 = Annotation.create!(anno_body: "Woah, so deep.", author_id: 7, track_id: 1, start_idx: 1111, end_idx: 1164)
+ann007 = Annotation.create!(anno_body: "This is probably a great lyric", author_id: 7, track_id: 1, start_idx: 1923, end_idx: 2055)
 
-    'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1, start_idx: 8, end_idx: 37)
-ann1 = Annotation.create!(anno_body: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2, start_idx: 30, end_idx: 38)
+
+ann011 = Annotation.create!(anno_body: "Adele describes a relationship that has turned sour, where she feels stifled and ready to leave.", author_id: 2, track_id: 2, start_idx: 11, end_idx: 38)
+ann012 = Annotation.create!(anno_body: "Adele believes: Do. Or do not. There is no try.", author_id: 1, track_id: 2, start_idx: 450, end_idx: 600)
+ann013 = Annotation.create!(anno_body: "Stay away.", author_id: 11, track_id: 2, start_idx: 717, end_idx: 801)
+ann014 = Annotation.create!(anno_body: "Oh, how the turn tables", author_id: 8, track_id: 2, start_idx: 1214, end_idx: 1274)
+ann015 = Annotation.create!(anno_body: "No, thanks!", author_id: 5, track_id: 2, start_idx: 1311, end_idx: 1324)
+ann016 = Annotation.create!(anno_body: "Just talk to the hand", author_id: 6, track_id: 2, start_idx: 1400, end_idx: 1562)
+ann017 = Annotation.create!(anno_body: "More money, more problems", author_id: 7, track_id: 2, start_idx: 2566, end_idx: 2607)
+
+
 ann2 = Annotation.create!(anno_body: "Adventure. Excitement. A Jedi craves not these things.", author_id: 3, track_id: 3, start_idx: 105, end_idx: 290)
 ann3 = Annotation.create!(anno_body: "When nine hundred years old you reach, look as good you will not.", author_id: 4, track_id: 4, start_idx: 105, end_idx: 290)
 ann4 = Annotation.create!(anno_body: "Fear is the path to the dark side … fear leads to anger … anger leads to hate … hate leads to suffering.", author_id: 5, track_id: 5, start_idx: 105, end_idx: 290)
@@ -2507,13 +2521,13 @@ ann29 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_
 ann30 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 30, track_id: 30, start_idx: 105, end_idx: 290)
 ann31 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 31, track_id: 31, start_idx: 105, end_idx: 290)
 ann32 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 32, track_id: 32, start_idx: 105, end_idx: 290)
-ann33 = Annotation.create!(anno_body: "'Key to the sky' is a reference to the Led Zeppelin song 'Stairway to Heaven.'", author_id: 1, track_id: 1, start_idx: 48, end_idx: 110)    
-ann34 = Annotation.create!(anno_body: "Do. Or do not. There is no tryy.", author_id: 1, track_id: 1, start_idx: 175, end_idx: 244)
-ann35 = Annotation.create!(anno_body: "Adele believes: Do. Or do not. There is no try.", author_id: 1, track_id: 2, start_idx: 450, end_idx: 679)
+
 
 
 comm00 = Comment.create!(comment_body: "Wow this is such a cool song", author_id: 1, track_id: 1)
-comm01 = Comment.create!(comment_body: "I can relate", author_id: 2, track_id: 1)
+comm01 = Comment.create!(comment_body: "I can relate", author_id: 5, track_id: 1)
 comm02 = Comment.create!(comment_body: "MAC", author_id: 2, track_id: 1)
-comm03 = Comment.create!(comment_body: "MILLER", author_id: 2, track_id: 1)
-comm04 = Comment.create!(comment_body: "Voice of an angel", author_id: 2, track_id: 2)
+comm03 = Comment.create!(comment_body: "MILLER", author_id: 7, track_id: 1)
+comm04 = Comment.create!(comment_body: "Voice of an angel", author_id: 5, track_id: 2)
+comm05 = Comment.create!(comment_body: "Voice of an angel", author_id: 8, track_id: 2)
+comm06 = Comment.create!(comment_body: "Voice of an angel", author_id: 10, track_id: 2)
