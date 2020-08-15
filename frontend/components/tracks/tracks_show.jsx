@@ -2,6 +2,7 @@ import React from "react";
 import AnnotationsShow from '../annotations/annotations_show';
 import CommentsForm from '../comments/comments_form';
 import CommentsList from '../comments/comments_list';
+import { Link } from 'react-router-dom';
 
 class TracksShow extends React.Component {
     constructor(props) {
@@ -56,11 +57,13 @@ class TracksShow extends React.Component {
             <div className='comments-outer-cont'>
                 <div className='comments-form-cont'>
                     {
-                        <CommentsForm
-                            createComment={this.props.createComment}
-                            track={this.props.track}
-                        
-                        />
+                        this.props.currentUser ? 
+                            <CommentsForm
+                                createComment={this.props.createComment}
+                                track={this.props.track}
+                            /> 
+                        : 
+                            <div> <Link to={`/login`}>Log in</Link> to leave a comment!</div>
                     }
                 </div>
                 
