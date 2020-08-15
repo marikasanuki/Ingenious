@@ -47,18 +47,26 @@
     // display: inline-block; 
 }
 
-
-
 .annotation-box-container {
     width: 100%;
     height: 100%;
 }
 
-
 .annotation-hed {
     font-weight: 600;
     font-size: 14px;
 }
+
+.annotation-byline {
+    padding-top: 20px;
+    font-size: 10px;
+}
+
+.annotation-username {
+    font-weight: 600;
+    font-size: 11px;
+}
+
 
 .annotation-box {
     background-color: white;

@@ -5,8 +5,6 @@ import { fetchAnnotation, createAnnotation, updateAnnotation, destroyAnnotation 
 import { fetchTrackComments, createComment, destroyComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
-        // console.log('hit mstp in tracks show container')
-        // debugger;
     return ({
         track: state.entities.tracks, 
         annotations: state.entities.annotations,
@@ -18,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-        // console.log('hit mdtp in tracks show container')
-        // debugger;
     return ({
         fetchTrack: (key) => dispatch(fetchTrack(key)),
 

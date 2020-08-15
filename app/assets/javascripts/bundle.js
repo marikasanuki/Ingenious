@@ -565,8 +565,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.hideAnnotation = _this.hideAnnotation.bind(_assertThisInitialized(_this));
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
-    _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this)); // this.props.destroyAnnotation = this.props.destroyAnnotation.bind(this);
-
+    _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -632,24 +631,38 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "setCurrentAnnotationId",
-    value: function setCurrentAnnotationId(annotation_id) {
+    value: function setCurrentAnnotationId(annotationId) {
       this.setState({
-        currentAnnotationId: annotation_id
-      }); //save the currentAnnotationId to local state so that onClick in the  span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
+        currentAnnotationId: annotationId
+      }); //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
   }, {
     key: "openAnnotationCard",
     value: function openAnnotationCard() {
       var _this2 = this;
 
+      // console.log(this.props.track);
+      // console.log('this.props.track.anno_authors: ');
+      // console.log(this.props.track.anno_authors);
+      // console.log('this.state.currentAnnotationId: ');
+      // console.log(this.state.currentAnnotationId);
+      // console.log('this.props.track.anno_authors[35].username');
+      // console.log(this.props.track.anno_authors[35].username);
+      // console.log(this.props.track.anno_authors[this.state.currentAnnotationId]);
       // debugger;
+      var currentAnnoObj = this.props.annotations[this.state.currentAnnotationId];
+      var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId].anno_body, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is the annotation's author id:", this.props.annotations[this.state.currentAnnotationId].author_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Ingenious Annotation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-byline"
+      }, 'Written by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-username"
+      }, this.props.track.anno_authors[currentAnnoAuthId].username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"
       }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-del-button",
@@ -679,9 +692,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
       var prev_idx = 0;
-      var uniqueKey = 0; // console.log("annotationsArr is: ");
-      // console.log (annotationsArr);
-      // debugger;
+      var uniqueKey = 0;
 
       var _loop = function _loop(i) {
         var annotation = annotationsArr[i];
@@ -694,15 +705,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }
 
         var unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
-        var annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx); // console.log("this is start_idx: " + annotation.start_idx);
-        // console.log("this is end_idx: " + annotation.end_idx);
-        // console.log("this is prev_idx: " + prev_idx);
-        // console.log("unannotatedSlicedLyric: ");
-        // console.log(unannotatedSlicedLyric);
-        // console.log("annotatedSlicedLyric: ");
-        // console.log(annotatedSlicedLyric);
-        // debugger;
-
+        var annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx);
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           "pos-from-top": annotation.start_idx - unannotatedSlicedLyric.length,
@@ -721,18 +724,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
               annotationCardVisible: true
             });
           }
-        }, annotatedSlicedLyric)); // console.log('allFormattedLyrics before final iteration: ');
-        // console.log(allFormattedLyrics);
-        // debugger;
-
-        prev_idx = annotation.end_idx; // console.log('current i: ')
-        // console.log(i)
-        // console.log('annotation.end_idx: ')
-        // console.log(annotation.end_idx)
-        // console.log('current lyrics.length: ')
-        // console.log(lyrics.length)
-        // debugger;
-        //This is for when we're on the final iteration for the for loop
+        }, annotatedSlicedLyric));
+        prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
@@ -1037,7 +1030,7 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
         className: "comments-item-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-author"
-      }, comment_authors ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, comment_authors[comment.author_id].username ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
       }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"
@@ -2366,8 +2359,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // console.log('hit mstp in tracks show container')
-  // debugger;
   return {
     track: state.entities.tracks,
     annotations: state.entities.annotations,
@@ -2379,8 +2370,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  // console.log('hit mdtp in tracks show container')
-  // debugger;
   return {
     fetchTrack: function fetchTrack(key) {
       return dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTrack"])(key));

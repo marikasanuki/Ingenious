@@ -20,7 +20,6 @@ class AnnotationsShow extends React.Component {
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
-        // this.props.destroyAnnotation = this.props.destroyAnnotation.bind(this);
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -85,25 +84,36 @@ class AnnotationsShow extends React.Component {
     //     openAnnotationCard()
     // }
 
-    setCurrentAnnotationId(annotation_id) {
-        this.setState({ currentAnnotationId: annotation_id }) //save the currentAnnotationId to local state so that onClick in the  span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
+    setCurrentAnnotationId(annotationId) {
+        this.setState({ currentAnnotationId: annotationId }) //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
 
     openAnnotationCard() {
+        // console.log(this.props.track);
+        // console.log('this.props.track.anno_authors: ');
+        // console.log(this.props.track.anno_authors);
+        // console.log('this.state.currentAnnotationId: ');
+        // console.log(this.state.currentAnnotationId);
+
+        // console.log('this.props.track.anno_authors[35].username');
+        // console.log(this.props.track.anno_authors[35].username);
+        // console.log(this.props.track.anno_authors[this.state.currentAnnotationId]);
         // debugger;
+        const currentAnnoObj = this.props.annotations[this.state.currentAnnotationId]
+        const currentAnnoAuthId = currentAnnoObj.author_id
+
         return (
             <div className='annotation-box-container'>
                     <div className='annotation-box'>
                         <div className='annotation-hed'>Ingenious Annotation</div>
                         <br/>
-                        {this.props.annotations[this.state.currentAnnotationId].anno_body} {/* //Uncaught TypeError: Cannot read property 'anno_body' of undefined */}
-                        
-                        
-                        <div>
-                        <br />
-                            This is the annotation's author id: 
-                            {this.props.annotations[this.state.currentAnnotationId].author_id}
-
+                            {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } {/* //Uncaught TypeError: Cannot read property 'anno_body' of undefined */}
+                        <div className='annotation-byline'>
+                            {'Written by: '}  
+                        </div>
+                        <div className='annotation-username'>
+                            {this.props.track.anno_authors[currentAnnoAuthId].username }
+                            {/* {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null } */}
                         </div>
 
                         <div className="comment-del-button-cont">
@@ -147,10 +157,6 @@ class AnnotationsShow extends React.Component {
         let prev_idx = 0;
         let uniqueKey = 0;
 
-// console.log("annotationsArr is: ");
-// console.log (annotationsArr);
-// debugger;
-
         for (let i = 0; i < annotationsArr.length; i++) {
 
             const annotation = annotationsArr[i];
@@ -162,17 +168,7 @@ class AnnotationsShow extends React.Component {
             let unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
             
             const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
-                
-                        // console.log("this is start_idx: " + annotation.start_idx);
-                        // console.log("this is end_idx: " + annotation.end_idx);
-// console.log("this is prev_idx: " + prev_idx);
-
-// console.log("unannotatedSlicedLyric: ");
-// console.log(unannotatedSlicedLyric);
-
-// console.log("annotatedSlicedLyric: ");
-// console.log(annotatedSlicedLyric);
-// debugger;
+    
 
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
@@ -198,20 +194,7 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-// console.log('allFormattedLyrics before final iteration: ');
-// console.log(allFormattedLyrics);
-// debugger;
-
             prev_idx = annotation.end_idx;            
-
-
-            // console.log('current i: ')
-            // console.log(i)
-            // console.log('annotation.end_idx: ')
-            // console.log(annotation.end_idx)
-            // console.log('current lyrics.length: ')
-            // console.log(lyrics.length)
-            // debugger;
 
             //This is for when we're on the final iteration for the for loop
             //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
@@ -226,10 +209,6 @@ class AnnotationsShow extends React.Component {
                     </span>
                 )
             }   
-
-
-
-
 
         };
 

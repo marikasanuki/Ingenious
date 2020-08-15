@@ -15,7 +15,7 @@ class CommentsItem extends React.Component {
         return (
             <li className='comments-item-li'>
                 <div className='comments-author'>
-                    {(comment_authors) ? (comment_authors[comment.author_id].username) : null }
+                    {(comment_authors[comment.author_id].username) ? (comment_authors[comment.author_id].username) : null }
                 </div>
                 <div className='comments-body'>
                     {comment.comment_body}
