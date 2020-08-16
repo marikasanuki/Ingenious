@@ -568,6 +568,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
+    _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     return _this;
   }
 
@@ -643,37 +644,54 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var currentAnnoObj = this.props.annotations[this.state.currentAnnotationId];
-      var currentAnnoAuthId = currentAnnoObj.author_id;
-      var topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
+      var currentAnnoAuthId = currentAnnoObj.author_id; // console.log('offsetTop: ');
+      // console.log(this.highlightedTrackLyrics.current.offsetTop);
+
+      console.log('getBoundingClientRect().top: ');
+      console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top); // debugger;
+
+      var topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top; // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
+      //     topOffset = 0 - (topOffset - 274);
+      // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 1850)
+      // {
+      //     topOffset = topOffset - 1400;
+      // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top <= 50) {
+      //     topOffset = topOffset + 1800
+      // }
+
+      console.log("final topOffset: ");
+      console.log(topOffset); // const topOffset = 200;
+      //const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
       // console.log(currentAnnoObj);
       // debugger;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-box-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-box",
-        style: {
-          position: 'absolute',
-          top: topOffset + 'px'
-        }
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-hed"
-      }, "Ingenious Annotation"), this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-byline"
-      }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-username"
-      }, this.props.track.anno_authors[currentAnnoAuthId].username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-del-button-cont"
-      }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-del-button",
-        onClick: function onClick() {
-          _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "annotation-del-button-text"
-      }, "Delete Annotation")) : null)));
+      return (
+        /*#__PURE__*/
+        // style = {{ position: 'absolute', top: topOffset + 'px' }}
+        // style = {{ position: 'relative', top: topOffset + 'px' }}
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-box-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-box"
+        }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-hed"
+        }, "Ingenious Annotation"), this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-byline"
+        }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-username"
+        }, this.props.track.anno_authors[currentAnnoAuthId].username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-del-button-cont"
+        }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-del-button",
+          onClick: function onClick() {
+            _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "annotation-del-button-text"
+        }, "Delete Annotation")) : null)))
+      );
     }
   }, {
     key: "hideAnnotation",
@@ -714,7 +732,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, unannotatedSlicedLyric));
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
-          "pos-from-top": annotation.start_idx,
+          "pos-from-top": annotation.start_idx //saving ele ref within highlighted annotated lyric span tag
+          ,
+          ref: _this3.highlightedTrackLyrics //newer syntax, with React.createRef() in the constructor   
+          //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
+          ,
           className: "highlighted-annotated-lyric",
           onClick: function onClick() {
             _this3.setCurrentAnnotationId(annotation.id);

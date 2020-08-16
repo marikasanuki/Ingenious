@@ -21,6 +21,7 @@ class AnnotationsShow extends React.Component {
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
+        this.highlightedTrackLyrics = React.createRef(); 
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -92,14 +93,38 @@ class AnnotationsShow extends React.Component {
         const currentAnnoObj = this.props.annotations[this.state.currentAnnotationId]
         const currentAnnoAuthId = currentAnnoObj.author_id
 
-        const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
+        // console.log('offsetTop: ');
+        // console.log(this.highlightedTrackLyrics.current.offsetTop);
+        console.log('getBoundingClientRect().top: ');
+        console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top);
+        // debugger;
+        let topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top;
+
+        // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
+        //     topOffset = 0 - (topOffset - 274);
+        // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 1850)
+        // {
+        //     topOffset = topOffset - 1400;
+        // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top <= 50) {
+        //     topOffset = topOffset + 1800
+        // }
+
+        console.log("final topOffset: ");
+        console.log(topOffset);
+
+        // const topOffset = 200;
+   
+
+        //const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
 
         // console.log(currentAnnoObj);
         // debugger;
 
         return (
+            // style = {{ position: 'absolute', top: topOffset + 'px' }}
+            // style = {{ position: 'relative', top: topOffset + 'px' }}
             <div className='annotation-box-container'>
-                <div className='annotation-box' style={{ position: 'absolute', top: topOffset + 'px' }}> {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
+                <div className='annotation-box' > {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
                         <div className='annotation-hed'>Ingenious Annotation</div>
                             {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } 
                         <div className='annotation-byline'>
@@ -168,6 +193,9 @@ class AnnotationsShow extends React.Component {
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     pos-from-top={annotation.start_idx}
+                    //saving ele ref within highlighted annotated lyric span tag
+                        ref={this.highlightedTrackLyrics} //newer syntax, with React.createRef() in the constructor   
+                        //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
                     className='highlighted-annotated-lyric'
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
