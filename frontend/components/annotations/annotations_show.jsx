@@ -2,6 +2,7 @@ import React from "react";
 import AnnotationsForm from './annotations_form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -68,7 +69,6 @@ class AnnotationsShow extends React.Component {
     }
 
     saveOffsetsToState() {
-        // console.log("inside saveOffsetsToState function")
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
 
         let selOffsets = this.findSelectionOffsets(lyricsElement);
@@ -89,58 +89,41 @@ class AnnotationsShow extends React.Component {
     }
 
     openAnnotationCard() {
-        // console.log(this.props.track);
-        // console.log('this.props.track.anno_authors: ');
-        // console.log(this.props.track.anno_authors);
-        // console.log('this.state.currentAnnotationId: ');
-        // console.log(this.state.currentAnnotationId);
-
-        // console.log('this.props.track.anno_authors[35].username');
-        // console.log(this.props.track.anno_authors[35].username);
-        // console.log(this.props.track.anno_authors[this.state.currentAnnotationId]);
-        // debugger;
         const currentAnnoObj = this.props.annotations[this.state.currentAnnotationId]
         const currentAnnoAuthId = currentAnnoObj.author_id
 
+        const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
+
+        // console.log(currentAnnoObj);
+        // debugger;
+
         return (
             <div className='annotation-box-container'>
-                    <div className='annotation-box'>
+                <div className='annotation-box' style={{ position: 'absolute', top: topOffset + 'px' }}> {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
                         <div className='annotation-hed'>Ingenious Annotation</div>
-                        <br/>
-                            {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } {/* //Uncaught TypeError: Cannot read property 'anno_body' of undefined */}
+                            {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } 
                         <div className='annotation-byline'>
                             {'Annotated by: '}  
                         </div>
                         <div className='annotation-username'>
                             {this.props.track.anno_authors[currentAnnoAuthId].username }
-                            {/* {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null } */}
                         </div>
-
                         <div className="annotation-del-button-cont">
-                        {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
-                            <div
-                                className="annotation-del-button"
-                                onClick={() => {
-                                    this.props.destroyAnnotation(this.state.currentAnnotationId);
-                                }}
-                            >
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                                <span
-                                    className="annotation-del-button-text"
-                                >Delete Annotation</span>
-                            </div>
-                        ) : null} 
-
-
+                            {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
+                                <div
+                                    className="annotation-del-button"
+                                    onClick={() => {
+                                        this.props.destroyAnnotation(this.state.currentAnnotationId);
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                    <span
+                                        className="annotation-del-button-text"
+                                    >Delete Annotation</span>
+                                </div>
+                            ) : null} 
                         </div>
-
-                    </div>
-
-
-
-
-
-                    
+                </div>
             </div>
         )
     }
@@ -153,7 +136,7 @@ class AnnotationsShow extends React.Component {
 
     render() {
         // console.log('annotationsShow inside render function');        
-        const { lyrics, annotations, currentUser, loggedIn } = this.props;
+        const { lyrics, annotations, currentUser } = this.props;
 
         const allFormattedLyrics = [];
         const annotationsArr = Object.values(annotations);
@@ -188,8 +171,8 @@ class AnnotationsShow extends React.Component {
                     className='highlighted-annotated-lyric'
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
-                            // this.state.annotationCardVisible ?
-                            // this.setState({ annotationCardVisible: false }) :
+                            this.state.annotationCardVisible ?
+                            this.setState({ annotationCardVisible: false }) :
                             this.setState({ annotationCardVisible: true })
                         }}
                 >
@@ -238,19 +221,24 @@ class AnnotationsShow extends React.Component {
                             <br />
                             {this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation()}
                             <br />
-                            {this.state.annotationFormVisible ? 
-                                <div>
-                                    {<AnnotationsForm
-                                        track={this.props.track}
-                                        annotations={this.props.annotations}
-                                        createAnnotation={this.props.createAnnotation}
-                                        start_idx={this.state.start_idx}
-                                        end_idx={this.state.end_idx}
-                                        setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                    />}
-                                </div>
-                            
-                            : this.hideAnnotation()}
+                            {
+                                currentUser ? 
+                                        this.state.annotationFormVisible ?
+                                            <div>
+                                                {<AnnotationsForm
+                                                    track={this.props.track}
+                                                    annotations={this.props.annotations}
+                                                    createAnnotation={this.props.createAnnotation}
+                                                    start_idx={this.state.start_idx}
+                                                    end_idx={this.state.end_idx}
+                                                    setCurrentAnnotationId={this.setCurrentAnnotationId}
+                                                />}
+                                            </div>
+
+                                            : this.hideAnnotation()  
+                                : <div><Link to={`/login`}>Log in</Link> to leave a comment!</div>
+
+                            }
                         </div>
 
                     </div>
