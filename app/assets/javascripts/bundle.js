@@ -719,14 +719,17 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      // console.log('annotationsShow inside render function');        
       var _this$props = this.props,
           lyrics = _this$props.lyrics,
           annotations = _this$props.annotations,
           currentUser = _this$props.currentUser;
       var allFormattedLyrics = [];
       var annotationsArr = Object.values(annotations);
-      var prev_idx = 0;
+      annotationsArr.sort(function (a, b) {
+        return a.start_idx < b.start_idx ? -1 : 1;
+      }); //ensures any newly created annotation is placed in the correct order in annotationsArr so that slicing of the lyrics string will happen in the correct, chronological order
+
+      var prevIdx = 0;
       var uniqueKey = 0;
 
       var _loop = function _loop(i) {
@@ -741,16 +744,14 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           };
         }
 
-        var unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
+        var unannotatedSlicedLyric = lyrics.slice(prevIdx, annotation.start_idx);
         var annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx);
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
-          "pos-from-top": annotation.start_idx - unannotatedSlicedLyric.length,
           className: "unannotated-lyric"
         }, unannotatedSlicedLyric));
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", (_React$createElement = {
           key: uniqueKey++,
-          "pos-from-top": annotation.start_idx,
           ref: function ref(outsideClickNode) {
             _this3.outsideClickNode = outsideClickNode;
           } //saving ele ref within highlighted annotated lyric span tag
@@ -763,17 +764,17 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           }) : _this3.setState({
             annotationCardVisible: true
           });
-        }), _React$createElement), annotatedSlicedLyric));
-        prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
+        }), _React$createElement), annotatedSlicedLyric)); //This is for when we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
           allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             key: uniqueKey++,
-            "pos-from-top": prev_idx,
             className: "unannotated-lyric"
-          }, lyrics.slice(prev_idx, lyrics.length)));
+          }, lyrics.slice(annotation.end_idx, lyrics.length)));
         }
+
+        prevIdx = annotation.end_idx;
       };
 
       for (var i = 0; i < annotationsArr.length; i++) {
@@ -819,7 +820,6 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "pos-from-top": 0,
           className: "anno-show-lyrics",
           onMouseDown: this.saveOffsetsToState,
           onMouseUp: this.saveOffsetsToState

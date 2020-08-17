@@ -188,13 +188,16 @@ class AnnotationsShow extends React.Component {
         )
     }
 
+
     render() {
-        // console.log('annotationsShow inside render function');        
         const { lyrics, annotations, currentUser } = this.props;
 
         const allFormattedLyrics = [];
         const annotationsArr = Object.values(annotations);
-        let prev_idx = 0;
+
+        annotationsArr.sort((a, b) => (a.start_idx < b.start_idx) ? -1 : 1); //ensures any newly created annotation is placed in the correct order in annotationsArr so that slicing of the lyrics string will happen in the correct, chronological order
+
+        let prevIdx = 0;
         let uniqueKey = 0;
 
         for (let i = 0; i < annotationsArr.length; i++) {
@@ -205,23 +208,25 @@ class AnnotationsShow extends React.Component {
                 return <div></div>
             }
 
-            let unannotatedSlicedLyric = lyrics.slice(prev_idx, annotation.start_idx);
+
+            let unannotatedSlicedLyric = lyrics.slice(prevIdx, annotation.start_idx);
             
             const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
     
 
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
-                    pos-from-top={annotation.start_idx - unannotatedSlicedLyric.length }
                     className='unannotated-lyric'
                 >
                     {unannotatedSlicedLyric}
                 </span>
             );
 
+
+
+
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
-                    pos-from-top={annotation.start_idx}
                     ref={outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
                     //saving ele ref within highlighted annotated lyric span tag
                         ref={this.highlightedTrackLyrics} //newer syntax, with React.createRef() in the constructor   
@@ -238,23 +243,28 @@ class AnnotationsShow extends React.Component {
                 </span>
             );
 
-            prev_idx = annotation.end_idx;            
 
             //This is for when we're on the final iteration for the for loop
             //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
-            if ((i === Object.keys(annotationsArr).length - 1)  ) { 
+            if ((i === Object.keys(annotationsArr).length - 1)    ) { 
              
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
-                        pos-from-top={prev_idx}
                         className='unannotated-lyric'
                     >
-                        {lyrics.slice(prev_idx, lyrics.length)}
+                        {lyrics.slice(annotation.end_idx, lyrics.length)}
                     </span>
                 )
+
             }   
 
+            prevIdx = annotation.end_idx;            
+
         };
+
+
+
+
 
 
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
@@ -317,7 +327,6 @@ class AnnotationsShow extends React.Component {
                     </div>
 
                     <div                                                      
-                        pos-from-top={0}
                         className='anno-show-lyrics'
                         onMouseDown={this.saveOffsetsToState}
                         onMouseUp={this.saveOffsetsToState}
