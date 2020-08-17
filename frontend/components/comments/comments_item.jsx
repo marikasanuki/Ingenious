@@ -30,6 +30,9 @@ class CommentsItem extends React.Component {
                                 }}
                             >
                                 <FontAwesomeIcon icon={faTrashAlt} />
+                                <span
+                                    className="comments-del-button-text"
+                                >Delete Comment</span>
                             </div>
                          ) : null } 
                 </div>
