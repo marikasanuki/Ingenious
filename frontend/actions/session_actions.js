@@ -37,7 +37,6 @@ export const removeErrors = () => {
     };
 };
 
-
 export const signup = (formUser) => {
     return dispatch => {
         return APIUtil.signup(formUser)

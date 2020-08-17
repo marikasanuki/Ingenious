@@ -339,17 +339,9 @@ var receiveAllTracks = function receiveAllTracks(tracks) {
     type: RECEIVE_ALL_TRACKS,
     tracks: tracks
   };
-}; // const receiveAllTracks = (tracks) => {
-//     return ({
-//         type: RECEIVE_ALL_TRACKS, 
-//         tracks,
-//     });
-// };
-
+};
 
 var receiveTrack = function receiveTrack(track) {
-  // console.log('hit receiveTrack reg action creator')
-  //  debugger;
   return {
     type: RECEIVE_TRACK,
     track: track
@@ -357,8 +349,6 @@ var receiveTrack = function receiveTrack(track) {
 };
 
 var fetchTracks = function fetchTracks() {
-  // console.log('hit fetchTracks action')
-  //  debugger;
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTracks"]().then(function (tracks) {
       return dispatch(receiveAllTracks(tracks));
@@ -366,11 +356,7 @@ var fetchTracks = function fetchTracks() {
   };
 };
 var fetchTrack = function fetchTrack(track) {
-  // console.log('hit fetchTrack thunk action creator')
-  //  debugger;
   return function (dispatch) {
-    // console.log('hit dispatch inside fetchTrack thunk action creator')
-    //  debugger; 
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTrack"](track).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -516,6 +502,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -569,10 +557,38 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
     _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
+    key: "handleClick",
+    value: function handleClick() {
+      if (!this.state.annotationCardVisible) {
+        // attach/remove event handler
+        document.addEventListener('click', this.handleOutsideClick, false);
+      } else {
+        document.removeEventListener('click', this.handleOutsideClick, false);
+      }
+
+      this.setState(function (prevState) {
+        return {
+          annotationCardVisible: !prevState.annotationCardVisible
+        };
+      });
+    }
+  }, {
+    key: "handleOutsideClick",
+    value: function handleOutsideClick(e) {
+      // ignore clicks on the component itself
+      if (this.outsideClickNode.contains(e.target)) {
+        return;
+      }
+
+      this.handleClick();
+    }
+  }, {
     key: "findSelectionOffsets",
     value: function findSelectionOffsets(element) {
       //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -646,11 +662,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var currentAnnoObj = this.props.annotations[this.state.currentAnnotationId];
       var currentAnnoAuthId = currentAnnoObj.author_id; // console.log('offsetTop: ');
       // console.log(this.highlightedTrackLyrics.current.offsetTop);
-
-      console.log('getBoundingClientRect().top: ');
-      console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top); // debugger;
-
-      var topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top; // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
+      // console.log('getBoundingClientRect().top: ');
+      // console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top);
+      // debugger;
+      // let topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top;
+      // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
       //     topOffset = 0 - (topOffset - 274);
       // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 1850)
       // {
@@ -658,9 +674,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top <= 50) {
       //     topOffset = topOffset + 1800
       // }
-
-      console.log("final topOffset: ");
-      console.log(topOffset); // const topOffset = 200;
+      // console.log("final topOffset: ");
+      // console.log(topOffset);
+      // const topOffset = 200;
       //const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
       // console.log(currentAnnoObj);
       // debugger;
@@ -679,7 +695,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "annotation-byline"
         }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "annotation-username"
-        }, this.props.track.anno_authors[currentAnnoAuthId].username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "annotation-del-button-cont"
         }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "annotation-del-button",
@@ -714,6 +730,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var uniqueKey = 0;
 
       var _loop = function _loop(i) {
+        var _React$createElement;
+
         var annotation = annotationsArr[i];
 
         if (lyrics === undefined) {
@@ -730,24 +748,22 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           "pos-from-top": annotation.start_idx - unannotatedSlicedLyric.length,
           className: "unannotated-lyric"
         }, unannotatedSlicedLyric));
-        allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", (_React$createElement = {
           key: uniqueKey++,
-          "pos-from-top": annotation.start_idx //saving ele ref within highlighted annotated lyric span tag
-          ,
-          ref: _this3.highlightedTrackLyrics //newer syntax, with React.createRef() in the constructor   
-          //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
-          ,
-          className: "highlighted-annotated-lyric",
-          onClick: function onClick() {
-            _this3.setCurrentAnnotationId(annotation.id);
+          "pos-from-top": annotation.start_idx,
+          ref: function ref(outsideClickNode) {
+            _this3.outsideClickNode = outsideClickNode;
+          } //saving ele ref within highlighted annotated lyric span tag
 
-            _this3.state.annotationCardVisible ? _this3.setState({
-              annotationCardVisible: false
-            }) : _this3.setState({
-              annotationCardVisible: true
-            });
-          }
-        }, annotatedSlicedLyric));
+        }, _defineProperty(_React$createElement, "ref", _this3.highlightedTrackLyrics), _defineProperty(_React$createElement, "className", "highlighted-annotated-lyric"), _defineProperty(_React$createElement, "onClick", function onClick() {
+          _this3.setCurrentAnnotationId(annotation.id);
+
+          _this3.state.annotationCardVisible ? _this3.setState({
+            annotationCardVisible: false
+          }) : _this3.setState({
+            annotationCardVisible: true
+          });
+        }), _React$createElement), annotatedSlicedLyric));
         prev_idx = annotation.end_idx; //This is for when we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
@@ -780,16 +796,22 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           onMouseUp: this.saveOffsetsToState
         }, allFormattedLyrics, "    "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ? this.state.annotationFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ?
+        /*#__PURE__*/
+        // this.state.annotationFormVisible ?
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
           createAnnotation: this.props.createAnnotation,
           start_idx: this.state.start_idx,
           end_idx: this.state.end_idx,
           setCurrentAnnotationId: this.setCurrentAnnotationId
-        })) : this.hideAnnotation() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        })) // : this.hideAnnotation()  
+        :
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
           to: "/login"
-        }, "Log in"), " to leave a comment!"))));
+        }, "Log in"), " to leave an annotation!"))));
       } else {
         //if allFormattedLyrics array is empty, there are no annotations on this track to render, so just return the full lyrics string via this.props.lyrics
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -810,13 +832,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); // componentDidMount() {
-//     // console.log('annotations show component mounted');
-//     // document.addEventListener('click', this.handleClickOutside, true);
-// }
-// componentWillUnmount() {
-//     // document.removeEventListener('click', this.handleClickOutside, true);
-// }
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow);
 
 /***/ }),
 

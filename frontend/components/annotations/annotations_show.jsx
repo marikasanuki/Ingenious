@@ -22,6 +22,32 @@ class AnnotationsShow extends React.Component {
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
         this.highlightedTrackLyrics = React.createRef(); 
+
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    }
+
+    handleClick() {
+        if (!this.state.annotationCardVisible) {
+            // attach/remove event handler
+            document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+            document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
+        this.setState(prevState => ({
+            annotationCardVisible: !prevState.annotationCardVisible,
+        }));
+    }
+
+    handleOutsideClick(e) {
+        // ignore clicks on the component itself
+        if (this.outsideClickNode.contains(e.target)) {
+            return;
+        }
+
+        this.handleClick();
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -95,10 +121,13 @@ class AnnotationsShow extends React.Component {
 
         // console.log('offsetTop: ');
         // console.log(this.highlightedTrackLyrics.current.offsetTop);
-        console.log('getBoundingClientRect().top: ');
-        console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top);
+        // console.log('getBoundingClientRect().top: ');
+        // console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top);
         // debugger;
-        let topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top;
+
+
+        // let topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top;
+
 
         // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
         //     topOffset = 0 - (topOffset - 274);
@@ -109,8 +138,8 @@ class AnnotationsShow extends React.Component {
         //     topOffset = topOffset + 1800
         // }
 
-        console.log("final topOffset: ");
-        console.log(topOffset);
+        // console.log("final topOffset: ");
+        // console.log(topOffset);
 
         // const topOffset = 200;
    
@@ -123,7 +152,7 @@ class AnnotationsShow extends React.Component {
         return (
             // style = {{ position: 'absolute', top: topOffset + 'px' }}
             // style = {{ position: 'relative', top: topOffset + 'px' }}
-            <div className='annotation-box-container'>
+            <div className='annotation-box-container'  >
                 <div className='annotation-box' > {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
                         <div className='annotation-hed'>Ingenious Annotation</div>
                             {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } 
@@ -131,7 +160,7 @@ class AnnotationsShow extends React.Component {
                             {'Annotated by: '}  
                         </div>
                         <div className='annotation-username'>
-                            {this.props.track.anno_authors[currentAnnoAuthId].username }
+                            {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null }
                         </div>
                         <div className="annotation-del-button-cont">
                             {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
@@ -193,6 +222,7 @@ class AnnotationsShow extends React.Component {
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     pos-from-top={annotation.start_idx}
+                    ref={outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
                     //saving ele ref within highlighted annotated lyric span tag
                         ref={this.highlightedTrackLyrics} //newer syntax, with React.createRef() in the constructor   
                         //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
@@ -249,24 +279,28 @@ class AnnotationsShow extends React.Component {
                             <br />
                             {this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation()}
                             <br />
-                            {
-                                currentUser ? 
-                                        this.state.annotationFormVisible ?
-                                            <div>
-                                                {<AnnotationsForm
-                                                    track={this.props.track}
-                                                    annotations={this.props.annotations}
-                                                    createAnnotation={this.props.createAnnotation}
-                                                    start_idx={this.state.start_idx}
-                                                    end_idx={this.state.end_idx}
-                                                    setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                                />}
-                                            </div>
 
-                                            : this.hideAnnotation()  
-                                : <div><Link to={`/login`}>Log in</Link> to leave a comment!</div>
 
-                            }
+                                        {
+                                            currentUser ? 
+                                                    // this.state.annotationFormVisible ?
+                                                        <div>
+                                                            {<AnnotationsForm
+                                                                track={this.props.track}
+                                                                annotations={this.props.annotations}
+                                                                createAnnotation={this.props.createAnnotation}
+                                                                start_idx={this.state.start_idx}
+                                                                end_idx={this.state.end_idx}
+                                                                setCurrentAnnotationId={this.setCurrentAnnotationId}
+                                                            />}
+                                                        </div>
+
+                                                        // : this.hideAnnotation()  
+                                            : <div><Link to={`/login`}>Log in</Link> to leave an annotation!</div>
+
+                                        }
+
+                                        
                         </div>
 
                     </div>
@@ -299,11 +333,5 @@ class AnnotationsShow extends React.Component {
 export default AnnotationsShow;
 
 
-// componentDidMount() {
-//     // console.log('annotations show component mounted');
-//     // document.addEventListener('click', this.handleClickOutside, true);
-// }
-// componentWillUnmount() {
-//     // document.removeEventListener('click', this.handleClickOutside, true);
-// }
+
 
