@@ -463,6 +463,10 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.anno_body,
         onChange: this.handleInput('anno_body'),
         maxLength: "1000"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "anno-submit-button",
+        type: "submit",
+        value: 'SAVE'
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
         value: this.props.start_idx,
@@ -471,10 +475,6 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
         type: "integer",
         value: this.props.end_idx,
         onChange: this.handleInput('end_idx')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "anno-submit-button",
-        type: "submit",
-        value: 'SAVE'
       })));
     }
   }]);

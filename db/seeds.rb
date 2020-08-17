@@ -2473,7 +2473,8 @@ Aah"
 )
 
 
-ann001 = Annotation.create!(anno_body: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming./n'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1, start_idx: 8, end_idx: 37)
+ann001 = Annotation.create!(anno_body: "In a 2006 interview, Mac Miller might have said one of his hobbies outside of music was programming.
+'There’s pressure. A lot of times in my life I’ve put this pressure to hold myself to the standard of whatever I thought I was supposed to be, or how I was supposed to be perceived. And that creates pressure …,' he told Vulture prior to his death.", author_id: 1, track_id: 1, start_idx: 8, end_idx: 37)
 ann002 = Annotation.create!(anno_body: "'Key to the sky' is a reference to the Led Zeppelin song 'Stairway to Heaven.'", author_id: 1, track_id: 1, start_idx: 48, end_idx: 110)    
 ann003 = Annotation.create!(anno_body: "Do. Or do not. There is no try.", author_id: 10, track_id: 1, start_idx: 175, end_idx: 244)
 ann004 = Annotation.create!(anno_body: "This line has a lot of meaning", author_id: 12, track_id: 1, start_idx: 302, end_idx: 342)

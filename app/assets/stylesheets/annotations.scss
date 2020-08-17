@@ -42,7 +42,7 @@
 .anno-show-cont {
     width: 32%;
     height: 100%;
-    text-align: right;
+    text-align: left;
     padding-right: 70px;
     position: sticky; //added sticky scrolling
     top: 70px;
@@ -159,7 +159,7 @@
 
 .anno-border-bar {
     border-left: 4px solid rgb(134, 146, 230);
-    height: 350px;
+    height: auto;
     padding-right:8px;
 }
 
@@ -179,8 +179,8 @@
     height: 200px;
     font-size: 16px;
     padding: 10px;
+    margin-bottom: 10px;
 }
-
 
 .anno-textarea:focus {
     outline-width: 0;
@@ -198,6 +198,7 @@
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .anno-submit-button:focus {

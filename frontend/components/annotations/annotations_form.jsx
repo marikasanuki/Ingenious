@@ -52,6 +52,7 @@ class AnnotationsForm extends React.Component {
                         onChange={this.handleInput('anno_body')}
                         maxLength="1000" 
                     />
+                    <input className="anno-submit-button" type='submit' value={'SAVE'}/>
                     
                     <br />
                     <input 
@@ -65,10 +66,7 @@ class AnnotationsForm extends React.Component {
                         value={this.props.end_idx}
                         onChange={this.handleInput('end_idx')}
                     />
-                    <br/>
 
-                    
-                    <input className="anno-submit-button" type='submit' value={'SAVE'}/>
                 </form>
             </div>
         )
