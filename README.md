@@ -1,10 +1,10 @@
 # README
 
-![alt text](https://ingenious-prod.s3.amazonaws.com/ingenious-logo.png "Ingenious")
+![alt text](https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/ingenious-logo.png "Ingenious")
 
-### [Ingenious Live Link](https://ingenious-app.herokuapp.com/#/)
+### [Ingenious Live Link](https://ingenious-app.herokuapp.com/)
 
-[Ingenious](https://ingenious-app.herokuapp.com/#/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
+[Ingenious](https://ingenious-app.herokuapp.com/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
 Users can browse a curated selection of songs, their lyrics, and annotated notes and interpretations of the tracks' lyrics. 
 
@@ -17,6 +17,8 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 ### Frontend
 * React
 * Redux
+* JavaScript
+* CSS
 
 ### Cloud
 * Heroku
@@ -25,8 +27,10 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 * User authentication and demo user option
 
-![alt text](https://ingenious-prod.s3.amazonaws.com/login-new.gif "Ingenious sign in")
-https://ingenious-prod.s3.amazonaws.com/login-new.gif
+<h1 align="center">
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/ingenious-index.gif" width="600" height="auto" align="center"/>
+</h1>
+
 * Ability to view database of curated songs
 
 * Ability to view individual songs and their respective artist, album, and lyrics
