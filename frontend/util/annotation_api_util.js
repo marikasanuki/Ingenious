@@ -13,12 +13,12 @@ export const createAnnotation = (annotation) => {
     });
 };
 
-export const updateAnnotation = (annotationId) => {
+export const updateAnnotation = (annotation) => {
     console.log('hit updateAnnotation api util');
      debugger;
     return $.ajax({
         method: 'PATCH',
-        url: `/api/annotations/${annotationId}`,
+        url: `/api/annotations/${annotation.id}`,
         data: { annotation },
     });
 };

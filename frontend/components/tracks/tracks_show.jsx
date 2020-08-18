@@ -47,6 +47,7 @@ class TracksShow extends React.Component {
                   lyrics={this.props.track.lyrics}
                   annotations={this.props.annotations}
                   createAnnotation={this.props.createAnnotation}  
+                  updateAnnotation={this.props.updateAnnotation}  
                   loggedIn={this.props.loggedIn}
                   currentUser={this.props.currentUser}
                   destroyAnnotation={this.props.destroyAnnotation}

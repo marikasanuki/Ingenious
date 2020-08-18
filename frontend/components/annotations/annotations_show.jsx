@@ -1,7 +1,8 @@
 import React from "react";
 import AnnotationsForm from './annotations_form';
+import AnnotationsFormEdit from './annotations_form_edit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 class AnnotationsShow extends React.Component {
@@ -13,6 +14,7 @@ class AnnotationsShow extends React.Component {
             end_idx: null,
             annotationCardVisible: false,
             annotationFormVisible: false,
+            annotationFormEditVisible: false,
         };
         // this.handleClick = this.handleClick.bind(this);
         this.openAnnotationCard = this.openAnnotationCard.bind(this);
@@ -26,6 +28,23 @@ class AnnotationsShow extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
+        this.openAnnotationFormEdit = this.openAnnotationFormEdit.bind(this);
+        this.closeAnnotationFormEdit = this.closeAnnotationFormEdit.bind(this);
+
+    }
+    openAnnotationFormEdit() {
+        this.setState({
+            annotationFormEditVisible: true,
+        })
+    }
+    closeAnnotationFormEdit() {
+        this.setState({
+            annotationFormEditVisible: false,
+        })
+        return (
+            <div></div>
+        )
     }
 
     handleClick() {
@@ -164,20 +183,43 @@ class AnnotationsShow extends React.Component {
                         </div>
                         <div className="annotation-del-button-cont">
                             {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
-                                <div
-                                    className="annotation-del-button"
-                                    onClick={() => {
-                                        this.props.destroyAnnotation(this.state.currentAnnotationId);
-                                    }}
-                                >
-                                    <FontAwesomeIcon icon={faTrashAlt} />
-                                    <span
-                                        className="annotation-del-button-text"
-                                    >Delete Annotation</span>
+                                <div>
+                                        <div
+                                            className="annotation-del-button"
+                                            onClick={() => {
+                                                this.openAnnotationFormEdit();
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} />
+                                            <span
+                                                className="annotation-del-button-text"
+                                            >Edit Your Annotation</span>
+                                        </div>
+                                        <div
+                                            className="annotation-del-button"
+                                            onClick={() => {
+                                                this.props.destroyAnnotation(this.state.currentAnnotationId);
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faTrashAlt} />
+                                            <span
+                                                className="annotation-del-button-text"
+                                            >Delete Your Annotation</span>
+                                        </div>
                                 </div>
+                                
                             ) : null} 
                         </div>
                 </div>
+                {this.state.annotationFormEditVisible ? <AnnotationsFormEdit
+                    updateAnnotation={this.props.updateAnnotation}
+                    track={this.props.track}
+                    currentAnnotationId={this.state.currentAnnotationId}
+                    start_idx={this.state.start_idx}
+                    end_idx={this.state.end_idx}
+                    anno_body_og={this.props.annotations[this.state.currentAnnotationId].anno_body}
+                /> : null }
+                                                                                
             </div>
         )
     }
@@ -299,6 +341,7 @@ class AnnotationsShow extends React.Component {
                                                                 track={this.props.track}
                                                                 annotations={this.props.annotations}
                                                                 createAnnotation={this.props.createAnnotation}
+
                                                                 start_idx={this.state.start_idx}
                                                                 end_idx={this.state.end_idx}
                                                                 setCurrentAnnotationId={this.setCurrentAnnotationId}

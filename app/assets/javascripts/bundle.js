@@ -144,13 +144,13 @@ var createAnnotation = function createAnnotation(annotation) {
     });
   };
 };
-var updateAnnotation = function updateAnnotation(annotationId) {
+var updateAnnotation = function updateAnnotation(annotation) {
   // console.log('hit dispatch inside updateAnnotation thunk action creator')
   //  debugger; 
   return function (dispatch) {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
     //  debugger; 
-    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotationId).then(function (annotation) {
+    return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
@@ -487,6 +487,118 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/annotations/annotations_form_edit.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/annotations/annotations_form_edit.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnnotationsFormEdit, _React$Component);
+
+  var _super = _createSuper(AnnotationsFormEdit);
+
+  function AnnotationsFormEdit(props) {
+    var _this;
+
+    _classCallCheck(this, AnnotationsFormEdit);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      anno_body: _this.props.anno_body_og
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AnnotationsFormEdit, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var updatedAnnoInfo = {
+        track_id: this.props.track.id,
+        start_idx: this.props.start_idx,
+        end_idx: this.props.end_idx,
+        anno_body: this.state.anno_body
+      };
+      var anno = Object.assign({}, newAnnoInfo);
+      this.props.updateAnnotation(anno).then(function (res) {
+        return _this2.props.setCurrentAnnotationId(res.annotation.id);
+      });
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(field) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-form-container-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-border-bar-edit"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "anno-form-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "anno-textarea-edit",
+        value: this.state.anno_body,
+        onChange: this.handleInput('anno_body'),
+        maxLength: "1000"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "anno-submit-button-edit",
+        type: "submit",
+        value: 'UPDATE'
+      })));
+    }
+  }]);
+
+  return AnnotationsFormEdit;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsFormEdit);
+
+/***/ }),
+
 /***/ "./frontend/components/annotations/annotations_show.jsx":
 /*!**************************************************************!*\
   !*** ./frontend/components/annotations/annotations_show.jsx ***!
@@ -499,9 +611,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _annotations_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form */ "./frontend/components/annotations/annotations_form.jsx");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./annotations_form_edit */ "./frontend/components/annotations/annotations_form_edit.jsx");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -532,6 +645,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _inherits(AnnotationsShow, _React$Component);
 
@@ -548,7 +662,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       start_idx: null,
       end_idx: null,
       annotationCardVisible: false,
-      annotationFormVisible: false
+      annotationFormVisible: false,
+      annotationFormEditVisible: false
     }; // this.handleClick = this.handleClick.bind(this);
 
     _this.openAnnotationCard = _this.openAnnotationCard.bind(_assertThisInitialized(_this));
@@ -559,10 +674,27 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
+    _this.openAnnotationFormEdit = _this.openAnnotationFormEdit.bind(_assertThisInitialized(_this));
+    _this.closeAnnotationFormEdit = _this.closeAnnotationFormEdit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
+    key: "openAnnotationFormEdit",
+    value: function openAnnotationFormEdit() {
+      this.setState({
+        annotationFormEditVisible: true
+      });
+    }
+  }, {
+    key: "closeAnnotationFormEdit",
+    value: function closeAnnotationFormEdit() {
+      this.setState({
+        annotationFormEditVisible: false
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+    }
+  }, {
     key: "handleClick",
     value: function handleClick() {
       if (!this.state.annotationCardVisible) {
@@ -697,16 +829,32 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "annotation-username"
         }, this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "annotation-del-button-cont"
-        }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "annotation-del-button",
+          onClick: function onClick() {
+            _this2.openAnnotationFormEdit();
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEdit"]
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "annotation-del-button-text"
+        }, "Edit Your Annotation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "annotation-del-button",
           onClick: function onClick() {
             _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
           }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faTrashAlt"]
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "annotation-del-button-text"
-        }, "Delete Annotation")) : null)))
+        }, "Delete Your Annotation"))) : null)), this.state.annotationFormEditVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          updateAnnotation: this.props.updateAnnotation,
+          track: this.props.track,
+          currentAnnotationId: this.state.currentAnnotationId,
+          start_idx: this.state.start_idx,
+          end_idx: this.state.end_idx,
+          anno_body_og: this.props.annotations[this.state.currentAnnotationId].anno_body
+        }) : null)
       );
     }
   }, {
@@ -816,7 +964,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-login-border-bar"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-login-card"
-        }, "You need to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        }, "You need to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
           to: "/login"
         }, "log in"), " to add annotations to a song.")))));
       } else {
@@ -2389,6 +2537,7 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
         lyrics: this.props.track.lyrics,
         annotations: this.props.annotations,
         createAnnotation: this.props.createAnnotation,
+        updateAnnotation: this.props.updateAnnotation,
         loggedIn: this.props.loggedIn,
         currentUser: this.props.currentUser,
         destroyAnnotation: this.props.destroyAnnotation
@@ -2912,12 +3061,12 @@ var createAnnotation = function createAnnotation(annotation) {
     }
   });
 };
-var updateAnnotation = function updateAnnotation(annotationId) {
+var updateAnnotation = function updateAnnotation(annotation) {
   console.log('hit updateAnnotation api util');
   debugger;
   return $.ajax({
     method: 'PATCH',
-    url: "/api/annotations/".concat(annotationId),
+    url: "/api/annotations/".concat(annotation.id),
     data: {
       annotation: annotation
     }

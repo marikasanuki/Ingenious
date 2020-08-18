@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/ingenious-logo.png "Ingenious")
 
-### [Ingenious Live Link](https://ingenious-app.herokuapp.com/)
+### [Live Link](https://ingenious-app.herokuapp.com/)
 
 [Ingenious](https://ingenious-app.herokuapp.com/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
@@ -31,13 +31,19 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
   <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/ingenious-index.gif" width="600" height="auto" align="center"/>
 </h1>
 
-* Ability to view database of curated songs
+* Ability to view database of curated song lyrics
 
 * Ability to view individual songs and their respective artist, album, and lyrics
 
-* Annotations are saved to individual tracks and dynamically fetched from the database.
+* Ability to view user-generated annotations and comments
 
-* Ability to view curated annotations
+* Annotations are saved to individual tracks and dynamically fetched from the database
+
+* Ability for a signed-in user to create and delete their own annotations and comments
+
+* Ability for a signed-in user to edit their own annotations
+
+* Ability for a signed-in user to upvote an annotation or a comment
 
 ![alt text](https://ingenious-prod.s3.amazonaws.com/anno-new.gif "Ingenious annotations")
 https://ingenious-prod.s3.amazonaws.com/anno-new.gif
