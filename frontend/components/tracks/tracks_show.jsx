@@ -63,7 +63,11 @@ class TracksShow extends React.Component {
                                 track={this.props.track}
                             /> 
                         : 
-                            <div> <Link to={`/login`}>Log in</Link> to leave a comment!</div>
+                            <div>
+                                <div className='comment-login-card'>  
+                                        <Link to={`/login`}>Log in to add a comment.</Link>
+                                </div>
+                            </div>
                     }
                 </div>
                 

@@ -306,7 +306,13 @@ class AnnotationsShow extends React.Component {
                                                         </div>
 
                                                         // : this.hideAnnotation()  
-                                            : <div><Link to={`/login`}>Log in</Link> to leave an annotation!</div>
+                                            : 
+                                                <div className='anno-login-container'>
+                                                    <div className='anno-login-border-bar'></div>
+                                                    <div className='anno-login-card' >
+                                                        You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
+                                                    </div>
+                                                </div>
 
                                         }
 

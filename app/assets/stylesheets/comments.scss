@@ -61,6 +61,44 @@
     outline-width: 0;
 }
 
+//comment login version
+
+.comments-login-card-cont {
+    text-align: left;
+    padding-left: 20px;
+    border: 2px solid rgb(213, 213, 213);
+    color: rgb(113, 113, 113);
+    width: 60%;
+}
+
+.comment-login-card {
+    width: 40%;
+    font-family: 'Muli', sans-serif;
+    border: 0;
+    border: 2px solid rgb(213, 213, 213);
+    background-color: white;
+    color: rgb(113, 113, 113);
+    height: 20px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+
+    a:link {
+    color: rgba(134, 146, 230, 1);
+    }
+    a:visited {
+    color: rgba(134, 146, 230, 1);
+    }
+    a:hover {
+    color: rgba(134, 145, 230, 0.7);
+    }
+    a:active {
+    color: rgba(134, 145, 230, 0.7);
+    }
+}
+
+
 
 //COMMENTS LIST AND ITEMS
 .comments-list-cont {
