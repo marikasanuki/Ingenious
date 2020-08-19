@@ -365,10 +365,10 @@ var fetchTrack = function fetchTrack(track) {
 
 /***/ }),
 
-/***/ "./frontend/components/annotations/annotations_form.jsx":
-/*!**************************************************************!*\
-  !*** ./frontend/components/annotations/annotations_form.jsx ***!
-  \**************************************************************/
+/***/ "./frontend/components/annotations/annotations_form_create.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/annotations/annotations_form_create.jsx ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -402,15 +402,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(AnnotationsForm, _React$Component);
+var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnnotationsFormCreate, _React$Component);
 
-  var _super = _createSuper(AnnotationsForm);
+  var _super = _createSuper(AnnotationsFormCreate);
 
-  function AnnotationsForm(props) {
+  function AnnotationsFormCreate(props) {
     var _this;
 
-    _classCallCheck(this, AnnotationsForm);
+    _classCallCheck(this, AnnotationsFormCreate);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -420,7 +420,7 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(AnnotationsForm, [{
+  _createClass(AnnotationsFormCreate, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
@@ -479,11 +479,11 @@ var AnnotationsForm = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return AnnotationsForm;
+  return AnnotationsFormCreate;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsForm);
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsFormCreate);
 
 /***/ }),
 
@@ -545,27 +545,29 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
   _createClass(AnnotationsFormEdit, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this2 = this;
-
       e.preventDefault();
       var updatedAnnoInfo = {
         track_id: this.props.track.id,
         start_idx: this.props.start_idx,
         end_idx: this.props.end_idx,
-        anno_body: this.state.anno_body
+        anno_body: this.state.anno_body,
+        id: this.props.currentAnnotationId
       };
-      var anno = Object.assign({}, newAnnoInfo);
-      this.props.updateAnnotation(anno).then(function (res) {
-        return _this2.props.setCurrentAnnotationId(res.annotation.id);
-      });
+      var anno = Object.assign({}, updatedAnnoInfo);
+      this.props.updateAnnotation(anno); //updates annotation w/in database but it then deletes old annotation from DOM/array
+      // .then (
+      //     (res) => {
+      //         return this.props.setCurrentAnnotationId(res.annotation.id)
+      //     }
+      // )
     }
   }, {
     key: "handleInput",
     value: function handleInput(field) {
-      var _this3 = this;
+      var _this2 = this;
 
       return function (e) {
-        _this3.setState(_defineProperty({}, field, e.target.value));
+        _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -610,7 +612,7 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _annotations_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form */ "./frontend/components/annotations/annotations_form.jsx");
+/* harmony import */ var _annotations_form_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form_create */ "./frontend/components/annotations/annotations_form_create.jsx");
 /* harmony import */ var _annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./annotations_form_edit */ "./frontend/components/annotations/annotations_form_edit.jsx");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
@@ -948,7 +950,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ?
         /*#__PURE__*/
         // this.state.annotationFormVisible ?
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_create__WEBPACK_IMPORTED_MODULE_1__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
           createAnnotation: this.props.createAnnotation,

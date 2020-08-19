@@ -18,16 +18,19 @@ class AnnotationsFormEdit extends React.Component {
             start_idx: this.props.start_idx,
             end_idx: this.props.end_idx,
             anno_body: this.state.anno_body,
+            id: this.props.currentAnnotationId,
         }
 
-        const anno = Object.assign({}, newAnnoInfo);
+        const anno = Object.assign({}, updatedAnnoInfo);
 
         this.props.updateAnnotation(anno)
-            .then (
-                (res) => {
-                    return this.props.setCurrentAnnotationId(res.annotation.id)
-                }
-            )
+        //updates annotation w/in database but it then deletes old annotation from DOM/array
+        
+            // .then (
+            //     (res) => {
+            //         return this.props.setCurrentAnnotationId(res.annotation.id)
+            //     }
+            // )
     }
 
     handleInput(field) {

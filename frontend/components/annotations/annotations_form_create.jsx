@@ -1,6 +1,6 @@
 import React from "react";
 
-class AnnotationsForm extends React.Component {
+class AnnotationsFormCreate extends React.Component {
     constructor(props) {
         super(props);
 
@@ -73,4 +73,4 @@ class AnnotationsForm extends React.Component {
     }
 };
 
-export default AnnotationsForm;
+export default AnnotationsFormCreate;

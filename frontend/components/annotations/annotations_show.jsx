@@ -1,5 +1,5 @@
 import React from "react";
-import AnnotationsForm from './annotations_form';
+import AnnotationsFormCreate from './annotations_form_create';
 import AnnotationsFormEdit from './annotations_form_edit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -337,7 +337,7 @@ class AnnotationsShow extends React.Component {
                                             currentUser ? 
                                                     // this.state.annotationFormVisible ?
                                                         <div>
-                                                            {<AnnotationsForm
+                                                            {<AnnotationsFormCreate
                                                                 track={this.props.track}
                                                                 annotations={this.props.annotations}
                                                                 createAnnotation={this.props.createAnnotation}
