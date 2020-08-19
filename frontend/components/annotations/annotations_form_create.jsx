@@ -28,6 +28,9 @@ class AnnotationsFormCreate extends React.Component {
                     return this.props.setCurrentAnnotationId(res.annotation.id)
                 }
             )
+            .then (
+                () => this.props.hideAnnotationForm()
+            )
     }
 
     handleInput(field) {

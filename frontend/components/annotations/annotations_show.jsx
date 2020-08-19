@@ -13,12 +13,14 @@ class AnnotationsShow extends React.Component {
             start_idx: null,
             end_idx: null,
             annotationCardVisible: false,
-            annotationFormVisible: false,
             annotationFormEditVisible: false,
+
+
+            annotationFormCreateVisible: false,
         };
         // this.handleClick = this.handleClick.bind(this);
         this.openAnnotationCard = this.openAnnotationCard.bind(this);
-        this.hideAnnotation = this.hideAnnotation.bind(this); 
+        this.hideAnnotationForm = this.hideAnnotationForm.bind(this); 
 
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
@@ -30,21 +32,27 @@ class AnnotationsShow extends React.Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
 
         this.openAnnotationFormEdit = this.openAnnotationFormEdit.bind(this);
-        this.closeAnnotationFormEdit = this.closeAnnotationFormEdit.bind(this);
+        this.hideAnnotationFormEdit = this.hideAnnotationFormEdit.bind(this);
 
     }
+
+
+
+    hideAnnotationForm() {
+        this.setState({
+            annotationFormCreateVisible: false,
+        })
+    }
+
     openAnnotationFormEdit() {
         this.setState({
             annotationFormEditVisible: true,
         })
     }
-    closeAnnotationFormEdit() {
+    hideAnnotationFormEdit() {
         this.setState({
             annotationFormEditVisible: false,
         })
-        return (
-            <div></div>
-        )
     }
 
     handleClick() {
@@ -120,15 +128,11 @@ class AnnotationsShow extends React.Component {
         let selOffsets = this.findSelectionOffsets(lyricsElement);
 
         this.setState({
-            annotationFormVisible: true,
             start_idx: selOffsets.start,
             end_idx: selOffsets.end,
+            annotationFormCreateVisible: true,
         })
     }
-
-    // handleClick() {
-    //     openAnnotationCard()
-    // }
 
     setCurrentAnnotationId(annotationId) {
         this.setState({ currentAnnotationId: annotationId }) //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
@@ -138,39 +142,7 @@ class AnnotationsShow extends React.Component {
         const currentAnnoObj = this.props.annotations[this.state.currentAnnotationId]
         const currentAnnoAuthId = currentAnnoObj.author_id
 
-        // console.log('offsetTop: ');
-        // console.log(this.highlightedTrackLyrics.current.offsetTop);
-        // console.log('getBoundingClientRect().top: ');
-        // console.log(this.highlightedTrackLyrics.current.getBoundingClientRect().top);
-        // debugger;
-
-
-        // let topOffset = this.highlightedTrackLyrics.current.getBoundingClientRect().top;
-
-
-        // if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 2808) {
-        //     topOffset = 0 - (topOffset - 274);
-        // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top > 1850)
-        // {
-        //     topOffset = topOffset - 1400;
-        // } else if (this.highlightedTrackLyrics.current.getBoundingClientRect().top <= 50) {
-        //     topOffset = topOffset + 1800
-        // }
-
-        // console.log("final topOffset: ");
-        // console.log(topOffset);
-
-        // const topOffset = 200;
-   
-
-        //const topOffset = currentAnnoObj.start_idx; //RIGHT NOW WE'RE SETTING THE ABSOLUTE POSITION OF THIS CHILD ELE TO STARTIDX NUMBER OF PX. INSTEAD OF SETTING THE TOPOFFSET TO THAT, WE SHOULD SET IT TO THE CURRENT VIEWPORT HEIGHT
-
-        // console.log(currentAnnoObj);
-        // debugger;
-
         return (
-            // style = {{ position: 'absolute', top: topOffset + 'px' }}
-            // style = {{ position: 'relative', top: topOffset + 'px' }}
             <div className='annotation-box-container'  >
                 <div className='annotation-box' > {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
                         <div className='annotation-hed'>Ingenious Annotation</div>
@@ -218,15 +190,10 @@ class AnnotationsShow extends React.Component {
                     start_idx={this.state.start_idx}
                     end_idx={this.state.end_idx}
                     anno_body_og={this.props.annotations[this.state.currentAnnotationId].anno_body}
+                    hideAnnotationForm={this.hideAnnotationForm}
                 /> : null }
                                                                                 
             </div>
-        )
-    }
-
-    hideAnnotation() {
-        return (
-            <div></div>
         )
     }
 
@@ -263,8 +230,6 @@ class AnnotationsShow extends React.Component {
                     {unannotatedSlicedLyric}
                 </span>
             );
-
-
 
 
             allFormattedLyrics.push(
@@ -306,9 +271,6 @@ class AnnotationsShow extends React.Component {
 
 
 
-
-
-
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
 
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
@@ -329,35 +291,34 @@ class AnnotationsShow extends React.Component {
                         </div>
                         <div className='anno-show-cont'>
                             <br />
-                            {this.state.annotationCardVisible ? this.openAnnotationCard() : this.hideAnnotation()}
+                            {this.state.annotationCardVisible ? this.openAnnotationCard() : null}
                             <br />
+                                    {
+                                        currentUser ? 
+                                                this.state.annotationFormCreateVisible ?
+                                                    <div>
+                                                        {<AnnotationsFormCreate
+                                                            track={this.props.track}
+                                                            annotations={this.props.annotations}
+                                                            createAnnotation={this.props.createAnnotation}
 
-
-                                        {
-                                            currentUser ? 
-                                                    // this.state.annotationFormVisible ?
-                                                        <div>
-                                                            {<AnnotationsFormCreate
-                                                                track={this.props.track}
-                                                                annotations={this.props.annotations}
-                                                                createAnnotation={this.props.createAnnotation}
-
-                                                                start_idx={this.state.start_idx}
-                                                                end_idx={this.state.end_idx}
-                                                                setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                                            />}
-                                                        </div>
-
-                                                        // : this.hideAnnotation()  
-                                            : 
-                                                <div className='anno-login-container'>
-                                                    <div className='anno-login-border-bar'></div>
-                                                    <div className='anno-login-card' >
-                                                        You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
+                                                            start_idx={this.state.start_idx}
+                                                            end_idx={this.state.end_idx}
+                                                            setCurrentAnnotationId={this.setCurrentAnnotationId}
+                                                            hideAnnotationForm={this.hideAnnotationForm}
+                                                        />}
                                                     </div>
-                                                </div>
 
-                                        }
+                                                    : null 
+                                        : 
+                                            <div className='anno-login-container'>
+                                                <div className='anno-login-border-bar'></div>
+                                                <div className='anno-login-card' >
+                                                    You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
+                                                </div>
+                                            </div>
+
+                                    }
 
                                         
                         </div>
