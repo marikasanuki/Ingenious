@@ -469,14 +469,6 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
         className: "anno-submit-button",
         type: "submit",
         value: 'SAVE'
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        value: this.props.start_idx,
-        onChange: this.handleInput('start_idx')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        value: this.props.end_idx,
-        onChange: this.handleInput('end_idx')
       })));
     }
   }]);
@@ -547,6 +539,8 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
   _createClass(AnnotationsFormEdit, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var updatedAnnoInfo = {
         track_id: this.props.track.id,
@@ -556,8 +550,10 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         id: this.props.currentAnnotationId
       };
       var anno = Object.assign({}, updatedAnnoInfo);
-      this.props.updateAnnotation(anno); //updates annotation w/in database but it then deletes old annotation from DOM/array
-      // .then (
+      this.props.updateAnnotation(anno) //updates annotation w/in database but it then deletes old annotation from DOM/array
+      .then(function () {
+        return _this2.props.hideAnnotationForm();
+      }); // .then (
       //     (res) => {
       //         return this.props.setCurrentAnnotationId(res.annotation.id)
       //     }
@@ -566,10 +562,10 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleInput",
     value: function handleInput(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -665,9 +661,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       currentAnnotationId: null,
       start_idx: null,
       end_idx: null,
+      annotationFormCreateVisible: false,
       annotationCardVisible: false,
-      annotationFormEditVisible: false,
-      annotationFormCreateVisible: false
+      annotationFormEditVisible: false
     }; // this.handleClick = this.handleClick.bind(this);
 
     _this.openAnnotationCard = _this.openAnnotationCard.bind(_assertThisInitialized(_this));
@@ -675,9 +671,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
-    _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
-    _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
+    _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef(); // this.handleClick = this.handleClick.bind(this);
+    // this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
     _this.openAnnotationFormEdit = _this.openAnnotationFormEdit.bind(_assertThisInitialized(_this));
     _this.hideAnnotationFormEdit = _this.hideAnnotationFormEdit.bind(_assertThisInitialized(_this));
     return _this;
@@ -694,42 +690,36 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     key: "openAnnotationFormEdit",
     value: function openAnnotationFormEdit() {
       this.setState({
-        annotationFormEditVisible: true
+        annotationFormEditVisible: true // annotationCardVisible: false,
+
       });
     }
   }, {
     key: "hideAnnotationFormEdit",
     value: function hideAnnotationFormEdit() {
       this.setState({
-        annotationFormEditVisible: false
-      });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick() {
-      if (!this.state.annotationCardVisible) {
-        // attach/remove event handler
-        document.addEventListener('click', this.handleOutsideClick, false);
-      } else {
-        document.removeEventListener('click', this.handleOutsideClick, false);
-      }
+        annotationFormEditVisible: false // annotationCardVisible: true,
 
-      this.setState(function (prevState) {
-        return {
-          annotationCardVisible: !prevState.annotationCardVisible
-        };
       });
-    }
-  }, {
-    key: "handleOutsideClick",
-    value: function handleOutsideClick(e) {
-      // ignore clicks on the component itself
-      if (this.outsideClickNode.contains(e.target)) {
-        return;
-      }
+    } // handleClick() {
+    //     if (!this.state.annotationCardVisible) {
+    //         // attach/remove event handler
+    //         document.addEventListener('click', this.handleOutsideClick, false);
+    //     } else {
+    //         document.removeEventListener('click', this.handleOutsideClick, false);
+    //     }
+    //     this.setState(prevState => ({
+    //         annotationCardVisible: !prevState.annotationCardVisible,
+    //     }));
+    // }
+    // handleOutsideClick(e) {
+    //     // ignore clicks on the component itself
+    //     if (this.outsideClickNode.contains(e.target)) {
+    //         return;
+    //     }
+    //     this.handleClick();
+    // }
 
-      this.handleClick();
-    }
   }, {
     key: "findSelectionOffsets",
     value: function findSelectionOffsets(element) {
@@ -815,22 +805,22 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-del-button",
         onClick: function onClick() {
-          _this2.openAnnotationFormEdit();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEdit"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "annotation-del-button-text"
-      }, "Edit Your Annotation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-del-button",
-        onClick: function onClick() {
           _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faTrashAlt"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "annotation-del-button-text"
-      }, "Delete Your Annotation"))) : null)), this.state.annotationFormEditVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "annotation-edit-button-text"
+      }, "Delete Your Annotation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-edit-button",
+        onClick: function onClick() {
+          _this2.openAnnotationFormEdit();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEdit"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "annotation-edit-button-text"
+      }, "Edit Your Annotation"))) : null)), this.state.annotationFormEditVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__["default"], {
         updateAnnotation: this.props.updateAnnotation,
         track: this.props.track,
         currentAnnotationId: this.state.currentAnnotationId,
@@ -886,11 +876,13 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           _this3.setCurrentAnnotationId(annotation.id);
 
           _this3.state.annotationCardVisible ? _this3.setState({
-            annotationCardVisible: false
+            annotationCardVisible: false,
+            annotationFormCreateVisible: false
           }) : _this3.setState({
-            annotationCardVisible: true
+            annotationCardVisible: true,
+            annotationFormCreateVisible: false
           });
-        }), _React$createElement), annotatedSlicedLyric)); //This is for when we're on the final iteration for the for loop
+        }), _React$createElement), annotatedSlicedLyric)); //When we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {

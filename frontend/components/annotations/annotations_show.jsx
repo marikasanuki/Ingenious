@@ -12,11 +12,10 @@ class AnnotationsShow extends React.Component {
             currentAnnotationId: null,
             start_idx: null,
             end_idx: null,
+            annotationFormCreateVisible: false,
+
             annotationCardVisible: false,
             annotationFormEditVisible: false,
-
-
-            annotationFormCreateVisible: false,
         };
         // this.handleClick = this.handleClick.bind(this);
         this.openAnnotationCard = this.openAnnotationCard.bind(this);
@@ -28,15 +27,13 @@ class AnnotationsShow extends React.Component {
         this.highlightedTrackLyrics = React.createRef(); 
 
 
-        this.handleClick = this.handleClick.bind(this);
-        this.handleOutsideClick = this.handleOutsideClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
+        // this.handleOutsideClick = this.handleOutsideClick.bind(this);
 
         this.openAnnotationFormEdit = this.openAnnotationFormEdit.bind(this);
         this.hideAnnotationFormEdit = this.hideAnnotationFormEdit.bind(this);
 
     }
-
-
 
     hideAnnotationForm() {
         this.setState({
@@ -44,38 +41,42 @@ class AnnotationsShow extends React.Component {
         })
     }
 
+
+
     openAnnotationFormEdit() {
         this.setState({
             annotationFormEditVisible: true,
+            // annotationCardVisible: false,
         })
     }
     hideAnnotationFormEdit() {
         this.setState({
             annotationFormEditVisible: false,
+            // annotationCardVisible: true,
         })
     }
 
-    handleClick() {
-        if (!this.state.annotationCardVisible) {
-            // attach/remove event handler
-            document.addEventListener('click', this.handleOutsideClick, false);
-        } else {
-            document.removeEventListener('click', this.handleOutsideClick, false);
-        }
+    // handleClick() {
+    //     if (!this.state.annotationCardVisible) {
+    //         // attach/remove event handler
+    //         document.addEventListener('click', this.handleOutsideClick, false);
+    //     } else {
+    //         document.removeEventListener('click', this.handleOutsideClick, false);
+    //     }
 
-        this.setState(prevState => ({
-            annotationCardVisible: !prevState.annotationCardVisible,
-        }));
-    }
+    //     this.setState(prevState => ({
+    //         annotationCardVisible: !prevState.annotationCardVisible,
+    //     }));
+    // }
 
-    handleOutsideClick(e) {
-        // ignore clicks on the component itself
-        if (this.outsideClickNode.contains(e.target)) {
-            return;
-        }
+    // handleOutsideClick(e) {
+    //     // ignore clicks on the component itself
+    //     if (this.outsideClickNode.contains(e.target)) {
+    //         return;
+    //     }
 
-        this.handleClick();
-    }
+    //     this.handleClick();
+    // }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
 
@@ -135,7 +136,8 @@ class AnnotationsShow extends React.Component {
     }
 
     setCurrentAnnotationId(annotationId) {
-        this.setState({ currentAnnotationId: annotationId }) //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
+        this.setState({ currentAnnotationId: annotationId }) 
+        //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
 
     openAnnotationCard() {
@@ -159,39 +161,41 @@ class AnnotationsShow extends React.Component {
                                         <div
                                             className="annotation-del-button"
                                             onClick={() => {
-                                                this.openAnnotationFormEdit();
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                            <span
-                                                className="annotation-del-button-text"
-                                            >Edit Your Annotation</span>
-                                        </div>
-                                        <div
-                                            className="annotation-del-button"
-                                            onClick={() => {
                                                 this.props.destroyAnnotation(this.state.currentAnnotationId);
                                             }}
                                         >
                                             <FontAwesomeIcon icon={faTrashAlt} />
                                             <span
-                                                className="annotation-del-button-text"
+                                                className="annotation-edit-button-text"
                                             >Delete Your Annotation</span>
+                                        </div>
+                                        <div
+                                            className="annotation-edit-button"
+                                            onClick={() => {
+                                                this.openAnnotationFormEdit();
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} />
+                                            <span
+                                                className="annotation-edit-button-text"
+                                            >Edit Your Annotation</span>
                                         </div>
                                 </div>
                                 
                             ) : null} 
                         </div>
                 </div>
-                {this.state.annotationFormEditVisible ? <AnnotationsFormEdit
-                    updateAnnotation={this.props.updateAnnotation}
-                    track={this.props.track}
-                    currentAnnotationId={this.state.currentAnnotationId}
-                    start_idx={this.state.start_idx}
-                    end_idx={this.state.end_idx}
-                    anno_body_og={this.props.annotations[this.state.currentAnnotationId].anno_body}
-                    hideAnnotationForm={this.hideAnnotationForm}
-                /> : null }
+                {this.state.annotationFormEditVisible ? 
+                    <AnnotationsFormEdit
+                        updateAnnotation={this.props.updateAnnotation}
+                        track={this.props.track}
+                        currentAnnotationId={this.state.currentAnnotationId}
+                        start_idx={this.state.start_idx}
+                        end_idx={this.state.end_idx}
+                        anno_body_og={this.props.annotations[this.state.currentAnnotationId].anno_body}
+                        hideAnnotationForm={this.hideAnnotationForm}
+                    /> 
+                    : null }
                                                                                 
             </div>
         )
@@ -242,8 +246,13 @@ class AnnotationsShow extends React.Component {
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
                             this.state.annotationCardVisible ?
-                            this.setState({ annotationCardVisible: false }) :
-                            this.setState({ annotationCardVisible: true })
+                            this.setState({ 
+                                annotationCardVisible: false,
+                                annotationFormCreateVisible: false, }) :
+                            this.setState({
+                                annotationCardVisible: true,
+                                annotationFormCreateVisible: false,
+                                })
                         }}
                 >
                     {annotatedSlicedLyric}
@@ -251,7 +260,7 @@ class AnnotationsShow extends React.Component {
             );
 
 
-            //This is for when we're on the final iteration for the for loop
+            //When we're on the final iteration for the for loop
             //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
             if ((i === Object.keys(annotationsArr).length - 1)    ) { 
              
@@ -272,7 +281,6 @@ class AnnotationsShow extends React.Component {
 
 
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
-
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
             return (
                 <div>

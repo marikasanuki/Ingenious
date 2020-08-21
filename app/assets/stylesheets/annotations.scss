@@ -105,14 +105,36 @@
 .annotation-del-button-text {
     font-size: 12px;
     padding-left: 5px;
-    padding-top: 25px;
+    padding-top: 20px;
     color: rgb(73, 73, 73);
 }
 .annotation-del-button-text:focus {
 
 }
 
+//edit your annotation button
+.annotation-edit-button {
+    border: none;
+    background-color: transparent;
+    color: rgb(113, 113, 113);
+    cursor: pointer;
+    padding-top: 20px;
 
+}
+
+.annotation-edit-button:focus {
+     outline-width: 0;
+}
+
+.annotation-edit-button-text {
+    font-size: 12px;
+    padding-left: 5px;
+    padding-top: 25px;
+    color: rgb(73, 73, 73);
+}
+.annotation-edit-button-text:focus {
+
+}
 
 
 .anno-button {
@@ -239,6 +261,7 @@
     font-size: 16px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .anno-textarea-edit:focus {
