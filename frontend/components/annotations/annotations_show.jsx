@@ -1,8 +1,6 @@
 import React from "react";
+import AnnotationsCard from './annotations_card';
 import AnnotationsFormCreate from './annotations_form_create';
-import AnnotationsFormEdit from './annotations_form_edit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 class AnnotationsShow extends React.Component {
@@ -12,77 +10,18 @@ class AnnotationsShow extends React.Component {
             currentAnnotationId: null,
             start_idx: null,
             end_idx: null,
-            annotationFormCreateVisible: false,
-
             annotationCardVisible: false,
-            annotationFormEditVisible: false,
+            annotationFormCreateVisible: false,
         };
-        // this.handleClick = this.handleClick.bind(this);
-        this.openAnnotationCard = this.openAnnotationCard.bind(this);
-        this.hideAnnotationForm = this.hideAnnotationForm.bind(this); 
-
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
-        this.highlightedTrackLyrics = React.createRef(); 
-
-
-        // this.handleClick = this.handleClick.bind(this);
-        // this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
-        this.openAnnotationFormEdit = this.openAnnotationFormEdit.bind(this);
-        this.hideAnnotationFormEdit = this.hideAnnotationFormEdit.bind(this);
-
+        this.hideAnnotationForm = this.hideAnnotationForm.bind(this); 
     }
-
-    hideAnnotationForm() {
-        this.setState({
-            annotationFormCreateVisible: false,
-        })
-    }
-
-
-
-    openAnnotationFormEdit() {
-        this.setState({
-            annotationFormEditVisible: true,
-            // annotationCardVisible: false,
-        })
-    }
-    hideAnnotationFormEdit() {
-        this.setState({
-            annotationFormEditVisible: false,
-            // annotationCardVisible: true,
-        })
-    }
-
-    // handleClick() {
-    //     if (!this.state.annotationCardVisible) {
-    //         // attach/remove event handler
-    //         document.addEventListener('click', this.handleOutsideClick, false);
-    //     } else {
-    //         document.removeEventListener('click', this.handleOutsideClick, false);
-    //     }
-
-    //     this.setState(prevState => ({
-    //         annotationCardVisible: !prevState.annotationCardVisible,
-    //     }));
-    // }
-
-    // handleOutsideClick(e) {
-    //     // ignore clicks on the component itself
-    //     if (this.outsideClickNode.contains(e.target)) {
-    //         return;
-    //     }
-
-    //     this.handleClick();
-    // }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
-
         let doc = element.ownerDocument || element.document;
         let win = doc.defaultView || doc.parentWindow;
-
         let selected;
         let start = 0;
         let end = 0;
@@ -93,18 +32,10 @@ class AnnotationsShow extends React.Component {
                 let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
                 let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
                 cloneRange.selectNodeContents(element); //sets the cloneRange to contain the contents of element. makes cloneRange's startOffset 0 and cloneRange's endOffset to the number of child Nodes in element (element is the reference node)
-                
                 cloneRange.setEnd(range.startContainer, range.startOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
- 
-                
                 start = cloneRange.toString().length; //cloneRange.toString() returns the text of the cloneRage as a string (so .length will return the character count)
-                
-
-                
                 cloneRange.setEnd(range.endContainer, range.endOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
-                
                 end = cloneRange.toString().length;
-
             }
         } else if ((selected = doc.selection) && selected.type != "Control") {
             let textRange = selected.createRange();
@@ -118,16 +49,12 @@ class AnnotationsShow extends React.Component {
 
             end = preCaretTextRange.text.length;
         }
-
-
         return { start: start, end: end };
     }
 
     saveOffsetsToState() {
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
-
         let selOffsets = this.findSelectionOffsets(lyricsElement);
-
         this.setState({
             start_idx: selOffsets.start,
             end_idx: selOffsets.end,
@@ -140,93 +67,28 @@ class AnnotationsShow extends React.Component {
         //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
 
-    openAnnotationCard() {
-        const currentAnnoObj = this.props.annotations[this.state.currentAnnotationId]
-        const currentAnnoAuthId = currentAnnoObj.author_id
-
-        return (
-            <div className='annotation-box-container'  >
-                <div className='annotation-box' > {/* this needs a dynamic top: tkpx; to lower it that many pixels from its parent container (annotation-box-container) */}
-                        <div className='annotation-hed'>Ingenious Annotation</div>
-                            {this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null } 
-                        <div className='annotation-byline'>
-                            {'Annotated by: '}  
-                        </div>
-                        <div className='annotation-username'>
-                            {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null }
-                        </div>
-                        <div className="annotation-del-button-cont">
-                            {(this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id) ? (
-                                <div>
-                                        <div
-                                            className="annotation-del-button"
-                                            onClick={() => {
-                                                this.props.destroyAnnotation(this.state.currentAnnotationId);
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon={faTrashAlt} />
-                                            <span
-                                                className="annotation-edit-button-text"
-                                            >Delete Your Annotation</span>
-                                        </div>
-                                        <div
-                                            className="annotation-edit-button"
-                                            onClick={() => {
-                                                this.openAnnotationFormEdit();
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                            <span
-                                                className="annotation-edit-button-text"
-                                            >Edit Your Annotation</span>
-                                        </div>
-                                </div>
-                                
-                            ) : null} 
-                        </div>
-                </div>
-                {this.state.annotationFormEditVisible ? 
-                    <AnnotationsFormEdit
-                        updateAnnotation={this.props.updateAnnotation}
-                        track={this.props.track}
-                        currentAnnotationId={this.state.currentAnnotationId}
-                        start_idx={this.state.start_idx}
-                        end_idx={this.state.end_idx}
-                        anno_body_og={this.props.annotations[this.state.currentAnnotationId].anno_body}
-                        hideAnnotationForm={this.hideAnnotationForm}
-                    /> 
-                    : null }
-                                                                                
-            </div>
-        )
+    hideAnnotationForm() {
+        this.setState({
+            annotationFormCreateVisible: false,
+        })
     }
-
 
     render() {
         const { lyrics, annotations, currentUser } = this.props;
-
         const allFormattedLyrics = [];
         const annotationsArr = Object.values(annotations);
-
         annotationsArr.sort((a, b) => (a.start_idx < b.start_idx) ? -1 : 1); //ensures any newly created annotation is placed in the correct order in annotationsArr so that slicing of the lyrics string will happen in the correct, chronological order
-
         let prevIdx = 0;
         let uniqueKey = 0;
 
         for (let i = 0; i < annotationsArr.length; i++) {
-
             const annotation = annotationsArr[i];
-
-            if (lyrics === undefined) { //preventing console error from attempting to slice undefined because lyrics haven't loaded
+            //preventing console error from attempting to slice undefined because lyrics haven't loaded
+            if (lyrics === undefined) { 
                 return <div></div>
             }
-
-
             let unannotatedSlicedLyric = lyrics.slice(prevIdx, annotation.start_idx);
-            
             const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
-    
-
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
                     className='unannotated-lyric'
@@ -234,14 +96,8 @@ class AnnotationsShow extends React.Component {
                     {unannotatedSlicedLyric}
                 </span>
             );
-
-
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
-                    ref={outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
-                    //saving ele ref within highlighted annotated lyric span tag
-                        ref={this.highlightedTrackLyrics} //newer syntax, with React.createRef() in the constructor   
-                        //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
                     className='highlighted-annotated-lyric'
                     onClick={() => 
                         {this.setCurrentAnnotationId(annotation.id)
@@ -258,12 +114,9 @@ class AnnotationsShow extends React.Component {
                     {annotatedSlicedLyric}
                 </span>
             );
-
-
-            //When we're on the final iteration for the for loop
-            //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
+        //When we're on the final iteration for the for loop
+        //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
             if ((i === Object.keys(annotationsArr).length - 1)    ) { 
-             
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
                         className='unannotated-lyric'
@@ -271,14 +124,9 @@ class AnnotationsShow extends React.Component {
                         {lyrics.slice(annotation.end_idx, lyrics.length)}
                     </span>
                 )
-
             }   
-
             prevIdx = annotation.end_idx;            
-
         };
-
-
 
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
@@ -299,7 +147,19 @@ class AnnotationsShow extends React.Component {
                         </div>
                         <div className='anno-show-cont'>
                             <br />
-                            {this.state.annotationCardVisible ? this.openAnnotationCard() : null}
+                            {this.state.annotationCardVisible ? 
+                                <AnnotationsCard
+                                    track={this.props.track}
+                                    annotations={this.props.annotations}
+                                    createAnnotation={this.props.createAnnotation}
+                                    currentUser={currentUser}
+
+                                    start_idx={this.state.start_idx}
+                                    end_idx={this.state.end_idx}
+                                    currentAnnotationId={this.state.currentAnnotationId}
+                                    hideAnnotationForm={this.hideAnnotationForm}
+                                /> 
+                                : null}
                             <br />
                                     {
                                         currentUser ? 
@@ -325,25 +185,17 @@ class AnnotationsShow extends React.Component {
                                                     You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
                                                 </div>
                                             </div>
-
                                     }
-
-                                        
                         </div>
-
                     </div>
-
-
                 </div>
             )
         } else { //if allFormattedLyrics array is empty, there are no annotations on this track to render, so just return the full lyrics string via this.props.lyrics
             return (
                 <div className='anno-show-lyrics-container'>
-
                     <div className='anno-show-mini-title'>
                         {this.props.track.title} lyrics
                     </div>
-
                     <div                                                      
                         className='anno-show-lyrics'
                         onMouseDown={this.saveOffsetsToState}
@@ -359,6 +211,31 @@ class AnnotationsShow extends React.Component {
 
 export default AnnotationsShow;
 
+        // this.handleClick = this.handleClick.bind(this);
+        // this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
+    // handleClick() {
+    //     if (!this.state.annotationCardVisible) {
+    //         // attach/remove event handler
+    //         document.addEventListener('click', this.handleOutsideClick, false);
+    //     } else {
+    //         document.removeEventListener('click', this.handleOutsideClick, false);
+    //     }
+
+    //     this.setState(prevState => ({
+    //         annotationCardVisible: !prevState.annotationCardVisible,
+    //     }));
+    // }
+
+    // handleOutsideClick(e) {
+    //     // ignore clicks on the component itself
+    //     if (this.outsideClickNode.contains(e.target)) {
+    //         return;
+    //     }
 
 
-
+//VIEW HEIGHT ATTEMPT
+// ref = { outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
+//saving ele ref within highlighted annotated lyric span tag
+// ref = { this.highlightedTrackLyrics } //newer syntax, with React.createRef() in the constructor   
+                        //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components

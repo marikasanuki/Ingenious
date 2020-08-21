@@ -42,8 +42,6 @@ class AnnotationsFormCreate extends React.Component {
     }
 
     render() { 
-        // console.log("anno form, inside render function");    
-
         return (
             <div className='anno-form-container'>
                 <div className='anno-border-bar'></div>

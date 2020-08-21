@@ -365,10 +365,10 @@ var fetchTrack = function fetchTrack(track) {
 
 /***/ }),
 
-/***/ "./frontend/components/annotations/annotations_form_create.jsx":
-/*!*********************************************************************!*\
-  !*** ./frontend/components/annotations/annotations_form_create.jsx ***!
-  \*********************************************************************/
+/***/ "./frontend/components/annotations/annotations_card.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/annotations/annotations_card.jsx ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -376,9 +376,10 @@ var fetchTrack = function fetchTrack(track) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_card_edit */ "./frontend/components/annotations/annotations_card_edit.jsx");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -402,88 +403,103 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
-  _inherits(AnnotationsFormCreate, _React$Component);
 
-  var _super = _createSuper(AnnotationsFormCreate);
 
-  function AnnotationsFormCreate(props) {
+
+var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnnotationsCard, _React$Component);
+
+  var _super = _createSuper(AnnotationsCard);
+
+  function AnnotationsCard(props) {
     var _this;
 
-    _classCallCheck(this, AnnotationsFormCreate);
+    _classCallCheck(this, AnnotationsCard);
 
     _this = _super.call(this, props);
     _this.state = {
-      anno_body: ''
+      editFormVisible: null
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.openAnnotationCardEdit = _this.openAnnotationCardEdit.bind(_assertThisInitialized(_this));
+    _this.hideAnnotationCardEdit = _this.hideAnnotationCardEdit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(AnnotationsFormCreate, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      var newAnnoInfo = {
-        track_id: this.props.track.id,
-        start_idx: this.props.start_idx,
-        end_idx: this.props.end_idx,
-        anno_body: this.state.anno_body
-      };
-      var anno = Object.assign({}, newAnnoInfo);
-      this.props.createAnnotation(anno).then(function (res) {
-        return _this2.props.setCurrentAnnotationId(res.annotation.id);
-      }).then(function () {
-        return _this2.props.hideAnnotationForm();
+  _createClass(AnnotationsCard, [{
+    key: "openAnnotationCardEdit",
+    value: function openAnnotationCardEdit() {
+      this.setState({
+        editFormVisible: true
       });
     }
   }, {
-    key: "handleInput",
-    value: function handleInput(field) {
-      var _this3 = this;
-
-      return function (e) {
-        _this3.setState(_defineProperty({}, field, e.target.value));
-      };
+    key: "hideAnnotationCardEdit",
+    value: function hideAnnotationCardEdit() {
+      this.setState({
+        editFormVisible: false
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      // console.log("anno form, inside render function");    
+      var _this2 = this;
+
+      var currentAnnotationId = this.props.currentAnnotationId;
+      var currentAnnoObj = this.props.annotations[currentAnnotationId];
+      var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "anno-form-container"
+        className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "anno-border-bar"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "anno-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "anno-textarea",
-        placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
-        value: this.state.anno_body,
-        onChange: this.handleInput('anno_body'),
-        maxLength: "1000"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "anno-submit-button",
-        type: "submit",
-        value: 'SAVE'
-      })));
+        className: "annotation-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-hed"
+      }, "Ingenious Annotation"), this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-byline"
+      }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-username"
+      }, this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-del-button-cont"
+      }, this.props.currentUser && this.props.annotations[currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-del-button",
+        onClick: function onClick() {
+          _this2.props.destroyAnnotation(currentAnnotationId);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faTrashAlt"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "annotation-edit-button-text"
+      }, "Delete Your Annotation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "annotation-edit-button",
+        onClick: function onClick() {
+          _this2.openAnnotationCardEdit();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faEdit"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "annotation-edit-button-text"
+      }, "Edit Your Annotation"))) : null)), this.state.editFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        updateAnnotation: this.props.updateAnnotation,
+        track: this.props.track,
+        currentAnnotationId: currentAnnotationId,
+        start_idx: this.props.start_idx,
+        end_idx: this.props.end_idx,
+        anno_body_og: this.props.annotations[currentAnnotationId].anno_body,
+        hideAnnotationForm: this.hideAnnotationForm
+      }) : null);
     }
   }]);
 
-  return AnnotationsFormCreate;
+  return AnnotationsCard;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsFormCreate);
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsCard);
 
 /***/ }),
 
-/***/ "./frontend/components/annotations/annotations_form_edit.jsx":
+/***/ "./frontend/components/annotations/annotations_card_edit.jsx":
 /*!*******************************************************************!*\
-  !*** ./frontend/components/annotations/annotations_form_edit.jsx ***!
+  !*** ./frontend/components/annotations/annotations_card_edit.jsx ***!
   \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -599,6 +615,121 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/annotations/annotations_form_create.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/annotations/annotations_form_create.jsx ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
+  _inherits(AnnotationsFormCreate, _React$Component);
+
+  var _super = _createSuper(AnnotationsFormCreate);
+
+  function AnnotationsFormCreate(props) {
+    var _this;
+
+    _classCallCheck(this, AnnotationsFormCreate);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      anno_body: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AnnotationsFormCreate, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var newAnnoInfo = {
+        track_id: this.props.track.id,
+        start_idx: this.props.start_idx,
+        end_idx: this.props.end_idx,
+        anno_body: this.state.anno_body
+      };
+      var anno = Object.assign({}, newAnnoInfo);
+      this.props.createAnnotation(anno).then(function (res) {
+        return _this2.props.setCurrentAnnotationId(res.annotation.id);
+      }).then(function () {
+        return _this2.props.hideAnnotationForm();
+      });
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(field) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-form-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "anno-border-bar"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "anno-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "anno-textarea",
+        placeholder: "Don't just put the lyric in your own words\u2014drop some knowledge!",
+        value: this.state.anno_body,
+        onChange: this.handleInput('anno_body'),
+        maxLength: "1000"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "anno-submit-button",
+        type: "submit",
+        value: 'SAVE'
+      })));
+    }
+  }]);
+
+  return AnnotationsFormCreate;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsFormCreate);
+
+/***/ }),
+
 /***/ "./frontend/components/annotations/annotations_show.jsx":
 /*!**************************************************************!*\
   !*** ./frontend/components/annotations/annotations_show.jsx ***!
@@ -610,13 +741,9 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _annotations_form_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_form_create */ "./frontend/components/annotations/annotations_form_create.jsx");
-/* harmony import */ var _annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./annotations_form_edit */ "./frontend/components/annotations/annotations_form_edit.jsx");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _annotations_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotations_card */ "./frontend/components/annotations/annotations_card.jsx");
+/* harmony import */ var _annotations_form_create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./annotations_form_create */ "./frontend/components/annotations/annotations_form_create.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -644,8 +771,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-
 var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   _inherits(AnnotationsShow, _React$Component);
 
@@ -661,66 +786,17 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       currentAnnotationId: null,
       start_idx: null,
       end_idx: null,
-      annotationFormCreateVisible: false,
       annotationCardVisible: false,
-      annotationFormEditVisible: false
-    }; // this.handleClick = this.handleClick.bind(this);
-
-    _this.openAnnotationCard = _this.openAnnotationCard.bind(_assertThisInitialized(_this));
-    _this.hideAnnotationForm = _this.hideAnnotationForm.bind(_assertThisInitialized(_this));
+      annotationFormCreateVisible: false
+    };
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
-    _this.highlightedTrackLyrics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef(); // this.handleClick = this.handleClick.bind(this);
-    // this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
-    _this.openAnnotationFormEdit = _this.openAnnotationFormEdit.bind(_assertThisInitialized(_this));
-    _this.hideAnnotationFormEdit = _this.hideAnnotationFormEdit.bind(_assertThisInitialized(_this));
+    _this.hideAnnotationForm = _this.hideAnnotationForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
-    key: "hideAnnotationForm",
-    value: function hideAnnotationForm() {
-      this.setState({
-        annotationFormCreateVisible: false
-      });
-    }
-  }, {
-    key: "openAnnotationFormEdit",
-    value: function openAnnotationFormEdit() {
-      this.setState({
-        annotationFormEditVisible: true // annotationCardVisible: false,
-
-      });
-    }
-  }, {
-    key: "hideAnnotationFormEdit",
-    value: function hideAnnotationFormEdit() {
-      this.setState({
-        annotationFormEditVisible: false // annotationCardVisible: true,
-
-      });
-    } // handleClick() {
-    //     if (!this.state.annotationCardVisible) {
-    //         // attach/remove event handler
-    //         document.addEventListener('click', this.handleOutsideClick, false);
-    //     } else {
-    //         document.removeEventListener('click', this.handleOutsideClick, false);
-    //     }
-    //     this.setState(prevState => ({
-    //         annotationCardVisible: !prevState.annotationCardVisible,
-    //     }));
-    // }
-    // handleOutsideClick(e) {
-    //     // ignore clicks on the component itself
-    //     if (this.outsideClickNode.contains(e.target)) {
-    //         return;
-    //     }
-    //     this.handleClick();
-    // }
-
-  }, {
     key: "findSelectionOffsets",
     value: function findSelectionOffsets(element) {
       //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -784,56 +860,16 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       }); //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
   }, {
-    key: "openAnnotationCard",
-    value: function openAnnotationCard() {
-      var _this2 = this;
-
-      var currentAnnoObj = this.props.annotations[this.state.currentAnnotationId];
-      var currentAnnoAuthId = currentAnnoObj.author_id;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-box-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-box"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-hed"
-      }, "Ingenious Annotation"), this.props.annotations[this.state.currentAnnotationId] ? this.props.annotations[this.state.currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-byline"
-      }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-username"
-      }, this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-del-button-cont"
-      }, this.props.currentUser && this.props.annotations[this.state.currentAnnotationId].author_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-del-button",
-        onClick: function onClick() {
-          _this2.props.destroyAnnotation(_this2.state.currentAnnotationId);
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faTrashAlt"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "annotation-edit-button-text"
-      }, "Delete Your Annotation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "annotation-edit-button",
-        onClick: function onClick() {
-          _this2.openAnnotationFormEdit();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faEdit"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "annotation-edit-button-text"
-      }, "Edit Your Annotation"))) : null)), this.state.annotationFormEditVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_edit__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        updateAnnotation: this.props.updateAnnotation,
-        track: this.props.track,
-        currentAnnotationId: this.state.currentAnnotationId,
-        start_idx: this.state.start_idx,
-        end_idx: this.state.end_idx,
-        anno_body_og: this.props.annotations[this.state.currentAnnotationId].anno_body,
-        hideAnnotationForm: this.hideAnnotationForm
-      }) : null);
+    key: "hideAnnotationForm",
+    value: function hideAnnotationForm() {
+      this.setState({
+        annotationFormCreateVisible: false
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           lyrics = _this$props.lyrics,
@@ -849,12 +885,9 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var uniqueKey = 0;
 
       var _loop = function _loop(i) {
-        var _React$createElement;
-
-        var annotation = annotationsArr[i];
+        var annotation = annotationsArr[i]; //preventing console error from attempting to slice undefined because lyrics haven't loaded
 
         if (lyrics === undefined) {
-          //preventing console error from attempting to slice undefined because lyrics haven't loaded
           return {
             v: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)
           };
@@ -866,23 +899,21 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           key: uniqueKey++,
           className: "unannotated-lyric"
         }, unannotatedSlicedLyric));
-        allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", (_React$createElement = {
+        allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
-          ref: function ref(outsideClickNode) {
-            _this3.outsideClickNode = outsideClickNode;
-          } //saving ele ref within highlighted annotated lyric span tag
+          className: "highlighted-annotated-lyric",
+          onClick: function onClick() {
+            _this2.setCurrentAnnotationId(annotation.id);
 
-        }, _defineProperty(_React$createElement, "ref", _this3.highlightedTrackLyrics), _defineProperty(_React$createElement, "className", "highlighted-annotated-lyric"), _defineProperty(_React$createElement, "onClick", function onClick() {
-          _this3.setCurrentAnnotationId(annotation.id);
-
-          _this3.state.annotationCardVisible ? _this3.setState({
-            annotationCardVisible: false,
-            annotationFormCreateVisible: false
-          }) : _this3.setState({
-            annotationCardVisible: true,
-            annotationFormCreateVisible: false
-          });
-        }), _React$createElement), annotatedSlicedLyric)); //When we're on the final iteration for the for loop
+            _this2.state.annotationCardVisible ? _this2.setState({
+              annotationCardVisible: false,
+              annotationFormCreateVisible: false
+            }) : _this2.setState({
+              annotationCardVisible: true,
+              annotationFormCreateVisible: false
+            });
+          }
+        }, annotatedSlicedLyric)); //When we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
 
         if (i === Object.keys(annotationsArr).length - 1) {
@@ -915,7 +946,16 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           onMouseUp: this.saveOffsetsToState
         }, allFormattedLyrics, "    "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? this.openAnnotationCard() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ? this.state.annotationFormCreateVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_create__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          track: this.props.track,
+          annotations: this.props.annotations,
+          createAnnotation: this.props.createAnnotation,
+          currentUser: currentUser,
+          start_idx: this.state.start_idx,
+          end_idx: this.state.end_idx,
+          currentAnnotationId: this.state.currentAnnotationId,
+          hideAnnotationForm: this.hideAnnotationForm
+        }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ? this.state.annotationFormCreateVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_create__WEBPACK_IMPORTED_MODULE_2__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
           createAnnotation: this.props.createAnnotation,
@@ -929,7 +969,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-login-border-bar"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-login-card"
-        }, "You need to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+        }, "You need to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           to: "/login"
         }, "log in"), " to add annotations to a song.")))));
       } else {
@@ -951,7 +991,29 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow);
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); // this.handleClick = this.handleClick.bind(this);
+// this.handleOutsideClick = this.handleOutsideClick.bind(this);
+// handleClick() {
+//     if (!this.state.annotationCardVisible) {
+//         // attach/remove event handler
+//         document.addEventListener('click', this.handleOutsideClick, false);
+//     } else {
+//         document.removeEventListener('click', this.handleOutsideClick, false);
+//     }
+//     this.setState(prevState => ({
+//         annotationCardVisible: !prevState.annotationCardVisible,
+//     }));
+// }
+// handleOutsideClick(e) {
+//     // ignore clicks on the component itself
+//     if (this.outsideClickNode.contains(e.target)) {
+//         return;
+//     }
+//VIEW HEIGHT ATTEMPT
+// ref = { outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
+//saving ele ref within highlighted annotated lyric span tag
+// ref = { this.highlightedTrackLyrics } //newer syntax, with React.createRef() in the constructor   
+//ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
 
 /***/ }),
 
