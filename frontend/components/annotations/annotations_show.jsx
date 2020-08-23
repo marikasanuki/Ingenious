@@ -35,7 +35,7 @@ class AnnotationsShow extends React.Component {
     }
 
     handleOutsideClick(e) {
-        // ignore clicks on highlighted span tag
+        // ignores clicks on highlighted span tag
         if (this.node.contains(e.target) && this.node) {
             return;
         }   

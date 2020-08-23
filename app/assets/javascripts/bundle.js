@@ -706,6 +706,8 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -722,8 +724,13 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "anno-submit-button",
         type: "submit",
-        value: 'SAVE'
-      })));
+        value: 'Save'
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "anno-cancel-button",
+        onClick: function onClick() {
+          _this4.props.hideAnnotationFormCreate();
+        }
+      }, "Cancel")));
     }
   }]);
 
@@ -821,7 +828,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleOutsideClick",
     value: function handleOutsideClick(e) {
-      // ignore clicks on highlighted span tag
+      // ignores clicks on highlighted span tag
       if (this.node.contains(e.target) && this.node) {
         return;
       }

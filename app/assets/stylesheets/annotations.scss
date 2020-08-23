@@ -211,7 +211,7 @@
 }
 
 .anno-submit-button {
-    border: 3px solid rgb(84, 200, 53);
+    border: 2px solid rgb(84, 200, 53);
     background-color: white;
     color: rgb(84, 200, 53);
     font-family: 'Muli', sans-serif;
@@ -223,8 +223,36 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
+.anno-submit-button:hover {
+    border: 2px solid rgb(84, 200, 53);
+    background-color: rgba(84, 200, 53, .2);
+}
 
 .anno-submit-button:focus {
+     outline-width: 0;
+}
+
+.anno-cancel-button {
+    margin-left: 5px;
+    border: 2px solid white;
+    background-color: white;
+    color: rgb(143, 143, 143);
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.anno-cancel-button:hover {
+    background-color: rgb(245, 245, 245);
+    border: 2px solid rgb(245, 245, 245);
+}
+
+.anno-cancel-button:focus {
      outline-width: 0;
 }
 
