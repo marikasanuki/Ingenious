@@ -9,8 +9,8 @@ const annotationsReducer = (oldState = {}, action) => {
         case RECEIVE_ANNOTATION:
             //create new object, use action.annotation.id as key; action.annotation as value. 
             //then merge newly created object with oldState
-            console.log(oldState);
-            debugger;
+            // console.log(oldState);
+            // debugger;
             const ann = {
                 [action.annotation.id]: action.annotation,
                 // tracks.annotations[action.annotation.id]: action.annotation, 

@@ -29,7 +29,7 @@ class AnnotationsCard extends React.Component {
         const { currentAnnotationId } = this.props; 
 
         const currentAnnoObj = this.props.annotations[currentAnnotationId]
-        debugger;
+        // debugger;
         const currentAnnoAuthId = currentAnnoObj.author_id
 
         return (

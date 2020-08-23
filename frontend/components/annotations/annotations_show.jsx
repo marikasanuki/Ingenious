@@ -17,6 +17,29 @@ class AnnotationsShow extends React.Component {
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
         this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this); 
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    }
+
+    handleClick() {
+        if (!this.state.annotationCardVisible) {
+            document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+            document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
+        this.setState(prevState => ({
+            annotationCardVisible: !prevState.annotationCardVisible,
+        }));
+    }
+
+    handleOutsideClick(e) {
+        // ignore clicks on highlighted span tag
+        if (this.node.contains(e.target)) {
+            return;
+        }   
+        this.handleClick();
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -65,6 +88,7 @@ class AnnotationsShow extends React.Component {
     setCurrentAnnotationId(annotationId) {
         this.setState({ currentAnnotationId: annotationId }) 
         //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
+        this.handleClick();
     }
 
     hideAnnotationFormCreate() {
@@ -99,16 +123,9 @@ class AnnotationsShow extends React.Component {
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     className='highlighted-annotated-lyric'
+                    ref={node => { this.node = node; }}
                     onClick={() => 
-                        {this.setCurrentAnnotationId(annotation.id)
-                            this.state.annotationCardVisible ?
-                            this.setState({ 
-                                annotationCardVisible: false,
-                                annotationFormCreateVisible: false, }) :
-                            this.setState({
-                                annotationCardVisible: true,
-                                annotationFormCreateVisible: false,
-                                })
+                        {   this.setCurrentAnnotationId(annotation.id)
                         }}
                 >
                     {annotatedSlicedLyric}
@@ -132,7 +149,7 @@ class AnnotationsShow extends React.Component {
         if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
             return (
                 <div>
-                    <div className='anno-show-lyrics-container'>
+                    <div className='anno-show-lyrics-container'  >
 
                         <div className='anno-show-mini-title'>
                             {this.props.track.title} lyrics
@@ -142,6 +159,7 @@ class AnnotationsShow extends React.Component {
                             className='anno-show-lyrics'
                             onMouseDown={this.saveOffsetsToState}
                             onMouseUp={this.saveOffsetsToState}
+                            
                         >
                             {allFormattedLyrics}    {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
                         </div>
@@ -214,27 +232,9 @@ class AnnotationsShow extends React.Component {
 
 export default AnnotationsShow;
 
-        // this.handleClick = this.handleClick.bind(this);
-        // this.handleOutsideClick = this.handleOutsideClick.bind(this);
 
-    // handleClick() {
-    //     if (!this.state.annotationCardVisible) {
-    //         // attach/remove event handler
-    //         document.addEventListener('click', this.handleOutsideClick, false);
-    //     } else {
-    //         document.removeEventListener('click', this.handleOutsideClick, false);
-    //     }
 
-    //     this.setState(prevState => ({
-    //         annotationCardVisible: !prevState.annotationCardVisible,
-    //     }));
-    // }
 
-    // handleOutsideClick(e) {
-    //     // ignore clicks on the component itself
-    //     if (this.outsideClickNode.contains(e.target)) {
-    //         return;
-    //     }
 
 
 //VIEW HEIGHT ATTEMPT

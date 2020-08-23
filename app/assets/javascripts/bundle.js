@@ -445,8 +445,8 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var currentAnnotationId = this.props.currentAnnotationId;
-      var currentAnnoObj = this.props.annotations[currentAnnotationId];
-      debugger;
+      var currentAnnoObj = this.props.annotations[currentAnnotationId]; // debugger;
+
       var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
@@ -798,10 +798,37 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
     _this.hideAnnotationFormCreate = _this.hideAnnotationFormCreate.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AnnotationsShow, [{
+    key: "handleClick",
+    value: function handleClick() {
+      if (!this.state.annotationCardVisible) {
+        document.addEventListener('click', this.handleOutsideClick, false);
+      } else {
+        document.removeEventListener('click', this.handleOutsideClick, false);
+      }
+
+      this.setState(function (prevState) {
+        return {
+          annotationCardVisible: !prevState.annotationCardVisible
+        };
+      });
+    }
+  }, {
+    key: "handleOutsideClick",
+    value: function handleOutsideClick(e) {
+      // ignore clicks on highlighted span tag
+      if (this.node.contains(e.target)) {
+        return;
+      }
+
+      this.handleClick();
+    }
+  }, {
     key: "findSelectionOffsets",
     value: function findSelectionOffsets(element) {
       //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -863,6 +890,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       this.setState({
         currentAnnotationId: annotationId
       }); //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
+
+      this.handleClick();
     }
   }, {
     key: "hideAnnotationFormCreate",
@@ -907,16 +936,11 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         allFormattedLyrics.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           key: uniqueKey++,
           className: "highlighted-annotated-lyric",
+          ref: function ref(node) {
+            _this2.node = node;
+          },
           onClick: function onClick() {
             _this2.setCurrentAnnotationId(annotation.id);
-
-            _this2.state.annotationCardVisible ? _this2.setState({
-              annotationCardVisible: false,
-              annotationFormCreateVisible: false
-            }) : _this2.setState({
-              annotationCardVisible: true,
-              annotationFormCreateVisible: false
-            });
           }
         }, annotatedSlicedLyric)); //When we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
@@ -999,25 +1023,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); // this.handleClick = this.handleClick.bind(this);
-// this.handleOutsideClick = this.handleOutsideClick.bind(this);
-// handleClick() {
-//     if (!this.state.annotationCardVisible) {
-//         // attach/remove event handler
-//         document.addEventListener('click', this.handleOutsideClick, false);
-//     } else {
-//         document.removeEventListener('click', this.handleOutsideClick, false);
-//     }
-//     this.setState(prevState => ({
-//         annotationCardVisible: !prevState.annotationCardVisible,
-//     }));
-// }
-// handleOutsideClick(e) {
-//     // ignore clicks on the component itself
-//     if (this.outsideClickNode.contains(e.target)) {
-//         return;
-//     }
-//VIEW HEIGHT ATTEMPT
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); //VIEW HEIGHT ATTEMPT
 // ref = { outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
 //saving ele ref within highlighted annotated lyric span tag
 // ref = { this.highlightedTrackLyrics } //newer syntax, with React.createRef() in the constructor   
@@ -2779,9 +2785,8 @@ var annotationsReducer = function annotationsReducer() {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
-      console.log(oldState);
-      debugger;
-
+      // console.log(oldState);
+      // debugger;
       var ann = _defineProperty({}, action.annotation.id, action.annotation);
 
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, ann);
