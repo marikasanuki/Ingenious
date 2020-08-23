@@ -822,7 +822,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     key: "handleOutsideClick",
     value: function handleOutsideClick(e) {
       // ignore clicks on highlighted span tag
-      if (this.node.contains(e.target)) {
+      if (this.node.contains(e.target) && this.node) {
         return;
       }
 
