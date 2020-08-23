@@ -8,6 +8,9 @@ const tracksReducer = (oldState = {}, action) => {
         case RECEIVE_ALL_TRACKS:
             return Object.assign({}, action.tracks);
         case RECEIVE_TRACK:
+            // console.log(oldState);
+            // console.log(action.track)
+            // debugger;
             return Object.assign({}, action.track);
             // return Object.assign({}, oldState, {[action.track.id]: action.track} );
         // case RECEIVE_ANNOTATION:

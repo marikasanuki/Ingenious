@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class LoginForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoUser = this.demoUser.bind(this);
     }
 
     componentWillUnmount() {
@@ -29,7 +32,12 @@ class LoginForm extends React.Component {
             });
         };
     }
-
+    demoUser(e) {
+        e.preventDefault();
+        //  debugger;
+        this.props.login({ username: 'IngeniousFan', password: 'IngeniousFanpw' })
+            .then(() => this.props.history.push('/'));
+    }
 
     renderErrors() {
         return (
@@ -80,6 +88,7 @@ class LoginForm extends React.Component {
                     <br />
                     <label className='signup-label'>Don't have an account? <Link className='hyperlink-color' to={`/signup`}>Sign up here.</Link></label>
                     
+                    <button className='login-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
                 </form>
             </div>
         );

@@ -22,17 +22,23 @@ class AnnotationsFormEdit extends React.Component {
         }
 
         const anno = Object.assign({}, updatedAnnoInfo);
-
+        console.log(this.props)
+        debugger;
         this.props.updateAnnotation(anno)
         //updates annotation w/in database but it then deletes old annotation from DOM/array
             .then (
-               () => this.props.hideAnnotationForm()
+                (res) => {
+                    return this.props.setCurrentAnnotationId(res.annotation.id)
+                }
+            )
+            .then (
+                () => this.props.hideAnnotationCardEdit()
             )            
             // .then (
-            //     (res) => {
-            //         return this.props.setCurrentAnnotationId(res.annotation.id)
-            //     }
-            // )
+            //    () => this.props.hideAnnotationFormCreate()
+            // )            
+
+
     }
 
     handleInput(field) {

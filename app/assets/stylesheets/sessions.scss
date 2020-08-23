@@ -171,3 +171,28 @@
     padding-top: 15px;
     padding-left: 30px;
 }
+
+.login-demo-user-button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    display: block;
+    color: rgb(0, 0, 0);
+    background-color: rgb(253, 255, 111);
+    border: 1px solid rgb(253, 255, 111);
+    width: 380px;
+    height: 35px;;
+    border-radius: 2px;
+    font-family: 'Muli', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-demo-user-button:focus {
+    outline-width: 0;
+}
+
+.login-demo-user-button:hover {
+    background-color: rgb(254, 255, 183);
+}

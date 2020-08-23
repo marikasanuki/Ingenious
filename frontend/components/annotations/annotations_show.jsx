@@ -16,7 +16,7 @@ class AnnotationsShow extends React.Component {
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
         this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
-        this.hideAnnotationForm = this.hideAnnotationForm.bind(this); 
+        this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this); 
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
@@ -67,7 +67,7 @@ class AnnotationsShow extends React.Component {
         //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
 
-    hideAnnotationForm() {
+    hideAnnotationFormCreate() {
         this.setState({
             annotationFormCreateVisible: false,
         })
@@ -153,11 +153,14 @@ class AnnotationsShow extends React.Component {
                                     annotations={this.props.annotations}
                                     createAnnotation={this.props.createAnnotation}
                                     currentUser={currentUser}
+                                    updateAnnotation={this.props.updateAnnotation}
+                                    destroyAnnotation={this.props.destroyAnnotation}
 
                                     start_idx={this.state.start_idx}
                                     end_idx={this.state.end_idx}
                                     currentAnnotationId={this.state.currentAnnotationId}
-                                    hideAnnotationForm={this.hideAnnotationForm}
+                                    hideAnnotationFormCreate={this.hideAnnotationFormCreate}
+                                    setCurrentAnnotationId={this.setCurrentAnnotationId}
                                 /> 
                                 : null}
                             <br />
@@ -173,7 +176,7 @@ class AnnotationsShow extends React.Component {
                                                             start_idx={this.state.start_idx}
                                                             end_idx={this.state.end_idx}
                                                             setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                                            hideAnnotationForm={this.hideAnnotationForm}
+                                                            hideAnnotationFormCreate={this.hideAnnotationFormCreate}
                                                         />}
                                                     </div>
 

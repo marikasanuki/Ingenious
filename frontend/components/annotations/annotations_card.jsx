@@ -29,6 +29,7 @@ class AnnotationsCard extends React.Component {
         const { currentAnnotationId } = this.props; 
 
         const currentAnnoObj = this.props.annotations[currentAnnotationId]
+        debugger;
         const currentAnnoAuthId = currentAnnoObj.author_id
 
         return (
@@ -80,7 +81,9 @@ class AnnotationsCard extends React.Component {
                         start_idx={this.props.start_idx}
                         end_idx={this.props.end_idx}
                         anno_body_og={this.props.annotations[currentAnnotationId].anno_body}
-                        hideAnnotationForm={this.hideAnnotationForm}
+                        hideAnnotationCardEdit={this.hideAnnotationCardEdit}
+                        hideAnnotationFormCreate={this.props.hideAnnotationFormCreate}
+                        setCurrentAnnotationId={this.props.setCurrentAnnotationId}
                     />
                     : null}
             </div>

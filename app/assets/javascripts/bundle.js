@@ -146,10 +146,10 @@ var createAnnotation = function createAnnotation(annotation) {
 };
 var updateAnnotation = function updateAnnotation(annotation) {
   // console.log('hit dispatch inside updateAnnotation thunk action creator')
-  //  debugger; 
+  debugger;
   return function (dispatch) {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
-    //  debugger; 
+    debugger;
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
@@ -446,6 +446,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
 
       var currentAnnotationId = this.props.currentAnnotationId;
       var currentAnnoObj = this.props.annotations[currentAnnotationId];
+      debugger;
       var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
@@ -484,7 +485,9 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         start_idx: this.props.start_idx,
         end_idx: this.props.end_idx,
         anno_body_og: this.props.annotations[currentAnnotationId].anno_body,
-        hideAnnotationForm: this.hideAnnotationForm
+        hideAnnotationCardEdit: this.hideAnnotationCardEdit,
+        hideAnnotationFormCreate: this.props.hideAnnotationFormCreate,
+        setCurrentAnnotationId: this.props.setCurrentAnnotationId
       }) : null);
     }
   }]);
@@ -566,14 +569,16 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         id: this.props.currentAnnotationId
       };
       var anno = Object.assign({}, updatedAnnoInfo);
+      console.log(this.props);
+      debugger;
       this.props.updateAnnotation(anno) //updates annotation w/in database but it then deletes old annotation from DOM/array
-      .then(function () {
-        return _this2.props.hideAnnotationForm();
+      .then(function (res) {
+        return _this2.props.setCurrentAnnotationId(res.annotation.id);
+      }).then(function () {
+        return _this2.props.hideAnnotationCardEdit();
       }); // .then (
-      //     (res) => {
-      //         return this.props.setCurrentAnnotationId(res.annotation.id)
-      //     }
-      // )
+      //    () => this.props.hideAnnotationFormCreate()
+      // )            
     }
   }, {
     key: "handleInput",
@@ -686,7 +691,7 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
       this.props.createAnnotation(anno).then(function (res) {
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }).then(function () {
-        return _this2.props.hideAnnotationForm();
+        return _this2.props.hideAnnotationFormCreate();
       });
     }
   }, {
@@ -792,7 +797,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
-    _this.hideAnnotationForm = _this.hideAnnotationForm.bind(_assertThisInitialized(_this));
+    _this.hideAnnotationFormCreate = _this.hideAnnotationFormCreate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -860,8 +865,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       }); //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
     }
   }, {
-    key: "hideAnnotationForm",
-    value: function hideAnnotationForm() {
+    key: "hideAnnotationFormCreate",
+    value: function hideAnnotationFormCreate() {
       this.setState({
         annotationFormCreateVisible: false
       });
@@ -951,10 +956,13 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           annotations: this.props.annotations,
           createAnnotation: this.props.createAnnotation,
           currentUser: currentUser,
+          updateAnnotation: this.props.updateAnnotation,
+          destroyAnnotation: this.props.destroyAnnotation,
           start_idx: this.state.start_idx,
           end_idx: this.state.end_idx,
           currentAnnotationId: this.state.currentAnnotationId,
-          hideAnnotationForm: this.hideAnnotationForm
+          hideAnnotationFormCreate: this.hideAnnotationFormCreate,
+          setCurrentAnnotationId: this.setCurrentAnnotationId
         }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), currentUser ? this.state.annotationFormCreateVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_form_create__WEBPACK_IMPORTED_MODULE_2__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
@@ -962,7 +970,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           start_idx: this.state.start_idx,
           end_idx: this.state.end_idx,
           setCurrentAnnotationId: this.setCurrentAnnotationId,
-          hideAnnotationForm: this.hideAnnotationForm
+          hideAnnotationFormCreate: this.hideAnnotationFormCreate
         })) : null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-login-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1017,10 +1025,10 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/app_c.jsx":
-/*!***************************************!*\
-  !*** ./frontend/components/app_c.jsx ***!
-  \***************************************/
+/***/ "./frontend/components/app.jsx":
+/*!*************************************!*\
+  !*** ./frontend/components/app.jsx ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1732,7 +1740,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _app_c__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app_c */ "./frontend/components/app_c.jsx");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
 /* harmony import */ var _header_bar_scroll_to_top__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./header_bar/scroll_to_top */ "./frontend/components/header_bar/scroll_to_top.jsx");
 
 
@@ -1744,7 +1752,7 @@ var Root = function Root(_ref) {
   var store = _ref.store;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
     store: store
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_bar_scroll_to_top__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_c__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_bar_scroll_to_top__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
@@ -1763,6 +1771,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1790,6 +1800,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var LoginForm = /*#__PURE__*/function (_React$Component) {
   _inherits(LoginForm, _React$Component);
 
@@ -1806,6 +1818,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1835,6 +1848,20 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "demoUser",
+    value: function demoUser(e) {
+      var _this4 = this;
+
+      e.preventDefault(); //  debugger;
+
+      this.props.login({
+        username: 'IngeniousFan',
+        password: 'IngeniousFanpw'
+      }).then(function () {
+        return _this4.props.history.push('/');
+      });
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1850,6 +1877,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1890,7 +1919,14 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "hyperlink-color",
         to: "/signup"
-      }, "Sign up here."))));
+      }, "Sign up here.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "login-demo-user-button",
+        onClick: function onClick(e) {
+          return _this5.demoUser(e);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faUser"]
+      }), " \xA0Log in as demo user")));
     }
   }]);
 
@@ -2624,8 +2660,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     annotations: state.entities.annotations,
     comments: state.entities.comments,
     comment_authors: state.entities.comment_authors,
-    currentUser: state.session.currentUser // loggedIn: Boolean(state.session.currentUser),
-
+    currentUser: state.session.currentUser
   };
 };
 
@@ -2744,12 +2779,19 @@ var annotationsReducer = function annotationsReducer() {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
+      console.log(oldState);
+      debugger;
+
       var ann = _defineProperty({}, action.annotation.id, action.annotation);
 
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, ann);
     // return Object.assign({}, oldState, action.annotation);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
+      // console.log(oldState);
+      // console.log(action);
+      // console.log(action.track.annotations);
+      // debugger;
       return Object.assign({}, action.track.annotations);
 
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ANNOTATION"]:
@@ -2980,6 +3022,9 @@ var tracksReducer = function tracksReducer() {
       return Object.assign({}, action.tracks);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
+      // console.log(oldState);
+      // console.log(action.track)
+      // debugger;
       return Object.assign({}, action.track);
     // return Object.assign({}, oldState, {[action.track.id]: action.track} );
     // case RECEIVE_ANNOTATION:
@@ -3089,8 +3134,8 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit updateAnnotation api util');
-  debugger;
+  console.log('hit updateAnnotation api util'); //  debugger;
+
   return $.ajax({
     method: 'PATCH',
     url: "/api/annotations/".concat(annotation.id),

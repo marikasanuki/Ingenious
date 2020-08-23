@@ -29,7 +29,7 @@ class AnnotationsFormCreate extends React.Component {
                 }
             )
             .then (
-                () => this.props.hideAnnotationForm()
+                () => this.props.hideAnnotationFormCreate()
             )
     }
 

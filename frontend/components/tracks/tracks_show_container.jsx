@@ -11,14 +11,12 @@ const mapStateToProps = (state, ownProps) => {
         comments: state.entities.comments,
         comment_authors: state.entities.comment_authors,
         currentUser: state.session.currentUser,
-        // loggedIn: Boolean(state.session.currentUser),
     })
 };
 
 const mapDispatchToProps = (dispatch) => {
     return ({
         fetchTrack: (key) => dispatch(fetchTrack(key)),
-
         fetchAnnotation: (annotation) => dispatch(fetchAnnotation(annotation)),
         createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
         updateAnnotation: (annotation) => dispatch(updateAnnotation(annotation)),
