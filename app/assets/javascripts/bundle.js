@@ -801,8 +801,10 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       annotationCardVisible: false,
       annotationFormCreateVisible: false
     };
-    _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
-    _this.saveOffsetsToState = _this.saveOffsetsToState.bind(_assertThisInitialized(_this));
+    _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this)); // this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
+
+    _this.saveStartOffsetToState = _this.saveStartOffsetToState.bind(_assertThisInitialized(_this));
+    _this.saveEndOffsetToState = _this.saveEndOffsetToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
     _this.hideAnnotationFormCreate = _this.hideAnnotationFormCreate.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
@@ -821,7 +823,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 
       this.setState(function (prevState) {
         return {
-          annotationCardVisible: !prevState.annotationCardVisible
+          annotationCardVisible: !prevState.annotationCardVisible,
+          annotationFormCreateVisible: false
         };
       });
     }
@@ -881,8 +884,19 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "saveOffsetsToState",
-    value: function saveOffsetsToState() {
+    key: "saveStartOffsetToState",
+    value: function saveStartOffsetToState() {
+      var lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
+      var selOffsets = this.findSelectionOffsets(lyricsElement);
+      this.setState({
+        start_idx: selOffsets.start,
+        end_idx: selOffsets.end,
+        annotationFormCreateVisible: false
+      });
+    }
+  }, {
+    key: "saveEndOffsetToState",
+    value: function saveEndOffsetToState() {
       var lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
       var selOffsets = this.findSelectionOffsets(lyricsElement);
       this.setState({
@@ -978,8 +992,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           className: "anno-show-mini-title"
         }, this.props.track.title, " lyrics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-lyrics",
-          onMouseDown: this.saveOffsetsToState,
-          onMouseUp: this.saveOffsetsToState
+          onMouseDown: this.saveStartOffsetToState,
+          onMouseUp: this.saveEndOffsetToState
         }, allFormattedLyrics, "    "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "anno-show-cont"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card__WEBPACK_IMPORTED_MODULE_1__["default"], {

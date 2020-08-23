@@ -14,7 +14,11 @@ class AnnotationsShow extends React.Component {
             annotationFormCreateVisible: false,
         };
         this.findSelectionOffsets = this.findSelectionOffsets.bind(this);
-        this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
+        // this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
+        this.saveStartOffsetToState = this.saveStartOffsetToState.bind(this);
+        this.saveEndOffsetToState = this.saveEndOffsetToState.bind(this);
+
+
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
         this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this); 
 
@@ -31,6 +35,7 @@ class AnnotationsShow extends React.Component {
 
         this.setState(prevState => ({
             annotationCardVisible: !prevState.annotationCardVisible,
+            annotationFormCreateVisible: false,
         }));
     }
 
@@ -75,7 +80,16 @@ class AnnotationsShow extends React.Component {
         return { start: start, end: end };
     }
 
-    saveOffsetsToState() {
+    saveStartOffsetToState() {
+        const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
+        let selOffsets = this.findSelectionOffsets(lyricsElement);
+        this.setState({
+            start_idx: selOffsets.start,
+            end_idx: selOffsets.end,
+            annotationFormCreateVisible: false,
+        })
+    }
+    saveEndOffsetToState() {
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
         let selOffsets = this.findSelectionOffsets(lyricsElement);
         this.setState({
@@ -157,8 +171,8 @@ class AnnotationsShow extends React.Component {
 
                         <div 
                             className='anno-show-lyrics'
-                            onMouseDown={this.saveOffsetsToState}
-                            onMouseUp={this.saveOffsetsToState}
+                            onMouseDown={this.saveStartOffsetToState}
+                            onMouseUp={this.saveEndOffsetToState}
                             
                         >
                             {allFormattedLyrics}    {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
