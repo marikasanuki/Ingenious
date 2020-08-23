@@ -730,7 +730,15 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           _this4.props.hideAnnotationFormCreate();
         }
-      }, "Cancel")));
+      }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "integer",
+        value: this.props.start_idx,
+        onChange: this.handleInput('start_idx')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "integer",
+        value: this.props.end_idx,
+        onChange: this.handleInput('end_idx')
+      })));
     }
   }]);
 
@@ -899,11 +907,15 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     value: function saveEndOffsetToState() {
       var lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
       var selOffsets = this.findSelectionOffsets(lyricsElement);
-      this.setState({
-        start_idx: selOffsets.start,
-        end_idx: selOffsets.end,
-        annotationFormCreateVisible: true
-      });
+
+      if (selOffsets.start !== selOffsets.end) {
+        //excludes any mousedown/mouseup clicks where there is not any character highlighted
+        this.setState({
+          start_idx: selOffsets.start,
+          end_idx: selOffsets.end,
+          annotationFormCreateVisible: true
+        });
+      }
     }
   }, {
     key: "setCurrentAnnotationId",

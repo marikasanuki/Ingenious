@@ -83,6 +83,7 @@ class AnnotationsShow extends React.Component {
     saveStartOffsetToState() {
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
         let selOffsets = this.findSelectionOffsets(lyricsElement);
+
         this.setState({
             start_idx: selOffsets.start,
             end_idx: selOffsets.end,
@@ -92,11 +93,14 @@ class AnnotationsShow extends React.Component {
     saveEndOffsetToState() {
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
         let selOffsets = this.findSelectionOffsets(lyricsElement);
-        this.setState({
-            start_idx: selOffsets.start,
-            end_idx: selOffsets.end,
-            annotationFormCreateVisible: true,
-        })
+
+        if (selOffsets.start !== selOffsets.end) { //excludes any mousedown/mouseup clicks where there is not any character highlighted
+            this.setState({
+                start_idx: selOffsets.start,
+                end_idx: selOffsets.end,
+                annotationFormCreateVisible: true,
+            })
+        }
     }
 
     setCurrentAnnotationId(annotationId) {
