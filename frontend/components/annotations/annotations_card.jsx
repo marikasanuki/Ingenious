@@ -27,10 +27,10 @@ class AnnotationsCard extends React.Component {
 
     render() {
         const { currentAnnotationId } = this.props; 
-
         const currentAnnoObj = this.props.annotations[currentAnnotationId]
-        // debugger;
         const currentAnnoAuthId = currentAnnoObj.author_id
+
+        // console.log(this.state.editFormVisible)
 
         return (
             <div className='annotation-box-container'>
@@ -73,7 +73,7 @@ class AnnotationsCard extends React.Component {
                         ) : null}
                     </div>
                 </div>
-                {this.state.editFormVisible ?
+                {/* {this.state.editFormVisible ? */}
                     <AnnotationsFormEdit
                         updateAnnotation={this.props.updateAnnotation}
                         track={this.props.track}
@@ -85,7 +85,7 @@ class AnnotationsCard extends React.Component {
                         hideAnnotationFormCreate={this.props.hideAnnotationFormCreate}
                         setCurrentAnnotationId={this.props.setCurrentAnnotationId}
                     />
-                    : null}
+                    {/* : null} */}
             </div>
         )
     }

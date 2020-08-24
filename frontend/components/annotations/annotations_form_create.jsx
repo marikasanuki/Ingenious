@@ -56,7 +56,7 @@ class AnnotationsFormCreate extends React.Component {
                     <input className="anno-submit-button" type='submit' value={'Save'}/>
                     <button className="anno-cancel-button" onClick={() => {
                         this.props.hideAnnotationFormCreate()}} >Cancel</button>
-                    <br />
+                    {/* <br />
                     <input 
                         type='integer' 
                         value={this.props.start_idx}
@@ -67,7 +67,7 @@ class AnnotationsFormCreate extends React.Component {
                         type='integer'
                         value={this.props.end_idx}
                         onChange={this.handleInput('end_idx')}
-                    />
+                    /> */}
 
                 </form>
             </div>

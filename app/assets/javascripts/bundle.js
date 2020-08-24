@@ -445,9 +445,9 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var currentAnnotationId = this.props.currentAnnotationId;
-      var currentAnnoObj = this.props.annotations[currentAnnotationId]; // debugger;
+      var currentAnnoObj = this.props.annotations[currentAnnotationId];
+      var currentAnnoAuthId = currentAnnoObj.author_id; // console.log(this.state.editFormVisible)
 
-      var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -478,7 +478,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faEdit"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "annotation-edit-button-text"
-      }, "Edit Your Annotation"))) : null)), this.state.editFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Edit Your Annotation"))) : null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__["default"], {
         updateAnnotation: this.props.updateAnnotation,
         track: this.props.track,
         currentAnnotationId: currentAnnotationId,
@@ -488,7 +488,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         hideAnnotationCardEdit: this.hideAnnotationCardEdit,
         hideAnnotationFormCreate: this.props.hideAnnotationFormCreate,
         setCurrentAnnotationId: this.props.setCurrentAnnotationId
-      }) : null);
+      }));
     }
   }]);
 
@@ -730,15 +730,7 @@ var AnnotationsFormCreate = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           _this4.props.hideAnnotationFormCreate();
         }
-      }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        value: this.props.start_idx,
-        onChange: this.handleInput('start_idx')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        value: this.props.end_idx,
-        onChange: this.handleInput('end_idx')
-      })));
+      }, "Cancel")));
     }
   }]);
 
@@ -809,8 +801,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       annotationCardVisible: false,
       annotationFormCreateVisible: false
     };
-    _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this)); // this.saveOffsetsToState = this.saveOffsetsToState.bind(this);
-
+    _this.findSelectionOffsets = _this.findSelectionOffsets.bind(_assertThisInitialized(_this));
     _this.saveStartOffsetToState = _this.saveStartOffsetToState.bind(_assertThisInitialized(_this));
     _this.saveEndOffsetToState = _this.saveEndOffsetToState.bind(_assertThisInitialized(_this));
     _this.setCurrentAnnotationId = _this.setCurrentAnnotationId.bind(_assertThisInitialized(_this));
@@ -909,7 +900,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
       var selOffsets = this.findSelectionOffsets(lyricsElement);
 
       if (selOffsets.start !== selOffsets.end) {
-        //excludes any mousedown/mouseup clicks where there is not any character highlighted
+        //excludes mousedown/mouseup clicks where there's no character highlighted
         this.setState({
           start_idx: selOffsets.start,
           end_idx: selOffsets.end,
