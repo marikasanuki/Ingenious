@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         end
         resources :annotations, only: [:create, :update, :destroy, :show]
         resources :comments, only: [:create, :destroy]
+        resources :votes, only: [:create, :update, :destroy]
     end
     
     root "static_pages#root"

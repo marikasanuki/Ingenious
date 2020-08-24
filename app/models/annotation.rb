@@ -22,5 +22,7 @@ class Annotation < ApplicationRecord
     belongs_to :track, 
         foreign_key: :track_id,
         class_name: :Track
+        
+    has_many :votes, as: :voteable
 
 end

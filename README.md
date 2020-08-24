@@ -10,7 +10,7 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 ## Technologies Used
 
-### Backend
+### Backen
 * Ruby on Rails
 * PostgreSQL
 
@@ -19,6 +19,7 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 * Redux
 * JavaScript
 * CSS
+* Webpack
 
 ### Cloud
 * Heroku
@@ -70,6 +71,11 @@ https://ingenious-prod.s3.amazonaws.com/anno-new.gif
 ```
 
 ## Future Features
-* Signed in users can contribute their own annotations as well as update and delete them.
+
+    ### Search
+
+    ### Music-related posts/articles and landing page 
+    * Individual article pages (show pages)
+    * "FEATURED" landing page that links to individual article pages (index page)
 
 Not for commercial use. I do not own the rights to any featured music or lyrics.
