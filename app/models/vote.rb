@@ -2,13 +2,13 @@
 #
 # Table name: votes
 #
-#  id            :bigint           not null, primary key
-#  author_id     :integer          not null
-#  value         :integer          not null
-#  voteable_id   :integer          not null
-#  voteable_type :string           not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id           :bigint           not null, primary key
+#  author_id    :integer          not null
+#  value        :integer          not null
+#  votable_id   :integer          not null
+#  votable_type :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Vote < ApplicationRecord
     validates :author_id, uniqueness: { scope: [:votable_id, :votable_type] }

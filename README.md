@@ -18,6 +18,7 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 * React
 * Redux
 * JavaScript
+* HTML5
 * CSS
 * Webpack
 

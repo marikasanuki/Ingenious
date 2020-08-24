@@ -1,8 +1,13 @@
 json.extract! @annotation, :id, :anno_body, :author_id, :track_id, :start_idx, :end_idx
+json.set! :username, @annotation.user.username
 
 
-# json.annotations do
-#     json.set! @annotation.id do 
-
-#     end
-# end
+json.votes do
+    @annotation.votes.each do |vote|
+        json.set! vote.id do 
+            json.id vote.id
+            json.author_id vote.author_id
+            json.value vote.value
+        end
+    end
+end

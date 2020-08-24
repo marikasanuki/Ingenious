@@ -21,6 +21,6 @@ class Comment < ApplicationRecord
     foreign_key: :track_id,
     class_name: :Track
 
-    has_many :votes, as: :voteable
+    has_many :votes, as: :votable, dependent: :destroy
     
 end
