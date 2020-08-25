@@ -14,13 +14,15 @@ class Comment < ApplicationRecord
     validates :comment_body, :author_id, :track_id, presence: true
 
     belongs_to :user, 
-    foreign_key: :author_id, 
-    class_name: :User
+        foreign_key: :author_id, 
+        class_name: :User
 
     belongs_to :track, 
-    foreign_key: :track_id,
-    class_name: :Track
+        foreign_key: :track_id,
+        class_name: :Track
 
-    has_many :votes, as: :votable, dependent: :destroy
+    has_many :votes,
+        as: :votable,
+        dependent: :destroy
     
 end

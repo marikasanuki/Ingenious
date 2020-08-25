@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import VotesShow from '../votes/votes_show_container';
 
 class CommentsItem extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class CommentsItem extends React.Component {
                 <div className='comments-body'>
                     {comment.comment_body}
                 </div>
+                <VotesShow />
 
                 <div className="comment-del-button-cont">
                     { (currentUser && comment.author_id === currentUser.id) ? (

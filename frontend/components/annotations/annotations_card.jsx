@@ -2,6 +2,7 @@ import React from "react";
 import AnnotationsFormEdit from './annotations_card_edit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
+import VotesShow from '../votes/votes_show_container';
 
 class AnnotationsCard extends React.Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class AnnotationsCard extends React.Component {
                 <div className='annotation-box'>
                     <div className='annotation-hed'>Ingenious Annotation</div>
                     {this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null}
+                    <VotesShow />
                     <div className='annotation-byline'>
                         {'Annotated by: '}
                     </div>

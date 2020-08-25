@@ -21,10 +21,12 @@ class Track < ApplicationRecord
 
     has_many :annotations, 
         foreign_key: :track_id,
-        class_name: :Annotation
+        class_name: :Annotation,
+        dependent: :destroy
 
     has_many :comments, 
-    foreign_key: :track_id,
-    class_name: :Comment
+        foreign_key: :track_id,
+        class_name: :Comment,
+        dependent: :destroy
 
 end

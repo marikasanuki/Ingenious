@@ -1,0 +1,35 @@
+.vote-container {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.vote-thumb-up-icon {
+    color: rgb(154, 154, 154);
+    cursor: pointer;
+}
+.vote-thumb-up-icon:focus {
+    outline-width: 0;
+}
+
+.vote-thumb-up-icon:hover {
+    color: rgb(211, 211, 211);
+}
+
+.vote-count {
+    color: rgb(82, 82, 82);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.vote-thumb-down-icon {
+    color: rgb(154, 154, 154);
+    cursor: pointer;
+
+}
+.vote-thumb-down-icon:focus {
+    outline-width: 0;
+}
+
+.vote-thumb-down-icon:hover {
+    color: rgb(211, 211, 211);
+}

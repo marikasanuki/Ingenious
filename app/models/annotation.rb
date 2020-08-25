@@ -23,6 +23,8 @@ class Annotation < ApplicationRecord
         foreign_key: :track_id,
         class_name: :Track
         
-    has_many :votes, as: :votable, dependent: :destroy
+    has_many :votes, 
+        as: :votable, 
+        dependent: :destroy
 
 end

@@ -11,12 +11,13 @@
 #  updated_at   :datetime         not null
 #
 class Vote < ApplicationRecord
+    
     validates :author_id, uniqueness: { scope: [:votable_id, :votable_type] }
 
     belongs_to :votable, polymorphic: true
 
     belongs_to :user, 
-    foreign_key: :author_id,
-    class_name: :User
+        foreign_key: :author_id,
+        class_name: :User
     
 end
