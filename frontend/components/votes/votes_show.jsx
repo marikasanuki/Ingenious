@@ -18,18 +18,24 @@ class VotesShow extends React.Component {
     }
 
     incrementVoteTally() {
-        console.log("add 1 to voteTally")
+        console.log("add 1 to voteTally");
+        this.setState({
+            voteTally: voteTally + 1,
+        })
     }
     
     decrementVoteTally() {
-        console.log("subtract 1 to voteTally")
+        console.log("subtract 1 to voteTally");
+        this.setState({
+            voteTally: voteTally - 1, 
+        })
     }
 
     render() {
         return (
             <div className='vote-container'>
                 <FontAwesomeIcon className='vote-thumb-up-icon' icon={faThumbsUp} />
-                <span className='vote-count'>0</span>
+                <span className='vote-count'>{this.state.voteTally}</span>
                 <FontAwesomeIcon className='vote-thumb-down-icon' icon={faThumbsDown} />
             </div>
         )

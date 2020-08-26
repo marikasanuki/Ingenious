@@ -45,14 +45,14 @@ class AnnotationsShow extends React.Component {
     }
 
     findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
-        let doc = element.ownerDocument || element.document;
-        let win = doc.defaultView || doc.parentWindow;
+        let doc = element.ownerDocument || element.document; //setting doc variable to be the lyrics element's document or owner document
+        let win = doc.defaultView || doc.parentWindow; //doc.defaultView returns the window object associated with doc. doc.parent Window does the same thing for Internet Explorer.
         let selected;
         let start = 0;
         let end = 0;
 
         if (typeof win.getSelection != "undefined") { //IF a selection/highlight has been made ...
-            selected = win.getSelection();
+            selected = win.getSelection(); //setting selected varible to the highlighted selection object, representing the range of text selected by the user or the current position of the caret.
             if (selected.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection.
                 let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
                 let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
