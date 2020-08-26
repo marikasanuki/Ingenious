@@ -18,7 +18,6 @@ class AnnotationsShow extends React.Component {
         this.saveEndOffsetToState = this.saveEndOffsetToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
         this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this); 
-
         this.handleClick = this.handleClick.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
@@ -38,7 +37,7 @@ class AnnotationsShow extends React.Component {
 
     handleOutsideClick(e) {
         // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
-        if (this.node.contains(e.target) && this.node || this.cardNode.contains(e.target) ) {
+        if ( (this.node && this.node.contains(e.target)) || this.cardNode.contains(e.target) ) {
             return;
         }   
         this.handleClick();
@@ -249,14 +248,3 @@ class AnnotationsShow extends React.Component {
 };
 
 export default AnnotationsShow;
-
-
-
-
-
-
-//VIEW HEIGHT ATTEMPT
-// ref = { outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
-//saving ele ref within highlighted annotated lyric span tag
-// ref = { this.highlightedTrackLyrics } //newer syntax, with React.createRef() in the constructor   
-                        //ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components

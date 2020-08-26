@@ -928,7 +928,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
     key: "handleOutsideClick",
     value: function handleOutsideClick(e) {
       // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
-      if (this.node.contains(e.target) && this.node || this.cardNode.contains(e.target)) {
+      if (this.node && this.node.contains(e.target) || this.cardNode.contains(e.target)) {
         return;
       }
 
@@ -1149,11 +1149,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow); //VIEW HEIGHT ATTEMPT
-// ref = { outsideClickNode => { this.outsideClickNode = outsideClickNode; }}
-//saving ele ref within highlighted annotated lyric span tag
-// ref = { this.highlightedTrackLyrics } //newer syntax, with React.createRef() in the constructor   
-//ref={ele => this.highlightedTrackLyrics = ele} //older, callback version of above for non-class components
+/* harmony default export */ __webpack_exports__["default"] = (AnnotationsShow);
 
 /***/ }),
 
@@ -2950,10 +2946,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('state: ');
-  console.log(state);
-  console.log(ownProps); // debugger;
-
+  // console.log('state: ')
+  // console.log(state)
+  // console.log(ownProps);
+  // debugger;
   return {};
 };
 

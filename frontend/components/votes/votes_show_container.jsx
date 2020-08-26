@@ -3,9 +3,9 @@ import VotesShow from './votes_show';
 import { createCommentVote, updateCommentVote, destroyCommentVote, createAnnotationVote, updateAnnotationVote, destroyAnnotationVote } from '../../actions/vote_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('state: ')
-    console.log(state)
-    console.log(ownProps);
+    // console.log('state: ')
+    // console.log(state)
+    // console.log(ownProps);
     // debugger;
     return ({
     
