@@ -27,11 +27,15 @@ class AnnotationsCard extends React.Component {
     }
 
     render() {
-        const { currentAnnotationId } = this.props; 
-        const currentAnnoObj = this.props.annotations[currentAnnotationId]
-        const currentAnnoAuthId = currentAnnoObj.author_id
 
-        // console.log(this.state.editFormVisible)
+        const { currentAnnotationId } = this.props;
+        const currentAnnoObj = this.props.annotations[currentAnnotationId]
+
+        if (!currentAnnoObj) {
+            return <div></div>;
+        }
+
+        const currentAnnoAuthId = currentAnnoObj.author_id
 
         return (
             <div className='annotation-box-container'>

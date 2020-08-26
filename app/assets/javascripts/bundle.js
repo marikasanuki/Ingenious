@@ -543,8 +543,12 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
 
       var currentAnnotationId = this.props.currentAnnotationId;
       var currentAnnoObj = this.props.annotations[currentAnnotationId];
-      var currentAnnoAuthId = currentAnnoObj.author_id; // console.log(this.state.editFormVisible)
 
+      if (!currentAnnoObj) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }
+
+      var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-box-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
