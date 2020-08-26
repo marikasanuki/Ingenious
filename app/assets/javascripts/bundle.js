@@ -579,7 +579,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faEdit"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "annotation-edit-button-text"
-      }, "Edit Your Annotation"))) : null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Edit Your Annotation"))) : null)), this.state.editFormVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card_edit__WEBPACK_IMPORTED_MODULE_1__["default"], {
         updateAnnotation: this.props.updateAnnotation,
         track: this.props.track,
         currentAnnotationId: currentAnnotationId,
@@ -589,7 +589,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         hideAnnotationCardEdit: this.hideAnnotationCardEdit,
         hideAnnotationFormCreate: this.props.hideAnnotationFormCreate,
         setCurrentAnnotationId: this.props.setCurrentAnnotationId
-      }));
+      }) : null);
     }
   }]);
 
@@ -677,9 +677,7 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }).then(function () {
         return _this2.props.hideAnnotationCardEdit();
-      }); // .then (
-      //    () => this.props.hideAnnotationFormCreate()
-      // )            
+      });
     }
   }, {
     key: "handleInput",
@@ -693,6 +691,8 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "anno-form-container-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -709,7 +709,12 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         className: "anno-submit-button-edit",
         type: "submit",
         value: 'UPDATE'
-      })));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "anno-cancel-button-edit",
+        onClick: function onClick() {
+          _this4.props.hideAnnotationCardEdit();
+        }
+      }, "Cancel")));
     }
   }]);
 

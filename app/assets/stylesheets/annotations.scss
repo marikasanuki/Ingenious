@@ -314,6 +314,31 @@
      outline-width: 0;
 }
 
+.anno-cancel-button-edit {
+    margin-left: 5px;
+    border: 2px solid white;
+    background-color: white;
+    color: rgb(143, 143, 143);
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.anno-cancel-button-edit:hover {
+    background-color: rgb(245, 245, 245);
+    border: 2px solid rgb(245, 245, 245);
+}
+
+.anno-cancel-button-edit:focus {
+     outline-width: 0;
+}
+
+
 //log in to annotate version
 
 .anno-login-container {

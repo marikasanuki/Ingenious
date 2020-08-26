@@ -79,7 +79,7 @@ class AnnotationsCard extends React.Component {
                         ) : null}
                     </div>
                 </div>
-                {/* {this.state.editFormVisible ? */}
+                {this.state.editFormVisible ?
                     <AnnotationsFormEdit
                         updateAnnotation={this.props.updateAnnotation}
                         track={this.props.track}
@@ -91,7 +91,7 @@ class AnnotationsCard extends React.Component {
                         hideAnnotationFormCreate={this.props.hideAnnotationFormCreate}
                         setCurrentAnnotationId={this.props.setCurrentAnnotationId}
                     />
-                    {/* : null} */}
+                : null} 
             </div>
         )
     }

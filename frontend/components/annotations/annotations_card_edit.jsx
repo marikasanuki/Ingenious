@@ -34,11 +34,6 @@ class AnnotationsFormEdit extends React.Component {
             .then (
                 () => this.props.hideAnnotationCardEdit()
             )            
-            // .then (
-            //    () => this.props.hideAnnotationFormCreate()
-            // )            
-
-
     }
 
     handleInput(field) {
@@ -61,7 +56,9 @@ class AnnotationsFormEdit extends React.Component {
                         maxLength="1000" 
                     />
                     <input className="anno-submit-button-edit" type='submit' value={'UPDATE'}/>
-
+                    <button className="anno-cancel-button-edit" onClick={() => {
+                        this.props.hideAnnotationCardEdit()
+                    }} >Cancel</button>
                 </form>
             </div>
         )
