@@ -5,10 +5,8 @@ class Api::VotesController < ApplicationController
     def create
         # params[:vote][:author_id] = current_user.id
         @vote = Vote.new(vote_params)
-        debugger
-        render json: @vote
         @vote.author_id = current_user.id
-
+        debugger
         if @vote.save!
             if @vote.votable_type == 'Annotation'
                 @annotation = Annotation.find(@vote.votable_id)

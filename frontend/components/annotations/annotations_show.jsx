@@ -37,8 +37,8 @@ class AnnotationsShow extends React.Component {
     }
 
     handleOutsideClick(e) {
-        // ignores clicks on highlighted span tag
-        if (this.node.contains(e.target) && this.node) {
+        // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
+        if (this.node.contains(e.target) && this.node || this.cardNode.contains(e.target) ) {
             return;
         }   
         this.handleClick();
@@ -53,7 +53,7 @@ class AnnotationsShow extends React.Component {
 
         if (typeof win.getSelection != "undefined") { //IF a selection/highlight has been made ...
             selected = win.getSelection();
-            if (selected.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
+            if (selected.rangeCount > 0) { //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection.
                 let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
                 let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
                 cloneRange.selectNodeContents(element); //sets the cloneRange to contain the contents of element. makes cloneRange's startOffset 0 and cloneRange's endOffset to the number of child Nodes in element (element is the reference node)
@@ -63,8 +63,10 @@ class AnnotationsShow extends React.Component {
                 end = cloneRange.toString().length;
             }
         } else if ((selected = doc.selection) && selected.type != "Control") {
+
             let textRange = selected.createRange();
             let preCaretTextRange = doc.body.createTextRange();
+
             preCaretTextRange.moveToElementText(element);
             preCaretTextRange.setEndPoint("EndToStart", textRange);
 
@@ -138,7 +140,7 @@ class AnnotationsShow extends React.Component {
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
                     className='highlighted-annotated-lyric'
-                    ref={node => { this.node = node; }}
+                    ref={ node => { this.node = node; } }
                     onClick={() => 
                         {   this.setCurrentAnnotationId(annotation.id)
                         }}
@@ -178,7 +180,7 @@ class AnnotationsShow extends React.Component {
                         >
                             {allFormattedLyrics}    {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
                         </div>
-                        <div className='anno-show-cont'>
+                        <div className='anno-show-cont' ref={cardNode => { this.cardNode = cardNode; }} >
                             <br />
                             {this.state.annotationCardVisible ? 
                                 <AnnotationsCard
@@ -194,6 +196,7 @@ class AnnotationsShow extends React.Component {
                                     currentAnnotationId={this.state.currentAnnotationId}
                                     hideAnnotationFormCreate={this.hideAnnotationFormCreate}
                                     setCurrentAnnotationId={this.setCurrentAnnotationId}
+                                    
                                 /> 
                                 : null}
                             <br />

@@ -927,8 +927,8 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleOutsideClick",
     value: function handleOutsideClick(e) {
-      // ignores clicks on highlighted span tag
-      if (this.node.contains(e.target) && this.node) {
+      // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
+      if (this.node.contains(e.target) && this.node || this.cardNode.contains(e.target)) {
         return;
       }
 
@@ -949,7 +949,7 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
         selected = win.getSelection();
 
         if (selected.rangeCount > 0) {
-          //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection. Every 
+          //IF there is 1 or more ranges aka a range exists.rangeCount returns the number of ranges in the CURRENT selection.
           var range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
 
           var cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
@@ -1095,7 +1095,10 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
           onMouseDown: this.saveStartOffsetToState,
           onMouseUp: this.saveEndOffsetToState
         }, allFormattedLyrics, "    "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "anno-show-cont"
+          className: "anno-show-cont",
+          ref: function ref(cardNode) {
+            _this2.cardNode = cardNode;
+          }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.annotationCardVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_annotations_card__WEBPACK_IMPORTED_MODULE_1__["default"], {
           track: this.props.track,
           annotations: this.props.annotations,
@@ -2871,12 +2874,33 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(VotesShow);
 
   function VotesShow(props) {
+    var _this;
+
     _classCallCheck(this, VotesShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      voteTally: 0
+    };
+    _this.incrementVoteTally = _this.incrementVoteTally.bind(_assertThisInitialized(_this));
+    _this.decrementVoteTally = _this.decrementVoteTally.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(VotesShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "incrementVoteTally",
+    value: function incrementVoteTally() {
+      console.log("add 1 to voteTally");
+    }
+  }, {
+    key: "decrementVoteTally",
+    value: function decrementVoteTally() {
+      console.log("subtract 1 to voteTally");
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2886,7 +2910,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "vote-count"
-      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+      }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         className: "vote-thumb-down-icon",
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"]
       }));
@@ -2918,10 +2942,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('mstp: ');
+  console.log('state: ');
   console.log(state);
-  console.log(ownProps);
-  debugger;
+  console.log(ownProps); // debugger;
+
   return {};
 };
 
