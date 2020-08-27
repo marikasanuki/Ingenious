@@ -18,9 +18,6 @@ const annotationsReducer = (oldState = {}, action) => {
             return merge({}, oldState, ann);
             // return Object.assign({}, oldState, action.annotation);
         case RECEIVE_TRACK: 
-            // console.log(oldState);
-            // console.log(action);
-            // console.log(action.track.annotations);
             // debugger;
             return Object.assign({}, action.track.annotations);
         case REMOVE_ANNOTATION:

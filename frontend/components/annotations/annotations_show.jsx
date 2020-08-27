@@ -22,6 +22,11 @@ class AnnotationsShow extends React.Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
 
+    componentWillUnmount() {
+        // is this needed? 
+        document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+
     handleClick() {
         if (!this.state.annotationCardVisible) {
             document.addEventListener('click', this.handleOutsideClick, false);

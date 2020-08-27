@@ -670,14 +670,14 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         id: this.props.currentAnnotationId
       };
       var anno = Object.assign({}, updatedAnnoInfo);
-      console.log(this.props);
-      debugger;
-      this.props.updateAnnotation(anno) //updates annotation w/in database but it then deletes old annotation from DOM/array
+      this.props.updateAnnotation(anno) //updates annotation w/in database and in local state but it then deletes old annotation from DOM/array
       .then(function (res) {
+        console.log(res);
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }).then(function () {
         return _this2.props.hideAnnotationCardEdit();
-      });
+      }); // .then (
+      // )       
     }
   }, {
     key: "handleInput",
@@ -918,6 +918,12 @@ var AnnotationsShow = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(AnnotationsShow, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      // is this needed? 
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+  }, {
     key: "handleClick",
     value: function handleClick() {
       if (!this.state.annotationCardVisible) {
@@ -3079,9 +3085,6 @@ var annotationsReducer = function annotationsReducer() {
     // return Object.assign({}, oldState, action.annotation);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
-      // console.log(oldState);
-      // console.log(action);
-      // console.log(action.track.annotations);
       // debugger;
       return Object.assign({}, action.track.annotations);
 
