@@ -6,7 +6,7 @@ const HeaderBar = ({ currentUser, logout }) => {
         const display = currentUser ? (
             <div className="main-header">
                 <div className='ingenious-header-container'>
-                    <Link to="/" className='ingenious-header' >I&nbsp;N&nbsp;G&nbsp;E&nbsp;N&nbsp;I&nbsp;O&nbsp;U&nbsp;S</Link>
+                    <Link to="/" className='ingenious-header' >INGENIOUS</Link>
                 </div>
                     <div className="username-header">
                         {currentUser.username}
@@ -16,7 +16,7 @@ const HeaderBar = ({ currentUser, logout }) => {
         ) : (
                 <div className="main-header">
                     <div className='ingenious-header-container'>
-                        <Link to="/" className='ingenious-header' >I&nbsp;N&nbsp;G&nbsp;E&nbsp;N&nbsp;I&nbsp;O&nbsp;U&nbsp;S</Link>
+                        <Link to="/" className='ingenious-header' >INGENIOUS</Link>
                     </div>
                     <div className="session-btns" >
                         <Link to="/signup" className="session-btn" >SIGN&nbsp;UP</Link>

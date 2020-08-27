@@ -10,29 +10,29 @@ class NavBar extends React.Component {
         return (
             <div className='nav-bar'>
                 <ul className='nav-bar-list-ul'>
-                    <li><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >GITHUB</a></li>   
-                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
-                    <li><Link className='nav-bar-item' to={`/`}>CHARTS</Link></li>
-                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>                    
-                    <li><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >LINKEDIN</a></li>                    
-                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
-                    <li><a className='nav-bar-item' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >SPOTIFY</a></li>
-                    <li className='nav-bar-item' >&nbsp;|&nbsp;</li>
-                    <li>
-                        <a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >
+                    <li className='nav-bar-item' ><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >GITHUB</a></li>   
+                    <li className='nav-bar-item-pipe' >|</li>
+                    <li className='nav-bar-item'><Link className='nav-bar-item' to={`/`}>CHARTS</Link></li>
+                    <li className='nav-bar-item-pipe' >|</li>                    
+                    <li className='nav-bar-item'><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >LINKEDIN</a></li>                    
+                    <li className='nav-bar-item-pipe' >|</li>
+                    <li className='nav-bar-item'><a className='nav-bar-item' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >SPOTIFY</a></li>
+                    <li className='nav-bar-item-pipe' >|</li>
+                    <li className='nav-bar-icons-li'>
+                        <a className='nav-bar-item-icon' href="https://github.com/marikasanuki" target="blank" >
                             <FontAwesomeIcon className='fa-icon' icon={faGithub} />
                         </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >
+                        
+                        <a className='nav-bar-item-icon' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >
                             <FontAwesomeIcon className='fa-icon' icon={faLinkedinIn} />
                         </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className='nav-bar-item' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >
+                        
+                        <a className='nav-bar-item-icon' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >
                             <FontAwesomeIcon className='fa-icon' icon={faSpotify} />
                         </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className='nav-bar-item' href="https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com" target="blank" >
-                            <FontAwesomeIcon className='fa-icon' icon={faEnvelope} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <a className='nav-bar-item-icon' href="https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com" target="blank" >
+                            <FontAwesomeIcon className='fa-icon' icon={faEnvelope} />
                         </a>
                     </li>
                 </ul>                 
