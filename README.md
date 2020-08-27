@@ -6,11 +6,11 @@
 
 [Ingenious](https://ingenious-app.herokuapp.com/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
-Users can browse a curated selection of songs, their lyrics, and annotated notes and interpretations of the tracks' lyrics. 
+Users can browse a curated selection of songs and their lyrics and view annotated notes and interpretations of the tracks' lyrics. A signed-in user can create, update, and delete their own lyric annotations, as well as leave comments on the tracks and upvote or downvote annotations and comments.  
 
 ## Technologies Used
 
-### Backen
+### Backend
 * Ruby on Rails
 * PostgreSQL
 
@@ -29,9 +29,9 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 * User authentication and demo user option
 
-<h1 align="center">
+<div align="center">
   <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/ingenious-index.gif" width="600" height="auto" align="center"/>
-</h1>
+</div>
 
 * Ability to view database of curated song lyrics
 
@@ -47,8 +47,10 @@ Users can browse a curated selection of songs, their lyrics, and annotated notes
 
 * Ability for a signed-in user to upvote an annotation or a comment
 
-![alt text](https://ingenious-prod.s3.amazonaws.com/anno-new.gif "Ingenious annotations")
-https://ingenious-prod.s3.amazonaws.com/anno-new.gif
+<div align="center">
+  <img src="https://ingenious-prod.s3.amazonaws.com/anno-new.gif" width="600" height="auto" align="center"/>
+</div>
+
 * Annotations are revealed and hidden on click.
 
 ```
@@ -73,10 +75,8 @@ https://ingenious-prod.s3.amazonaws.com/anno-new.gif
 
 ## Future Features
 
-    ### Search
-
-    ### Music-related posts/articles and landing page 
-    * Individual article pages (show pages)
-    * "FEATURED" landing page that links to individual article pages (index page)
+* Search
+* "FEATURED" landing page that links to individual article pages (article index page)
+* Individual article pages (article show pages)
 
 Not for commercial use. I do not own the rights to any featured music or lyrics.
