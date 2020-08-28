@@ -1398,7 +1398,7 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsItem, [{
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       var _this$props = this.props,
           comment = _this$props.comment,
           comment_authors = _this$props.comment_authors,
@@ -2936,41 +2936,76 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      voteTally: 0,
-      userVoteValue: 0
-    };
-    _this.incrementVoteTally = _this.incrementVoteTally.bind(_assertThisInitialized(_this));
-    _this.decrementVoteTally = _this.decrementVoteTally.bind(_assertThisInitialized(_this));
+      voteTally: 0 // userVoteValue: 0,
+
+    }; // this.incrementVoteTally = this.incrementVoteTally.bind(this);
+    // this.decrementVoteTally = this.decrementVoteTally.bind(this);
+
+    _this.tallyCurrentCommentObjVotes = _this.tallyCurrentCommentObjVotes.bind(_assertThisInitialized(_this));
+    _this.tallyCurrentAnnoObjVotes = _this.tallyCurrentAnnoObjVotes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(VotesShow, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      if (this.props.currentCommentObj) {
+        this.tallyCurrentCommentObjVotes();
+      } else if (this.props.currentAnnoObj) {
+        this.tallyCurrentAnnoObjVotes();
+      }
+    } // incrementVoteTally() {
+    //     console.log("add 1 to voteTally");
+    //     this.setState({
+    //         voteTally: voteTally + 1,
+    //     })
+    // }
+    // decrementVoteTally() {
+    //     console.log("subtract 1 to voteTally");
+    //     this.setState({
+    //         voteTally: voteTally - 1, 
+    //     })
+    // }
+
   }, {
-    key: "incrementVoteTally",
-    value: function incrementVoteTally() {
-      console.log("add 1 to voteTally");
+    key: "tallyCurrentCommentObjVotes",
+    value: function tallyCurrentCommentObjVotes() {
+      var allVotesArr = this.props.currentCommentObj.all_votes;
+      var valueSum = 0;
+
+      for (var i = 0; i < allVotesArr.length; i++) {
+        valueSum += allVotesArr[i].value; // console.log(allVotesArr[i].value);
+        // console.log(valueSum);
+        // debugger;
+      } // console.log(valueSum);
+      // debugger;
+
+
       this.setState({
-        voteTally: voteTally + 1
+        voteTally: valueSum
       });
     }
   }, {
-    key: "decrementVoteTally",
-    value: function decrementVoteTally() {
-      console.log("subtract 1 to voteTally");
+    key: "tallyCurrentAnnoObjVotes",
+    value: function tallyCurrentAnnoObjVotes() {
+      var allVotesArr = this.props.currentAnnoObj.all_votes;
+      var valueSum = 0;
+
+      for (var i = 0; i < allVotesArr.length; i++) {
+        valueSum += allVotesArr[i].value;
+      }
+
       this.setState({
-        voteTally: voteTally - 1
+        voteTally: valueSum
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('this.props inside votes show:');
-      console.log(this.props);
-      debugger;
-
-      if (this.props.comment) {
+      // console.log('this.props inside votes show:');
+      // console.log(this.props);
+      // debugger;
+      if (this.props.currentCommentObj) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "vote-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
@@ -3034,7 +3069,12 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   // console.log('ownProps: ')
   // console.log(ownProps);
   // debugger;
-  return {};
+  return {
+    currentCommentObj: ownProps.comment,
+    currentAnnoObj: ownProps.currentAnnoObj,
+    annotations: state.entities.annotations,
+    comments: state.entities.comments
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {

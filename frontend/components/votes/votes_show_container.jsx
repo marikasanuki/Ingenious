@@ -9,7 +9,11 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(ownProps);
     // debugger;
     return ({
-        
+        currentCommentObj: ownProps.comment,
+        currentAnnoObj: ownProps.currentAnnoObj,
+        annotations: state.entities.annotations,
+        comments: state.entities.comments,
+
     })
 };
 

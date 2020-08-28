@@ -10,6 +10,7 @@ User.destroy_all
 Track.destroy_all
 Annotation.destroy_all
 Comment.destroy_all
+# Vote.destroy_all
 
 rand_conc = rand(1..999)
 rand_total = rand(1..500) + rand.round(1)

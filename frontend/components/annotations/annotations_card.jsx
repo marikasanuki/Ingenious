@@ -44,6 +44,7 @@ class AnnotationsCard extends React.Component {
                     {this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null}
                     <VotesShow 
                         currentAnnoObj={currentAnnoObj}
+                        
                     />
                     <div className='annotation-byline'>
                         {'Annotated by: '}

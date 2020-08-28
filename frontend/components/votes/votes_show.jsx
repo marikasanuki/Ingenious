@@ -4,8 +4,9 @@ import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons'
 /*
 Click THUMB'S UP BUTTON
     CASE 1: Nothing clicked yet
-        create vote: set vote.value to 1 in db
-        add vote.value to this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_id matches the currentuser's id
+        if currentuser id is NOT in array, 
+            create new vote and set vote.value to 1 in db
 
     CASE 2: THUMB'S UP BUTTON already clicked
         update vote: set vote.value to 0 in db
@@ -36,38 +37,68 @@ class VotesShow extends React.Component {
         super(props);
         this.state = {
             voteTally: 0,
-            userVoteValue: 0,
+            // userVoteValue: 0,
         };
-        this.incrementVoteTally = this.incrementVoteTally.bind(this);
-        this.decrementVoteTally = this.decrementVoteTally.bind(this);
-    
+        // this.incrementVoteTally = this.incrementVoteTally.bind(this);
+        // this.decrementVoteTally = this.decrementVoteTally.bind(this);
+        this.tallyCurrentCommentObjVotes = this.tallyCurrentCommentObjVotes.bind(this);
+        this.tallyCurrentAnnoObjVotes = this.tallyCurrentAnnoObjVotes.bind(this);
     }
 
     componentDidMount() {
-        
+        if (this.props.currentCommentObj) {
+            this.tallyCurrentCommentObjVotes();
+        } else if (this.props.currentAnnoObj) {
+            this.tallyCurrentAnnoObjVotes();
+        }
     }
 
-    incrementVoteTally() {
-        console.log("add 1 to voteTally");
+    // incrementVoteTally() {
+    //     console.log("add 1 to voteTally");
+    //     this.setState({
+    //         voteTally: voteTally + 1,
+    //     })
+    // }
+    
+    // decrementVoteTally() {
+    //     console.log("subtract 1 to voteTally");
+    //     this.setState({
+    //         voteTally: voteTally - 1, 
+    //     })
+    // }
+
+    tallyCurrentCommentObjVotes() {
+        const allVotesArr = this.props.currentCommentObj.all_votes
+        let valueSum = 0;
+
+        for (let i = 0; i < allVotesArr.length; i++) {
+            valueSum += allVotesArr[i].value;
+        }
         this.setState({
-            voteTally: voteTally + 1,
+            voteTally: valueSum,
         })
     }
-    
-    decrementVoteTally() {
-        console.log("subtract 1 to voteTally");
+
+    tallyCurrentAnnoObjVotes() {
+        const allVotesArr = this.props.currentAnnoObj.all_votes
+        let valueSum = 0;
+
+        for (let i = 0; i < allVotesArr.length; i++) {
+            valueSum += allVotesArr[i].value;
+        }
+
         this.setState({
-            voteTally: voteTally - 1, 
+            voteTally: valueSum,
         })
     }
 
     render() {
 
-        console.log('this.props inside votes show:');
-        console.log(this.props);
-        debugger;
+        // console.log('this.props inside votes show:');
+        // console.log(this.props);
+        // debugger;
 
-        if (this.props.comment) {
+        if (this.props.currentCommentObj) {
             return (
                 <div className='vote-container'>
                     <FontAwesomeIcon

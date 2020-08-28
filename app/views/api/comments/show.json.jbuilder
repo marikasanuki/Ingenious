@@ -10,4 +10,3 @@ json.votes do
         end
     end
 end
-
