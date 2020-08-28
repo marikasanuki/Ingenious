@@ -27,4 +27,9 @@ class Annotation < ApplicationRecord
         as: :votable, 
         dependent: :destroy
 
+    def all_votes
+        # debugger
+        votes.all
+    end
+
 end

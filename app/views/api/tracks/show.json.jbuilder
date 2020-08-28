@@ -10,7 +10,8 @@ json.extract! @track, :id, :title, :artist, :album, :lyrics, :conc_views, :total
     # debugger
     json.annotations do 
         json.set! annotation.id do 
-            json.extract! annotation, :id, :anno_body, :author_id, :track_id, :start_idx, :end_idx
+            json.set! :username, annotation.user.username #new refactor--instead of anno_authors?
+            json.extract! annotation, :id, :anno_body, :author_id, :track_id, :start_idx, :end_idx, :all_votes
         end
     end
     json.anno_authors do 

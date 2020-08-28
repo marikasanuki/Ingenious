@@ -11,6 +11,7 @@ class CommentsItem extends React.Component {
     }
 
     render() {
+        debugger;
         const { comment, comment_authors, destroyComment, currentUser } = this.props;
 
         return (

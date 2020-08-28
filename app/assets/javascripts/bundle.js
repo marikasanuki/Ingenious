@@ -146,10 +146,10 @@ var createAnnotation = function createAnnotation(annotation) {
 };
 var updateAnnotation = function updateAnnotation(annotation) {
   // console.log('hit dispatch inside updateAnnotation thunk action creator')
-  debugger;
+  //  debugger; 
   return function (dispatch) {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
-    debugger;
+    //  debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
@@ -1398,6 +1398,7 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsItem, [{
     key: "render",
     value: function render() {
+      debugger;
       var _this$props = this.props,
           comment = _this$props.comment,
           comment_authors = _this$props.comment_authors,
@@ -3028,14 +3029,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log('state: ');
-  console.log(state);
-  console.log('ownProps: ');
-  console.log(ownProps);
-  debugger;
-  return {
-    maritest: 'test'
-  };
+  // console.log('state: ')
+  // console.log(state)
+  // console.log('ownProps: ')
+  // console.log(ownProps);
+  // debugger;
+  return {};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {

@@ -24,5 +24,9 @@ class Comment < ApplicationRecord
     has_many :votes,
         as: :votable,
         dependent: :destroy
+
+    def all_votes
+        votes.all
+    end
     
 end

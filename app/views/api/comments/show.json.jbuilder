@@ -1,4 +1,4 @@
-json.extract! @comment, :id, :comment_body, :author_id, :track_id 
+json.extract! @comment, :id, :comment_body, :author_id, :track_id
 
 # testing this jbuilder structure within each comment:
 json.votes do
@@ -10,3 +10,4 @@ json.votes do
         end
     end
 end
+

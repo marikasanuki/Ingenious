@@ -47,10 +47,10 @@ export const createAnnotation = (annotation) => {
 
 export const updateAnnotation = (annotation) => {
     // console.log('hit dispatch inside updateAnnotation thunk action creator')
-     debugger; 
+    //  debugger; 
     return dispatch => {
         // console.log('hit dispatch inside updateAnnotation thunk action creator')
-         debugger; 
+        //  debugger; 
         return AnnotationApiUtil.updateAnnotation(annotation)
             .then(
                 (annotation) => dispatch(receiveAnnotation(annotation))
