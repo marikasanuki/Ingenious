@@ -14,6 +14,9 @@ class Vote < ApplicationRecord
     
     validates :author_id, uniqueness: { scope: [:votable_id, :votable_type] }
 
+    # only allows values of -1 to 1
+    validates :value, :inclusion => -1..1
+
     belongs_to :votable, polymorphic: true
 
     belongs_to :user, 

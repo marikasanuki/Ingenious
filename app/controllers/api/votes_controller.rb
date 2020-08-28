@@ -3,7 +3,6 @@ class Api::VotesController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
     def create
-        # params[:vote][:author_id] = current_user.id
         @vote = Vote.new(vote_params)
         @vote.author_id = current_user.id
         debugger

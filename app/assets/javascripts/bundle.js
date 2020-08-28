@@ -555,7 +555,9 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
         className: "annotation-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-hed"
-      }, "Ingenious Annotation"), this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_votes_votes_show_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Ingenious Annotation"), this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_votes_votes_show_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        currentAnnoObj: currentAnnoObj
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-byline"
       }, 'Annotated by: '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "annotation-username"
@@ -1407,7 +1409,9 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
         className: "comments-author"
       }, comment_authors[comment.author_id] ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
-      }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_votes_votes_show_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_votes_votes_show_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        comment: comment
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-del-button-cont"
       }, currentUser && comment.author_id === currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-del-button",
@@ -2890,6 +2894,34 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+/*
+Click THUMB'S UP BUTTON
+    CASE 1: Nothing clicked yet
+        create vote: set vote.value to 1 in db
+        add vote.value to this.state.voteTally
+
+    CASE 2: THUMB'S UP BUTTON already clicked
+        update vote: set vote.value to 0 in db
+        subtract 1 from this.state.voteTally
+        
+    CASE 3: THUMB'S DOWN BUTTON already clicked
+        update vote: set vote.value to 1 in db
+        add 2 to this.state.voteTally
+        
+Click THUMB'S DOWN BUTTON
+    CASE 1: Nothing clicked yet
+        create vote: set vote.value to -1 in db
+        add vote.value to this.state.voteTally
+
+    CASE 2: THUMB'S UP BUTTON already clicked
+        update vote: set vote.value to -1 in db
+        subtract 2 from this.state.voteTally
+
+    CASE 3: THUMB'S DOWN BUTTON already clicked
+        update vote: set vote.value to 0 in db
+        add 1 to this.state.voteTally
+
+*/
 
 var VotesShow = /*#__PURE__*/function (_React$Component) {
   _inherits(VotesShow, _React$Component);
@@ -2903,7 +2935,8 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      voteTally: 0
+      voteTally: 0,
+      userVoteValue: 0
     };
     _this.incrementVoteTally = _this.incrementVoteTally.bind(_assertThisInitialized(_this));
     _this.decrementVoteTally = _this.decrementVoteTally.bind(_assertThisInitialized(_this));
@@ -2932,17 +2965,41 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "vote-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-        className: "vote-thumb-up-icon",
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "vote-count"
-      }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-        className: "vote-thumb-down-icon",
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"]
-      }));
+      console.log('this.props inside votes show:');
+      console.log(this.props);
+      debugger;
+
+      if (this.props.comment) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vote-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+          className: "vote-thumb-up-icon",
+          icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"],
+          onClick: this.incrementVoteTally
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "vote-count"
+        }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+          className: "vote-thumb-down-icon",
+          icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
+          onClick: this.incrementVoteTally
+        }));
+      } else if (this.props.currentAnnoObj) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vote-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+          className: "vote-thumb-up-icon",
+          icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"],
+          onClick: this.incrementVoteTally
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "vote-count"
+        }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+          className: "vote-thumb-down-icon",
+          icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
+          onClick: this.incrementVoteTally
+        }));
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -2971,11 +3028,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // console.log('state: ')
-  // console.log(state)
-  // console.log(ownProps);
-  // debugger;
-  return {};
+  console.log('state: ');
+  console.log(state);
+  console.log('ownProps: ');
+  console.log(ownProps);
+  debugger;
+  return {
+    maritest: 'test'
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -3088,8 +3148,11 @@ var annotationsReducer = function annotationsReducer() {
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
       // console.log(oldState);
-      // debugger;
-      var ann = _defineProperty({}, action.annotation.id, action.annotation);
+      console.log(action);
+      debugger;
+
+      var ann = _defineProperty({}, action.annotation.id, action.annotation); //incorporate new votes object?
+
 
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, ann);
     // return Object.assign({}, oldState, action.annotation);
@@ -3122,7 +3185,9 @@ var annotationsReducer = function annotationsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_vote_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/vote_actions */ "./frontend/actions/vote_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3136,6 +3201,8 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
+      console.log(action);
+      debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment));
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:

@@ -21,7 +21,9 @@ class CommentsItem extends React.Component {
                 <div className='comments-body'>
                     {comment.comment_body}
                 </div>
-                <VotesShow />
+                <VotesShow 
+                    comment={comment}
+                />
 
                 <div className="comment-del-button-cont">
                     { (currentUser && comment.author_id === currentUser.id) ? (

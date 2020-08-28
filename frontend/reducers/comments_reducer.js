@@ -1,5 +1,5 @@
 import { RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT} from '../actions/comment_actions';
-
+import {} from '../actions/vote_actions'
 
 const commentsReducer = (oldState = {}, action) => {
 
@@ -9,6 +9,8 @@ const commentsReducer = (oldState = {}, action) => {
         case RECEIVE_COMMENTS:
             return action.comments;
         case RECEIVE_COMMENT:
+            console.log(action);
+            debugger;
             return Object.assign({}, oldState, {[action.comment.id]: action.comment});
         case REMOVE_COMMENT:
             let newState = Object.assign({}, oldState);

@@ -42,7 +42,9 @@ class AnnotationsCard extends React.Component {
                 <div className='annotation-box'>
                     <div className='annotation-hed'>Ingenious Annotation</div>
                     {this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null}
-                    <VotesShow />
+                    <VotesShow 
+                        currentAnnoObj={currentAnnoObj}
+                    />
                     <div className='annotation-byline'>
                         {'Annotated by: '}
                     </div>
