@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
         currentAnnoObj: ownProps.currentAnnoObj,
         annotations: state.entities.annotations,
         comments: state.entities.comments,
-
+        currentUser: state.session.currentUser,
     })
 };
 

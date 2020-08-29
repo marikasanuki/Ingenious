@@ -388,6 +388,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var receiveCommentVote = function receiveCommentVote(comment) {
+  // debugger;
   return {
     type: _comment_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COMMENT"],
     comment: comment
@@ -416,6 +417,7 @@ var removeAnnotationVote = function removeAnnotationVote(annotation) {
 };
 
 var createCommentVote = function createCommentVote(vote) {
+  debugger;
   return function (dispatch) {
     return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["createVote"](vote).then(function (comment) {
       return dispatch(receiveCommentVote(comment));
@@ -423,6 +425,7 @@ var createCommentVote = function createCommentVote(vote) {
   };
 };
 var updateCommentVote = function updateCommentVote(vote) {
+  // debugger;
   return function (dispatch) {
     return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["updateVote"](vote).then(function (comment) {
       return dispatch(receiveCommentVote(comment));
@@ -672,14 +675,12 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
         id: this.props.currentAnnotationId
       };
       var anno = Object.assign({}, updatedAnnoInfo);
-      this.props.updateAnnotation(anno) //updates annotation w/in database and in local state but it then deletes old annotation from DOM/array
-      .then(function (res) {
+      this.props.updateAnnotation(anno).then(function (res) {
         console.log(res);
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }).then(function () {
         return _this2.props.hideAnnotationCardEdit();
-      }); // .then (
-      // )       
+      });
     }
   }, {
     key: "handleInput",
@@ -2898,29 +2899,42 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 /*
 Click THUMB'S UP BUTTON
     CASE 1: Nothing clicked yet
-        create vote: set vote.value to 1 in db
-        add vote.value to this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id is NOT in array, 
+            create new vote and set vote.value to 1 in db
+            change thumb color to green
 
     CASE 2: THUMB'S UP BUTTON already clicked
-        update vote: set vote.value to 0 in db
-        subtract 1 from this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id IS in array && vote.value is 1
+            update vote: set vote.value to 0 in db
+            change thumb color to gray
         
     CASE 3: THUMB'S DOWN BUTTON already clicked
-        update vote: set vote.value to 1 in db
-        add 2 to this.state.voteTally
-        
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id IS in array && vote.value is -1
+            update vote: set vote.value to 1 in db
+            change thumb color to green
+
+
 Click THUMB'S DOWN BUTTON
     CASE 1: Nothing clicked yet
-        create vote: set vote.value to -1 in db
-        add vote.value to this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id is NOT in array,
+            create vote: set vote.value to -1 in db
+            change thumb color to red
 
     CASE 2: THUMB'S UP BUTTON already clicked
-        update vote: set vote.value to -1 in db
-        subtract 2 from this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id IS in array && vote.value is 1
+            update vote: set vote.value to -1 in db
+            change thumb color to red
 
     CASE 3: THUMB'S DOWN BUTTON already clicked
-        update vote: set vote.value to 0 in db
-        add 1 to this.state.voteTally
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id IS in array && vote.value is -1
+            update vote: set vote.value to 0 in db
+            change thumb color to gray
 
 */
 
@@ -2936,11 +2950,12 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      voteTally: 0 // userVoteValue: 0,
+      voteTally: 0,
+      thumbUpColor: null // userVoteValue: 0,
 
-    }; // this.incrementVoteTally = this.incrementVoteTally.bind(this);
-    // this.decrementVoteTally = this.decrementVoteTally.bind(this);
-
+    };
+    _this.handleThumbUpClick = _this.handleThumbUpClick.bind(_assertThisInitialized(_this));
+    _this.handleThumbDownClick = _this.handleThumbDownClick.bind(_assertThisInitialized(_this));
     _this.tallyCurrentCommentObjVotes = _this.tallyCurrentCommentObjVotes.bind(_assertThisInitialized(_this));
     _this.tallyCurrentAnnoObjVotes = _this.tallyCurrentAnnoObjVotes.bind(_assertThisInitialized(_this));
     return _this;
@@ -2954,19 +2969,69 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       } else if (this.props.currentAnnoObj) {
         this.tallyCurrentAnnoObjVotes();
       }
-    } // incrementVoteTally() {
-    //     console.log("add 1 to voteTally");
-    //     this.setState({
-    //         voteTally: voteTally + 1,
-    //     })
-    // }
-    // decrementVoteTally() {
-    //     console.log("subtract 1 to voteTally");
-    //     this.setState({
-    //         voteTally: voteTally - 1, 
-    //     })
-    // }
+    }
+  }, {
+    key: "handleThumbUpClick",
+    value: function handleThumbUpClick() {
+      var allVotesArr = this.props.currentCommentObj.all_votes; // console.log(allVotesArr);
+      // debugger;
 
+      for (var i = 0; i < allVotesArr.length; i++) {
+        var currentVote = allVotesArr[i]; // console.log(currentVote);
+        // console.log(this.state.thumbUpColor);
+
+        if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
+          var updatedVoteObj = {
+            value: 0,
+            author_id: currentVote.author_id,
+            votable_type: 'Comment',
+            votable_id: this.props.currentCommentObj.id,
+            id: currentVote.id
+          };
+          var vote = Object.assign({}, updatedVoteObj);
+          this.props.updateCommentVote(vote).then(this.setState({
+            thumbUpColor: 'gray'
+          }));
+          console.log("why isn't state different?");
+          console.log(this.state.thumbUpColor);
+          debugger; // update vote: set vote.value to 0 in db
+          // change thumb color to gray
+        } // else if () {
+        // update vote: set vote.value to 1 in db
+        // change thumb color to green
+        // } else {
+        // create new vote and set vote.value to 1 in db
+        // change thumb color to green
+        // }
+
+      }
+      /* 
+      
+      CASE 2: THUMB'S UP BUTTON already clicked
+      check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+      if currentuser id IS in array && vote.value is 1
+      update vote: set vote.value to 0 in db
+      change thumb color to gray
+      
+      CASE 3: THUMB'S DOWN BUTTON already clicked
+      check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+      if currentuser id IS in array && vote.value is - 1
+      update vote: set vote.value to 1 in db
+      change thumb color to green
+      
+      CASE 1: Nothing clicked yet
+      check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+      if currentuser id is NOT in array,
+          create new vote and set vote.value to 1 in db
+          change thumb color to green
+      */
+
+    }
+  }, {
+    key: "handleThumbDownClick",
+    value: function handleThumbDownClick() {
+      this.setState({});
+    }
   }, {
     key: "tallyCurrentCommentObjVotes",
     value: function tallyCurrentCommentObjVotes() {
@@ -2974,12 +3039,8 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       var valueSum = 0;
 
       for (var i = 0; i < allVotesArr.length; i++) {
-        valueSum += allVotesArr[i].value; // console.log(allVotesArr[i].value);
-        // console.log(valueSum);
-        // debugger;
-      } // console.log(valueSum);
-      // debugger;
-
+        valueSum += allVotesArr[i].value;
+      }
 
       this.setState({
         voteTally: valueSum
@@ -3011,13 +3072,13 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-up-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"],
-          onClick: this.incrementVoteTally
+          onClick: this.handleThumbUpClick
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "vote-count"
         }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-down-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
-          onClick: this.incrementVoteTally
+          onClick: this.handleThumbDownClick
         }));
       } else if (this.props.currentAnnoObj) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3073,7 +3134,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentCommentObj: ownProps.comment,
     currentAnnoObj: ownProps.currentAnnoObj,
     annotations: state.entities.annotations,
-    comments: state.entities.comments
+    comments: state.entities.comments,
+    currentUser: state.session.currentUser
   };
 };
 
@@ -3240,8 +3302,8 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      console.log(action);
-      debugger;
+      // console.log(action);
+      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment));
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:

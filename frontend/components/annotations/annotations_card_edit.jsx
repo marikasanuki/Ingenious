@@ -23,9 +23,7 @@ class AnnotationsFormEdit extends React.Component {
 
         const anno = Object.assign({}, updatedAnnoInfo);
 
-
         this.props.updateAnnotation(anno)
-        //updates annotation w/in database and in local state but it then deletes old annotation from DOM/array
             .then (
                 (res) => {
                     console.log(res);
@@ -35,9 +33,7 @@ class AnnotationsFormEdit extends React.Component {
             .then (
                 () => this.props.hideAnnotationCardEdit()
             )     
-            // .then (
-
-            // )       
+   
     }
 
     handleInput(field) {

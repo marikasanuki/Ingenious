@@ -3,6 +3,7 @@ import { RECEIVE_COMMENT } from './comment_actions';
 import { RECEIVE_ANNOTATION } from './annotation_actions';
 
 const receiveCommentVote = comment => {
+    // debugger;
     return {
         type: RECEIVE_COMMENT,
         comment: comment,
@@ -32,6 +33,7 @@ const removeAnnotationVote = (annotation) => {
 
 
 export const createCommentVote = (vote) => {
+    debugger;
     return dispatch => {
         return VoteApiUtil.createVote(vote)
             .then(
@@ -40,6 +42,7 @@ export const createCommentVote = (vote) => {
 };
 
 export const updateCommentVote = (vote) => {
+    // debugger;
     return dispatch => {
         return VoteApiUtil.updateVote(vote)
             .then(
