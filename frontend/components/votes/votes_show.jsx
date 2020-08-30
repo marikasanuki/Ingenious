@@ -3,44 +3,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons'
 /*
 Click THUMB'S UP BUTTON
-    CASE 1: Nothing clicked yet
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id is NOT in array, 
-            create new vote and set vote.value to 1 in db
-            change thumb color to green
-
-    CASE 2: THUMB'S UP BUTTON already clicked
+  
+    CASE 1: THUMB'S UP BUTTON already clicked
         check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
         if currentuser id IS in array && vote.value is 1
             update vote: set vote.value to 0 in db
             change thumb color to gray
         
-    CASE 3: THUMB'S DOWN BUTTON already clicked
+    CASE 2: THUMB'S DOWN BUTTON already clicked
         check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
         if currentuser id IS in array && vote.value is -1
             update vote: set vote.value to 1 in db
             change thumb color to green
 
+    CASE 3: Nothing clicked yet
+            check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+            if currentuser id is NOT in array || vote.value is 0
+                create new vote and set vote.value to 1 in db
+                change thumb color to green
 
 Click THUMB'S DOWN BUTTON
-    CASE 1: Nothing clicked yet
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id is NOT in array,
-            create vote: set vote.value to -1 in db
-            change thumb color to red
 
-    CASE 2: THUMB'S UP BUTTON already clicked
+    CASE 1: THUMB'S UP BUTTON already clicked
         check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
         if currentuser id IS in array && vote.value is 1
-            update vote: set vote.value to -1 in db
-            change thumb color to red
+        update vote: set vote.value to -1 in db
+        change thumb color to red
 
-    CASE 3: THUMB'S DOWN BUTTON already clicked
+    CASE 2: THUMB'S DOWN BUTTON already clicked
         check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
         if currentuser id IS in array && vote.value is -1
-            update vote: set vote.value to 0 in db
-            change thumb color to gray
+        update vote: set vote.value to 0 in db
+        change thumb color to gray
 
+    CASE 3: Nothing clicked yet
+        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+        if currentuser id is NOT in array || vote.value is 0
+            create vote: set vote.value to -1 in db
+            change thumb color to red
 */
 
 
@@ -98,7 +98,7 @@ class VotesShow extends React.Component {
                 // update vote: set vote.value to 0 in db
                 // change thumb color to gray
             } 
-            // else if () {
+            // else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
                 // update vote: set vote.value to 1 in db
                 // change thumb color to green
             // } else {
