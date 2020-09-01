@@ -5,7 +5,7 @@ class Api::VotesController < ApplicationController
     def create
         @vote = Vote.new(vote_params)
         @vote.author_id = current_user.id
-        debugger
+        # debugger
         if @vote.save!
             if @vote.votable_type == 'Annotation'
                 @annotation = Annotation.find(@vote.votable_id)
@@ -28,7 +28,7 @@ class Api::VotesController < ApplicationController
             @annotation = Annotation.find(@vote.votable_id)
             render 'api/annotations/show'
         elsif @vote.votable_type == 'Comment' && @vote.update_attributes(vote_params)
-            @comment = Comment.find(@vote.votable_id)  #HAD TO ADD THIS TO GET RID OF ActionView::Template::Error - undefined method `id' for nil:NilClass: because the comments show.jason.jbuilder couldn't access @comment
+            @comment = Comment.find(@vote.votable_id)  #passing @comment instance v to comments show.jason.jbuilder 
             render 'api/comments/show'
         else
             render @vote.errors.full_messages, status: 401

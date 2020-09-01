@@ -16,7 +16,12 @@ Click THUMB'S UP BUTTON
             update vote: set vote.value to 1 in db
             change thumb color to green
 
-    CASE 3: Nothing clicked yet
+    CASE 3: Nothing clicked currently by user but user has previously voted and unlicked button
+            check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
+            if currentuser id IS in array AND vote.value is 0
+                update vote and set vote.value to 1 in db
+                change thumb color to green
+    CASE 4: Nothing clicked yet
             check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
             if currentuser id is NOT in array || vote.value is 0
                 create new vote and set vote.value to 1 in db
@@ -50,7 +55,6 @@ class VotesShow extends React.Component {
         this.state = {
             voteTally: 0,
             thumbUpColor: null,
-            // userVoteValue: 0,
         };
         this.handleThumbUpClick = this.handleThumbUpClick.bind(this);
         this.handleThumbDownClick = this.handleThumbDownClick.bind(this);
@@ -67,15 +71,26 @@ class VotesShow extends React.Component {
     }
 
     handleThumbUpClick() {
-        const allVotesArr = this.props.currentCommentObj.all_votes
         // console.log(allVotesArr);
         // debugger;
+        if (!this.props.currentUser) {
+            return null;
+        }
+        
+        console.log("this.props", this.props );
+        debugger;
+        const allVotesArr = this.props.currentCommentObj.all_votes
+
         for (let i = 0; i < allVotesArr.length; i++) {
             const currentVote = allVotesArr[i];
-            // console.log(currentVote);
+            console.log("this.props.currentUser.id", this.props.currentUser.id);
+            console.log("currentVote.author_id", currentVote.author_id);
+            console.log("currentVote", currentVote);
+            debugger;
             // console.log(this.state.thumbUpColor);
+
             if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
-                
+                debugger;
                 let updatedVoteObj = {
                     value: 0, 
                     author_id: currentVote.author_id, 
@@ -85,28 +100,78 @@ class VotesShow extends React.Component {
                 }
                 
                 const vote = Object.assign({}, updatedVoteObj);
-                this.props.updateCommentVote(vote)
-                    .then(
-                        this.setState({
-                            thumbUpColor: 'gray',
-                        })
-                    )
-      
-                console.log("why isn't state different?");
-                console.log(this.state.thumbUpColor);
-                debugger;                    
+                console.log("vote", vote)
+                debugger
+                return this.props.updateCommentVote(vote);
+                    // .then(
+                    //     this.setState({
+                    //         thumbUpColor: 'gray',
+                    //     })
+                    // )
+                    // .then(console.log('vote saved to db'))
+                    // .catch((err) => console.log(err))
+               
                 // update vote: set vote.value to 0 in db
                 // change thumb color to gray
             } 
-            // else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
+            else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
+                debugger;
+                let updatedVoteObj = {
+                    value: 1,
+                    author_id: currentVote.author_id,
+                    votable_type: 'Comment',
+                    votable_id: this.props.currentCommentObj.id,
+                    id: currentVote.id,
+                }
+                const vote = Object.assign({}, updatedVoteObj);
+                return this.props.updateCommentVote(vote);
+                    // .then(
+                    //     this.setState({
+                    //         thumbUpColor: 'green',
+                    //     })
+                    // )
+
                 // update vote: set vote.value to 1 in db
                 // change thumb color to green
-            // } else {
+            } else if ( currentVote.author_id === this.props.currentUser.id && currentVote.value === 0 ) { //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+                debugger;
+                let updatedVoteObj = {
+                    value: 1,
+                    author_id: currentVote.author_id,
+                    votable_type: 'Comment',
+                    votable_id: this.props.currentCommentObj.id,
+                    id: currentVote.id,
+                }
+                const vote = Object.assign({}, updatedVoteObj);
+                return this.props.updateCommentVote(vote);
+                    // .then(
+                    //     this.setState({
+                    //         thumbUpColor: 'green',
+                    //     })
+                    // )
+
+
                 // create new vote and set vote.value to 1 in db
                 // change thumb color to green
-            // }
-        }
+                    } 
 
+        }
+        debugger;
+        let newVoteObj = {
+            value: 1,
+            author_id: currentVote.author_id,
+            votable_type: 'Comment',
+            votable_id: this.props.currentCommentObj.id,
+            id: currentVote.id,
+        }
+        const vote = Object.assign({}, newVoteObj);
+        debugger;
+        return this.props.createCommentVote(vote);
+                //     .then(
+                //         this.setState({
+                //             thumbUpColor: 'green',
+                //         })
+                // ).catch((err) => console.log(err));
         /* 
         
         CASE 2: THUMB'S UP BUTTON already clicked
