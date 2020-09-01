@@ -2966,14 +2966,15 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
 
           return this.props.updateCommentVote(_vote).then(this.setState({
-            thumbUpColor: 'gray'
+            thumbUpColor: 'gray',
+            thumbDownColor: 'gray'
           })); // .then(console.log('vote saved to db'))
           // .catch((err) => console.log(err))
           //currentUser has downvote clicked so currentVote.value === -1
           // update vote: set vote.value to 1 in db
           // change thumb color to green
         } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
-          debugger;
+          // debugger;
           var _updatedVoteObj = {
             value: 1,
             author_id: currentVote.author_id,
@@ -2985,7 +2986,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           var _vote2 = Object.assign({}, _updatedVoteObj);
 
           return this.props.updateCommentVote(_vote2).then(this.setState({
-            thumbUpColor: 'green'
+            thumbUpColor: 'rgb(84, 200, 53)',
+            //green
+            thumbDownColor: 'gray'
           })); //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
           // update vote: set vote.value to 1 in db
           // change thumb color to green
@@ -3002,7 +3005,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           var _vote3 = Object.assign({}, _updatedVoteObj2);
 
           return this.props.updateCommentVote(_vote3).then(this.setState({
-            thumbUpColor: 'green'
+            thumbUpColor: 'rgb(84, 200, 53)',
+            //green
+            thumbDownColor: 'gray'
           }));
         }
       } //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
@@ -3019,7 +3024,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       var vote = Object.assign({}, newVoteObj); // debugger;
 
       return this.props.createCommentVote(vote).then(this.setState({
-        thumbUpColor: 'green'
+        thumbUpColor: 'rgb(84, 200, 53)',
+        //green
+        thumbDownColor: 'gray'
       })); // .catch((err) => console.log(err));
     }
   }, {
@@ -3056,7 +3063,10 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           var _vote4 = Object.assign({}, updatedVoteObj);
 
           return this.props.updateCommentVote(_vote4).then(this.setState({
-            thumbDownColor: 'red'
+            thumbUpColor: 'gray',
+            //red
+            thumbDownColor: 'rgb(234, 43, 36)' //red
+
           })); // .then(console.log('vote saved to db'))
           // .catch((err) => console.log(err))
           // if currentuser id IS in array && vote.value is - 1
@@ -3075,6 +3085,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           var _vote5 = Object.assign({}, _updatedVoteObj3);
 
           return this.props.updateCommentVote(_vote5).then(this.setState({
+            thumbUpColor: 'gray',
             thumbDownColor: 'gray'
           })); // if currentuser id IS in array AND vote.value is 0
           // update vote: set vote.value to - 1 in db
@@ -3092,7 +3103,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           var _vote6 = Object.assign({}, _updatedVoteObj4);
 
           return this.props.updateCommentVote(_vote6).then(this.setState({
-            thumbDownColor: 'red'
+            thumbUpColor: 'gray',
+            thumbDownColor: 'rgb(234, 43, 36)' //red
+
           }));
         }
       } //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
@@ -3109,7 +3122,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       var vote = Object.assign({}, newVoteObj); // debugger;
 
       return this.props.createCommentVote(vote).then(this.setState({
-        thumbDownColor: 'red'
+        thumbUpColor: 'gray',
+        thumbDownColor: 'rgb(234, 43, 36)' //red
+
       })); // ).catch((err) => console.log(err));
     }
   }, {

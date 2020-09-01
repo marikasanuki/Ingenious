@@ -63,6 +63,7 @@ class VotesShow extends React.Component {
                     .then(
                         this.setState({
                             thumbUpColor: 'gray',
+                            thumbDownColor: 'gray',
                         })
                     );
                     // .then(console.log('vote saved to db'))
@@ -73,7 +74,7 @@ class VotesShow extends React.Component {
             // change thumb color to green
             } 
             else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
-                debugger;
+                // debugger;
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
@@ -85,7 +86,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'green',
+                            thumbUpColor: 'rgb(84, 200, 53)', //green
+                            thumbDownColor: 'gray', 
                         })
                     );
 
@@ -105,7 +107,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'green',
+                            thumbUpColor: 'rgb(84, 200, 53)', //green
+                            thumbDownColor: 'gray',
                         })
                     )
                     } 
@@ -126,7 +129,8 @@ class VotesShow extends React.Component {
         return this.props.createCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'green',
+                            thumbUpColor: 'rgb(84, 200, 53)', //green
+                            thumbDownColor: 'gray', 
                         }));
                 // .catch((err) => console.log(err));
 
@@ -168,7 +172,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbDownColor: 'red',
+                            thumbUpColor: 'gray', //red
+                            thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                     )
                 // .then(console.log('vote saved to db'))
@@ -192,6 +197,7 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
+                            thumbUpColor: 'gray',
                             thumbDownColor: 'gray',
                         })
                     );
@@ -212,7 +218,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbDownColor: 'red',
+                            thumbUpColor: 'gray', 
+                            thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                     );
             }
@@ -233,7 +240,8 @@ class VotesShow extends React.Component {
         return this.props.createCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbDownColor: 'red',
+                            thumbUpColor: 'gray', 
+                            thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                         );
                 // ).catch((err) => console.log(err));
