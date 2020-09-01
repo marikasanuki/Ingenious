@@ -21,7 +21,7 @@ Click THUMB'S UP BUTTON
             if currentuser id IS in array AND vote.value is 0
                 update vote and set vote.value to 1 in db
                 change thumb color to green
-    CASE 4: Nothing clicked yet
+    CASE 4: Nothing clicked yet ever (must create brand-new vote for current user)
             check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
             if currentuser id is NOT in array || vote.value is 0
                 create new vote and set vote.value to 1 in db
@@ -73,6 +73,8 @@ class VotesShow extends React.Component {
     handleThumbUpClick() {
         // console.log(allVotesArr);
         // debugger;
+
+        //no currentUser / not logged in
         if (!this.props.currentUser) {
             return null;
         }
@@ -89,6 +91,10 @@ class VotesShow extends React.Component {
             debugger;
             // console.log(this.state.thumbUpColor);
 
+
+            //currentUser has upvote clicked so currentVote.value === 1
+            // update vote: set vote.value to 0 in db
+            // change thumb color to gray
             if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
                 debugger;
                 let updatedVoteObj = {
@@ -110,9 +116,10 @@ class VotesShow extends React.Component {
                     // )
                     // .then(console.log('vote saved to db'))
                     // .catch((err) => console.log(err))
-               
-                // update vote: set vote.value to 0 in db
-                // change thumb color to gray
+
+            //currentUser has downvote clicked so currentVote.value === -1
+            // update vote: set vote.value to 1 in db
+            // change thumb color to green
             } 
             else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
                 debugger;
@@ -131,9 +138,10 @@ class VotesShow extends React.Component {
                     //     })
                     // )
 
-                // update vote: set vote.value to 1 in db
-                // change thumb color to green
-            } else if ( currentVote.author_id === this.props.currentUser.id && currentVote.value === 0 ) { //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+            //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+            // update vote: set vote.value to 1 in db
+            // change thumb color to green
+            } else if ( currentVote.author_id === this.props.currentUser.id && currentVote.value === 0 ) { 
                 debugger;
                 let updatedVoteObj = {
                     value: 1,
@@ -149,20 +157,19 @@ class VotesShow extends React.Component {
                     //         thumbUpColor: 'green',
                     //     })
                     // )
-
-
-                // create new vote and set vote.value to 1 in db
-                // change thumb color to green
                     } 
 
         }
-        debugger;
+
+        //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+        // create new vote and set vote.value to 1 in db
+        // change thumb color to green
         let newVoteObj = {
             value: 1,
-            author_id: currentVote.author_id,
+            author_id: this.props.currentUser.id,
             votable_type: 'Comment',
             votable_id: this.props.currentCommentObj.id,
-            id: currentVote.id,
+            // id: currentVote.id,
         }
         const vote = Object.assign({}, newVoteObj);
         debugger;
@@ -172,26 +179,6 @@ class VotesShow extends React.Component {
                 //             thumbUpColor: 'green',
                 //         })
                 // ).catch((err) => console.log(err));
-        /* 
-        
-        CASE 2: THUMB'S UP BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is 1
-        update vote: set vote.value to 0 in db
-        change thumb color to gray
-        
-        CASE 3: THUMB'S DOWN BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is - 1
-        update vote: set vote.value to 1 in db
-        change thumb color to green
-        
-        CASE 1: Nothing clicked yet
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id is NOT in array,
-            create new vote and set vote.value to 1 in db
-            change thumb color to green
-        */
 
 
     }
