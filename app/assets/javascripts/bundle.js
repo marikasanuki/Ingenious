@@ -655,7 +655,7 @@ var AnnotationsFormEdit = /*#__PURE__*/function (_React$Component) {
       };
       var anno = Object.assign({}, updatedAnnoInfo);
       this.props.updateAnnotation(anno).then(function (res) {
-        console.log(res);
+        // console.log(res);
         return _this2.props.setCurrentAnnotationId(res.annotation.id);
       }).then(function () {
         return _this2.props.hideAnnotationCardEdit();
@@ -3486,7 +3486,6 @@ var annotationsReducer = function annotationsReducer() {
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ANNOTATION"]:
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
-      // console.log(oldState);
       var ann = _defineProperty({}, action.annotation.id, action.annotation); //incorporate new votes object?
 
 
@@ -3831,7 +3830,6 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit updateAnnotation api util');
   return $.ajax({
     method: 'PATCH',
     url: "/api/annotations/".concat(annotation.id),

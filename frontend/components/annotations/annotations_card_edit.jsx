@@ -26,7 +26,7 @@ class AnnotationsFormEdit extends React.Component {
         this.props.updateAnnotation(anno)
             .then (
                 (res) => {
-                    console.log(res);
+                    // console.log(res);
                     return this.props.setCurrentAnnotationId(res.annotation.id)
                 }
             )
