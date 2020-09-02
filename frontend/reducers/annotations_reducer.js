@@ -10,8 +10,6 @@ const annotationsReducer = (oldState = {}, action) => {
             //create new object, use action.annotation.id as key; action.annotation as value. 
             //then merge newly created object with oldState
             // console.log(oldState);
-            console.log(action);
-            debugger;
             const ann = {
                 [action.annotation.id]: action.annotation,
                 // tracks.annotations[action.annotation.id]: action.annotation, 
@@ -20,7 +18,6 @@ const annotationsReducer = (oldState = {}, action) => {
             return merge({}, oldState, ann);
             // return Object.assign({}, oldState, action.annotation);
         case RECEIVE_TRACK: 
-            // debugger;
             return Object.assign({}, action.track.annotations);
         case REMOVE_ANNOTATION:
             let newState = Object.assign({}, oldState);

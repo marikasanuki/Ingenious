@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedinIn, faTwitter, faSpotify } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 class NavBar extends React.Component {

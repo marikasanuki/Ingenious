@@ -107,8 +107,6 @@ var RECEIVE_ANNOTATION = 'RECEIVE_ANNOTATION';
 var REMOVE_ANNOTATION = 'REMOVE_ANNOTATION';
 
 var receiveAnnotation = function receiveAnnotation(annotation) {
-  // console.log('hit receiveAnnotation reg action creator')
-  //  debugger;
   return {
     type: RECEIVE_ANNOTATION,
     annotation: annotation
@@ -123,33 +121,21 @@ var removeAnnotation = function removeAnnotation(annotation) {
 };
 
 var fetchAnnotation = function fetchAnnotation(annotationId) {
-  // console.log('hit fetchAnnotation thunk action creator')
-  //  debugger;
   return function (dispatch) {
-    console.log('hit dispatch inside fetchAnnotation thunk action creator'); //  debugger; 
-
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAnnotation"](annotationId).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var createAnnotation = function createAnnotation(annotation) {
-  // console.log('hit createAnnotation thunk action creator')
-  // debugger;
   return function (dispatch) {
-    // console.log('hit dispatch inside createAnnotation thunk action creator')
-    //  debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["createAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
   };
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  // console.log('hit dispatch inside updateAnnotation thunk action creator')
-  //  debugger; 
   return function (dispatch) {
-    // console.log('hit dispatch inside updateAnnotation thunk action creator')
-    //  debugger; 
     return _util_annotation_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAnnotation"](annotation).then(function (annotation) {
       return dispatch(receiveAnnotation(annotation));
     });
@@ -1399,7 +1385,6 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsItem, [{
     key: "render",
     value: function render() {
-      // debugger;
       var _this$props = this.props,
           comment = _this$props.comment,
           comment_authors = _this$props.comment_authors,
@@ -2013,8 +1998,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
     value: function demoUser(e) {
       var _this4 = this;
 
-      e.preventDefault(); //  debugger;
-
+      e.preventDefault();
       this.props.login({
         username: 'IngeniousFan',
         password: 'IngeniousFanpw'
@@ -2282,8 +2266,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
     value: function demoUser(e) {
       var _this4 = this;
 
-      e.preventDefault(); //  debugger;
-
+      e.preventDefault();
       this.props.login({
         username: 'IngeniousFan',
         password: 'IngeniousFanpw'
@@ -2294,8 +2277,6 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      // console.log(errors);
-      //  debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "error-whoops-hed"
       }, "Whoops"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2455,15 +2436,11 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(TracksIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // console.log('Component mounted');
-      //  debugger;
       this.props.fetchTracks();
     }
   }, {
     key: "onLoadMore",
     value: function onLoadMore() {
-      // console.log(this.state);
-      //  debugger;
       this.setState({
         limit: this.state.limit + 10
       });
@@ -2471,9 +2448,7 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "revealMoreTracks",
     value: function revealMoreTracks() {
-      var tracks = this.props.tracks; // console.log('hit render function in tracks index comp');
-      //  debugger;
-
+      var tracks = this.props.tracks;
       var trackNum = 1;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tracks-index-container"
@@ -2536,8 +2511,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  // console.log('hit mstp in tracks index container');
-  //  debugger;
   return {
     tracks: Object.values(state.entities.tracks)
   };
@@ -2626,7 +2599,6 @@ var TracksIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      //  debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "tracks-index-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -3406,9 +3378,6 @@ var annotationsReducer = function annotationsReducer() {
       //create new object, use action.annotation.id as key; action.annotation as value. 
       //then merge newly created object with oldState
       // console.log(oldState);
-      console.log(action);
-      debugger;
-
       var ann = _defineProperty({}, action.annotation.id, action.annotation); //incorporate new votes object?
 
 
@@ -3416,7 +3385,6 @@ var annotationsReducer = function annotationsReducer() {
     // return Object.assign({}, oldState, action.annotation);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
-      // debugger;
       return Object.assign({}, action.track.annotations);
 
     case _actions_annotation_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ANNOTATION"]:
@@ -3651,13 +3619,7 @@ var tracksReducer = function tracksReducer() {
       return Object.assign({}, action.tracks);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-      // console.log(oldState);
-      // console.log(action.track)
-      // debugger;
       return Object.assign({}, action.track);
-    // return Object.assign({}, oldState, {[action.track.id]: action.track} );
-    // case RECEIVE_ANNOTATION:
-    //     return Object.assign({}, action.annotation);
 
     default:
       return oldState;
@@ -3694,8 +3656,6 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, _defineProperty({}, action.currentUser.id, action.currentUser));
-    // case LOGOUT_CURRENT_USER:
-    //     return _nullUser;
 
     default:
       return oldState;

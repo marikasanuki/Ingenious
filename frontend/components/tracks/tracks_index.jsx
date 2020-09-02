@@ -4,20 +4,18 @@ import TracksIndexItem from './tracks_index_item';
 class TracksIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { limit: 10 };
+        this.state = { 
+            limit: 10,
+        };
         this.onLoadMore = this.onLoadMore.bind(this);
         this.revealMoreTracks = this.revealMoreTracks.bind(this);
     }
 
     componentDidMount(){
-        // console.log('Component mounted');
-        //  debugger;
         this.props.fetchTracks();
     }
 
     onLoadMore(){
-        // console.log(this.state);
-        //  debugger;
         this.setState({
             limit: this.state.limit + 10
         });
@@ -25,9 +23,8 @@ class TracksIndex extends React.Component {
 
     revealMoreTracks(){
         const { tracks } = this.props;
-        // console.log('hit render function in tracks index comp');
-        //  debugger;
         const trackNum = 1;
+        
         return (
             <div className='tracks-index-container'>
                 <div className='tracks-index-header'>CHARTS</div>
