@@ -6,7 +6,7 @@ class VotesShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            voteTally: 0,
+            // voteTally: 0,
             thumbUpColor: "gray",
             thumbDownColor: "gray",
         };
@@ -23,6 +23,15 @@ class VotesShow extends React.Component {
             this.tallyCurrentAnnoObjVotes();
         }
     }
+
+    // componentWillUnmount() {
+    //     if (this.props.currentCommentObj) {
+    //         this.tallyCurrentCommentObjVotes();
+    //     } else if (this.props.currentAnnoObj) {
+    //         this.tallyCurrentAnnoObjVotes();
+    //     }
+    
+    // }
 
     // componentDidUpdate(prevProps, prevState) {
     //     console.log("prevProps", prevProps);
@@ -265,9 +274,10 @@ class VotesShow extends React.Component {
         for (let i = 0; i < allVotesArr.length; i++) {
             valueSum += allVotesArr[i].value;
         }
-        this.setState({
-            voteTally: valueSum,
-        })
+        return valueSum;
+        // this.setState({
+        //     voteTally: valueSum,
+        // })
     }
 
     tallyCurrentAnnoObjVotes() {
@@ -277,10 +287,10 @@ class VotesShow extends React.Component {
         for (let i = 0; i < allVotesArr.length; i++) {
             valueSum += allVotesArr[i].value;
         }
-
-        this.setState({
-            voteTally: valueSum,
-        })
+        return valueSum;
+        // this.setState({
+        //     voteTally: valueSum,
+        // })
     }
 
     render() {
@@ -294,7 +304,7 @@ class VotesShow extends React.Component {
                         onClick={this.handleThumbUpClick}
                         style={{ color: this.state.thumbUpColor }}
                     />
-                    <span className='vote-count'>{this.state.voteTally}</span>
+                    <span className='vote-count'>{this.tallyCurrentCommentObjVotes()}</span>
                     <FontAwesomeIcon
                         className='vote-thumb-down-icon'
                         icon={faThumbsDown}
@@ -311,7 +321,7 @@ class VotesShow extends React.Component {
                         icon={faThumbsUp}
                         onClick={this.incrementVoteTally}
                     />
-                    <span className='vote-count'>{this.state.voteTally}</span>
+                    <span className='vote-count'>{this.tallyCurrentAnnoObjVotes()}</span>
                     <FontAwesomeIcon
                         className='vote-thumb-down-icon'
                         icon={faThumbsDown}

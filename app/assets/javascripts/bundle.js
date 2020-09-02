@@ -2881,9 +2881,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      voteTally: 0,
-      thumbUpColor: null,
-      thumbDownColor: null
+      // voteTally: 0,
+      thumbUpColor: "gray",
+      thumbDownColor: "gray"
     };
     _this.handleThumbUpClick = _this.handleThumbUpClick.bind(_assertThisInitialized(_this));
     _this.handleThumbDownClick = _this.handleThumbDownClick.bind(_assertThisInitialized(_this));
@@ -2900,7 +2900,14 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       } else if (this.props.currentAnnoObj) {
         this.tallyCurrentAnnoObjVotes();
       }
-    } // componentDidUpdate(prevProps, prevState) {
+    } // componentWillUnmount() {
+    //     if (this.props.currentCommentObj) {
+    //         this.tallyCurrentCommentObjVotes();
+    //     } else if (this.props.currentAnnoObj) {
+    //         this.tallyCurrentAnnoObjVotes();
+    //     }
+    // }
+    // componentDidUpdate(prevProps, prevState) {
     //     console.log("prevProps", prevProps);
     //     console.log("prevState", prevState);    
     //     debugger;  
@@ -3118,9 +3125,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         valueSum += allVotesArr[i].value;
       }
 
-      this.setState({
-        voteTally: valueSum
-      });
+      return valueSum; // this.setState({
+      //     voteTally: valueSum,
+      // })
     }
   }, {
     key: "tallyCurrentAnnoObjVotes",
@@ -3132,9 +3139,9 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         valueSum += allVotesArr[i].value;
       }
 
-      this.setState({
-        voteTally: valueSum
-      });
+      return valueSum; // this.setState({
+      //     voteTally: valueSum,
+      // })
     }
   }, {
     key: "render",
@@ -3151,7 +3158,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           }
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "vote-count"
-        }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        }, this.tallyCurrentCommentObjVotes()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-down-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
           onClick: this.handleThumbDownClick,
@@ -3168,7 +3175,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           onClick: this.incrementVoteTally
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "vote-count"
-        }, this.state.voteTally), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        }, this.tallyCurrentAnnoObjVotes()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-down-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
           onClick: this.incrementVoteTally
@@ -3421,10 +3428,7 @@ var annotationsReducer = function annotationsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_vote_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/vote_actions */ "./frontend/actions/vote_actions.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -3439,15 +3443,12 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      console.log('action', action);
-      console.log('oldState', oldState);
-      console.log('action.comment', action.comment);
-      debugger;
+      // console.log("oldState", oldState);
+      var reallyNewState = Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment)); // console.log("reallyNewState", reallyNewState);
+      // console.log(oldState == reallyNewState);
+      // debugger;
 
-      var comm = _defineProperty({}, action.comment.id, action.comment);
-
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, comm);
-    // return Object.assign({}, oldState, {[action.comment.id]: action.comment});
+      return reallyNewState;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       var newState = Object.assign({}, oldState);
