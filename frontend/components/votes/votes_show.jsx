@@ -18,7 +18,7 @@ class VotesShow extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.currentCommentObj) {
+        if (this.props.currentUser && this.props.currentCommentObj) {
 
             //sets initial colors of thumbs on first load for comments
             for (let i = 0; i < this.props.comment.all_votes.length; i ++) {
@@ -33,13 +33,13 @@ class VotesShow extends React.Component {
                         thumbUpColor: 'gray', 
                         thumbDownColor: 'rgb(234, 43, 36)', //red
                     })
-                }
+                } 
             }
 
 
             this.tallyCurrentCommentObjVotes();
 
-        } else if (this.props.currentAnnoObj) {
+        } else if (this.props.currentUser && this.props.currentAnnoObj) {
 
             //sets initial colors of thumbs on first load for annotations
             for (let i = 0; i < this.props.currentAnnoObj.all_votes.length; i++) {

@@ -2888,7 +2888,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
   _createClass(VotesShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.currentCommentObj) {
+      if (this.props.currentUser && this.props.currentCommentObj) {
         //sets initial colors of thumbs on first load for comments
         for (var i = 0; i < this.props.comment.all_votes.length; i++) {
           var currentVote = this.props.comment.all_votes[i];
@@ -2909,7 +2909,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         }
 
         this.tallyCurrentCommentObjVotes();
-      } else if (this.props.currentAnnoObj) {
+      } else if (this.props.currentUser && this.props.currentAnnoObj) {
         //sets initial colors of thumbs on first load for annotations
         for (var _i = 0; _i < this.props.currentAnnoObj.all_votes.length; _i++) {
           var _currentVote = this.props.currentAnnoObj.all_votes[_i]; // console.log("currentVote", currentVote);
