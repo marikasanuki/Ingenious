@@ -355,17 +355,15 @@ var fetchTrack = function fetchTrack(track) {
 /*!******************************************!*\
   !*** ./frontend/actions/vote_actions.js ***!
   \******************************************/
-/*! exports provided: createCommentVote, updateCommentVote, destroyCommentVote, createAnnotationVote, updateAnnotationVote, destroyAnnotationVote */
+/*! exports provided: createCommentVote, updateCommentVote, createAnnotationVote, updateAnnotationVote */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCommentVote", function() { return createCommentVote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCommentVote", function() { return updateCommentVote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyCommentVote", function() { return destroyCommentVote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAnnotationVote", function() { return createAnnotationVote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAnnotationVote", function() { return updateAnnotationVote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyAnnotationVote", function() { return destroyAnnotationVote; });
 /* harmony import */ var _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/vote_api_util */ "./frontend/util/vote_api_util.js");
 /* harmony import */ var _comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _annotation_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./annotation_actions */ "./frontend/actions/annotation_actions.js");
@@ -374,7 +372,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var receiveCommentVote = function receiveCommentVote(comment) {
-  // debugger;
   return {
     type: _comment_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COMMENT"],
     comment: comment
@@ -393,17 +390,15 @@ var receiveAnnotationVote = function receiveAnnotationVote(annotation) {
     type: _annotation_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ANNOTATION"],
     annotation: annotation
   };
-};
+}; // const removeAnnotationVote = (annotation) => {
+//     return ({
+//         type: RECEIVE_ANNOTATION,
+//         annotation,
+//     });
+// };
 
-var removeAnnotationVote = function removeAnnotationVote(annotation) {
-  return {
-    type: _annotation_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ANNOTATION"],
-    annotation: annotation
-  };
-};
 
 var createCommentVote = function createCommentVote(vote) {
-  debugger;
   return function (dispatch) {
     return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["createVote"](vote).then(function (comment) {
       return dispatch(receiveCommentVote(comment));
@@ -411,20 +406,19 @@ var createCommentVote = function createCommentVote(vote) {
   };
 };
 var updateCommentVote = function updateCommentVote(vote) {
-  // debugger;
   return function (dispatch) {
     return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["updateVote"](vote).then(function (comment) {
       return dispatch(receiveCommentVote(comment));
     });
   };
-};
-var destroyCommentVote = function destroyCommentVote(voteId) {
-  return function (dispatch) {
-    return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyVote"](voteId).then(function (comment) {
-      return dispatch(removeCommentVote(comment));
-    });
-  };
-};
+}; // export const destroyCommentVote = (voteId) => {
+//     return dispatch => {
+//         return VoteApiUtil.destroyVote(voteId)
+//             .then(
+//                 (comment) => dispatch(removeCommentVote(comment)))
+//     }
+// };
+
 var createAnnotationVote = function createAnnotationVote(vote) {
   return function (dispatch) {
     return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["createVote"](vote).then(function (annotation) {
@@ -438,14 +432,13 @@ var updateAnnotationVote = function updateAnnotationVote(vote) {
       return dispatch(receiveAnnotationVote(annotation));
     });
   };
-};
-var destroyAnnotationVote = function destroyAnnotationVote(voteId) {
-  return function (dispatch) {
-    return _util_vote_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyVote"](voteId).then(function (annotation) {
-      return dispatch(removeAnnotationVote(annotation));
-    });
-  };
-};
+}; // export const destroyAnnotationVote = (voteId) => {
+//     return dispatch => {
+//         return VoteApiUtil.destroyVote(voteId)
+//             .then(
+//                 (annotation) => dispatch(removeAnnotationVote(annotation)))
+//     }
+// };
 
 /***/ }),
 
@@ -1587,7 +1580,6 @@ var Footer = /*#__PURE__*/function (_React$Component) {
         className: "footer-icon",
         icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faSpotify"]
       })), "\xA0\xA0\xA0\xA0\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-bar-item",
         href: "https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com",
         target: "blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
@@ -3113,7 +3105,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         // change thumb color to gray
 
         if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
-          // debugger;
           var updatedVoteObj = {
             value: 0,
             author_id: currentVote.author_id,
@@ -3272,8 +3263,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props);
-      // debugger;
       if (this.props.currentCommentObj) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "vote-container"
@@ -3342,14 +3331,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/vote_actions */ "./frontend/actions/vote_actions.js");
 
 
-
+ // import { destroyCommentVote, destroyAnnotationVote } from '../../actions/vote_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // console.log('state: ')
-  // console.log(state)
-  // console.log('ownProps: ')
-  // console.log(ownProps);
-  // debugger;
   return {
     currentCommentObj: ownProps.comment,
     currentAnnoObj: ownProps.currentAnnoObj,
@@ -3367,18 +3351,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     updateCommentVote: function updateCommentVote(vote) {
       return dispatch(Object(_actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__["updateCommentVote"])(vote));
     },
-    destroyCommentVote: function destroyCommentVote(voteId) {
-      return dispatch(Object(_actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__["destroyCommentVote"])(voteId));
-    },
+    // destroyCommentVote: (voteId) => dispatch(destroyCommentVote(voteId)),
     createAnnotationVote: function createAnnotationVote(vote) {
       return dispatch(Object(_actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__["createAnnotationVote"])(vote));
     },
     updateAnnotationVote: function updateAnnotationVote(vote) {
       return dispatch(Object(_actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__["updateAnnotationVote"])(vote));
-    },
-    destroyAnnotationVote: function destroyAnnotationVote(voteId) {
-      return dispatch(Object(_actions_vote_actions__WEBPACK_IMPORTED_MODULE_2__["destroyAnnotationVote"])(voteId));
-    }
+    } // destroyAnnotationVote: (voteId) => dispatch(destroyAnnotationVote(voteId)),
+
   };
 };
 
@@ -3518,11 +3498,7 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      // console.log("oldState", oldState);
-      var reallyNewState = Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment)); // console.log("reallyNewState", reallyNewState);
-      // console.log(oldState == reallyNewState);
-      // debugger;
-
+      var reallyNewState = Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment));
       return reallyNewState;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
@@ -3817,8 +3793,7 @@ var createAnnotation = function createAnnotation(annotation) {
   });
 };
 var updateAnnotation = function updateAnnotation(annotation) {
-  console.log('hit updateAnnotation api util'); //  debugger;
-
+  console.log('hit updateAnnotation api util');
   return $.ajax({
     method: 'PATCH',
     url: "/api/annotations/".concat(annotation.id),
@@ -4003,14 +3978,13 @@ var fetchTrack = function fetchTrack(track) {
 /*!****************************************!*\
   !*** ./frontend/util/vote_api_util.js ***!
   \****************************************/
-/*! exports provided: createVote, updateVote, destroyVote */
+/*! exports provided: createVote, updateVote */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createVote", function() { return createVote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateVote", function() { return updateVote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyVote", function() { return destroyVote; });
 var createVote = function createVote(vote) {
   return $.ajax({
     method: 'POST',
@@ -4028,13 +4002,12 @@ var updateVote = function updateVote(vote) {
       vote: vote
     }
   });
-};
-var destroyVote = function destroyVote(voteId) {
-  return $.ajax({
-    method: 'DELETE',
-    url: "/api/votes/".concat(voteId)
-  });
-};
+}; // export const destroyVote =  (voteId) => {
+//     return $.ajax({
+//         method: 'DELETE',
+//         url: `/api/votes/${voteId}`,
+//     })
+// };
 
 /***/ }),
 

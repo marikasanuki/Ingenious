@@ -253,7 +253,6 @@ class VotesShow extends React.Component {
             // update vote: set vote.value to 0 in db
             // change thumb color to gray
             if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
-                // debugger;
                 let updatedVoteObj = {
                     value: 0,
                     author_id: currentVote.author_id,
@@ -431,9 +430,6 @@ class VotesShow extends React.Component {
     }
 
     render() {
-
-        // console.log(this.props);
-        // debugger;
 
         if (this.props.currentCommentObj) {
             return (

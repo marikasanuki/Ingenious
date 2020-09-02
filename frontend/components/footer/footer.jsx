@@ -28,7 +28,7 @@ class Footer extends React.Component {
                             <FontAwesomeIcon className='footer-icon' icon={faSpotify} />
                         </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className='nav-bar-item' href="https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com" target="blank" >
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mari.kasanuki@gmail.com" target="blank" >
                             <FontAwesomeIcon className='footer-icon' icon={faEnvelope} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </li>

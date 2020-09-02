@@ -28,7 +28,6 @@ class Annotation < ApplicationRecord
         dependent: :destroy
 
     def all_votes
-        # debugger
         votes.all
     end
 

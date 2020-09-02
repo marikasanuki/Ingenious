@@ -5,9 +5,7 @@ json.extract! @track, :id, :title, :artist, :album, :lyrics, :conc_views, :total
         json.image_url @track.image_url
     end
 
-# debugger
 @track.annotations.includes(:user).each do |annotation|
-    # debugger
     json.annotations do 
         json.set! annotation.id do 
             json.set! :username, annotation.user.username #new refactor--instead of anno_authors?

@@ -14,9 +14,9 @@ export const updateVote = (vote) => {
     });
 };
 
-export const destroyVote =  (voteId) => {
-    return $.ajax({
-        method: 'DELETE',
-        url: `/api/votes/${voteId}`,
-    })
-};
+// export const destroyVote =  (voteId) => {
+//     return $.ajax({
+//         method: 'DELETE',
+//         url: `/api/votes/${voteId}`,
+//     })
+// };

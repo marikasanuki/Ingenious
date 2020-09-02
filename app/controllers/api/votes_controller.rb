@@ -5,7 +5,6 @@ class Api::VotesController < ApplicationController
     def create
         @vote = Vote.new(vote_params)
         @vote.author_id = current_user.id
-        # debugger
         if @vote.save!
             if @vote.votable_type == 'Annotation'
                 @annotation = Annotation.find(@vote.votable_id)
@@ -21,9 +20,7 @@ class Api::VotesController < ApplicationController
     end
 
     def update
-
         @vote = Vote.find(params[:id])
-
         if @vote.votable_type == 'Annotation' && @vote.update_attributes(vote_params) 
             @annotation = Annotation.find(@vote.votable_id)
             render 'api/annotations/show'
@@ -33,9 +30,7 @@ class Api::VotesController < ApplicationController
         else
             render @vote.errors.full_messages, status: 401
         end
-
     end
-
     
     def destroy
         @vote = Vote.find(params[:id])
@@ -52,7 +47,6 @@ class Api::VotesController < ApplicationController
             render json: @vote.errors.full_messages, status: 422
         end
     end
-
 
     private
 

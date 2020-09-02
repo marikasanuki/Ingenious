@@ -3,7 +3,6 @@ import { RECEIVE_COMMENT } from './comment_actions';
 import { RECEIVE_ANNOTATION } from './annotation_actions';
 
 const receiveCommentVote = comment => {
-    // debugger;
     return {
         type: RECEIVE_COMMENT,
         comment: comment,
@@ -24,16 +23,15 @@ const receiveAnnotationVote = (annotation) => {
     });
 };
 
-const removeAnnotationVote = (annotation) => {
-    return ({
-        type: RECEIVE_ANNOTATION,
-        annotation,
-    });
-};
+// const removeAnnotationVote = (annotation) => {
+//     return ({
+//         type: RECEIVE_ANNOTATION,
+//         annotation,
+//     });
+// };
 
 
 export const createCommentVote = (vote) => {
-    debugger;
     return dispatch => {
         return VoteApiUtil.createVote(vote)
             .then(
@@ -42,7 +40,6 @@ export const createCommentVote = (vote) => {
 };
 
 export const updateCommentVote = (vote) => {
-    // debugger;
     return dispatch => {
         return VoteApiUtil.updateVote(vote)
             .then(
@@ -50,13 +47,13 @@ export const updateCommentVote = (vote) => {
     }
 };
 
-export const destroyCommentVote = (voteId) => {
-    return dispatch => {
-        return VoteApiUtil.destroyVote(voteId)
-            .then(
-                (comment) => dispatch(removeCommentVote(comment)))
-    }
-};
+// export const destroyCommentVote = (voteId) => {
+//     return dispatch => {
+//         return VoteApiUtil.destroyVote(voteId)
+//             .then(
+//                 (comment) => dispatch(removeCommentVote(comment)))
+//     }
+// };
 
 export const createAnnotationVote = (vote) => {
     return dispatch => {
@@ -74,12 +71,12 @@ export const updateAnnotationVote = (vote) => {
     }
 };
 
-export const destroyAnnotationVote = (voteId) => {
-    return dispatch => {
-        return VoteApiUtil.destroyVote(voteId)
-            .then(
-                (annotation) => dispatch(removeAnnotationVote(annotation)))
-    }
-};
+// export const destroyAnnotationVote = (voteId) => {
+//     return dispatch => {
+//         return VoteApiUtil.destroyVote(voteId)
+//             .then(
+//                 (annotation) => dispatch(removeAnnotationVote(annotation)))
+//     }
+// };
 
 

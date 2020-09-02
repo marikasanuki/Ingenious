@@ -1,13 +1,9 @@
 import { connect } from 'react-redux';
 import VotesShow from './votes_show';
-import { createCommentVote, updateCommentVote, destroyCommentVote, createAnnotationVote, updateAnnotationVote, destroyAnnotationVote } from '../../actions/vote_actions';
+import { createCommentVote, updateCommentVote, createAnnotationVote, updateAnnotationVote } from '../../actions/vote_actions';
+// import { destroyCommentVote, destroyAnnotationVote } from '../../actions/vote_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log('state: ')
-    // console.log(state)
-    // console.log('ownProps: ')
-    // console.log(ownProps);
-    // debugger;
     return ({
         currentCommentObj: ownProps.comment,
         currentAnnoObj: ownProps.currentAnnoObj,
@@ -21,11 +17,11 @@ const mapDispatchToProps = (dispatch) => {
     return ({
         createCommentVote: (vote) => dispatch(createCommentVote(vote)),
         updateCommentVote: (vote) => dispatch(updateCommentVote(vote)),
-        destroyCommentVote: (voteId) => dispatch(destroyCommentVote(voteId)),
+        // destroyCommentVote: (voteId) => dispatch(destroyCommentVote(voteId)),
 
         createAnnotationVote: (vote) => dispatch(createAnnotationVote(vote)),
         updateAnnotationVote: (vote) => dispatch(updateAnnotationVote(vote)),
-        destroyAnnotationVote: (voteId) => dispatch(destroyAnnotationVote(voteId)),
+        // destroyAnnotationVote: (voteId) => dispatch(destroyAnnotationVote(voteId)),
     })
 };
 
