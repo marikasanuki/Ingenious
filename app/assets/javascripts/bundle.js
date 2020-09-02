@@ -2881,12 +2881,13 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      // voteTally: 0,
       thumbUpColor: "gray",
       thumbDownColor: "gray"
     };
-    _this.handleThumbUpClick = _this.handleThumbUpClick.bind(_assertThisInitialized(_this));
-    _this.handleThumbDownClick = _this.handleThumbDownClick.bind(_assertThisInitialized(_this));
+    _this.handleThumbUpCommentClick = _this.handleThumbUpCommentClick.bind(_assertThisInitialized(_this));
+    _this.handleThumbDownCommentClick = _this.handleThumbDownCommentClick.bind(_assertThisInitialized(_this));
+    _this.handleThumbUpAnnoClick = _this.handleThumbUpAnnoClick.bind(_assertThisInitialized(_this));
+    _this.handleThumbDownAnnoClick = _this.handleThumbDownAnnoClick.bind(_assertThisInitialized(_this));
     _this.tallyCurrentCommentObjVotes = _this.tallyCurrentCommentObjVotes.bind(_assertThisInitialized(_this));
     _this.tallyCurrentAnnoObjVotes = _this.tallyCurrentAnnoObjVotes.bind(_assertThisInitialized(_this));
     return _this;
@@ -2900,47 +2901,23 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       } else if (this.props.currentAnnoObj) {
         this.tallyCurrentAnnoObjVotes();
       }
-    } // componentWillUnmount() {
-    //     if (this.props.currentCommentObj) {
-    //         this.tallyCurrentCommentObjVotes();
-    //     } else if (this.props.currentAnnoObj) {
-    //         this.tallyCurrentAnnoObjVotes();
-    //     }
-    // }
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log("prevProps", prevProps);
-    //     console.log("prevState", prevState);    
-    //     debugger;  
-    //     if (prevState.voteTally !== this.state.voteTally) {
-    //         console.log('entities.comments state has changed.')
-    //         this.tallyCurrentCommentObjVotes();
-    //     }
-    // }
-
+    }
   }, {
-    key: "handleThumbUpClick",
-    value: function handleThumbUpClick() {
+    key: "handleThumbUpCommentClick",
+    value: function handleThumbUpCommentClick() {
       //no currentUser / not logged in
       if (!this.props.currentUser) {
         return null;
-      } // console.log("this.props", this.props );
-      // debugger;
-
+      }
 
       var allVotesArr = this.props.currentCommentObj.all_votes;
 
       for (var i = 0; i < allVotesArr.length; i++) {
-        var currentVote = allVotesArr[i]; // console.log("this.props.currentUser.id", this.props.currentUser.id);
-        // console.log("currentVote.author_id", currentVote.author_id);
-        // console.log("currentVote", currentVote);
-        // debugger;
-        // console.log(this.state.thumbUpColor);
-        //currentUser has upvote clicked so currentVote.value === 1
+        var currentVote = allVotesArr[i]; //currentUser has upvote clicked so currentVote.value === 1
         // update vote: set vote.value to 0 in db
         // change thumb color to gray
 
         if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
-          // debugger;
           var updatedVoteObj = {
             value: 0,
             author_id: currentVote.author_id,
@@ -2949,20 +2926,15 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
             id: currentVote.id
           };
 
-          var _vote = Object.assign({}, updatedVoteObj); // console.log("vote", vote)
-          // debugger
-
+          var _vote = Object.assign({}, updatedVoteObj);
 
           return this.props.updateCommentVote(_vote).then(this.setState({
             thumbUpColor: 'gray',
             thumbDownColor: 'gray'
-          })); // .then(console.log('vote saved to db'))
-          // .catch((err) => console.log(err))
-          //currentUser has downvote clicked so currentVote.value === -1
+          })); //currentUser has downvote clicked so currentVote.value === -1
           // update vote: set vote.value to 1 in db
           // change thumb color to green
         } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
-          // debugger;
           var _updatedVoteObj = {
             value: 1,
             author_id: currentVote.author_id,
@@ -2981,7 +2953,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           // update vote: set vote.value to 1 in db
           // change thumb color to green
         } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 0) {
-          // debugger;
           var _updatedVoteObj2 = {
             value: 1,
             author_id: currentVote.author_id,
@@ -3009,19 +2980,16 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         votable_type: 'Comment',
         votable_id: this.props.currentCommentObj.id
       };
-      var vote = Object.assign({}, newVoteObj); // debugger;
-
+      var vote = Object.assign({}, newVoteObj);
       return this.props.createCommentVote(vote).then(this.setState({
         thumbUpColor: 'rgb(84, 200, 53)',
         //green
         thumbDownColor: 'gray'
-      })); // .catch((err) => console.log(err));
+      }));
     }
   }, {
-    key: "handleThumbDownClick",
-    value: function handleThumbDownClick() {
-      // console.log(allVotesArr);
-      // debugger;
+    key: "handleThumbDownCommentClick",
+    value: function handleThumbDownCommentClick() {
       //no currentUser / not logged in
       if (!this.props.currentUser) {
         return null;
@@ -3030,16 +2998,11 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       var allVotesArr = this.props.currentCommentObj.all_votes;
 
       for (var i = 0; i < allVotesArr.length; i++) {
-        var currentVote = allVotesArr[i]; // console.log("this.props.currentUser.id", this.props.currentUser.id);
-        // console.log("currentVote.author_id", currentVote.author_id);
-        // console.log("currentVote", currentVote);
-        // debugger;
-        // if currentuser id IS in array && vote.value is 1
+        var currentVote = allVotesArr[i]; // if currentuser id IS in array && vote.value is 1
         // update vote: set vote.value to - 1 in db
         // change thumb color to red
 
         if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
-          // debugger;
           var updatedVoteObj = {
             value: -1,
             author_id: currentVote.author_id,
@@ -3055,13 +3018,10 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
             //red
             thumbDownColor: 'rgb(234, 43, 36)' //red
 
-          })); // .then(console.log('vote saved to db'))
-          // .catch((err) => console.log(err))
-          // if currentuser id IS in array && vote.value is - 1
+          })); // if currentuser id IS in array && vote.value is - 1
           // update vote: set vote.value to 0 in db
           // change thumb color to gray
         } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
-          // debugger;
           var _updatedVoteObj3 = {
             value: 0,
             author_id: currentVote.author_id,
@@ -3079,7 +3039,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
           // update vote: set vote.value to - 1 in db
           // change thumb color to red
         } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 0) {
-          // debugger;
           var _updatedVoteObj4 = {
             value: -1,
             author_id: currentVote.author_id,
@@ -3107,13 +3066,12 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         votable_type: 'Comment',
         votable_id: this.props.currentCommentObj.id
       };
-      var vote = Object.assign({}, newVoteObj); // debugger;
-
+      var vote = Object.assign({}, newVoteObj);
       return this.props.createCommentVote(vote).then(this.setState({
         thumbUpColor: 'gray',
         thumbDownColor: 'rgb(234, 43, 36)' //red
 
-      })); // ).catch((err) => console.log(err));
+      }));
     }
   }, {
     key: "tallyCurrentCommentObjVotes",
@@ -3125,9 +3083,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         valueSum += allVotesArr[i].value;
       }
 
-      return valueSum; // this.setState({
-      //     voteTally: valueSum,
-      // })
+      return valueSum;
     }
   }, {
     key: "tallyCurrentAnnoObjVotes",
@@ -3139,20 +3095,192 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         valueSum += allVotesArr[i].value;
       }
 
-      return valueSum; // this.setState({
-      //     voteTally: valueSum,
-      // })
+      return valueSum;
+    }
+  }, {
+    key: "handleThumbUpAnnoClick",
+    value: function handleThumbUpAnnoClick() {
+      //no currentUser / not logged in
+      if (!this.props.currentUser) {
+        return null;
+      }
+
+      var allVotesArr = this.props.currentAnnoObj.all_votes;
+
+      for (var i = 0; i < allVotesArr.length; i++) {
+        var currentVote = allVotesArr[i]; //currentUser has upvote clicked so currentVote.value === 1
+        // update vote: set vote.value to 0 in db
+        // change thumb color to gray
+
+        if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
+          // debugger;
+          var updatedVoteObj = {
+            value: 0,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote7 = Object.assign({}, updatedVoteObj);
+
+          return this.props.updateAnnotationVote(_vote7).then(this.setState({
+            thumbUpColor: 'gray',
+            thumbDownColor: 'gray'
+          })); //currentUser has downvote clicked so currentVote.value === -1
+          // update vote: set vote.value to 1 in db
+          // change thumb color to green
+        } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
+          var _updatedVoteObj5 = {
+            value: 1,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote8 = Object.assign({}, _updatedVoteObj5);
+
+          return this.props.updateAnnotationVote(_vote8).then(this.setState({
+            thumbUpColor: 'rgb(84, 200, 53)',
+            //green
+            thumbDownColor: 'gray'
+          })); //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+          // update vote: set vote.value to 1 in db
+          // change thumb color to green
+        } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 0) {
+          var _updatedVoteObj6 = {
+            value: 1,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote9 = Object.assign({}, _updatedVoteObj6);
+
+          return this.props.updateAnnotationVote(_vote9).then(this.setState({
+            thumbUpColor: 'rgb(84, 200, 53)',
+            //green
+            thumbDownColor: 'gray'
+          }));
+        }
+      } //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+      // create new vote and set vote.value to 1 in db
+      // change thumb color to green
+
+
+      var newVoteObj = {
+        value: 1,
+        author_id: this.props.currentUser.id,
+        votable_type: 'Annotation',
+        votable_id: this.props.currentAnnoObj.id
+      };
+      var vote = Object.assign({}, newVoteObj);
+      return this.props.createAnnotationVote(vote).then(this.setState({
+        thumbUpColor: 'rgb(84, 200, 53)',
+        //green
+        thumbDownColor: 'gray'
+      }));
+    }
+  }, {
+    key: "handleThumbDownAnnoClick",
+    value: function handleThumbDownAnnoClick() {
+      //no currentUser / not logged in
+      if (!this.props.currentUser) {
+        return null;
+      }
+
+      var allVotesArr = this.props.currentAnnoObj.all_votes;
+
+      for (var i = 0; i < allVotesArr.length; i++) {
+        var currentVote = allVotesArr[i]; // if currentuser id IS in array && vote.value is 1
+        // update vote: set vote.value to - 1 in db
+        // change thumb color to red
+
+        if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
+          var updatedVoteObj = {
+            value: -1,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote10 = Object.assign({}, updatedVoteObj);
+
+          return this.props.updateAnnotationVote(_vote10).then(this.setState({
+            thumbUpColor: 'gray',
+            //red
+            thumbDownColor: 'rgb(234, 43, 36)' //red
+
+          })); // if currentuser id IS in array && vote.value is - 1
+          // update vote: set vote.value to 0 in db
+          // change thumb color to gray
+        } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
+          var _updatedVoteObj7 = {
+            value: 0,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote11 = Object.assign({}, _updatedVoteObj7);
+
+          return this.props.updateAnnotationVote(_vote11).then(this.setState({
+            thumbUpColor: 'gray',
+            thumbDownColor: 'gray'
+          })); // if currentuser id IS in array AND vote.value is 0
+          // update vote: set vote.value to - 1 in db
+          // change thumb color to red
+        } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 0) {
+          var _updatedVoteObj8 = {
+            value: -1,
+            author_id: currentVote.author_id,
+            votable_type: 'Annotation',
+            votable_id: this.props.currentAnnoObj.id,
+            id: currentVote.id
+          };
+
+          var _vote12 = Object.assign({}, _updatedVoteObj8);
+
+          return this.props.updateAnnotationVote(_vote12).then(this.setState({
+            thumbUpColor: 'gray',
+            thumbDownColor: 'rgb(234, 43, 36)' //red
+
+          }));
+        }
+      } //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+      // create new vote and set vote.value to -1 in db
+      // change thumb color to red
+
+
+      var newVoteObj = {
+        value: -1,
+        author_id: this.props.currentUser.id,
+        votable_type: 'Annotation',
+        votable_id: this.props.currentAnnoObj.id
+      };
+      var vote = Object.assign({}, newVoteObj);
+      return this.props.createAnnotationVote(vote).then(this.setState({
+        thumbUpColor: 'gray',
+        thumbDownColor: 'rgb(234, 43, 36)' //red
+
+      }));
     }
   }, {
     key: "render",
     value: function render() {
+      // console.log(this.props);
+      // debugger;
       if (this.props.currentCommentObj) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "vote-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-up-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"],
-          onClick: this.handleThumbUpClick,
+          onClick: this.handleThumbUpCommentClick,
           style: {
             color: this.state.thumbUpColor
           }
@@ -3161,7 +3289,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         }, this.tallyCurrentCommentObjVotes()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-down-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
-          onClick: this.handleThumbDownClick,
+          onClick: this.handleThumbDownCommentClick,
           style: {
             color: this.state.thumbDownColor
           }
@@ -3172,13 +3300,19 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-up-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsUp"],
-          onClick: this.incrementVoteTally
+          onClick: this.handleThumbUpAnnoClick,
+          style: {
+            color: this.state.thumbUpColor
+          }
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "vote-count"
         }, this.tallyCurrentAnnoObjVotes()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
           className: "vote-thumb-down-icon",
           icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faThumbsDown"],
-          onClick: this.incrementVoteTally
+          onClick: this.handleThumbDownAnnoClick,
+          style: {
+            color: this.state.thumbDownColor
+          }
         }));
       } else {
         return null;
@@ -3191,65 +3325,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (VotesShow);
-/*
-Click THUMB'S UP BUTTON
-
-    CASE 0: USER IS NOT LOGGED IN; RETURN NULL
-
-    CASE 1: THUMB'S UP BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is 1
-            update vote: set vote.value to 0 in db
-            change thumb color to gray
-
-    CASE 2: THUMB'S DOWN BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is -1
-            update vote: set vote.value to 1 in db
-            change thumb color to green
-
-    CASE 3: User has previously voted and unlicked buttons so nothing is currently  clicked by user
-            check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-            if currentuser id IS in array AND vote.value is 0
-                update vote and set vote.value to 1 in db
-                change thumb color to green
-    CASE 4: Nothing clicked yet ever (must create brand-new vote for current user) after loops are completed and confirmed current user is not in the array
-            we exit the for loop without a return if this.props.currentCommentObj.all_votes array doesn't have an author_id that matches the currentuser's id
-            if currentuser id is NOT in array
-                OUTSIDE OF THE LOOP: create new vote and set vote.value to 1 in db
-                change thumb color to green
-
-
-
-Click THUMB'S DOWN BUTTON
-
-    CASE 0: USER IS NOT LOGGED IN; RETURN NULL
-
-    CASE 1: THUMB'S UP BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is 1
-        update vote: set vote.value to -1 in db
-        change thumb color to red
-
-    CASE 2: THUMB'S DOWN BUTTON already clicked
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array && vote.value is -1
-        update vote: set vote.value to 0 in db
-        change thumb color to gray
-
-    CASE 3: User has previously voted but unlicked buttons so nothing is currently clicked by user
-        check this.props.currentCommentObj.all_votes array to see if any of the author_ids matches the currentuser's id
-        if currentuser id IS in array AND vote.value is 0
-            update vote: set vote.value to -1 in db
-            change thumb color to red
-
-
-    CASE 4: Nothing clicked yet ever (must create brand-new vote for current user) after loops are completed and confirmed current user is not in the array
-            we exit the for loop without a return if this.props.currentCommentObj.all_votes array doesn't have an author_id that matches the currentuser's id
-            if currentuser id is NOT in array
-                OUTSIDE OF THE LOOP: create new vote and set vote.value to -1 in db
-                change thumb color to RED
-*/
 
 /***/ }),
 
