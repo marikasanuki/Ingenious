@@ -20,7 +20,7 @@ class VotesShow extends React.Component {
     componentDidMount() {
         if (this.props.currentCommentObj) {
 
-            //sets initial/color of thumbs on first load for comments
+            //sets initial colors of thumbs on first load for comments
             for (let i = 0; i < this.props.comment.all_votes.length; i ++) {
                 let currentVote = this.props.comment.all_votes[i];
                 if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
@@ -41,7 +41,7 @@ class VotesShow extends React.Component {
 
         } else if (this.props.currentAnnoObj) {
 
-            //sets initial/color of thumbs on first load for annotations
+            //sets initial colors of thumbs on first load for annotations
             for (let i = 0; i < this.props.currentAnnoObj.all_votes.length; i++) {
                 let currentVote = this.props.currentAnnoObj.all_votes[i];
                 // console.log("currentVote", currentVote);

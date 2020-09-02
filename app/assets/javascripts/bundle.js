@@ -2889,7 +2889,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.currentCommentObj) {
-        //sets initial/color of thumbs on first load for comments
+        //sets initial colors of thumbs on first load for comments
         for (var i = 0; i < this.props.comment.all_votes.length; i++) {
           var currentVote = this.props.comment.all_votes[i];
 
@@ -2910,7 +2910,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
         this.tallyCurrentCommentObjVotes();
       } else if (this.props.currentAnnoObj) {
-        //sets initial/color of thumbs on first load for annotations
+        //sets initial colors of thumbs on first load for annotations
         for (var _i = 0; _i < this.props.currentAnnoObj.all_votes.length; _i++) {
           var _currentVote = this.props.currentAnnoObj.all_votes[_i]; // console.log("currentVote", currentVote);
           // console.log("currentVote.value", currentVote.value);
