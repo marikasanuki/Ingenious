@@ -2460,7 +2460,8 @@ var TracksIndex = /*#__PURE__*/function (_React$Component) {
           lyrics: ele.lyrics,
           image_url: ele.image_url,
           conc_views: ele.conc_views,
-          total_views: ele.total_views // uniqueKey={i}
+          total_views: ele.total_views,
+          key: i + 1 // uniqueKey={i}
 
         });
       })));
