@@ -2882,8 +2882,8 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       voteTally: 0,
-      thumbUpColor: "gray",
-      thumbDownColor: "gray"
+      thumbUpColor: null,
+      thumbDownColor: null
     };
     _this.handleThumbUpClick = _this.handleThumbUpClick.bind(_assertThisInitialized(_this));
     _this.handleThumbDownClick = _this.handleThumbDownClick.bind(_assertThisInitialized(_this));
@@ -2900,7 +2900,16 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       } else if (this.props.currentAnnoObj) {
         this.tallyCurrentAnnoObjVotes();
       }
-    }
+    } // componentDidUpdate(prevProps, prevState) {
+    //     console.log("prevProps", prevProps);
+    //     console.log("prevState", prevState);    
+    //     debugger;  
+    //     if (prevState.voteTally !== this.state.voteTally) {
+    //         console.log('entities.comments state has changed.')
+    //         this.tallyCurrentCommentObjVotes();
+    //     }
+    // }
+
   }, {
     key: "handleThumbUpClick",
     value: function handleThumbUpClick() {
@@ -3412,7 +3421,10 @@ var annotationsReducer = function annotationsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_vote_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/vote_actions */ "./frontend/actions/vote_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3427,9 +3439,15 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      console.log(action);
+      console.log('action', action);
+      console.log('oldState', oldState);
+      console.log('action.comment', action.comment);
       debugger;
-      return Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment));
+
+      var comm = _defineProperty({}, action.comment.id, action.comment);
+
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, comm);
+    // return Object.assign({}, oldState, {[action.comment.id]: action.comment});
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       var newState = Object.assign({}, oldState);

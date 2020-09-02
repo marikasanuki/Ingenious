@@ -24,6 +24,16 @@ class VotesShow extends React.Component {
         }
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log("prevProps", prevProps);
+    //     console.log("prevState", prevState);    
+    //     debugger;  
+    //     if (prevState.voteTally !== this.state.voteTally) {
+    //         console.log('entities.comments state has changed.')
+    //         this.tallyCurrentCommentObjVotes();
+    //     }
+    // }
+
     handleThumbUpClick() {
 
         //no currentUser / not logged in
