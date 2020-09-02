@@ -2889,8 +2889,47 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.currentCommentObj) {
+        //sets initial/color of thumbs on first load for comments
+        for (var i = 0; i < this.props.comment.all_votes.length; i++) {
+          var currentVote = this.props.comment.all_votes[i];
+
+          if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
+            this.setState({
+              thumbUpColor: 'rgb(84, 200, 53)',
+              //green
+              thumbDownColor: 'gray'
+            });
+          } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
+            this.setState({
+              thumbUpColor: 'gray',
+              thumbDownColor: 'rgb(234, 43, 36)' //red
+
+            });
+          }
+        }
+
         this.tallyCurrentCommentObjVotes();
       } else if (this.props.currentAnnoObj) {
+        //sets initial/color of thumbs on first load for annotations
+        for (var _i = 0; _i < this.props.currentAnnoObj.all_votes.length; _i++) {
+          var _currentVote = this.props.currentAnnoObj.all_votes[_i]; // console.log("currentVote", currentVote);
+          // console.log("currentVote.value", currentVote.value);
+
+          if (_currentVote.author_id === this.props.currentUser.id && _currentVote.value === 1) {
+            this.setState({
+              thumbUpColor: 'rgb(84, 200, 53)',
+              //green
+              thumbDownColor: 'gray'
+            });
+          } else if (_currentVote.author_id === this.props.currentUser.id && _currentVote.value === -1) {
+            this.setState({
+              thumbUpColor: 'gray',
+              thumbDownColor: 'rgb(234, 43, 36)' //red
+
+            });
+          }
+        }
+
         this.tallyCurrentAnnoObjVotes();
       }
     }
@@ -3007,7 +3046,6 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
 
           return this.props.updateCommentVote(_vote4).then(this.setState({
             thumbUpColor: 'gray',
-            //red
             thumbDownColor: 'rgb(234, 43, 36)' //red
 
           })); // if currentuser id IS in array && vote.value is - 1
