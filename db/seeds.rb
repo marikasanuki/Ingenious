@@ -10,7 +10,7 @@ User.destroy_all
 Track.destroy_all
 Annotation.destroy_all
 Comment.destroy_all
-# Vote.destroy_all
+Vote.destroy_all
 
 rand_conc = rand(1..999)
 rand_total = rand(1..500) + rand.round(1)
@@ -2533,3 +2533,52 @@ comm03 = Comment.create!(comment_body: "MILLER", author_id: 7, track_id: 1)
 comm04 = Comment.create!(comment_body: "Voice of an angel", author_id: 5, track_id: 2)
 comm05 = Comment.create!(comment_body: "Voice of an angel", author_id: 8, track_id: 2)
 comm06 = Comment.create!(comment_body: "Voice of an angel", author_id: 10, track_id: 2)
+
+
+
+
+vote00 = Vote.create!(value: 1, author_id: 2, votable_type: 'Comment', votable_id: 1)
+vote01 = Vote.create!(value: 1, author_id: 3, votable_type: 'Comment', votable_id: 1)
+vote02 = Vote.create!(value: 1, author_id: 4, votable_type: 'Comment', votable_id: 1)
+vote03 = Vote.create!(value: 1, author_id: 5, votable_type: 'Comment', votable_id: 1)
+vote04 = Vote.create!(value: 1, author_id: 6, votable_type: 'Comment', votable_id: 1)
+
+vote05 = Vote.create!(value: -1, author_id: 2, votable_type: 'Comment', votable_id: 2)
+vote06 = Vote.create!(value: 1, author_id: 3, votable_type: 'Comment', votable_id: 2)
+vote07 = Vote.create!(value: 1, author_id: 4, votable_type: 'Comment', votable_id: 2)
+vote08 = Vote.create!(value: 1, author_id: 5, votable_type: 'Comment', votable_id: 2)
+vote09 = Vote.create!(value: 1, author_id: 6, votable_type: 'Comment', votable_id: 2)
+
+vote10 = Vote.create!(value: -1, author_id: 2, votable_type: 'Comment', votable_id: 3)
+vote11 = Vote.create!(value: -1, author_id: 3, votable_type: 'Comment', votable_id: 3)
+vote12 = Vote.create!(value: -1, author_id: 4, votable_type: 'Comment', votable_id: 3)
+
+vote13 = Vote.create!(value: -1, author_id: 4, votable_type: 'Comment', votable_id: 4)
+vote14 = Vote.create!(value: -1, author_id: 5, votable_type: 'Comment', votable_id: 4)
+
+vote15 = Vote.create!(value: -1, author_id: 6, votable_type: 'Comment', votable_id: 5)
+
+
+
+voteAnno00 = Vote.create!(value: 1, author_id: 2, votable_type: 'Annotation', votable_id: 1)
+voteAnno01 = Vote.create!(value: 1, author_id: 3, votable_type: 'Annotation', votable_id: 1)
+voteAnno02 = Vote.create!(value: 1, author_id: 4, votable_type: 'Annotation', votable_id: 1)
+voteAnno03 = Vote.create!(value: -1, author_id: 5, votable_type: 'Annotation', votable_id: 1)
+voteAnno04 = Vote.create!(value: -1, author_id: 6, votable_type: 'Annotation', votable_id: 1)
+
+voteAnno05 = Vote.create!(value: -1, author_id: 2, votable_type: 'Annotation', votable_id: 2)
+voteAnno06 = Vote.create!(value: -1, author_id: 3, votable_type: 'Annotation', votable_id: 2)
+voteAnno07 = Vote.create!(value: -1, author_id: 4, votable_type: 'Annotation', votable_id: 2)
+voteAnno08 = Vote.create!(value: -1, author_id: 5, votable_type: 'Annotation', votable_id: 2)
+voteAnno09 = Vote.create!(value: -1, author_id: 6, votable_type: 'Annotation', votable_id: 2)
+
+voteAnno10 = Vote.create!(value: 1, author_id: 2, votable_type: 'Annotation', votable_id: 3)
+voteAnno11 = Vote.create!(value: 1, author_id: 3, votable_type: 'Annotation', votable_id: 3)
+voteAnno12 = Vote.create!(value: 1, author_id: 4, votable_type: 'Annotation', votable_id: 3)
+
+voteAnno13 = Vote.create!(value: -1, author_id: 4, votable_type: 'Annotation', votable_id: 4)
+voteAnno14 = Vote.create!(value: -1, author_id: 5, votable_type: 'Annotation', votable_id: 4)
+
+voteAnno15 = Vote.create!(value: 1, author_id: 6, votable_type: 'Annotation', votable_id: 5)
+
+

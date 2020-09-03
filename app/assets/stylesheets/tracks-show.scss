@@ -11,7 +11,7 @@
 .tracks-show-outer-hed-container {
     width: 100%;
     height: 280px;
-    background-image: url("https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/armand-khoury-4cBVro7SHLs-unsplash.jpg");
+    background-image: url("./armand-khoury-4cBVro7SHLs-unsplash.jpg");
 }
 
 .tracks-show-hed-container {
@@ -19,7 +19,6 @@
     width: 60%;
     height: 100%;
     display: inline-block; 
-    // text-align: center;
 }
 
 .tracks-show-hed-img-container {
@@ -27,7 +26,6 @@
     padding-top: 32px;
     padding-right: 120px;
     left: -20px;
-    // display: inline-block; 
     position: relative;
 }
 
@@ -36,7 +34,6 @@
     height: 216px;
     border: 2px solid rgb(154, 154, 154);
     float: left;
-    // left: -20px;
 }
 
 .tracks-show-hed-words-container {

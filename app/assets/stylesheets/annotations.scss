@@ -7,7 +7,6 @@
     width: 60%;
     height: 100%;
     background-color: white;
-    // text-align: center;
     margin: 0 auto;
     padding-bottom: 50px;
     display: flex;
@@ -26,7 +25,6 @@
 }
 
 .anno-show-lyrics {
-    // display: inline-block; 
     padding-top: 15px;
     padding-left: 15px;
     font-size: 18px;
@@ -44,19 +42,17 @@
     height: 100%;
     text-align: left;
     padding-right: 70px;
-    position: sticky; //added sticky scrolling
+    position: sticky;
     top: 70px;
 }
 
 .annotation-box-container {
     width: 100%;
     height: 100%;
-    // position: relative; //attempting viewport offset thing—this is the parent container
 }
 .annotation-box {
     background-color: white;
     height: auto;
-    // width: 100%;
     color: black;
     border-left: 4px solid rgb(134, 146, 230);
     text-align: justify;
@@ -65,9 +61,6 @@
     font-size: 15px;
     padding-top: 2px;
     padding-bottom: 2px;
-    // position: relative;
-    //position: absolute; //attempting viewport offset thing—this is the child element
-    //top: 500px; //lowers child ele this much
 }
 
 .annotation-hed {
@@ -108,18 +101,13 @@
     padding-top: 20px;
     color: rgb(73, 73, 73);
 }
-.annotation-del-button-text:focus {
 
-}
-
-//edit your annotation button
 .annotation-edit-button {
     border: none;
     background-color: transparent;
     color: rgb(113, 113, 113);
     cursor: pointer;
     padding-top: 20px;
-
 }
 
 .annotation-edit-button:focus {
@@ -132,14 +120,9 @@
     padding-top: 25px;
     color: rgb(73, 73, 73);
 }
-.annotation-edit-button-text:focus {
-
-}
-
 
 .anno-button {
     display: block;
-    // color: rgb(0, 0, 0);
     background-color: rgba(213, 213, 213, .5);
     width: 490px;
     height: 31px;;
@@ -148,10 +131,6 @@
     margin-top: 164px;
     margin-left: 10px;   
     cursor: pointer;
-    // background: transparent;
-    // border: none !important;
-    // font-size:0;
-
 }
 
 .anno-button:hover {
@@ -160,18 +139,13 @@
 
 .anno-button-highlight {
     display: block;
-    // background-color: rgba(213, 213, 213, 1);
     background-color: #e9e9e9;
     width: 395px;
     height: 31px;;
     position: absolute;
     margin-top: 164px;
     margin-left: 102px;   
-    // z-index: -1;
 }
-
-// background-color: #ffff64; 
-
 
 .anno-form-container {
     width: 100%;
@@ -194,7 +168,6 @@
 .anno-textarea {
     font-family: 'Muli', sans-serif;
     border: 0;
-    // border: .5px solid rgba(134, 146, 230, 1);
     background-color: rgb(245, 245, 245);
     color: rgb(113, 113, 113);
     resize: none;
@@ -340,7 +313,6 @@
 
 
 //log in to annotate version
-
 .anno-login-container {
     width: 100%;
     height: 100%;
@@ -384,8 +356,6 @@
 
 
 
-
-
 .highlight {
     background-color: #e06f6f;
 }
@@ -394,9 +364,6 @@
     background-color: #e06f6f;    
 }
 
-.unannotated-lyric {
-
-}
 
 .highlighted-annotated-lyric {
     background-color: rgb(213, 213, 213);
