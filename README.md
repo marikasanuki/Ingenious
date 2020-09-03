@@ -8,6 +8,10 @@
 
 Users can browse a curated selection of songs and their lyrics and view annotated notes and interpretations of the tracks' lyrics. A signed-in user can create, update, and delete their own lyric annotations, as well as leave comments on the tracks and upvote or downvote annotations and comments.  
 
+<div align="center">
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/00-ingenious-index.gif" width="600" height="auto" align="center"/>
+</div>
+
 ## Technologies Used
 
 ### Backend
@@ -30,7 +34,7 @@ Users can browse a curated selection of songs and their lyrics and view annotate
 * User authentication and demo user option
 
 <div align="center">
-  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/ingenious-index.gif" width="600" height="auto" align="center"/>
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/01-user-auth.gif" width="600" height="auto" align="center"/>
 </div>
 
 * Ability to view database of curated song lyrics
@@ -39,38 +43,33 @@ Users can browse a curated selection of songs and their lyrics and view annotate
 
 * Ability to view user-generated annotations and comments
 
+<div align="center">
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/02-view-anno-upvote.gif" width="600" height="auto" align="center"/>
+</div>
+
+* Annotations are revealed and hidden on click.
+
+* Ability for a signed-in user to upvote an annotation or a comment
+
+<div align="center">
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/04-upvote-comments.gif" width="600" height="auto" align="center"/>
+</div>
+
 * Annotations are saved to individual tracks and dynamically fetched from the database
 
 * Ability for a signed-in user to create and delete their own annotations and comments
 
 * Ability for a signed-in user to edit their own annotations
 
-* Ability for a signed-in user to upvote an annotation or a comment
-
 <div align="center">
-  <img src="https://ingenious-prod.s3.amazonaws.com/anno-new.gif" width="600" height="auto" align="center"/>
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/03-create-update-delete-anno.gif" width="600" height="auto" align="center"/>
 </div>
 
-* Annotations are revealed and hidden on click.
+
+
 
 ```
-    return (
-                <div className='anno-show-lyrics-container'>
-                    <div className='anno-show-mini-title' >{this.props.track.title} lyrics</div>
 
-                    <div className='anno-show-lyrics' >{this.props.lyrics}</div>
-                    <span className='anno-button'
-                        onClick={() => this.state.annotationVisible ?
-                            this.setState({ annotationVisible: false }) :
-                            this.setState({ annotationVisible: true })}>
-                    </span>
-                    
-                     <div className='anno-show-cont' >
-                        {this.state.annotationVisible ? this.openAnnotation() : this.hideAnnotation() }
-                    </div>
-            
-                </div>
-        )
 ```
 
 ## Future Features
