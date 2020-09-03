@@ -33,6 +33,8 @@ Users can browse a curated selection of songs and their lyrics and view annotate
 
 * User authentication and demo user option
 
+* Custom error messages
+
 <div align="center">
   <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/01-user-auth.gif" width="700" height="auto" align="center"/>
 </div>
@@ -44,15 +46,15 @@ Users can browse a curated selection of songs and their lyrics and view annotate
 * Ability to view user-generated annotations and comments
 
 <div align="center">
-  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/02-view-anno-upvote.gif" width="700" height="auto" align="center"/>
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/04-upvote-comments.gif" width="700" height="auto" align="center"/>
 </div>
 
 * Annotations are revealed and hidden on click.
 
-* Ability for a signed-in user to upvote an annotation or a comment
+* Ability for a signed-in user to upvote or downvote an annotation or a comment
 
 <div align="center">
-  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/04-upvote-comments.gif" width="700" height="auto" align="center"/>
+  <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/02-view-anno-upvote.gif" width="700" height="auto" align="center"/>
 </div>
 
 * Annotations are saved to individual tracks and dynamically fetched from the database
@@ -74,8 +76,8 @@ Users can browse a curated selection of songs and their lyrics and view annotate
 
 ## Future Features
 
-* Search
-* "FEATURED" landing page that links to individual article pages (article index page)
-* Individual article pages (article show pages)
+* Search option to find tracks
+* "FEATURED" section (articles index) on landing page that links to individual article pages 
+* Individual article pages (articles show pages)
 
-Not for commercial use. I do not own the rights to any featured music or lyrics.
+_Not for commercial use. I do not own the rights to any featured music or lyrics._
