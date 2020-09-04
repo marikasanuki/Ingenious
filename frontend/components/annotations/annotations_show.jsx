@@ -133,7 +133,7 @@ class AnnotationsShow extends React.Component {
                 return <div></div>
             }
             let unannotatedSlicedLyric = lyrics.slice(prevIdx, annotation.start_idx);
-            const annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
+            let annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             allFormattedLyrics.push(
                 <span key={uniqueKey++} 
                     className='unannotated-lyric'

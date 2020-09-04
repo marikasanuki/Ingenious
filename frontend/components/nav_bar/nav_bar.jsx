@@ -10,7 +10,7 @@ class NavBar extends React.Component {
         return (
             <div className='nav-bar'>
                 <ul className='nav-bar-list-ul'>
-                    <li className='nav-bar-item' ><a className='nav-bar-item' href="https://github.com/marikasanuki" target="blank" >GITHUB</a></li>   
+                    <li className='nav-bar-item' ><a className='nav-bar-item' href="https://github.com/marikasanuki/Ingenious" target="blank" >GITHUB</a></li>   
                     <li className='nav-bar-item-pipe' >|</li>
                     <li className='nav-bar-item'><Link className='nav-bar-item' to={`/`}>CHARTS</Link></li>
                     <li className='nav-bar-item-pipe' >|</li>                    
@@ -19,7 +19,7 @@ class NavBar extends React.Component {
                     <li className='nav-bar-item'><a className='nav-bar-item' href="https://open.spotify.com/playlist/4atDdC0moSlxG5JLEJ9HpJ?si=YA4xkHxnQRCPPv-n0WUOow" target="blank" >SPOTIFY</a></li>
                     <li className='nav-bar-item-pipe' >|</li>
                     <li className='nav-bar-icons-li'>
-                        <a className='nav-bar-item-icon' href="https://github.com/marikasanuki" target="blank" >
+                        <a className='nav-bar-item-icon' href="https://github.com/marikasanuki/Ingenious" target="blank" >
                             <FontAwesomeIcon className='fa-icon' icon={faGithub} />
                         </a>
                         

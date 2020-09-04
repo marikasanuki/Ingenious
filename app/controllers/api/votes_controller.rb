@@ -13,7 +13,6 @@ class Api::VotesController < ApplicationController
                 @comment = Comment.find(@vote.votable_id)
                 render 'api/comments/show'
             end
-
         else
             render json: @vote.errors.full_messages, status: 422
         end

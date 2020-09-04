@@ -1562,7 +1562,7 @@ var Footer = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "footer-list-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/marikasanuki",
+        href: "https://github.com/marikasanuki/Ingenious",
         target: "blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         className: "footer-icon",
@@ -1796,7 +1796,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "nav-bar-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-bar-item",
-        href: "https://github.com/marikasanuki",
+        href: "https://github.com/marikasanuki/Ingenious",
         target: "blank"
       }, "GITHUB")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-bar-item-pipe"
@@ -1827,7 +1827,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "nav-bar-icons-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "nav-bar-item-icon",
-        href: "https://github.com/marikasanuki",
+        href: "https://github.com/marikasanuki/Ingenious",
         target: "blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         className: "fa-icon",

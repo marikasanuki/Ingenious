@@ -16,7 +16,7 @@ class Footer extends React.Component {
                 </div>
                 <ul className='footer-list-ul' >                    
                     <li className='footer-list-li' >
-                        <a href="https://github.com/marikasanuki" target="blank" >
+                        <a href="https://github.com/marikasanuki/Ingenious" target="blank" >
                             <FontAwesomeIcon className='footer-icon' icon={faGithub} />
                         </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
