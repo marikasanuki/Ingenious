@@ -12,11 +12,11 @@ json.extract! @track, :id, :title, :artist, :album, :lyrics, :conc_views, :total
             json.extract! annotation, :id, :anno_body, :author_id, :track_id, :start_idx, :end_idx, :all_votes
         end
     end
-    json.anno_authors do 
-        json.set! annotation.user.id do 
-            json.extract! annotation.user, :id, :username
-        end
-    end
+    # json.anno_authors do 
+    #     json.set! annotation.user.id do 
+    #         json.extract! annotation.user, :id, :username
+    #     end
+    # end
 end
 
 

@@ -42,7 +42,7 @@ While logged in, click and drag to highlight and select lyrics that you'd like t
 
 * Annotations are revealed and hidden on click.
 
-```
+```JavaScript
         for (let i = 0; i < annotationsArr.length; i++) {
             const annotation = annotationsArr[i];
             if (lyrics === undefined) { 
@@ -119,7 +119,7 @@ While logged in, click and drag to highlight and select lyrics that you'd like t
 
 * I utilized polymophic rails associations to leverage the ability to reuse the vote model for both annotations and comments. On top of allowing for DRY-er code for the current application, this choice will come in handy in a future implementation of leaving upvotable and downvotable comments on individual annotations. 
 
-```
+```Ruby
     class Vote < ApplicationRecord
         
         validates :author_id, uniqueness: { scope: [:votable_id, :votable_type] }

@@ -10,9 +10,9 @@ class NavBar extends React.Component {
         return (
             <div className='nav-bar'>
                 <ul className='nav-bar-list-ul'>
-                    <li className='nav-bar-item' ><a className='nav-bar-item' href="https://github.com/marikasanuki/Ingenious" target="blank" >GITHUB</a></li>   
-                    <li className='nav-bar-item-pipe' >|</li>
                     <li className='nav-bar-item'><Link className='nav-bar-item' to={`/`}>CHARTS</Link></li>
+                    <li className='nav-bar-item-pipe' >|</li>
+                    <li className='nav-bar-item' ><a className='nav-bar-item' href="https://github.com/marikasanuki/Ingenious" target="blank" >GITHUB</a></li>   
                     <li className='nav-bar-item-pipe' >|</li>                    
                     <li className='nav-bar-item'><a className='nav-bar-item' href="https://www.linkedin.com/in/marikasanuki/" target="blank" >LINKEDIN</a></li>                    
                     <li className='nav-bar-item-pipe' >|</li>

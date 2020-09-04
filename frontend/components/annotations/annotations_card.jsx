@@ -30,10 +30,14 @@ class AnnotationsCard extends React.Component {
 
         const { currentAnnotationId } = this.props;
         const currentAnnoObj = this.props.annotations[currentAnnotationId]
-
+        
         if (!currentAnnoObj) {
             return <div></div>;
         }
+
+        // console.log(currentAnnoObj);
+        // console.log(currentAnnoObj.username);
+        // debugger;
 
         const currentAnnoAuthId = currentAnnoObj.author_id
 
@@ -44,13 +48,13 @@ class AnnotationsCard extends React.Component {
                     {this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null}
                     <VotesShow 
                         currentAnnoObj={currentAnnoObj}
-                        
                     />
                     <div className='annotation-byline'>
                         {'Annotated by: '}
                     </div>
                     <div className='annotation-username'>
-                        {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null}
+                        {currentAnnoObj.username}
+                        {/* {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null} */}
                     </div>
                     <div className="annotation-del-button-cont">
                         {(this.props.currentUser && this.props.annotations[currentAnnotationId].author_id === this.props.currentUser.id) ? (
