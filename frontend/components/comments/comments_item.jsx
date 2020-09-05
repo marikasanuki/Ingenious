@@ -6,18 +6,17 @@ import VotesShow from '../votes/votes_show_container';
 class CommentsItem extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
 
     render() {
-
-        const { comment, comment_authors, destroyComment, currentUser } = this.props;
+        const { comment, destroyComment, currentUser } = this.props;
 
         return (
+            
             <li className='comments-item-li'>
                 <div className='comments-author'>
-                    {comment_authors[comment.author_id] ? (comment_authors[comment.author_id].username) : null }
+                    {comment.username}
+                    {/* {comment_authors[comment.author_id] ? (comment_authors[comment.author_id].username) : null } */}
                 </div>
                 <div className='comments-body'>
                     {comment.comment_body}

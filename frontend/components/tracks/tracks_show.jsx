@@ -76,7 +76,7 @@ class TracksShow extends React.Component {
                     {
                         <CommentsList
                             comments={this.props.comments}
-                            comment_authors={this.props.comments.comment_authors}
+                            // comment_authors={this.props.comments.comment_authors}
                             destroyComment={this.props.destroyComment}
                             currentUser={this.props.currentUser}
                         />

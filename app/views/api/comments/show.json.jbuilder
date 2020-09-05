@@ -1,4 +1,5 @@
 json.extract! @comment, :id, :comment_body, :author_id, :track_id, :all_votes
+json.set! :username, @comment.user.username #new refactor
 
 # testing this jbuilder structure within each comment:
 # json.votes do

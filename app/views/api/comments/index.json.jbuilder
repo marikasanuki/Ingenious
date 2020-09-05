@@ -13,9 +13,9 @@
         #     end
         # end
     end
-    json.comment_authors do 
-        json.set! comment.user.id do 
-            json.extract! comment.user, :id, :username
-        end
-    end
+    # json.comment_authors do 
+    #     json.set! comment.user.id do 
+    #        json.extract! comment.user, :id, :username
+    #     end
+    # end
 end

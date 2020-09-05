@@ -1383,14 +1383,13 @@ var CommentsItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           comment = _this$props.comment,
-          comment_authors = _this$props.comment_authors,
           destroyComment = _this$props.destroyComment,
           currentUser = _this$props.currentUser;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "comments-item-li"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-author"
-      }, comment_authors[comment.author_id] ? comment_authors[comment.author_id].username : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, comment.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-body"
       }, comment.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_votes_votes_show_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
         comment: comment
@@ -1473,7 +1472,7 @@ var CommentsList = /*#__PURE__*/function (_React$Component) {
           comment_authors = _this$props.comment_authors,
           destroyComment = _this$props.destroyComment,
           currentUser = _this$props.currentUser;
-      var allComments = Object.values(comments).slice(0, Object.values(comments).length - 1); //slicing off the comments_authors element at the end of the comments object to create allComments array with just all of the comments
+      var allComments = Object.values(comments); // const allComments = Object.values(comments).slice(0, Object.values(comments).length - 1); //slicing off the comments_authors element at the end of the comments object to create allComments array with just all of the comments
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-list"
@@ -1482,8 +1481,8 @@ var CommentsList = /*#__PURE__*/function (_React$Component) {
       }, allComments ? allComments.map(function (comment) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
-          key: comment.id,
-          comment_authors: comment_authors,
+          key: comment.id // comment_authors={comment_authors}
+          ,
           destroyComment: destroyComment,
           currentUser: currentUser
         });
@@ -2747,8 +2746,8 @@ var TracksShow = /*#__PURE__*/function (_React$Component) {
       }, "Log in to add a comment.")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-list-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        comments: this.props.comments,
-        comment_authors: this.props.comments.comment_authors,
+        comments: this.props.comments // comment_authors={this.props.comments.comment_authors}
+        ,
         destroyComment: this.props.destroyComment,
         currentUser: this.props.currentUser
       }))));
@@ -2788,7 +2787,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     track: state.entities.tracks,
     annotations: state.entities.annotations,
     comments: state.entities.comments,
-    comment_authors: state.entities.comment_authors,
+    // comment_authors: state.entities.comment_authors,
     currentUser: state.session.currentUser
   };
 };
@@ -3524,7 +3523,10 @@ var annotationsReducer = function annotationsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_vote_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/vote_actions */ "./frontend/actions/vote_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3539,8 +3541,14 @@ var commentsReducer = function commentsReducer() {
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      var reallyNewState = Object.assign({}, oldState, _defineProperty({}, action.comment.id, action.comment));
-      return reallyNewState;
+      // let reallyNewState = Object.assign({}, oldState, {[action.comment.id]: action.comment});
+      // return reallyNewState;
+      var comm = _defineProperty({}, action.comment.id, action.comment);
+
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, comm);
+    // console.log("oldState", oldState);
+    // console.log('reallyNewState', reallyNewState);
+    // debugger
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       var newState = Object.assign({}, oldState);
