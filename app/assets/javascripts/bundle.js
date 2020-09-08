@@ -528,10 +528,7 @@ var AnnotationsCard = /*#__PURE__*/function (_React$Component) {
 
       if (!currentAnnoObj) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      } // console.log(currentAnnoObj);
-      // console.log(currentAnnoObj.username);
-      // debugger;
-
+      }
 
       var currentAnnoAuthId = currentAnnoObj.author_id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2037,11 +2034,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         maxLength: "30"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-label"
-      }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "hyperlink-color",
-        href: "https://genius.com/password_resets/new",
-        target: "blank"
-      }, "(I forgot my password)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.handleInput('password'),
@@ -2915,8 +2908,7 @@ var VotesShow = /*#__PURE__*/function (_React$Component) {
       } else if (this.props.currentUser && this.props.currentAnnoObj) {
         //sets initial colors of thumbs on first load for annotations
         for (var _i = 0; _i < this.props.currentAnnoObj.all_votes.length; _i++) {
-          var _currentVote = this.props.currentAnnoObj.all_votes[_i]; // console.log("currentVote", currentVote);
-          // console.log("currentVote.value", currentVote.value);
+          var _currentVote = this.props.currentAnnoObj.all_votes[_i];
 
           if (_currentVote.author_id === this.props.currentUser.id && _currentVote.value === 1) {
             this.setState({
@@ -3546,9 +3538,6 @@ var commentsReducer = function commentsReducer() {
       var comm = _defineProperty({}, action.comment.id, action.comment);
 
       return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, oldState, comm);
-    // console.log("oldState", oldState);
-    // console.log('reallyNewState', reallyNewState);
-    // debugger
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       var newState = Object.assign({}, oldState);

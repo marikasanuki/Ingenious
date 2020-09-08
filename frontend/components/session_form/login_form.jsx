@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
                         />
                     </label>
                     <br />
-                    <label className='signup-label'>Password <a className='hyperlink-color' href='https://genius.com/password_resets/new' target="blank" >(I forgot my password)</a>
+                    <label className='signup-label'>Password
                         <br />
                         <input 
                             type='password' 

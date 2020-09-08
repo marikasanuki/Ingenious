@@ -44,8 +44,6 @@ class VotesShow extends React.Component {
             //sets initial colors of thumbs on first load for annotations
             for (let i = 0; i < this.props.currentAnnoObj.all_votes.length; i++) {
                 let currentVote = this.props.currentAnnoObj.all_votes[i];
-                // console.log("currentVote", currentVote);
-                // console.log("currentVote.value", currentVote.value);
 
                 if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
                     this.setState({

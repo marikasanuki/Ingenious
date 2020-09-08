@@ -35,10 +35,6 @@ class AnnotationsCard extends React.Component {
             return <div></div>;
         }
 
-        // console.log(currentAnnoObj);
-        // console.log(currentAnnoObj.username);
-        // debugger;
-
         const currentAnnoAuthId = currentAnnoObj.author_id
 
         return (

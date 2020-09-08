@@ -17,11 +17,11 @@ While logged in, click and drag to highlight and select lyrics that you'd like t
 ## Technologies Used
 
 ### Backend
-* Ruby on Rails
+* Ruby on Rails (5.2.4.3)
 * PostgreSQL
 
 ### Frontend
-* React
+* React (16.13.1)
 * Redux
 * JavaScript
 * HTML5
