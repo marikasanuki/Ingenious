@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
   <head>
     <title>Ingenious | Song Lyrics & Knowledge</title>
     
-    <meta name="description" content="A Genius.com clone project, Ingenious is the world’s biggest collection of code-related song lyrics and programming music knowledge." />
+    <meta name="description" content="A Genius.com clone built with React and Rails, Ingenious is a collection of programming music knowledge and annotatable lyrics." />
 	<meta name="keywords" content="ingenious, ingenious.com, mari kasanuki, marikasanuki, genius.com, software engineer, software developer, react project, fullstack" />
 	<meta name="author" content="Mari Kasanuki" />
 
     <meta property='og:title' content='Ingenious'/>
     <meta property='og:image' content='https://ingenious-prod.s3.amazonaws.com/portfolio-images/ingenious-linkedin.png' />
-    <meta property='og:description' content='A Genius.com clone project, Ingenious is the world’s biggest collection of code-related song lyrics and programming music knowledge.'/>
+    <meta property='og:description' content='A Genius.com clone built with React and Rails, Ingenious is a collection of programming music knowledge and annotatable lyrics.'/>
     <meta property='og:url' content='https://ingenious-app.herokuapp.com/'/>
     <meta property="og:site_name" content="Mari Kasanuki"/>
     <meta property="og:type" content="website" />
@@ -31,6 +31,16 @@
     <% end %>
 
     <%= favicon_link_tag asset_path('ingenious-favicon.png') %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BFZ6C0F4X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-6BFZ6C0F4X');
+    </script>
 
   </head>
 
