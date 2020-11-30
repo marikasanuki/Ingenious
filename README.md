@@ -6,13 +6,13 @@
 
 [Ingenious](https://ingenious-app.herokuapp.com/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge. 
 
-Users can browse a curated selection of songs and their lyrics and view annotated notes and interpretations of the tracks' lyrics. Signed-in users can create, update, and delete their own lyric annotations, leave or delete their own comments on the tracks, and upvote or downvote annotations and comments.  
+All users can openly browse a curated selection of songs and their lyrics and view annotated notes and interpretations of the tracks' lyrics. _Signed-in_ users can create, update, and delete their own lyric annotations, leave or delete their own comments on the tracks, and upvote or downvote annotations and comments.  
 
 <div align="center">
   <img src="https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/demo_images/00-ingenious-index.gif" width="700" height="auto" align="center"/>
 </div>
 
-While logged in, click and drag to highlight and select lyrics that you'd like to annotation. Type your submission in the form that opens up, and submit to publicly save it to the track's lyrics. 
+While logged in, click and drag to highlight and select lyrics that you'd like to annotate. Type your submission in the form that opens up, and submit to publicly save it to the track's lyrics. 
 
 ## Technologies Used
 

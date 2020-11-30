@@ -13,10 +13,3 @@ export const updateVote = (vote) => {
         data: { vote },
     });
 };
-
-// export const destroyVote =  (voteId) => {
-//     return $.ajax({
-//         method: 'DELETE',
-//         url: `/api/votes/${voteId}`,
-//     })
-// };

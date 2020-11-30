@@ -23,7 +23,6 @@ class AnnotationsShow extends React.Component {
     }
 
     componentWillUnmount() {
-        // is this needed? 
         document.removeEventListener('click', this.handleOutsideClick, false);
     }
 
