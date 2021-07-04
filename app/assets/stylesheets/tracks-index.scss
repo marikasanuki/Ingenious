@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .tracks-index-container {
-    background-color: white;
     width: 100%;
     height: auto;
+    background-color: white;
     padding-top: 50px;
     text-align: center;
     padding-bottom: 25px;
@@ -33,7 +33,6 @@
     padding-bottom: 40px;
 }
 
-
 .tracks-index-ol {
     width: 60%;
     display: inline-grid;
@@ -44,7 +43,7 @@
 .tracks-index-li {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
     border-bottom: 2px solid rgb(233, 233, 233);
     text-align: left;
     width: 100%;
@@ -52,7 +51,7 @@
 }
 
 .tracks-index-li:hover {
-    background-color: rgb(233, 233, 233); 
+    background-color: rgb(233, 233, 233);
     height: 100%;
     width: 100%;
 }
@@ -60,7 +59,7 @@
 .chart-num {
     padding-top: 27px;
     padding-left: 20px;
-    font-size: 24px;   
+    font-size: 24px;
     width: 40px;
     color: black;
 }
@@ -73,9 +72,10 @@
 
 .chart-title {
     padding-top: 27px;
+    padding-left: 5px;
     font-size: 24px;
-    font-weight: 700;  
-    width: 310px;
+    font-weight: 700;
+    width: 290px;
     color: black;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -83,22 +83,20 @@
 }
 
 .chart-lyr {
-    color: rgb(154, 154, 154); 
-    font-size: 12px;  
+    color: rgb(154, 154, 154);
+    font-size: 12px;
     font-weight: 600;
 }
 
-
 .chart-artist {
     padding-top: 27px;
-    font-size: 24px;  
+    font-size: 24px;
     width: 250px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     color: black;
 }
-
 
 .fire-icon {
     padding-top: 36px;

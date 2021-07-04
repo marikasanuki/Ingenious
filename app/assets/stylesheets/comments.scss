@@ -4,7 +4,7 @@
 
 .comments-outer-cont {
     width: 60%;
-    height: 100%; 
+    height: 100%;
     background-color: white;
     display: inline-block;
 }
@@ -31,7 +31,6 @@
     border: 2px solid rgb(213, 213, 213);
     background-color: white;
     color: rgb(113, 113, 113);
-    // height: 20px;
     height: 120px;
     font-size: 16px;
     padding: 10px;
@@ -88,16 +87,19 @@
     margin-left: 15px;
 
     a:link {
-    color: rgba(134, 146, 230, 1);
+        color: rgba(134, 146, 230, 1);
     }
+
     a:visited {
-    color: rgba(134, 146, 230, 1);
+        color: rgba(134, 146, 230, 1);
     }
+
     a:hover {
-    color: rgba(134, 145, 230, 0.7);
+        color: rgba(134, 145, 230, 0.7);
     }
+
     a:active {
-    color: rgba(134, 145, 230, 0.7);
+        color: rgba(134, 145, 230, 0.7);
     }
 }
 
@@ -158,6 +160,3 @@
     padding-top: 25px;
     color: rgb(73, 73, 73);
 }
-
-
-
