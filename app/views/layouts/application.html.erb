@@ -2,7 +2,7 @@
 <html lang="en" >
   <head>
     <title>Ingenious | Song Lyrics & Knowledge</title>
-    
+
     <meta name="description" content="A Genius.com clone built with React and Rails, Ingenious is a collection of programming music knowledge and annotatable lyrics." />
 	<meta name="keywords" content="ingenious, ingenious.com, mari kasanuki, marikasanuki, genius.com, software engineer, software developer, react project, fullstack" />
 	<meta name="author" content="Mari Kasanuki" />
@@ -14,15 +14,17 @@
     <meta property="og:site_name" content="Mari Kasanuki"/>
     <meta property="og:type" content="website" />
 
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&family=Muli:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
- 
+
     <% if logged_in? %>
         <script type="text/javascript">
             window.currentUser =

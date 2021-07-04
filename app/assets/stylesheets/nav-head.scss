@@ -6,33 +6,60 @@
 .main-header-container {
     display: block;
     width: 100%;
-    height: 40px;
+    height: 41px;
 }
 
 .main-header {
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
     background-color: rgb(253, 255, 111);
     color: rgb(0, 0, 0);
     font-family: Geneva, sans-serif;
-    flex-direction: row;
-    align-items: center;
     width: 100%;
     height: 100%;
 }
 
-.ingenious-header-container {
+.search-bar-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
+    flex: 1;
+    margin-left: 5px;
+}
+
+.search-bar-input {
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    height: 29px;
+    width: 220px;
+    padding-left: 0.5rem;
+}
+
+.search-bar-input:focus {
+    outline-width: 0;
+}
+
+.search-bar-input:disabled {
+  background: #fff;
+}
+
+.search-bar-input:hover {
+  cursor: not-allowed;
+}
+
+::placeholder {
+  color: black;
+}
+
+.ingenious-header-container {
     height: 100%;
 }
 
 .ingenious-header {
     font-family: 'Mitr', sans-serif;
-    position: absolute;
     text-decoration: none;
-    padding-left: 175px;
     color: rgb(253, 255, 111);
     text-shadow: -2px 2px 0px black, -1.5px 1.5px 0px black, -1px 1px 0px black;
     font-size: 24px;
@@ -40,33 +67,35 @@
     margin-bottom: 3px;
 }
 
-.session-btns {
-    position: relative;
-    padding-left: 60px;
+.session-btn-container {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    white-space: nowrap;
 }
 
 .session-btn {
-    position: relative;
-    text-decoration: none;
-    font-size: 11px;
-    padding-right: 15px;
-    width: 20px;
-    height: 100%;
+    align-items: center;
     color: black;
     font-family: 'Muli', sans-serif;
+    font-size: 11px;
     font-weight: 700;
+    height: 100%;
+    letter-spacing: 1px;
+    padding-right: 15px;
+    text-decoration: none;
 }
 
 .nav-bar {
+    align-items: center;
     background-color: black;
     color: white;
-    text-align: center;
-    height: 41px;
-    align-items: center;
     display: flex;
+    height: 41px;
+    text-align: center;
 }
 
-.nav-bar-list-ul { 
+.nav-bar-list-ul {
     display: flex;
     list-style-type: none;
     justify-content: space-around;
@@ -130,15 +159,17 @@
     font-size: 11px;
     font-family: 'Muli', sans-serif;
     font-weight: 700;
+    letter-spacing: 1px;
     width: auto;
     position: relative;
     padding-left: 15px;
     padding-right: 15px;
+    white-space: nowrap;
 }
 
 .logout-header-btn::before {
     content: '';
-    display: block; 
+    display: block;
     height: 6px;
     background-color: rgb(254, 0, 98);
     position: absolute;
@@ -155,13 +186,12 @@
 }
 
 .footer-container {
-    background-color: black;
+    background-color: rgb(18, 18, 18);
     height: 600px;
-    width: 80%;
     color: white;
     padding-left: 365px;
     padding-right: 365px;
-    padding-top: 75px;  
+    padding-top: 75px;
 }
 
 .footer-tagline {
@@ -171,7 +201,7 @@
 }
 
 .footer-list-ul {
-    list-style-type: none;    
+    list-style-type: none;
     padding-left:0;
     padding-top: 20px;
     height: auto;
@@ -179,7 +209,7 @@
 }
 .footer-list-li {
     height: auto;
-    width: auto; 
+    width: auto;
 }
 
 .footer-icon {
@@ -192,12 +222,11 @@
     padding-top: 200px;
     font-size: 16px;
     font-weight: 400;
-    color: white;    
+    color: white;
 }
 
 .footer-byline {
     text-decoration: none;
-
     font-size: 12px;
     font-weight: 400;
     color: white;
@@ -208,4 +237,3 @@
     font-size: 11px;
     font-weight: 400;
 }
-

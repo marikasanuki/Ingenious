@@ -11,7 +11,7 @@ class AnnotationsFormEdit extends React.Component {
     }
 
     handleSubmit(e){
-        e.preventDefault();   
+        e.preventDefault();
 
         let updatedAnnoInfo = {
             track_id: this.props.track.id,
@@ -26,14 +26,13 @@ class AnnotationsFormEdit extends React.Component {
         this.props.updateAnnotation(anno)
             .then (
                 (res) => {
-                    // console.log(res);
                     return this.props.setCurrentAnnotationId(res.annotation.id)
                 }
             )
             .then (
                 () => this.props.hideAnnotationCardEdit()
-            )     
-   
+            )
+
     }
 
     handleInput(field) {
@@ -44,16 +43,16 @@ class AnnotationsFormEdit extends React.Component {
         };
     }
 
-    render() { 
+    render() {
         return (
             <div className='anno-form-container-edit'>
                 <div className='anno-border-bar-edit'></div>
                 <form onSubmit={this.handleSubmit} className='anno-form-edit'>
-                    <textarea 
+                    <textarea
                         className='anno-textarea-edit'
                         value={this.state.anno_body}
                         onChange={this.handleInput('anno_body')}
-                        maxLength="1000" 
+                        maxLength="1000"
                     />
                     <input className="anno-submit-button-edit" type='submit' value={'UPDATE'}/>
                     <button className="anno-cancel-button-edit" onClick={() => {
