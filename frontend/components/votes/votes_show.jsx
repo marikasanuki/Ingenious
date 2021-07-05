@@ -30,10 +30,10 @@ class VotesShow extends React.Component {
                     })
                 } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1 ){
                     this.setState({
-                        thumbUpColor: 'gray', 
+                        thumbUpColor: 'gray',
                         thumbDownColor: 'rgb(234, 43, 36)', //red
                     })
-                } 
+                }
             }
 
 
@@ -64,28 +64,28 @@ class VotesShow extends React.Component {
 
     handleThumbUpCommentClick() {
 
-        //no currentUser / not logged in
+        // no currentUser / not logged in
         if (!this.props.currentUser) {
             return null;
         }
-        
+
         const allVotesArr = this.props.currentCommentObj.all_votes
 
         for (let i = 0; i < allVotesArr.length; i++) {
             const currentVote = allVotesArr[i];
 
-            //currentUser has upvote clicked so currentVote.value === 1
+            // currentUser has upvote clicked so currentVote.value === 1
             // update vote: set vote.value to 0 in db
             // change thumb color to gray
             if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
                 let updatedVoteObj = {
-                    value: 0, 
-                    author_id: currentVote.author_id, 
+                    value: 0,
+                    author_id: currentVote.author_id,
                     votable_type: 'Comment',
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
-                
+
                 const vote = Object.assign({}, updatedVoteObj);
 
                 return this.props.updateCommentVote(vote)
@@ -96,10 +96,10 @@ class VotesShow extends React.Component {
                         })
                     );
 
-            //currentUser has downvote clicked so currentVote.value === -1
+            // currentUser has downvote clicked so currentVote.value === -1
             // update vote: set vote.value to 1 in db
             // change thumb color to green
-            } 
+            }
             else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
 
                 let updatedVoteObj = {
@@ -114,14 +114,14 @@ class VotesShow extends React.Component {
                     .then(
                         this.setState({
                             thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray', 
+                            thumbDownColor: 'gray',
                         })
                     );
 
-            //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+            // currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
             // update vote: set vote.value to 1 in db
             // change thumb color to green
-            } else if ( currentVote.author_id === this.props.currentUser.id && currentVote.value === 0 ) { 
+            } else if ( currentVote.author_id === this.props.currentUser.id && currentVote.value === 0 ) {
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
@@ -137,10 +137,10 @@ class VotesShow extends React.Component {
                             thumbDownColor: 'gray',
                         })
                     )
-                    } 
+            }
         }
 
-        //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+        // IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
         // create new vote and set vote.value to 1 in db
         // change thumb color to green
         let newVoteObj = {
@@ -153,14 +153,14 @@ class VotesShow extends React.Component {
         return this.props.createCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray', 
+                            thumbUpColor: 'rgb(84, 200, 53)', // green
+                            thumbDownColor: 'gray',
                         }));
     }
-    
+
     handleThumbDownCommentClick() {
 
-        //no currentUser / not logged in
+        // no currentUser / not logged in
         if (!this.props.currentUser) {
             return null;
         }
@@ -186,7 +186,7 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray', 
+                            thumbUpColor: 'gray',
                             thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                     )
@@ -227,7 +227,7 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray', 
+                            thumbUpColor: 'gray',
                             thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                     );
@@ -248,7 +248,7 @@ class VotesShow extends React.Component {
         return this.props.createCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray', 
+                            thumbUpColor: 'gray',
                             thumbDownColor: 'rgb(234, 43, 36)', //red
                         })
                         );
@@ -276,7 +276,7 @@ class VotesShow extends React.Component {
 
     handleThumbUpAnnoClick() {
 
-        //no currentUser / not logged in
+        // no currentUser / not logged in
         if (!this.props.currentUser) {
             return null;
         }
@@ -286,7 +286,7 @@ class VotesShow extends React.Component {
         for (let i = 0; i < allVotesArr.length; i++) {
             const currentVote = allVotesArr[i];
 
-            //currentUser has upvote clicked so currentVote.value === 1
+            // currentUser has upvote clicked so currentVote.value === 1
             // update vote: set vote.value to 0 in db
             // change thumb color to gray
             if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
@@ -308,7 +308,7 @@ class VotesShow extends React.Component {
                         })
                     );
 
-                //currentUser has downvote clicked so currentVote.value === -1
+                // currentUser has downvote clicked so currentVote.value === -1
                 // update vote: set vote.value to 1 in db
                 // change thumb color to green
             }
@@ -330,7 +330,7 @@ class VotesShow extends React.Component {
                         })
                     );
 
-                //currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
+                // currentUser has voted in the past but has unclicked buttons so currentVote.value === 0
                 // update vote: set vote.value to 1 in db
                 // change thumb color to green
             } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 0) {
@@ -352,7 +352,7 @@ class VotesShow extends React.Component {
             }
         }
 
-        //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+        // IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
         // create new vote and set vote.value to 1 in db
         // change thumb color to green
         let newVoteObj = {
@@ -372,7 +372,7 @@ class VotesShow extends React.Component {
 
     handleThumbDownAnnoClick() {
 
-        //no currentUser / not logged in
+        // no currentUser / not logged in
         if (!this.props.currentUser) {
             return null;
         }
@@ -398,8 +398,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray', //red
-                            thumbDownColor: 'rgb(234, 43, 36)', //red
+                            thumbUpColor: 'gray', // red
+                            thumbDownColor: 'rgb(234, 43, 36)', // red
                         })
                     )
 
@@ -440,7 +440,7 @@ class VotesShow extends React.Component {
                     .then(
                         this.setState({
                             thumbUpColor: 'gray',
-                            thumbDownColor: 'rgb(234, 43, 36)', //red
+                            thumbDownColor: 'rgb(234, 43, 36)', // red
                         })
                     );
             }
@@ -461,7 +461,7 @@ class VotesShow extends React.Component {
             .then(
                 this.setState({
                     thumbUpColor: 'gray',
-                    thumbDownColor: 'rgb(234, 43, 36)', //red
+                    thumbDownColor: 'rgb(234, 43, 36)', // red
                 })
             );
     }

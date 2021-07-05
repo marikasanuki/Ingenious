@@ -1,9 +1,10 @@
-import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK } from '../actions/track_actions'; 
+import { RECEIVE_ALL_TRACKS, RECEIVE_TRACK } from '../actions/track_actions';
 
 
 const tracksReducer = (oldState = {}, action) => {
+
     Object.freeze(oldState);
-  
+
     switch (action.type) {
         case RECEIVE_ALL_TRACKS:
             return Object.assign({}, action.tracks);
@@ -12,7 +13,6 @@ const tracksReducer = (oldState = {}, action) => {
         default:
             return oldState;
     }
-
 }
 
-export default tracksReducer; 
+export default tracksReducer;

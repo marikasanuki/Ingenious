@@ -5,6 +5,7 @@ const _nullUser = Object.freeze({
 });
 
 const usersReducer = (oldState = {}, action) => {
+
     Object.freeze(oldState);
 
     switch (action.type) {

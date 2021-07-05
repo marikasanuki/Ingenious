@@ -62,22 +62,22 @@ class LoginForm extends React.Component {
                     {this.props.errors.length ? <div className='error-messages'>{this.renderErrors()}</div> : null}
                     <label className='signup-label' >Ingenious Nickname
                         <br />
-                        <input 
-                            type='text' 
-                            value={this.state.username} 
-                            onChange={this.handleInput('username')} 
+                        <input
+                            type='text'
+                            value={this.state.username}
+                            onChange={this.handleInput('username')}
                             className='signup-input'
-                            maxLength="30" 
+                            maxLength="30"
                         />
                     </label>
                     <br />
                     <label className='signup-label'>Password
                         <br />
-                        <input 
-                            type='password' 
-                            value={this.state.password} 
-                            onChange={this.handleInput('password')} 
-                            className='signup-input' 
+                        <input
+                            type='password'
+                            value={this.state.password}
+                            onChange={this.handleInput('password')}
+                            className='signup-input'
                             maxLength="70"
                         />
                     </label>
@@ -86,7 +86,6 @@ class LoginForm extends React.Component {
                     <br />
                     <br />
                     <label className='signup-label'>Don't have an account? <Link className='hyperlink-color' to={`/signup`}>Sign up here.</Link></label>
-                    
                     <button className='login-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
                 </form>
             </div>

@@ -5,6 +5,7 @@
 
 .anno-show-lyrics-container {
     width: 60%;
+    min-width: 485px;
     height: 100%;
     background-color: white;
     margin: 0 auto;
@@ -24,12 +25,13 @@
 }
 
 .anno-show-lyrics {
+    width: 67%;
+    min-width: 285px;
     padding-top: 15px;
     padding-left: 15px;
     font-size: 18px;
     text-align: left;
     white-space: pre-wrap;
-    width: 67%;
     line-height: 30px;
     background: transparent;
     position: relative;
@@ -38,6 +40,7 @@
 
 .anno-show-cont {
     width: 32%;
+    min-width: 150px;
     height: 100%;
     text-align: left;
     padding-right: 70px;

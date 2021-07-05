@@ -6,7 +6,7 @@ import { removeErrors } from '../../actions/session_actions'
 import { Link } from 'react-router-dom';
 
 const mapStateToProps = ({ errors }) => {
-    return ({  
+    return ({
         errors: errors.session,
         formHeader: 'SIGN UP',
         formSubhead: 'and show off your ingenious',

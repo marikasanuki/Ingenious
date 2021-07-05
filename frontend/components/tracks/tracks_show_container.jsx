@@ -6,7 +6,7 @@ import { fetchTrackComments, createComment, destroyComment } from '../../actions
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-        track: state.entities.tracks, 
+        track: state.entities.tracks,
         annotations: state.entities.annotations,
         comments: state.entities.comments,
         // comment_authors: state.entities.comment_authors,
