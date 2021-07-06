@@ -3,20 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .comments-outer-cont {
-    width: 60%;
-    height: 100%;
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.comments-inner-cont {
     background-color: white;
-    display: inline-block;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.comments-inner-inner-cont {
+    background-color: rgb(247, 247, 247);
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 // COMMENTS FORM
 .comments-form-cont {
     text-align: center;
-    width: 93%;
+    width: 94%;
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: rgb(247, 247, 247);
-    display: inline-block;
 }
 
 .comment-form {
@@ -40,12 +57,6 @@
 .comment-textarea:focus {
     outline-width: 0;
 }
-
-// .comment-textarea:focus {
-//     outline-width: 0;
-//     box-shadow: inset 0 0 6px rgba(134, 146, 230, 1);
-//     height: 120px;
-// }
 
 .comment-submit-button {
     border: 3px solid rgb(84, 200, 53);
@@ -76,7 +87,6 @@
 .comment-login-card {
     width: 40%;
     font-family: 'Muli', sans-serif;
-    border: 0;
     border: 2px solid rgb(213, 213, 213);
     background-color: white;
     color: rgb(113, 113, 113);
@@ -85,6 +95,8 @@
     padding: 10px;
     margin-bottom: 10px;
     margin-left: 15px;
+    min-width: 230px;
+    white-space: nowrap;
 
     a:link {
         color: rgba(134, 146, 230, 1);
@@ -102,7 +114,6 @@
         color: rgba(134, 145, 230, 0.7);
     }
 }
-
 
 //COMMENTS LIST AND ITEMS
 .comments-list-cont {
@@ -126,21 +137,21 @@
 }
 
 .comments-item-li {
-  text-align: left;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top: solid 1px rgb(134, 146, 230);
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-top: solid 1px rgb(134, 146, 230);
 }
 
 .comments-author {
-  padding-bottom: 15px;
-  font-weight: 600;
+    padding-bottom: 15px;
+    font-weight: 600;
 }
 
 .comment-del-button-cont {
-  padding-top: 15px;
+    padding-top: 15px;
 }
 
 .comments-del-button {
@@ -151,7 +162,7 @@
 }
 
 .comments-del-button:focus {
-     outline-width: 0;
+    outline-width: 0;
 }
 
 .comments-del-button-text {

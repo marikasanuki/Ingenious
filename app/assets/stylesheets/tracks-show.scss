@@ -5,27 +5,23 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    padding-bottom: 50px;
 }
 
 .tracks-show-outer-hed-container {
     width: 100%;
-    height: 280px;
     background-image: url(asset-path("armand-khoury-4cBVro7SHLs-unsplash.jpg"));
 }
 
 .tracks-show-hed-container {
     background-color: rgba(0, 0, 0, 0.6);
     width: 60%;
-    min-width: 485px;
-    height: 100%;
     display: inline-block;
+    padding: 32px 0;
 }
 
 .tracks-show-hed-img-container {
-    width: 90%;
-    padding-top: 32px;
-    padding-right: 120px;
+    display: flex;
+    justify-content: start;
     left: -20px;
     position: relative;
 }
@@ -34,13 +30,10 @@
     width: 216px;
     height: 216px;
     border: 2px solid rgb(154, 154, 154);
-    float: left;
 }
 
 .tracks-show-hed-words-container {
     width: 60%;
-    height: 100%;
-    float: left;
     padding-left: 10px;
     padding-top: 20px;
 }

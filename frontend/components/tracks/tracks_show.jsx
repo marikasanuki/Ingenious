@@ -54,30 +54,34 @@ class TracksShow extends React.Component {
                     }
                 </div>
                 <div className='comments-outer-cont'>
-                    <div className='comments-form-cont'>
-                        {
-                            this.props.currentUser ?
-                                <CommentsForm
-                                    createComment={this.props.createComment}
-                                    track={this.props.track}
-                                />
-                            :
-                                <div>
-                                    <div className='comment-login-card'>
-                                            <Link to={`/login`}>Log in to add a comment.</Link>
-                                    </div>
-                                </div>
-                        }
-                    </div>
-                    <div className='comments-list-cont'>
-                        {
-                            <CommentsList
-                                comments={this.props.comments}
-                                // comment_authors={this.props.comments.comment_authors}
-                                destroyComment={this.props.destroyComment}
-                                currentUser={this.props.currentUser}
-                            />
-                        }
+                    <div className='comments-inner-cont'>
+                        <div className='comments-inner-inner-cont'>
+                            <div className='comments-form-cont'>
+                                {
+                                    this.props.currentUser ?
+                                        <CommentsForm
+                                            createComment={this.props.createComment}
+                                            track={this.props.track}
+                                        />
+                                    :
+                                        <div>
+                                            <div className='comment-login-card'>
+                                                    <Link to={`/login`}>Log in to add a comment.</Link>
+                                            </div>
+                                        </div>
+                                }
+                            </div>
+                            <div className='comments-list-cont'>
+                                {
+                                    <CommentsList
+                                        comments={this.props.comments}
+                                        // comment_authors={this.props.comments.comment_authors}
+                                        destroyComment={this.props.destroyComment}
+                                        currentUser={this.props.currentUser}
+                                    />
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

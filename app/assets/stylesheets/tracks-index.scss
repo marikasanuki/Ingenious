@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .tracks-index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: auto;
     background-color: white;
@@ -34,10 +37,14 @@
 }
 
 .tracks-index-ol {
-    width: 60%;
     display: inline-grid;
     padding-left: 0;
     justify-items: start;
+    width: 70%;
+
+    @media screen and (max-width: 950px) {
+        overflow: scroll;
+    };
 }
 
 .tracks-index-li {
