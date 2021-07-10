@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class AnnotationsShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             currentAnnotationId: null,
             start_idx: null,
             end_idx: null,
@@ -17,7 +17,7 @@ class AnnotationsShow extends React.Component {
         this.saveStartOffsetToState = this.saveStartOffsetToState.bind(this);
         this.saveEndOffsetToState = this.saveEndOffsetToState.bind(this);
         this.setCurrentAnnotationId = this.setCurrentAnnotationId.bind(this);
-        this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this); 
+        this.hideAnnotationFormCreate = this.hideAnnotationFormCreate.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
@@ -43,11 +43,11 @@ class AnnotationsShow extends React.Component {
         // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
         if ( (this.node && this.node.contains(e.target)) || this.cardNode.contains(e.target) ) {
             return;
-        }   
+        }
         this.handleClick();
     }
 
-    findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics 
+    findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics
         let doc = element.ownerDocument || element.document; //setting doc variable to be the lyrics element's document or owner document
         let win = doc.defaultView || doc.parentWindow; //doc.defaultView returns the window object associated with doc. doc.parent Window does the same thing for Internet Explorer.
         let selected;
@@ -60,9 +60,9 @@ class AnnotationsShow extends React.Component {
                 let range = win.getSelection().getRangeAt(0); //range is a range object at index 0 of current selection
                 let cloneRange = range.cloneRange(); //cloneRange is the duplicated range object at index 0 of current selection
                 cloneRange.selectNodeContents(element); //sets the cloneRange to contain the contents of element. makes cloneRange's startOffset 0 and cloneRange's endOffset to the number of child Nodes in element (element is the reference node)
-                cloneRange.setEnd(range.startContainer, range.startOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+                cloneRange.setEnd(range.startContainer, range.startOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside).
                 start = cloneRange.toString().length; //cloneRange.toString() returns the text of the cloneRage as a string (so .length will return the character count)
-                cloneRange.setEnd(range.endContainer, range.endOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside). 
+                cloneRange.setEnd(range.endContainer, range.endOffset); //setEnd sets the end position of the cloneRange. first arg is the Node inside which the cloneRange should end. second arg is an integer that represents the offset for the end of the cloneRange from the start of the first arg (the Node inside).
                 end = cloneRange.toString().length;
             }
         } else if ((selected = doc.selection) && selected.type != "Control") {
@@ -106,7 +106,7 @@ class AnnotationsShow extends React.Component {
     }
 
     setCurrentAnnotationId(annotationId) {
-        this.setState({ currentAnnotationId: annotationId }) 
+        this.setState({ currentAnnotationId: annotationId })
         //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
         this.handleClick();
     }
@@ -128,13 +128,13 @@ class AnnotationsShow extends React.Component {
         for (let i = 0; i < annotationsArr.length; i++) {
             const annotation = annotationsArr[i];
             //preventing console error from attempting to slice undefined because lyrics haven't loaded
-            if (lyrics === undefined) { 
+            if (lyrics === undefined) {
                 return <div></div>
             }
             let unannotatedSlicedLyric = lyrics.slice(prevIdx, annotation.start_idx);
             let annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             allFormattedLyrics.push(
-                <span key={uniqueKey++} 
+                <span key={uniqueKey++}
                     className='unannotated-lyric'
                 >
                     {unannotatedSlicedLyric}
@@ -144,7 +144,7 @@ class AnnotationsShow extends React.Component {
                 <span key={uniqueKey++}
                     className='highlighted-annotated-lyric'
                     ref={ node => { this.node = node; } }
-                    onClick={() => 
+                    onClick={() =>
                         {   this.setCurrentAnnotationId(annotation.id)
                         }}
                 >
@@ -153,7 +153,7 @@ class AnnotationsShow extends React.Component {
             );
         //When we're on the final iteration for the for loop
         //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
-            if ((i === Object.keys(annotationsArr).length - 1)    ) { 
+            if ((i === Object.keys(annotationsArr).length - 1)    ) {
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
                         className='unannotated-lyric'
@@ -161,74 +161,72 @@ class AnnotationsShow extends React.Component {
                         {lyrics.slice(annotation.end_idx, lyrics.length)}
                     </span>
                 )
-            }   
-            prevIdx = annotation.end_idx;            
+            }
+            prevIdx = annotation.end_idx;
         };
 
         //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
-        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And 
+        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And
             return (
-                <div>
-                    <div className='anno-show-lyrics-container'  >
+                <div className='anno-show-lyrics-container'>
+                    <div className='anno-show-mini-title'>
+                        {this.props.track.title} lyrics
+                    </div>
 
-                        <div className='anno-show-mini-title'>
-                            {this.props.track.title} lyrics
-                        </div>
+                    <div
+                        className='anno-show-lyrics'
+                        onMouseDown={this.saveStartOffsetToState}
+                        onMouseUp={this.saveEndOffsetToState}
 
-                        <div 
-                            className='anno-show-lyrics'
-                            onMouseDown={this.saveStartOffsetToState}
-                            onMouseUp={this.saveEndOffsetToState}
-                            
-                        >
-                            {allFormattedLyrics}    {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
-                        </div>
-                        <div className='anno-show-cont' ref={cardNode => { this.cardNode = cardNode; }} >
-                            <br />
-                            {this.state.annotationCardVisible ? 
-                                <AnnotationsCard
-                                    track={this.props.track}
-                                    annotations={this.props.annotations}
-                                    createAnnotation={this.props.createAnnotation}
-                                    currentUser={currentUser}
-                                    updateAnnotation={this.props.updateAnnotation}
-                                    destroyAnnotation={this.props.destroyAnnotation}
+                    >
+                        {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
+                        {allFormattedLyrics}
+                    </div>
+                    <div className='anno-show-cont' ref={cardNode => { this.cardNode = cardNode; }} >
+                        <br />
+                        {this.state.annotationCardVisible ?
+                            <AnnotationsCard
+                                track={this.props.track}
+                                annotations={this.props.annotations}
+                                createAnnotation={this.props.createAnnotation}
+                                currentUser={currentUser}
+                                updateAnnotation={this.props.updateAnnotation}
+                                destroyAnnotation={this.props.destroyAnnotation}
 
-                                    start_idx={this.state.start_idx}
-                                    end_idx={this.state.end_idx}
-                                    currentAnnotationId={this.state.currentAnnotationId}
-                                    hideAnnotationFormCreate={this.hideAnnotationFormCreate}
-                                    setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                    
-                                /> 
-                                : null}
-                            <br />
-                                    {
-                                        currentUser ? 
-                                                this.state.annotationFormCreateVisible ?
-                                                    <div>
-                                                        {<AnnotationsFormCreate
-                                                            track={this.props.track}
-                                                            annotations={this.props.annotations}
-                                                            createAnnotation={this.props.createAnnotation}
+                                start_idx={this.state.start_idx}
+                                end_idx={this.state.end_idx}
+                                currentAnnotationId={this.state.currentAnnotationId}
+                                hideAnnotationFormCreate={this.hideAnnotationFormCreate}
+                                setCurrentAnnotationId={this.setCurrentAnnotationId}
 
-                                                            start_idx={this.state.start_idx}
-                                                            end_idx={this.state.end_idx}
-                                                            setCurrentAnnotationId={this.setCurrentAnnotationId}
-                                                            hideAnnotationFormCreate={this.hideAnnotationFormCreate}
-                                                        />}
-                                                    </div>
+                            />
+                            : null }
+                                <br />
+                                {
+                                    currentUser ?
+                                            this.state.annotationFormCreateVisible ?
+                                                <div>
+                                                    {<AnnotationsFormCreate
+                                                        track={this.props.track}
+                                                        annotations={this.props.annotations}
+                                                        createAnnotation={this.props.createAnnotation}
 
-                                                    : null 
-                                        : 
-                                            <div className='anno-login-container'>
-                                                <div className='anno-login-border-bar'></div>
-                                                <div className='anno-login-card' >
-                                                    You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
+                                                        start_idx={this.state.start_idx}
+                                                        end_idx={this.state.end_idx}
+                                                        setCurrentAnnotationId={this.setCurrentAnnotationId}
+                                                        hideAnnotationFormCreate={this.hideAnnotationFormCreate}
+                                                    />}
                                                 </div>
+
+                                                : null
+                                    :
+                                        <div className='anno-login-container'>
+                                            <div className='anno-login-border-bar'></div>
+                                            <div className='anno-login-card' >
+                                                You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
                                             </div>
-                                    }
-                        </div>
+                                        </div>
+                                }
                     </div>
                 </div>
             )
@@ -238,7 +236,7 @@ class AnnotationsShow extends React.Component {
                     <div className='anno-show-mini-title'>
                         {this.props.track.title} lyrics
                     </div>
-                    <div                                                      
+                    <div
                         className='anno-show-lyrics'
                         onMouseDown={this.saveOffsetsToState}
                         onMouseUp={this.saveOffsetsToState}

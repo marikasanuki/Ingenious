@@ -3,23 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .comments-outer-cont {
-    background-color: rgb(247, 247, 247);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 30px;
-}
-
-.comments-inner-cont {
     background-color: white;
     width: 60%;
+    min-width: 480px;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-bottom: 20px;
 }
 
-.comments-inner-inner-cont {
+.comments-inner-cont {
     background-color: rgb(247, 247, 247);
     width: 90%;
     display: flex;

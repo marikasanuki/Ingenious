@@ -79,7 +79,7 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.signup(user)
-            .then(() => this.props.history.push('/'));
+            .then(() => this.props.history.goBack());
     }
 
     handleInput(field) {
@@ -96,7 +96,7 @@ class SignupForm extends React.Component {
             username: 'IngeniousFan',
             password: 'IngeniousFanpw',
         })
-            .then(() => this.props.history.push('/'));
+            .then(() => this.props.history.goBack());
     }
 
     renderErrors() {

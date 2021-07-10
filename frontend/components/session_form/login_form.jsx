@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.login(user)
-            .then(() => this.props.history.push('/'));
+            .then(() => this.props.history.goBack());
     }
 
     handleInput(field) {
@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
     demoUser(e) {
         e.preventDefault();
         this.props.login({ username: 'IngeniousFan', password: 'IngeniousFanpw' })
-            .then(() => this.props.history.push('/'));
+            .then(() => this.props.history.goBack());
     }
 
     renderErrors() {

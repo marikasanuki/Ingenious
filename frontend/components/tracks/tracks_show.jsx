@@ -39,7 +39,7 @@ class TracksShow extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className='anno-comments-outer-cont'>
                     {
                         <AnnotationsShow
                             track={this.props.track}
@@ -52,10 +52,8 @@ class TracksShow extends React.Component {
                             destroyAnnotation={this.props.destroyAnnotation}
                         />
                     }
-                </div>
-                <div className='comments-outer-cont'>
-                    <div className='comments-inner-cont'>
-                        <div className='comments-inner-inner-cont'>
+                    <div className='comments-outer-cont'>
+                        <div className='comments-inner-cont'>
                             <div className='comments-form-cont'>
                                 {
                                     this.props.currentUser ?
@@ -63,10 +61,10 @@ class TracksShow extends React.Component {
                                             createComment={this.props.createComment}
                                             track={this.props.track}
                                         />
-                                    :
+                                        :
                                         <div>
                                             <div className='comment-login-card'>
-                                                    <Link to={`/login`}>Log in to add a comment.</Link>
+                                                <Link to={`/login`}>Log in to add a comment.</Link>
                                             </div>
                                         </div>
                                 }
