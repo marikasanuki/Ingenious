@@ -1,5 +1,5 @@
 import React from "react";
-import CommentsItem from './comments_item';
+import CommentsItem from "./comments_item";
 
 class CommentsList extends React.Component {
     constructor(props) {
@@ -7,26 +7,24 @@ class CommentsList extends React.Component {
     }
 
     render() {
-        const { comments, comment_authors, destroyComment, currentUser } = this.props;
+        const { comments, destroyComment, currentUser } = this.props;
 
         const allComments = Object.values(comments);
         // const allComments = Object.values(comments).slice(0, Object.values(comments).length - 1); //slicing off the comments_authors element at the end of the comments object to create allComments array with just all of the comments
 
         return (
-            <div className='comments-list'>
-                <ul className='comments-list-ul'>
-                    {allComments ? allComments.map((comment) => (
-                        <CommentsItem
-                            comment={comment}
-                            key={comment.id}
-                            // comment_authors={comment_authors}
-                            destroyComment={destroyComment}
-                            currentUser={currentUser}
-                        />
-                    )
-
-                    )
-                        : null}
+            <div className="comments-list">
+                <ul className="comments-list-ul">
+                    { allComments
+                        ? allComments.map((comment) => (
+                            <CommentsItem
+                                comment={comment}
+                                key={comment.id}
+                                destroyComment={destroyComment}
+                                currentUser={currentUser}
+                            />
+                        ))
+                        : null }
                 </ul>
             </div>
         )

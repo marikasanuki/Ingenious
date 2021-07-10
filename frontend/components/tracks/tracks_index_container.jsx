@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import TracksIndex from './tracks_index';
-import { fetchTracks } from '../../actions/track_actions';
+import { connect } from "react-redux";
+import TracksIndex from "./tracks_index";
+import { fetchTracks } from "../../actions/track_actions";
 
 const mapStateToProps = (state) => {
     return ({

@@ -4,7 +4,7 @@ class CommentsForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment_body: '',
+            comment_body: "",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -17,7 +17,7 @@ class CommentsForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();   
+        e.preventDefault();
 
         const comment = Object.assign({}, this.state, {
             comment_body: this.state.comment_body,
@@ -30,20 +30,20 @@ class CommentsForm extends React.Component {
 
     render () {
         return (
-            <form onSubmit={this.handleSubmit} className='comment-form'>
+            <form onSubmit={this.handleSubmit} className="comment-form">
 
-                <textarea 
-                    className='comment-textarea'
+                <textarea
+                    className="comment-textarea"
                     maxLength="900"
                     value={this.state.comment_body}
                     onChange={this.update("comment_body")}
                     placeholder="Add a comment"
                 />
                 <br/>
-                <input 
-                    className='comment-submit-button'
-                    type='submit' 
-                    value={"SUBMIT"} 
+                <input
+                    className="comment-submit-button"
+                    type="submit"
+                    value={"SUBMIT"}
                 />
             </form>
         );

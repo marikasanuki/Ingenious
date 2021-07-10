@@ -1,8 +1,8 @@
 import React from "react";
-import AnnotationsFormEdit from './annotations_card_edit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
-import VotesShow from '../votes/votes_show_container';
+import AnnotationsFormEdit from "./annotations_card_edit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
+import VotesShow from "../votes/votes_show_container";
 
 class AnnotationsCard extends React.Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class AnnotationsCard extends React.Component {
 
         const { currentAnnotationId } = this.props;
         const currentAnnoObj = this.props.annotations[currentAnnotationId]
-        
+
         if (!currentAnnoObj) {
             return <div></div>;
         }
@@ -38,19 +38,18 @@ class AnnotationsCard extends React.Component {
         const currentAnnoAuthId = currentAnnoObj.author_id
 
         return (
-            <div className='annotation-box-container'>
-                <div className='annotation-box'>
-                    <div className='annotation-hed'>Ingenious Annotation</div>
+            <div className="annotation-box-container">
+                <div className="annotation-box">
+                    <div className="annotation-hed">Ingenious Annotation</div>
                     {this.props.annotations[currentAnnotationId] ? this.props.annotations[currentAnnotationId].anno_body : null}
-                    <VotesShow 
+                    <VotesShow
                         currentAnnoObj={currentAnnoObj}
                     />
-                    <div className='annotation-byline'>
-                        {'Annotated by: '}
+                    <div className="annotation-byline">
+                        {"Annotated by: "}
                     </div>
-                    <div className='annotation-username'>
+                    <div className="annotation-username">
                         {currentAnnoObj.username}
-                        {/* {this.props.track.anno_authors[currentAnnoAuthId] ? this.props.track.anno_authors[currentAnnoAuthId].username : null} */}
                     </div>
                     <div className="annotation-del-button-cont">
                         {(this.props.currentUser && this.props.annotations[currentAnnotationId].author_id === this.props.currentUser.id) ? (
@@ -94,7 +93,7 @@ class AnnotationsCard extends React.Component {
                         hideAnnotationFormCreate={this.props.hideAnnotationFormCreate}
                         setCurrentAnnotationId={this.props.setCurrentAnnotationId}
                     />
-                : null} 
+                : null}
             </div>
         )
     }

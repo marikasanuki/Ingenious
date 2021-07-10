@@ -1,5 +1,5 @@
 import React from "react";
-import TracksIndexItem from './tracks_index_item';
+import TracksIndexItem from "./tracks_index_item";
 
 class TracksIndex extends React.Component {
     constructor(props) {
@@ -26,14 +26,14 @@ class TracksIndex extends React.Component {
         const trackNum = 1;
 
         return (
-            <div className='tracks-index-container'>
-                <div className='tracks-index-header'>
+            <div className="tracks-index-container">
+                <div className="tracks-index-header">
                     CHARTS
                 </div>
-                <div className='tracks-index-subhead'>
+                <div className="tracks-index-subhead">
                     TRENDING ON INGENIOUS
                 </div>
-                <ol className='tracks-index-ol'>
+                <ol className="tracks-index-ol">
                     {tracks.slice(0,this.state.limit).map(((ele, i) =>
                         (<TracksIndexItem
                             url={ele.id}
@@ -60,10 +60,10 @@ class TracksIndex extends React.Component {
         return (
             <div>
                 {this.revealMoreTracks()}
-                <div className='load-more-button-container'>
+                <div className="load-more-button-container">
                     <button
                         onClick={this.onLoadMore}
-                        className='load-more-button'
+                        className="load-more-button"
                     >
                         LOAD MORE
                     </button>

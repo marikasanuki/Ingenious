@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsDown, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 
 class VotesShow extends React.Component {
     constructor(props) {
@@ -20,40 +20,39 @@ class VotesShow extends React.Component {
     componentDidMount() {
         if (this.props.currentUser && this.props.currentCommentObj) {
 
-            //sets initial colors of thumbs on first load for comments
+            // sets initial colors of thumbs on first load for comments
             for (let i = 0; i < this.props.comment.all_votes.length; i ++) {
                 let currentVote = this.props.comment.all_votes[i];
                 if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
                     this.setState({
-                        thumbUpColor: 'rgb(84, 200, 53)', //green
-                        thumbDownColor: 'gray',
+                        thumbUpColor: "rgb(84, 200, 53)", // green
+                        thumbDownColor: "gray",
                     })
                 } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1 ){
                     this.setState({
-                        thumbUpColor: 'gray',
-                        thumbDownColor: 'rgb(234, 43, 36)', //red
+                        thumbUpColor: "gray",
+                        thumbDownColor: "rgb(234, 43, 36)", //  red
                     })
                 }
             }
-
 
             this.tallyCurrentCommentObjVotes();
 
         } else if (this.props.currentUser && this.props.currentAnnoObj) {
 
-            //sets initial colors of thumbs on first load for annotations
+            // sets initial colors of thumbs on first load for annotations
             for (let i = 0; i < this.props.currentAnnoObj.all_votes.length; i++) {
                 let currentVote = this.props.currentAnnoObj.all_votes[i];
 
                 if (currentVote.author_id === this.props.currentUser.id && currentVote.value === 1) {
                     this.setState({
-                        thumbUpColor: 'rgb(84, 200, 53)', //green
-                        thumbDownColor: 'gray',
+                        thumbUpColor: "rgb(84, 200, 53)", // green
+                        thumbDownColor: "gray",
                     })
                 } else if (currentVote.author_id === this.props.currentUser.id && currentVote.value === -1) {
                     this.setState({
-                        thumbUpColor: 'gray',
-                        thumbDownColor: 'rgb(234, 43, 36)', //red
+                        thumbUpColor: "gray",
+                        thumbDownColor: "rgb(234, 43, 36)", // red
                     })
                 }
             }
@@ -81,7 +80,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 0,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -91,8 +90,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "gray",
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -105,7 +104,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -113,8 +112,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "rgb(84, 200, 53)", //green
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -125,7 +124,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -133,28 +132,30 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "rgb(84, 200, 53)", // green
+                            thumbDownColor: "gray",
                         })
                     )
             }
         }
 
-        // IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+        // IF NOTHING CLICKED YET EVER—CREATE NEW VOTE
+        // AFTER EVERY ELEMENT IN ALL VOTES ARRAY
+        // IS CHECKED FOR CURRENT USER ID
         // create new vote and set vote.value to 1 in db
         // change thumb color to green
         let newVoteObj = {
             value: 1,
             author_id: this.props.currentUser.id,
-            votable_type: 'Comment',
+            votable_type: "Comment",
             votable_id: this.props.currentCommentObj.id,
         }
         const vote = Object.assign({}, newVoteObj);
         return this.props.createCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', // green
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "rgb(84, 200, 53)", // green
+                            thumbDownColor: "gray",
                         }));
     }
 
@@ -177,7 +178,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: -1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -186,8 +187,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'rgb(234, 43, 36)', //red
+                            thumbUpColor: "gray",
+                            thumbDownColor: "rgb(234, 43, 36)", // red
                         })
                     )
 
@@ -199,7 +200,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 0,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -207,8 +208,8 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "gray",
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -219,7 +220,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: -1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Comment',
+                    votable_type: "Comment",
                     votable_id: this.props.currentCommentObj.id,
                     id: currentVote.id,
                 }
@@ -227,31 +228,33 @@ class VotesShow extends React.Component {
                 return this.props.updateCommentVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'rgb(234, 43, 36)', //red
+                            thumbUpColor: "gray",
+                            thumbDownColor: "rgb(234, 43, 36)", // red
                         })
                     );
             }
 
         }
 
-        //IF NOTHING CLICKED YET EVER—CREATE NEW VOTE AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS CHECKED FOR CURRENT USER ID
+        // IF NOTHING CLICKED YET EVER—CREATE NEW VOTE
+        // AFTER EVERY ELEMENT IN ALL VOTES ARRAY IS
+        // CHECKED FOR CURRENT USER ID
         // create new vote and set vote.value to -1 in db
         // change thumb color to red
         let newVoteObj = {
             value: -1,
             author_id: this.props.currentUser.id,
-            votable_type: 'Comment',
+            votable_type: "Comment",
             votable_id: this.props.currentCommentObj.id,
         }
         const vote = Object.assign({}, newVoteObj);
         return this.props.createCommentVote(vote)
-                    .then(
-                        this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'rgb(234, 43, 36)', //red
-                        })
-                        );
+            .then(
+                this.setState({
+                    thumbUpColor: "gray",
+                    thumbDownColor: "rgb(234, 43, 36)", // red
+                })
+            );
     }
 
     tallyCurrentCommentObjVotes() {
@@ -293,7 +296,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 0,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -303,8 +306,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "gray",
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -317,7 +320,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -325,8 +328,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "rgb(84, 200, 53)", // green
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -337,7 +340,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -345,8 +348,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'rgb(84, 200, 53)', //green
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "rgb(84, 200, 53)", //green
+                            thumbDownColor: "gray",
                         })
                     )
             }
@@ -358,15 +361,15 @@ class VotesShow extends React.Component {
         let newVoteObj = {
             value: 1,
             author_id: this.props.currentUser.id,
-            votable_type: 'Annotation',
+            votable_type: "Annotation",
             votable_id: this.props.currentAnnoObj.id,
         }
         const vote = Object.assign({}, newVoteObj);
         return this.props.createAnnotationVote(vote)
             .then(
                 this.setState({
-                    thumbUpColor: 'rgb(84, 200, 53)', //green
-                    thumbDownColor: 'gray',
+                    thumbUpColor: "rgb(84, 200, 53)", // green
+                    thumbDownColor: "gray",
                 }));
     }
 
@@ -389,7 +392,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: -1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -398,8 +401,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray', // red
-                            thumbDownColor: 'rgb(234, 43, 36)', // red
+                            thumbUpColor: "gray", // red
+                            thumbDownColor: "rgb(234, 43, 36)", // red
                         })
                     )
 
@@ -411,7 +414,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: 0,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -419,8 +422,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'gray',
+                            thumbUpColor: "gray",
+                            thumbDownColor: "gray",
                         })
                     );
 
@@ -431,7 +434,7 @@ class VotesShow extends React.Component {
                 let updatedVoteObj = {
                     value: -1,
                     author_id: currentVote.author_id,
-                    votable_type: 'Annotation',
+                    votable_type: "Annotation",
                     votable_id: this.props.currentAnnoObj.id,
                     id: currentVote.id,
                 }
@@ -439,8 +442,8 @@ class VotesShow extends React.Component {
                 return this.props.updateAnnotationVote(vote)
                     .then(
                         this.setState({
-                            thumbUpColor: 'gray',
-                            thumbDownColor: 'rgb(234, 43, 36)', // red
+                            thumbUpColor: "gray",
+                            thumbDownColor: "rgb(234, 43, 36)", // red
                         })
                     );
             }
@@ -453,15 +456,15 @@ class VotesShow extends React.Component {
         let newVoteObj = {
             value: -1,
             author_id: this.props.currentUser.id,
-            votable_type: 'Annotation',
+            votable_type: "Annotation",
             votable_id: this.props.currentAnnoObj.id,
         }
         const vote = Object.assign({}, newVoteObj);
         return this.props.createAnnotationVote(vote)
             .then(
                 this.setState({
-                    thumbUpColor: 'gray',
-                    thumbDownColor: 'rgb(234, 43, 36)', // red
+                    thumbUpColor: "gray",
+                    thumbDownColor: "rgb(234, 43, 36)", // red
                 })
             );
     }
@@ -470,16 +473,18 @@ class VotesShow extends React.Component {
 
         if (this.props.currentCommentObj) {
             return (
-                <div className='vote-container'>
+                <div className="vote-container">
                     <FontAwesomeIcon
-                        className='vote-thumb-up-icon'
+                        className="vote-thumb-up-icon"
                         icon={faThumbsUp}
                         onClick={this.handleThumbUpCommentClick}
                         style={{ color: this.state.thumbUpColor }}
                     />
-                    <span className='vote-count'>{this.tallyCurrentCommentObjVotes()}</span>
+                    <span className="vote-count">
+                        {this.tallyCurrentCommentObjVotes()}
+                    </span>
                     <FontAwesomeIcon
-                        className='vote-thumb-down-icon'
+                        className="vote-thumb-down-icon"
                         icon={faThumbsDown}
                         onClick={this.handleThumbDownCommentClick}
                         style={{ color: this.state.thumbDownColor }}
@@ -488,16 +493,18 @@ class VotesShow extends React.Component {
             )
         } else if (this.props.currentAnnoObj) {
             return (
-                <div className='vote-container'>
+                <div className="vote-container">
                     <FontAwesomeIcon
-                        className='vote-thumb-up-icon'
+                        className="vote-thumb-up-icon"
                         icon={faThumbsUp}
                         onClick={this.handleThumbUpAnnoClick}
                         style={{ color: this.state.thumbUpColor }}
                     />
-                    <span className='vote-count'>{this.tallyCurrentAnnoObjVotes()}</span>
+                    <span className="vote-count">
+                        {this.tallyCurrentAnnoObjVotes()}
+                    </span>
                     <FontAwesomeIcon
-                        className='vote-thumb-down-icon'
+                        className="vote-thumb-down-icon"
                         icon={faThumbsDown}
                         onClick={this.handleThumbDownAnnoClick}
                         style={{ color: this.state.thumbDownColor }}

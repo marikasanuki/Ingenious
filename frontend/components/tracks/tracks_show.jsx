@@ -1,8 +1,8 @@
 import React from "react";
-import AnnotationsShow from '../annotations/annotations_show';
-import CommentsForm from '../comments/comments_form';
-import CommentsList from '../comments/comments_list';
-import { Link } from 'react-router-dom';
+import AnnotationsShow from "../annotations/annotations_show";
+import CommentsForm from "../comments/comments_form";
+import CommentsList from "../comments/comments_list";
+import { Link } from "react-router-dom";
 
 class TracksShow extends React.Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class TracksShow extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='anno-comments-outer-cont'>
+                <div className="anno-comments-outer-cont">
                     {
                         <AnnotationsShow
                             track={this.props.track}
@@ -52,9 +52,9 @@ class TracksShow extends React.Component {
                             destroyAnnotation={this.props.destroyAnnotation}
                         />
                     }
-                    <div className='comments-outer-cont'>
-                        <div className='comments-inner-cont'>
-                            <div className='comments-form-cont'>
+                    <div className="comments-outer-cont">
+                        <div className="comments-inner-cont">
+                            <div className="comments-form-cont">
                                 {
                                     this.props.currentUser ?
                                         <CommentsForm
@@ -63,13 +63,13 @@ class TracksShow extends React.Component {
                                         />
                                         :
                                         <div>
-                                            <div className='comment-login-card'>
+                                            <div className="comment-login-card">
                                                 <Link to={`/login`}>Log in to add a comment.</Link>
                                             </div>
                                         </div>
                                 }
                             </div>
-                            <div className='comments-list-cont'>
+                            <div className="comments-list-cont">
                                 {
                                     <CommentsList
                                         comments={this.props.comments}

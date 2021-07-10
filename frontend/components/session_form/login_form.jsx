@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            username: "",
+            password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
@@ -34,15 +34,15 @@ class LoginForm extends React.Component {
     }
     demoUser(e) {
         e.preventDefault();
-        this.props.login({ username: 'IngeniousFan', password: 'IngeniousFanpw' })
+        this.props.login({ username: "IngeniousFan", password: "IngeniousFanpw" })
             .then(() => this.props.history.goBack());
     }
 
     renderErrors() {
         return (
             <div>
-                <div className='error-whoops-hed' >Whoops</div>
-                <div className='error-whoops-subhed' >There must be some mistake</div>
+                <div className="error-whoops-hed" >Whoops</div>
+                <div className="error-whoops-subhed" >There must be some mistake</div>
                 <ul>
                     {this.props.errors.map((error, i) => (
                         <li key={`error-${i}`}>
@@ -56,37 +56,37 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className='signup-form-container'>
-                    <div className='signup-form-header' >{this.props.formHeader}</div>
-                <form onSubmit={this.handleSubmit} className='signup-form-box' >
-                    {this.props.errors.length ? <div className='error-messages'>{this.renderErrors()}</div> : null}
-                    <label className='signup-label' >Ingenious Nickname
+            <div className="signup-form-container">
+                    <div className="signup-form-header" >{this.props.formHeader}</div>
+                <form onSubmit={this.handleSubmit} className="signup-form-box" >
+                    {this.props.errors.length ? <div className="error-messages">{this.renderErrors()}</div> : null}
+                    <label className="signup-label" >Ingenious Nickname
                         <br />
                         <input
-                            type='text'
+                            type="text"
                             value={this.state.username}
-                            onChange={this.handleInput('username')}
-                            className='signup-input'
+                            onChange={this.handleInput("username")}
+                            className="signup-input"
                             maxLength="30"
                         />
                     </label>
                     <br />
-                    <label className='signup-label'>Password
+                    <label className="signup-label">Password
                         <br />
                         <input
-                            type='password'
+                            type="password"
                             value={this.state.password}
-                            onChange={this.handleInput('password')}
-                            className='signup-input'
+                            onChange={this.handleInput("password")}
+                            className="signup-input"
                             maxLength="70"
                         />
                     </label>
-                        <p className='terms-of-service'>{this.props.termsOfService}</p>
-                    <input className="session-submit-button" type='submit' value={this.props.formButton} />
+                        <p className="terms-of-service">{this.props.termsOfService}</p>
+                    <input className="session-submit-button" type="submit" value={this.props.formButton} />
                     <br />
                     <br />
-                    <label className='signup-label'>Don't have an account? <Link className='hyperlink-color' to={`/signup`}>Sign up here.</Link></label>
-                    <button className='login-demo-user-button' onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
+                    <label className="signup-label">Don"t have an account? <Link className="hyperlink-color" to={`/signup`}>Sign up here.</Link></label>
+                    <button className="login-demo-user-button" onClick={e => this.demoUser(e)}><FontAwesomeIcon icon={faUser} /> &nbsp;Log in as demo user</button>
                 </form>
             </div>
         );

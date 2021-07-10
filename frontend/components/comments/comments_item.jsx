@@ -1,7 +1,7 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import VotesShow from '../votes/votes_show_container';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import VotesShow from "../votes/votes_show_container";
 
 class CommentsItem extends React.Component {
     constructor(props) {
@@ -12,21 +12,19 @@ class CommentsItem extends React.Component {
         const { comment, destroyComment, currentUser } = this.props;
 
         return (
-            
-            <li className='comments-item-li'>
-                <div className='comments-author'>
+            <li className="comments-item-li">
+                <div className="comments-author">
                     {comment.username}
-                    {/* {comment_authors[comment.author_id] ? (comment_authors[comment.author_id].username) : null } */}
                 </div>
-                <div className='comments-body'>
+                <div className="comments-body">
                     {comment.comment_body}
                 </div>
-                <VotesShow 
+                <VotesShow
                     comment={comment}
                 />
-
                 <div className="comment-del-button-cont">
-                    { (currentUser && comment.author_id === currentUser.id) ? (
+                    { (currentUser && comment.author_id === currentUser.id)
+                        ? (
                             <div
                                 className="comments-del-button"
                                 onClick={() => {
@@ -36,11 +34,13 @@ class CommentsItem extends React.Component {
                                 <FontAwesomeIcon icon={faTrashAlt} />
                                 <span
                                     className="comments-del-button-text"
-                                >Delete Comment</span>
+                                >
+                                    Delete Comment
+                                </span>
                             </div>
-                         ) : null } 
+                        )
+                        : null }
                 </div>
-                
             </li>
         )
     }

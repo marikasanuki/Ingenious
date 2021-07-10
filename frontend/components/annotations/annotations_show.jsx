@@ -1,7 +1,7 @@
 import React from "react";
-import AnnotationsCard from './annotations_card';
-import AnnotationsFormCreate from './annotations_form_create';
-import { Link } from 'react-router-dom';
+import AnnotationsCard from "./annotations_card";
+import AnnotationsFormCreate from "./annotations_form_create";
+import { Link } from "react-router-dom";
 
 class AnnotationsShow extends React.Component {
     constructor(props) {
@@ -23,14 +23,14 @@ class AnnotationsShow extends React.Component {
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleOutsideClick, false);
+        document.removeEventListener("click", this.handleOutsideClick, false);
     }
 
     handleClick() {
         if (!this.state.annotationCardVisible) {
-            document.addEventListener('click', this.handleOutsideClick, false);
+            document.addEventListener("click", this.handleOutsideClick, false);
         } else {
-            document.removeEventListener('click', this.handleOutsideClick, false);
+            document.removeEventListener("click", this.handleOutsideClick, false);
         }
 
         this.setState(prevState => ({
@@ -40,16 +40,21 @@ class AnnotationsShow extends React.Component {
     }
 
     handleOutsideClick(e) {
-        // ignores clicks on highlighted span tag || ignores click on anno-show-cont div by return and skipping the below call of handleClick
+        // ignores clicks on highlighted span tag || ignores click on
+        // anno-show-cont div by return and skipping
+        // the below call of handleClick
         if ( (this.node && this.node.contains(e.target)) || this.cardNode.contains(e.target) ) {
             return;
         }
         this.handleClick();
     }
 
-    findSelectionOffsets(element) { //element is lyricsElement aka the html/jsx element containing the track's full lyrics
-        let doc = element.ownerDocument || element.document; //setting doc variable to be the lyrics element's document or owner document
-        let win = doc.defaultView || doc.parentWindow; //doc.defaultView returns the window object associated with doc. doc.parent Window does the same thing for Internet Explorer.
+    // element is lyricsElement aka the html/jsx element containing the track's full lyrics
+    findSelectionOffsets(element) {
+        // setting doc variable to be the lyrics element's document or owner document
+        let doc = element.ownerDocument || element.document;
+        // doc.defaultView returns the window object associated with doc. doc.parent Window does the same thing for Internet Explorer.
+        let win = doc.defaultView || doc.parentWindow;
         let selected;
         let start = 0;
         let end = 0;
@@ -96,7 +101,8 @@ class AnnotationsShow extends React.Component {
         const lyricsElement = document.getElementsByClassName("anno-show-lyrics")[0];
         let selOffsets = this.findSelectionOffsets(lyricsElement);
 
-        if (selOffsets.start !== selOffsets.end) { //excludes mousedown/mouseup clicks where there's no character highlighted
+        // excludes mousedown/mouseup clicks where there's no character highlighted
+        if (selOffsets.start !== selOffsets.end) {
             this.setState({
                 start_idx: selOffsets.start,
                 end_idx: selOffsets.end,
@@ -106,8 +112,11 @@ class AnnotationsShow extends React.Component {
     }
 
     setCurrentAnnotationId(annotationId) {
+        // save the currentAnnotationId to local state so that onClick
+        //  in the span tag for the highlighed annotation will set
+        // annotationCardVisible to true and reveal
+        // the annotationCard for the current annotation
         this.setState({ currentAnnotationId: annotationId })
-        //save the currentAnnotationId to local state so that onClick in the span tag for the highlighed annotation will set annotationCardVisible to true and reveal the annotationCard for the current annotation
         this.handleClick();
     }
 
@@ -121,7 +130,10 @@ class AnnotationsShow extends React.Component {
         const { lyrics, annotations, currentUser } = this.props;
         const allFormattedLyrics = [];
         const annotationsArr = Object.values(annotations);
-        annotationsArr.sort((a, b) => (a.start_idx < b.start_idx) ? -1 : 1); //ensures any newly created annotation is placed in the correct order in annotationsArr so that slicing of the lyrics string will happen in the correct, chronological order
+        // ensures any newly created annotation is placed in the correct order
+        // in annotationsArr so that slicing of the lyrics string will happen
+        // in the correct, chronological order
+        annotationsArr.sort((a, b) => (a.start_idx < b.start_idx) ? -1 : 1);
         let prevIdx = 0;
         let uniqueKey = 0;
 
@@ -135,14 +147,14 @@ class AnnotationsShow extends React.Component {
             let annotatedSlicedLyric = lyrics.slice(annotation.start_idx, annotation.end_idx)
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
-                    className='unannotated-lyric'
+                    className="unannotated-lyric"
                 >
                     {unannotatedSlicedLyric}
                 </span>
             );
             allFormattedLyrics.push(
                 <span key={uniqueKey++}
-                    className='highlighted-annotated-lyric'
+                    className="highlighted-annotated-lyric"
                     ref={ node => { this.node = node; } }
                     onClick={() =>
                         {   this.setCurrentAnnotationId(annotation.id)
@@ -151,12 +163,15 @@ class AnnotationsShow extends React.Component {
                     {annotatedSlicedLyric}
                 </span>
             );
-        //When we're on the final iteration for the for loop
-        //IF we've finished iterating over the final annotation in annotationsArr, then we want to grab the rest of the remaining unannotated lyrics and make sure they're added to the end of the allFormattedLyrics array:
+        // When we're on the final iteration for the for loop
+        // IF we've finished iterating over the final annotation
+        // in annotationsArr, then we want to grab the rest of the remaining
+        // unannotated lyrics and make sure they're added to the end
+        // of the allFormattedLyrics array:
             if ((i === Object.keys(annotationsArr).length - 1)    ) {
                 allFormattedLyrics.push(
                     <span key={uniqueKey++}
-                        className='unannotated-lyric'
+                        className="unannotated-lyric"
                     >
                         {lyrics.slice(annotation.end_idx, lyrics.length)}
                     </span>
@@ -165,24 +180,29 @@ class AnnotationsShow extends React.Component {
             prevIdx = annotation.end_idx;
         };
 
-        //at this stage, once looping through annotationsArr is done, all the formatting of unannotated lyrics AND annotated lyrics has been completed and we will then return/render the formatted full lyrics string:
-        if (allFormattedLyrics.length) { //if the allFormattedLyrics array has a length, there are annotations/annotated lyrics for this track. And
+        // at this stage, once looping through annotationsArr is done,
+        // all the formatting of unannotated lyrics AND annotated lyrics
+        // has been completed and we will then return/render the
+        // formatted full lyrics string:
+        if (allFormattedLyrics.length) {
+            // if the allFormattedLyrics array has a length, there are
+            // annotations/annotated lyrics for this track.
             return (
-                <div className='anno-show-lyrics-container'>
-                    <div className='anno-show-mini-title'>
+                <div className="anno-show-lyrics-container">
+                    <div className="anno-show-mini-title">
                         {this.props.track.title} lyrics
                     </div>
 
                     <div
-                        className='anno-show-lyrics'
+                        className="anno-show-lyrics"
                         onMouseDown={this.saveStartOffsetToState}
                         onMouseUp={this.saveEndOffsetToState}
 
                     >
-                        {/* the allFormattedLyrics array of formatted span tags is rendered here. */}
+                        {/* the allFormattedLyrics array of formatted span tags renders here. */}
                         {allFormattedLyrics}
                     </div>
-                    <div className='anno-show-cont' ref={cardNode => { this.cardNode = cardNode; }} >
+                    <div className="anno-show-cont" ref={cardNode => { this.cardNode = cardNode; }} >
                         <br />
                         {this.state.annotationCardVisible ?
                             <AnnotationsCard
@@ -220,9 +240,9 @@ class AnnotationsShow extends React.Component {
 
                                                 : null
                                     :
-                                        <div className='anno-login-container'>
-                                            <div className='anno-login-border-bar'></div>
-                                            <div className='anno-login-card' >
+                                        <div className="anno-login-container">
+                                            <div className="anno-login-border-bar"></div>
+                                            <div className="anno-login-card" >
                                                 You need to <Link to={`/login`}>log in</Link> to add annotations to a song.
                                             </div>
                                         </div>
@@ -230,14 +250,17 @@ class AnnotationsShow extends React.Component {
                     </div>
                 </div>
             )
-        } else { //if allFormattedLyrics array is empty, there are no annotations on this track to render, so just return the full lyrics string via this.props.lyrics
+        } else {
+            // if allFormattedLyrics array is empty, there are no annotations
+            // on this track to render, so just return the full lyrics string
+            // via this.props.lyrics
             return (
-                <div className='anno-show-lyrics-container'>
-                    <div className='anno-show-mini-title'>
+                <div className="anno-show-lyrics-container">
+                    <div className="anno-show-mini-title">
                         {this.props.track.title} lyrics
                     </div>
                     <div
-                        className='anno-show-lyrics'
+                        className="anno-show-lyrics"
                         onMouseDown={this.saveOffsetsToState}
                         onMouseUp={this.saveOffsetsToState}
                     >

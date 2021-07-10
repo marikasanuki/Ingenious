@@ -1,16 +1,14 @@
-import { connect } from 'react-redux';
-import { signup, login } from '../../actions/session_actions';
-import SignupForm from './signup_form';
-import { removeErrors } from '../../actions/session_actions'
-
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { signup, login } from "../../actions/session_actions";
+import SignupForm from "./signup_form";
+import { removeErrors } from "../../actions/session_actions";
 
 const mapStateToProps = ({ errors }) => {
     return ({
         errors: errors.session,
-        formHeader: 'SIGN UP',
-        formSubhead: 'and show off your ingenious',
-        formButton: 'Create Account',
+        formHeader: "SIGN UP",
+        formSubhead: "and show off your ingenious",
+        formButton: "Create Account",
     })
 };
 

@@ -5,13 +5,13 @@ class AnnotationsFormCreate extends React.Component {
         super(props);
 
         this.state = {
-            anno_body: '',
+            anno_body: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e){
-        e.preventDefault();   
+        e.preventDefault();
 
         let newAnnoInfo = {
             track_id: this.props.track.id,
@@ -41,34 +41,21 @@ class AnnotationsFormCreate extends React.Component {
         };
     }
 
-    render() { 
+    render() {
         return (
-            <div className='anno-form-container'>
-                <div className='anno-border-bar'></div>
-                <form onSubmit={this.handleSubmit} className='anno-form'>
-                    <textarea 
-                        className='anno-textarea'
+            <div className="anno-form-container">
+                <div className="anno-border-bar"></div>
+                <form onSubmit={this.handleSubmit} className="anno-form">
+                    <textarea
+                        className="anno-textarea"
                         placeholder="Don't just put the lyric in your own words—drop some knowledge!"
                         value={this.state.anno_body}
-                        onChange={this.handleInput('anno_body')}
-                        maxLength="1000" 
+                        onChange={this.handleInput("anno_body")}
+                        maxLength="1000"
                     />
-                    <input className="anno-submit-button" type='submit' value={'Save'}/>
+                    <input className="anno-submit-button" type="submit" value={"Save"}/>
                     <button className="anno-cancel-button" onClick={() => {
                         this.props.hideAnnotationFormCreate()}} >Cancel</button>
-                    {/* <br />
-                    <input 
-                        type='integer' 
-                        value={this.props.start_idx}
-                        onChange={this.handleInput('start_idx')} 
-                        />
-                    <br />
-                    <input
-                        type='integer'
-                        value={this.props.end_idx}
-                        onChange={this.handleInput('end_idx')}
-                    /> */}
-
                 </form>
             </div>
         )

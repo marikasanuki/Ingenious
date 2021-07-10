@@ -1,15 +1,14 @@
-import { connect } from 'react-redux';
-import TracksShow from './tracks_show';
-import { fetchTrack } from '../../actions/track_actions';
-import { fetchAnnotation, createAnnotation, updateAnnotation, destroyAnnotation } from '../../actions/annotation_actions';
-import { fetchTrackComments, createComment, destroyComment } from '../../actions/comment_actions';
+import { connect } from "react-redux";
+import TracksShow from "./tracks_show";
+import { fetchTrack } from "../../actions/track_actions";
+import { fetchAnnotation, createAnnotation, updateAnnotation, destroyAnnotation } from "../../actions/annotation_actions";
+import { fetchTrackComments, createComment, destroyComment } from "../../actions/comment_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return ({
         track: state.entities.tracks,
         annotations: state.entities.annotations,
         comments: state.entities.comments,
-        // comment_authors: state.entities.comment_authors,
         currentUser: state.session.currentUser,
     })
 };
