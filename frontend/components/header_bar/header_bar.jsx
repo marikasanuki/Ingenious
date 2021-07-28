@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderBar = ({ currentUser, logout }) => {
     const display = currentUser ? (
@@ -11,6 +12,9 @@ const HeaderBar = ({ currentUser, logout }) => {
                     placeholder="Search lyrics & more"
                     disabled
                 ></input>
+                <div className="search-bar-icon">
+                    <FontAwesomeIcon className="fa-icon" icon={faSearch} />
+                </div>
             </form>
             <div className="ingenious-header-container">
                 <Link to="/" className="ingenious-header" >INGENIOUS</Link>
@@ -29,7 +33,10 @@ const HeaderBar = ({ currentUser, logout }) => {
                         className="search-bar-input"
                         placeholder="Search lyrics & more"
                         disabled
-                    ></input>
+                    />
+                    <div className="search-bar-icon">
+                        <FontAwesomeIcon className="fa-icon" icon={faSearch} />
+                    </div>
                 </form>
                 <div className="ingenious-header-container">
                     <Link to="/" className="ingenious-header" >INGENIOUS</Link>

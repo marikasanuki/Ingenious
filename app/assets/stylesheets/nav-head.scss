@@ -44,6 +44,15 @@
     };
 }
 
+.search-bar-icon {
+    margin-left: -24px;
+    margin-top: 6px;
+    z-index: 1;
+}
+.search-bar-icon:hover {
+    cursor: not-allowed;
+}
+
 .search-bar-input {
     font-family: 'Muli', sans-serif;
     font-weight: 700;
@@ -52,6 +61,7 @@
     height: 29px;
     width: 220px;
     padding-left: 0.5rem;
+    position: relative;
 }
 
 .search-bar-input:focus {
@@ -59,15 +69,15 @@
 }
 
 .search-bar-input:disabled {
-  background: #fff;
+    background: #fff;
 }
 
 .search-bar-input:hover {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 ::placeholder {
-  color: black;
+    color: black;
 }
 
 .ingenious-header-container {
