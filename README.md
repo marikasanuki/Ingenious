@@ -3,7 +3,7 @@
 ![alt text](https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/ingenious-logo.png "Ingenious")
 
 
-The upgraded version of this project (Ruby 3.2 / Rails 7.2 / React 18 / Render) is live [here](https://ingeniousgg.onrender.com) and the repo containing the upgrades can be found [here](https://github.com/marikasanuki/IngeniousGG).
+> The upgraded version of this project (Ruby 3.2 / Rails 7.2 / React 18 / Render) is live [here](https://ingeniousgg.onrender.com) and the repo containing the upgrades can be found [here](https://github.com/marikasanuki/IngeniousGG).
 
 ### [Live Link](https://ingeniousgg.onrender.com/#/)
 
