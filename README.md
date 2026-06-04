@@ -2,9 +2,12 @@
 
 ![alt text](https://github.com/marikasanuki/Ingenious/blob/master/app/assets/images/ingenious-logo.png "Ingenious")
 
-### [Live Link](https://ingenious-app.herokuapp.com/)
 
-[Ingenious](https://ingenious-app.herokuapp.com/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge.
+The upgraded version of this project (Ruby 3.2 / Rails 7.2 / React 18 / Render) is live [here](https://ingeniousgg.onrender.com) and the repo containing the upgrades can be found [here](https://github.com/marikasanuki/IngeniousGG).
+
+### [Live Link](https://ingeniousgg.onrender.com/#/)
+
+[Ingenious](https://ingeniousgg.onrender.com/#/) is a [Genius.com](https://genius.com/) clone project, featuring code-related song lyrics and programming music knowledge.
 
 All users can openly browse a curated selection of songs and their lyrics and view annotated notes and interpretations of the tracks' lyrics. _Signed-in_ users can create, update, and delete their own lyric annotations, leave or delete their own comments on the tracks, and upvote or downvote annotations and comments.
 
